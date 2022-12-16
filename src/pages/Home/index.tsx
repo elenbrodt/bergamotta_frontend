@@ -1,19 +1,30 @@
 import RatingMui from '@mui/material/Rating';
 import { useState } from 'react';
+import Map from '../../components/Map';
 import { Title } from './styles';
 
 function Home (){
-    const [value, setValue] = useState<number | null>(2);
-    
+    const [value, setValue] = useState<number | null>(1);
+    const [latitude, setLatitude] = useState<number>(0);
+    const [longitude, setLongitude] = useState<number>(0);
+
+    navigator.geolocation.getCurrentPosition(function(position) {
+        console.log("Latitude is :", position.coords.latitude);
+        console.log("Longitude is :", position.coords.longitude);
+        setLatitude(position.coords.latitude);
+        setLongitude(position.coords.longitude);
+      });
     return(
-        <div>
-            <h1><Title>Bergmotta</Title></h1>
+        <div className="App">
+            <Title>Bergamotta</Title>
             <RatingMui
                 name="simple-controlled"
                 value={value}
                 onChange={(event, newValue) => {
                     setValue(newValue);
                 }}
+            />
+            <Map latitude={latitude} longitude={longitude}
             />
         </div>
     )
