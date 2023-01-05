@@ -1,0 +1,17 @@
+a{
+    text-decoration: none;
+    color: white; 
+}
+
+button{
+    margin: auto 5%;
+    height: 3rem;
+    padding: 0 3%;
+    border-radius: 36px;
+    background: #6CB935;
+    border: hidden;
+}
+
+button:hover {
+
+ }
