@@ -4,9 +4,10 @@ a{
 }
 
 button{
-    margin: auto 5%;
+    margin: 0;
     height: 3rem;
     padding: 0 3%;
+    width: 284px;
     border-radius: 36px;
     background: #6CB935;
     border: hidden;

@@ -1,6 +1,5 @@
 import { colors } from "../../styles/theme";
 import styled from 'styled-components';
-import Link from "../../components/Link";
 
 
 export const Title = styled.h1`
@@ -20,7 +19,7 @@ width: 322px;
 height: 97.45px;
 font-weight: 700;
 font-size: 40px;
-color: ${colors.error}
+color: ${colors.primary}
 `
 export const Text = styled.text`
 margin:0;
@@ -36,22 +35,24 @@ margin:0;
 width: 706.03px;
 height: 483px;
 `
-
 export const Orangebg1 = styled.img` 
-margin:0;
+margin-top:-220px;
+margin-bottom: -220px;
 width: 898.4px;
 height: 1039.92px;
 `
 export const Overlaid1 = styled.img`
 position: absolute;
-margin-top: 300px;
+margin-top: 80px;
 z-index: 1;
 width: 725px;
 height: 743px;
+float: inline-start;
 `
 export const UpperBody = styled.div` 
 display: flex;
 justify-content: center;
+margin-bottom: 125px;
 `
 export const UpperBodyLeft = styled.div`
 display: flex;
@@ -61,17 +62,24 @@ justify-content: center
 export const BottonBody = styled.div`
 display: flex;
 justify-content: space-between;
+background-color: ${colors.light_one};
+
 `
 export const BottonBodyLeft = styled.div`
 display: flex;
-position: relative;
+position: sticky;
+background-color: ${colors.light_one};
+z-index: 1;
+margin-top: 100px;
+margin-bottom: 100px;
 `
 export const BottonBodyRight = styled.div`
 display: flex;
 flex-direction: column;
 justify-content: center;
+background-color: ${colors.light_one};
+margin-top: 100px;
+margin-bottom: 100px;
+background-color: ${colors.light_one};
 `
 
-export const LinkButton = styled(Link)`
-margin:0
-`

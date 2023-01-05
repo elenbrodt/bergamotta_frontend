@@ -1,11 +1,11 @@
 import Header from "../../components/Header";
-import { Title, Title2, Text, Overlaid1, Orangebg1, Imgbody, UpperBody, UpperBodyLeft, LinkButton, BottonBody, BottonBodyLeft, BottonBodyRight } from './styles';
+import { Title, Title2, Text, Overlaid1, Orangebg1, Imgbody, UpperBody, UpperBodyLeft, BottonBody, BottonBodyLeft, BottonBodyRight } from './styles';
 import bodyimg1 from "../../assets/imagesAbout/veg 001 1.png"
 import vector1 from "../../assets/imagesAbout/Vector1.png"
 import vector2 from "../../assets/imagesAbout/Vector2.png"
 import bodyimg2 from "../../assets/imagesAbout/Rectangle 62.png"
 import bodyimage3 from "../../assets/imagesAbout/persona 12 1.png"
-// import Link from "../../components/Link";
+import Link from "../../components/Link";
 
 
 
@@ -20,7 +20,7 @@ function About() {
                 <UpperBodyLeft>
                     <Title>Te ajudamos a encontrar<br></br>
                         experiencias gastronômicas incríveis</Title>
-                    <LinkButton texto="Buscar experiências" redirect="" />
+                    <Link texto="Buscar experiências" redirect="" />
                 </UpperBodyLeft>
                 <div>
                     <Imgbody src={bodyimg1} alt="Experiências Incríveis" />
