@@ -9,4 +9,5 @@ export const SearchBox = styled.div`
   border-radius: 30px;
   border: solid 1px ${colors.secondary};
   color: ${colors.secondary};
+  padding: 14px 10px;
 `
