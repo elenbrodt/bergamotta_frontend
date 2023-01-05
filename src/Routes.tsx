@@ -1,7 +1,7 @@
 import {Routes as WrapperRoutes, Route, BrowserRouter} from 'react-router-dom';
 import Home from "./pages/Home"
 import Search from "./pages/Search"
-import About from './pages/about';
+import About from './pages/About';
 
 export default function Routes() {
     return (  
