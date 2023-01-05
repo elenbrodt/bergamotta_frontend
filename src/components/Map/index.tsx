@@ -1,30 +1,31 @@
 //import { useState } from 'react';
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
+import { MapContainer, Marker, Popup, TileLayer} from 'react-leaflet'
 import "./styles.css"
+import {Points, City} from "../../types"
 
-type Props = {
-    latitude: number;
-    longitude: number;
+type MapProps = {
+    city: City;
+    points: Points;
 }
 
-function Map (props: Props) {
-    
-    const latitudeProps = props.latitude as number;
-    const longitudeProps = props.longitude as number;
-    //console.log("Latitude3 is :", latitudeProps);
-    //console.log("Longitude3 is :", longitudeProps);
+function Map (props: MapProps) {
+
+    const {city, points} = props;   
+
     return(
-        <div>
-            <MapContainer id="map" center={[latitudeProps, longitudeProps]} zoom={16} scrollWheelZoom={false}>
+        <div  >
+            <MapContainer id="map" center={[city.lat, city.lng]} zoom={city.zoom} scrollWheelZoom={false}>
                 <TileLayer
-                    attribution='<a href="https://www.maptiler.com/copyright/">&copy; MapTiler</a> <a href="https://www.openstreetmap.org/copyright">&copy; OpenStreetMap</a> contributors'
-                    url="https://api.maptiler.com/maps/basic-v2/{z}/{x}/{y}.png?key=bHogJuecsH1hQB7JuPrG"
+                attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                url="https://api.maptiler.com/maps/basic-v2/{z}/{x}/{y}.png?key=bHogJuecsH1hQB7JuPrG"
                 />
-                <Marker position={[latitudeProps, longitudeProps]} >
-                    <Popup>
-                    Você está aqui! <br /> Gama Academy.
-                    </Popup>
-                </Marker>
+                {points.map(point=>
+                    <Marker position={[point.lat, point.lng]}>
+                        <Popup>
+                            {point.title}
+                        </Popup>
+                    </Marker>
+                )}
                 
             </MapContainer>
         </div>  

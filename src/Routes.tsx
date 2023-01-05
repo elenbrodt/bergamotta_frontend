@@ -8,7 +8,6 @@ export default function Routes() {
         <WrapperRoutes>
             <Route path="" element={<Home/>}/>
             <Route path="/buscarestaurantes" element={<Search/>}/>
-            
         </WrapperRoutes>
     </BrowserRouter>   
     )}
