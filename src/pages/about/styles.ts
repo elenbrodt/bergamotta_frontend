@@ -38,7 +38,7 @@ height: 483px;
 export const Orangebg1 = styled.img` 
 margin-top:-220px;
 margin-bottom: -220px;
-width: 898.4px;
+width: 808.4px;
 height: 1039.92px;
 `
 export const Overlaid1 = styled.img`
@@ -57,7 +57,9 @@ margin-bottom: 125px;
 export const UpperBodyLeft = styled.div`
 display: flex;
 flex-direction: column;
-justify-content: center
+justify-content: center;
+align-items: center;
+gap: 15px;
 `
 export const BottonBody = styled.div`
 display: flex;
@@ -82,4 +84,29 @@ margin-top: 100px;
 margin-bottom: 100px;
 background-color: ${colors.light_one};
 `
+export const GreenBannerContainer = styled.div`
+margin-top: 122px;
+`
+export const FormContainer = styled.div`
+display: flex;
+justify-content: space-between;
+margin-top: 12px;
+`
+export const FormContainerRight = styled.div`
+display: flex;
+position: relative;
+`
 
+export const Orangebg2 = styled.img`
+width: 780.88px;
+height: 662.04px;
+`
+export const Overlaid2 = styled.img`
+position: absolute;
+margin-top: 160px;
+margin-right: 160px;
+z-index: 1;
+width: 685px;
+height: 501px;
+float: inline-start;
+`

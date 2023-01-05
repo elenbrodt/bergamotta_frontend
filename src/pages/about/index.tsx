@@ -1,20 +1,18 @@
 import Header from "../../components/Header";
-import { Title, Title2, Text, Overlaid1, Orangebg1, Imgbody, UpperBody, UpperBodyLeft, BottonBody, BottonBodyLeft, BottonBodyRight } from './styles';
+import { Title, Title2, Text, Overlaid1, Orangebg1, Imgbody, UpperBody, UpperBodyLeft, BottonBody, BottonBodyLeft, BottonBodyRight, GreenBannerContainer, FormContainer, FormContainerRight, Orangebg2, Overlaid2 } from './styles';
 import bodyimg1 from "../../assets/imagesAbout/veg 001 1.png"
 import vector1 from "../../assets/imagesAbout/Vector1.png"
 import vector2 from "../../assets/imagesAbout/Vector2.png"
 import bodyimg2 from "../../assets/imagesAbout/Rectangle 62.png"
 import bodyimage3 from "../../assets/imagesAbout/persona 12 1.png"
 import Link from "../../components/Link";
-
-
-
+import GreenBanner from "../../components/GreenBanner";
 
 function About() {
     return (
         <section>
             <div>
-                <Header />                
+                <Header />
             </div>
             <UpperBody>
                 <UpperBodyLeft>
@@ -44,10 +42,18 @@ function About() {
                         momento gastronômico do jeitinho que você procura.</Text>
                 </BottonBodyRight>
             </BottonBody>
-            <div>
-                <img src={vector2} alt="Fundo Laranja" />
-                <img src={bodyimage3} alt="Senhor Impressionado" />
-            </div>
+            <GreenBannerContainer>
+                <GreenBanner texto="Cadastre-se agora mesmo e tenha acesso a milhares de restaurantes do jeito que você busca e compartilhe suas experiências." />
+            </GreenBannerContainer>
+            <FormContainer>
+                <div>
+                    <form action="">teste</form>
+                </div>
+                <FormContainerRight>
+                    <Orangebg2 src={vector2} alt="Fundo Laranja" />
+                    <Overlaid2 src={bodyimage3} alt="Senhor Impressionado" />
+                </FormContainerRight>
+            </FormContainer>
         </section>
     );
 }
