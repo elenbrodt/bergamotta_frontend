@@ -1,10 +1,11 @@
-import RatingMui from '@mui/material/Rating';
+
 import { useEffect, useState } from 'react';
 import Map from '../../components/Map';
 import { Title } from './styles';
-
+import Header from "../../components/Header"
+import Rating from "../../components/Rating"
 function Home (){
-    const [value, setValue] = useState<number | null>(1);
+    
     const [latitude, setLatitude] = useState<number>(0);
     const [longitude, setLongitude] = useState<number>(0);
 
@@ -20,18 +21,11 @@ function Home (){
           });
       }, );
 
-    
-      
     return(
         <div className="App">
+            <Header/>
             <Title>Bergamotta</Title>
-            <RatingMui
-                name="simple-controlled"
-                value={value}
-                onChange={(event, newValue) => {
-                    setValue(newValue);
-                }}
-            />            
+            <Rating/>         
             <Map latitude={latitude} longitude={longitude}
             />
         </div>
