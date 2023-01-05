@@ -1,3 +1,4 @@
+   
 export const colors = {
     primary: "#FE6806",
     secondary: "#6CB935",
@@ -12,4 +13,9 @@ export const colors = {
     light_two: "#B6BFD8",
     gray: "#E0E0E0",
     white: "#FFFFFF"
+}
+
+export const fonts = {
+    primary: "Inter",
+    secondary: "Nunito",
 }

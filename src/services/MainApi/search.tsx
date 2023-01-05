@@ -1,15 +1,5 @@
-import baseApi from "./index.tsx"
+import baseApi from "./config"
 
-interface SearchPayload {
-    nome: string;
-    email: string;
-    idade: string;
-}
-//paciente/criar - para usar o DB do victor
-export function cadastroPaciente(payload: PacientePayload) {
-    return baseApi.post('/pacientes', payload)
-}
-
-export function listarPaciente(){
-    return baseApi.get('/pacientes')
+export function listPlace(){
+    return baseApi.get('/places')
 }
