@@ -1,6 +1,7 @@
 import {Routes as WrapperRoutes, Route, BrowserRouter} from 'react-router-dom';
 import Home from "./pages/Home"
 import Search from "./pages/Search"
+import About from './pages/about';
 
 export default function Routes() {
     return (  
@@ -8,6 +9,7 @@ export default function Routes() {
         <WrapperRoutes>
             <Route path="" element={<Home/>}/>
             <Route path="/buscarestaurantes" element={<Search/>}/>
+            <Route path="/sobrenos" element={<About/>}/>            
         </WrapperRoutes>
     </BrowserRouter>   
     )}
