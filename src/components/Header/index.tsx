@@ -11,11 +11,11 @@ function Header() {
                     <Ul> 
                         <Li><A href="">BLOG</A></Li>
                         <Li><A href="">PERFIL</A></Li>
-                        <Li><A href="">CONFIGURAÇÕES</A></Li>
+                        <Li><A href="">CADASTRO</A></Li>
                         <Li><A href="">QUEM SOMOS</A></Li>
                         <Li><A href="">SEJA UM PARCEIRO</A></Li>
                     </Ul>
-                    <Link texto="Login / Cadastro" redirect="/login" />
+                    <Link texto="Login" redirect="/login" />
                 </Nav>
         </header>
     );

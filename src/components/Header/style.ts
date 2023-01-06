@@ -1,4 +1,6 @@
 import styled from "styled-components";
+import { colors, fonts } from "../../styles/theme"
+
 export const Ul = styled.ul`
     list-style-type: none;
     text-align: center;
@@ -14,15 +16,16 @@ export const Li = styled.li`
 export const A = styled.a`
     color: rgba(59, 59, 70, 1);
     font-family: Nunito;
+    text-decoration: none;
 `
 export const Nav = styled.nav`
     border: 1px solid rgba(218, 218, 218, 1);
     border-radius: 12px;
     display:flex;
     justify-content: space-between;
-    background-color: rgba(218, 218, 218, 1);
+    background-color: ${colors.light_one};
     @media (max-width:425px){
-        background-color: #B8E6F5; 
+        background-color: ${colors.light_one}; 
         border-radius: 0px;
     }    
 `

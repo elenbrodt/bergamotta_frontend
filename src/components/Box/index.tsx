@@ -1,11 +1,12 @@
-import "./style.css"
+import {Section} from "./style";
+
 interface BoxProps{
     background: string;
     children: JSX.Element;
 }
 
 function Box(props: BoxProps) {
-    return <section className={`box-${props.background}`}>{props.children}</section>;
+    return <Section background={props.background}>{props.children}</Section>;
 }
 
 export default Box;

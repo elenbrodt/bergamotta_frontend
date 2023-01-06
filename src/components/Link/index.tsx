@@ -1,14 +1,16 @@
-import "./style.css";
+import {Button, A} from "./style";
+
 interface LinkProps {
     texto: string;
     redirect: string;
+    size?: string;
 }
 
 function Link(props: LinkProps) {
     return (
-        <button>
-            <a href={props.redirect}>{props.texto}</a>
-        </button>
+        <Button size={props.size || "big"}>
+            <A href={props.redirect}>{props.texto}</A>
+        </Button>
     );
 }
 
