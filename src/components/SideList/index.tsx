@@ -1,6 +1,7 @@
 import {Title} from "./styles"
 import {listPlace} from "../../services/MainApi/search"
 import { useEffect, useState } from "react";
+import CardPlace from "../CardPlace";
 
 interface Place {
     name: string;
@@ -31,6 +32,7 @@ export default function SideList (){
                     <li key={index}>{place.name}</li>
                 ))}
             </ul>
+            <CardPlace/>
         </div>
     )
 }
