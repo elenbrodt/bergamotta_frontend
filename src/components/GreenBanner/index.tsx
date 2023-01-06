@@ -8,9 +8,7 @@ function GreenBanner(props: GreenBannerProps) {
         <div className="banner">
             <h2 className="bannertitle">O que você está esperando?</h2>
             <p className="bannertext">{props.texto}</p>
-        <button className="bannerbtn">
-            <a href="/cadastro">Quero fazer parte!</a>
-        </button>
+            <a className="bannerbtn" href="/cadastro">Quero fazer parte!</a>
         </div>
     );
 }

@@ -24,19 +24,26 @@
     font-weight: 700;
     font-size: 20px;
     line-height: 28px;
+    text-decoration: none;
     color: #FFFFFF;
     text-align: center;
 }
 
 .bannerbtn {
+    font-family: 'Nunito';
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
     margin: 0;
     height: 60px;
-    padding: 0 3%;
-    width: 285px;
+    width: 269px;
     border-radius: 36px;
     background: #FE6806;
     border: hidden;
     font-weight: 700;
     font-size: 20px;
     line-height: 28px;
+    color: #FFFFFF;
 }
