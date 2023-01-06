@@ -19,7 +19,7 @@ function About() {
                 <UpperBodyLeft>
                     <Title>Te ajudamos a encontrar<br></br>
                         experiencias gastronômicas incríveis</Title>
-                    <TitleButton>Buscar experiências</TitleButton>
+                    <TitleButton href="/">Buscar experiências</TitleButton>
                 </UpperBodyLeft>
                 <div>
                     <Imgbody src={bodyimg1} alt="Experiências Incríveis" />
@@ -63,7 +63,7 @@ function About() {
                         <br />
                         <TextInput></TextInput>
                         <br />
-                        <FormBtn>Enviar</FormBtn>
+                        <FormBtn href="/">Enviar</FormBtn>
                     </FormDiv>
                 </div>
                 <FormContainerRight>

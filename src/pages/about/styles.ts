@@ -1,7 +1,6 @@
 import { colors, fonts } from "../../styles/theme";
 import styled from 'styled-components';
 
-
 export const Title = styled.h1`
 margin: 0;
 width: 740px;
@@ -24,8 +23,14 @@ font-size: 40px;
 color: ${colors.primary};
 font-family: ${fonts.primary};
 `
-export const TitleButton = styled.button`
+export const TitleButton = styled.a`
+display: flex;
+justify-content: center;
+text-align: center;
+align-items: center;
+margin-top: 10px;
 margin: 0;
+text-decoration: none;
 width: 284px;
 height: 60px;
 background: ${colors.secondary};
@@ -158,7 +163,12 @@ color: ${colors.dark_one};
 font-family: ${fonts.secondary};
 `
 
-export const FormBtn = styled.button`
+export const FormBtn = styled.a`
+text-decoration: none;
+display: flex;
+justify-content: center;
+text-align: center;
+align-items: center;
 margin: 0;
 width: 158px;
 height: 60px;
