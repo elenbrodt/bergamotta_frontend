@@ -1,4 +1,4 @@
-import { colors } from "../../styles/theme";
+import { colors, fonts } from "../../styles/theme";
 import styled from 'styled-components';
 
 
@@ -11,7 +11,9 @@ font-size: 40px;
 line-height: 55px;
 text-align: center;
 z-index:1;
-color: ${colors.black}
+color: ${colors.black};
+font-family: ${fonts.primary};
+margin-left: 27px;
 `
 export const Title2 = styled.h2`
 margin:0;
@@ -19,7 +21,23 @@ width: 322px;
 height: 97.45px;
 font-weight: 700;
 font-size: 40px;
-color: ${colors.primary}
+color: ${colors.primary};
+font-family: ${fonts.primary};
+`
+export const TitleButton = styled.button`
+width: 284px;
+height: 60px;
+background: ${colors.secondary};
+border-radius: 36px;
+border: hidden;
+font-family: ${fonts.secondary};
+font-weight: 700;
+font-size: 20px;
+line-height: 28px;
+font-weight: 700;
+font-size: 20px;
+line-height: 28px;
+color: ${colors.white}
 `
 export const Text = styled.text`
 margin:0;
@@ -29,6 +47,7 @@ height: 125.58px;
 font-weight: 400;
 font-size: 20px;
 line-height: 28px;
+font-family: ${fonts.secondary};
 `
 export const Imgbody = styled.img` 
 margin:0;
@@ -50,8 +69,9 @@ height: 743px;
 float: inline-start;
 `
 export const UpperBody = styled.div` 
+width: 100%;
 display: flex;
-justify-content: center;
+justify-content: space-between;
 margin-bottom: 125px;
 `
 export const UpperBodyLeft = styled.div`
@@ -95,6 +115,62 @@ margin-top: 12px;
 export const FormContainerRight = styled.div`
 display: flex;
 position: relative;
+`
+export const FormDiv = styled.form`
+display: flex;
+flex-direction: column;
+margin-left: 57px;
+`
+export const Title3 = styled.h3`
+width: 417px;
+height: 36px;
+margin-left: 57px;
+font-weight: 700;
+font-size: 32px;
+line-height: 35px;
+color: ${colors.primary};
+font-family: ${fonts.primary};
+`
+
+export const NormalInput = styled.input`
+width: 527px;
+height: 40px;
+background: rgba(255, 255, 255, 0.08);
+border: 1px solid #B6BFD8;
+border-radius: 10px;
+`
+
+export const TextInput = styled.textarea`
+width: 527px;
+height: 120px;
+box-sizing: border-box;
+background: rgba(255, 255, 255, 0.08);
+border: 1px solid #B6BFD8;
+border-radius: 8px;
+`
+
+export const Labels = styled.label`
+font-weight: 700;
+font-size: 20px;
+line-height: 28px;
+color: ${colors.dark_one};
+font-family: ${fonts.secondary};
+`
+
+export const FormBtn = styled.button`
+margin: 0;
+width: 158px;
+height: 60px;
+padding: 0 3%;
+border-radius: 36px;
+background: ${colors.secondary};
+border: hidden;
+align-self: flex-end;
+font-family: ${fonts.secondary};
+font-weight: 700;
+font-size: 20px;
+line-height: 28px;
+color: ${colors.white}
 `
 
 export const Orangebg2 = styled.img`
