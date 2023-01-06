@@ -25,6 +25,7 @@ color: ${colors.primary};
 font-family: ${fonts.primary};
 `
 export const TitleButton = styled.button`
+margin: 0;
 width: 284px;
 height: 60px;
 background: ${colors.secondary};
