@@ -4,10 +4,11 @@ import styled from 'styled-components';
 
 export const SideBar = styled.div`
     width: 40vw;
-    padding-top: 16px;
+    margin: 5vh 10vw;
+    
 `
 export const SearchContainer = styled.div`
     display: flex;
     width: 100%;
-    justify-content: center;
+    justify-content: space-between;
 `

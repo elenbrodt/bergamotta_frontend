@@ -3,6 +3,7 @@ import {listPlace} from "../../services/MainApi/search"
 import { useEffect, useState } from "react";
 import CardPlace from "../CardPlace";
 
+
 interface Place {
     name: string;
     latitude: number;
@@ -10,6 +11,7 @@ interface Place {
     opening_hours: string;
     image_link: string;
 }
+
 
 export default function SideList (){
     const [places, setPlaces] = useState<Place[]>([]);
@@ -26,13 +28,14 @@ export default function SideList (){
         }
         getData();
     }, [setPlaces])
+
     return (
         <div>
             <Title>Lista de Restaurantes</Title>
             {places.map((place, index)=> (
                 <CardPlace name={place.name} opening_hours={place.opening_hours} image_link={place.image_link}/>
             ))}
-            
+      
         </div>
     )
 }

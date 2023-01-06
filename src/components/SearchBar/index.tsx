@@ -1,19 +1,16 @@
-import InputBase from '@mui/material/InputBase';
-import SearchIcon from '@mui/icons-material/Search';
 
-import {SearchBox} from "./styles"
+import Filter from '../Filter';
+import SearchInput from '../SearchInput';
+import { SearchBarStyle } from './styles';
+
 
 function SearchBar(){
+
     return (
-        <div>
-            <SearchBox>
-                <SearchIcon />
-                <InputBase
-                    placeholder="Encontre um restaurante…"
-                    inputProps={{ 'aria-label': 'search' }}
-                />
-            </SearchBox>
-        </div>
+        <SearchBarStyle>
+            <SearchInput/>
+            <Filter texto='Filtros'/>
+        </SearchBarStyle>
     )
 }
 
