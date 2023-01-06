@@ -1,14 +1,22 @@
 import Link from "../Link";
-import "./style.css";
 import Logo from "../../assets/image/logo.png";
+import {Ul, Li, A, Nav, Img, HamburguerMenu} from "./style";
 
 function Header() {
     return (
         <header>
-                <nav>
-                    <img src={Logo} alt="Logo Bergamotta" />
+                <Nav>
+                    <HamburguerMenu>hamburguinho aqui</HamburguerMenu>
+                    <Img src={Logo} alt="Logo Bergamotta" />
+                    <Ul> 
+                        <Li><A href="">BLOG</A></Li>
+                        <Li><A href="">PERFIL</A></Li>
+                        <Li><A href="">CONFIGURAÇÕES</A></Li>
+                        <Li><A href="">QUEM SOMOS</A></Li>
+                        <Li><A href="">SEJA UM PARCEIRO</A></Li>
+                    </Ul>
                     <Link texto="Login / Cadastro" redirect="/login" />
-                </nav>
+                </Nav>
         </header>
     );
 }
