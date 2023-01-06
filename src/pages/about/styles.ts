@@ -13,6 +13,9 @@ z-index:1;
 color: ${colors.black};
 font-family: ${fonts.primary};
 margin-left: 27px;
+@media (max-width:475px){
+        margin-top: 30px;
+    }
 `
 export const Title2 = styled.h2`
 margin:0;
@@ -43,7 +46,7 @@ line-height: 28px;
 font-weight: 700;
 font-size: 20px;
 line-height: 28px;
-color: ${colors.white}
+color: ${colors.white};
 `
 export const Text = styled.text`
 margin:0;
@@ -65,6 +68,10 @@ margin-top:-220px;
 margin-bottom: -220px;
 width: 808.4px;
 height: 1039.92px;
+@media (max-width:475px){
+        width:508px;
+        height: 739px;
+    }
 `
 export const Overlaid1 = styled.img`
 position: absolute;
@@ -73,12 +80,17 @@ z-index: 1;
 width: 725px;
 height: 743px;
 float: inline-start;
+@media (max-width:475px){
+        width: 425px;
+        height: 443px;
+    }
 `
 export const UpperBody = styled.div` 
 width: 100%;
 display: flex;
 justify-content: space-between;
 margin-bottom: 125px;
+flex-wrap: wrap-reverse;
 `
 export const UpperBodyLeft = styled.div`
 display: flex;
@@ -87,11 +99,20 @@ justify-content: center;
 align-items: center;
 gap: 15px;
 `
+export const UpperBodyRight = styled.div`
+@media (max-width:475px){
+        display: none;
+    }
+`
 export const BottonBody = styled.div`
 display: flex;
 justify-content: space-between;
 background-color: ${colors.light_one};
-
+flex-wrap: wrap;
+@media (max-width:1327px){
+        background-color: ${colors.white};
+        align-content: center;
+    }
 `
 export const BottonBodyLeft = styled.div`
 display: flex;
@@ -100,6 +121,9 @@ background-color: ${colors.light_one};
 z-index: 1;
 margin-top: 100px;
 margin-bottom: 100px;
+@media (max-width:475px){
+        justify-content: center;
+    }
 `
 export const BottonBodyRight = styled.div`
 display: flex;
@@ -109,14 +133,22 @@ background-color: ${colors.light_one};
 margin-top: 100px;
 margin-bottom: 100px;
 background-color: ${colors.light_one};
+@media (max-width:1327px){
+        margin-top: 150px;
+        background-color: ${colors.white};
+        align-items: center;
+        padding-left: 35%;
+    }
 `
 export const GreenBannerContainer = styled.div`
 margin-top: 122px;
+width: 100%;
 `
 export const FormContainer = styled.div`
 display: flex;
 justify-content: space-between;
 margin-top: 12px;
+flex-wrap: wrap-reverse;
 `
 export const FormContainerRight = styled.div`
 display: flex;
@@ -187,6 +219,10 @@ color: ${colors.white}
 export const Orangebg2 = styled.img`
 width: 780.88px;
 height: 662.04px;
+@media (max-width:475px){
+        width: 480px;
+        height: 362px;
+    }
 `
 export const Overlaid2 = styled.img`
 position: absolute;
@@ -196,4 +232,8 @@ z-index: 1;
 width: 685px;
 height: 501px;
 float: inline-start;
+@media (max-width:475px){
+        width: 385px;
+        height: 201px;
+    }
 `
