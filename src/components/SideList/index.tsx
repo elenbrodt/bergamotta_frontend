@@ -1,11 +1,14 @@
 import {Title} from "./styles"
 import {listPlace} from "../../services/MainApi/search"
 import { useEffect, useState } from "react";
+import CardPlace from "../CardPlace";
 
 interface Place {
     name: string;
     latitude: number;
     longitude: number;
+    opening_hours: string;
+    image_link: string;
 }
 
 export default function SideList (){
@@ -26,11 +29,10 @@ export default function SideList (){
     return (
         <div>
             <Title>Lista de Restaurantes</Title>
-            <ul>
-                {places.map((place, index)=> (
-                    <li key={index}>{place.name}</li>
-                ))}
-            </ul>
+            {places.map((place, index)=> (
+                <CardPlace name={place.name} opening_hours={place.opening_hours} image_link={place.image_link}/>
+            ))}
+            
         </div>
     )
 }
