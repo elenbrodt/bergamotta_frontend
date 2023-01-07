@@ -7,9 +7,12 @@ export default function Routes() {
     return (  
     <BrowserRouter>
         <WrapperRoutes>
-            <Route path="" element={<Home/>}/>
-            <Route path="/buscarestaurantes" element={<Search/>}/>
+            <Route path="/" element={<Search/>}/>
+            <Route path="/restaurantes" element={<Home/>}/>
             <Route path="/sobrenos" element={<About/>}/>            
         </WrapperRoutes>
     </BrowserRouter>   
+
+
+
     )}
