@@ -1,5 +1,5 @@
 import Header from "../../components/Header";
-import BlogCard from "../../components/CardBlog";
+import ListBlogs from "../../components/ListBlogs";
 
 function Blog() {
     return (
@@ -8,7 +8,9 @@ function Blog() {
                 <Header />
             </header>
             <body>
-                <BlogCard name="Testando" introduction="suioadhfasliausdhiouadfopialjkfhgnpiashdnfojNSKGDJBNApoisdnfkjanfso´ghJÓDIJGOJnsripfhNU´SDIBNGIKTFNGóiusnfbjnaitedunbÓINFBIÚnib´vujnsfbikjdkfg" image_link={"https://img.itdg.com.br/tdg/images/blog/uploads/2022/04/shutterstock_1713446386.jpg"}></BlogCard>
+                <div>
+                    <ListBlogs />
+                </div>
             </body>
         </div>
     );

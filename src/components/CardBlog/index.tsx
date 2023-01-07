@@ -1,15 +1,16 @@
 import {  CardContent, CardMedia } from '@mui/material';
-import { CardBlog, TitleBlog, TextBlog } from './styles';
+import { CardBlog, TitleBlog, TextBlog, BlogLinks } from './styles';
 import "./styles.css"
 
 interface CardBlogProps {
     image_link: string;
     name: string;
-    introduction: string;
+    subtitle: string;
 }
 
 function BlogCard (props: CardBlogProps){
     return(
+        <BlogLinks href="/blog">
         <CardBlog id="card">
             <CardMedia
             component="img"
@@ -19,9 +20,10 @@ function BlogCard (props: CardBlogProps){
             />
             <CardContent>
                 <TitleBlog>{props.name}</TitleBlog>
-                <TextBlog>{props.introduction}</TextBlog>
+                <TextBlog>{props.subtitle}</TextBlog>
             </CardContent>
       </CardBlog>
+      </BlogLinks>
     )
 }
 export default BlogCard;
