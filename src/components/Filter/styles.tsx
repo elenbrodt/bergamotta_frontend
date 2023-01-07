@@ -1,8 +1,6 @@
 import styled from 'styled-components';
 import {colors, fonts} from "../../styles/theme";
 
-import FormControlLabel from '@mui/material';
-
 export const FilterButton = styled.button`
   display: flex;
   align-items:center;
@@ -15,6 +13,7 @@ export const FilterButton = styled.button`
   cursor: pointer;
   background-color: ${colors.white};
   margin: 0 0;
+  padding: 0;
 `
 export const FilterLinkText = styled.p`
   font-family: ${fonts.secondary};

@@ -1,8 +1,9 @@
 import TuneIcon from '@mui/icons-material/Tune';
-import { Button, Checkbox, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, FormControlLabel, FormGroup, TextField } from '@mui/material';
+import { Button, Checkbox, Dialog, DialogActions, DialogContent, FormControlLabel, FormGroup } from '@mui/material';
 import { useState } from 'react';
 import { FilterButton, FilterLinkText, FilterTitle } from './styles';
 import "./style.css"
+
 interface FilterProps {
     texto: string;
 }
