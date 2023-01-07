@@ -3,7 +3,8 @@ import Home from "./pages/Home"
 import Search from "./pages/Search"
 import About from './pages/About';
 import Login from './pages/Login'
-import SingIn from './pages/SignIn';
+import SignIn from './pages/SignIn';
+import Blog from './pages/Blog';
 
 export default function Routes() {
     return (  
@@ -12,8 +13,9 @@ export default function Routes() {
             <Route path="/" element={<Search/>}/>
             <Route path="/restaurantes" element={<Home/>}/>
             <Route path="/sobrenos" element={<About/>}/>   
+            <Route path="/blog" element={<Blog/>}/>
             <Route path="/login" element={<Login/>}/>
-            <Route path="/signin" element={<SingIn/>}/>           
+            <Route path="/signin" element={<SignIn/>}/>           
         </WrapperRoutes>
     </BrowserRouter>   
 
