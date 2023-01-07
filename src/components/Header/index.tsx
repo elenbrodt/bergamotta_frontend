@@ -1,22 +1,27 @@
-import Link from "../Link";
+import ButtonLogin from "../Button";
+import MenuHamburguer from "../MenuHamburguer"
 import Logo from "../../assets/image/logo.png";
-import {Ul, Li, A, Nav, Img, HamburguerMenu} from "./style";
+import { Ul, Li, A, DivHeader, Nav, ImgLogo, HamburguerMenu } from "./style";
 
 function Header() {
     return (
         <header>
+            <DivHeader>
+                <HamburguerMenu>
+                    <MenuHamburguer />
+                </HamburguerMenu>
+                <ImgLogo src={Logo} alt="Logo Bergamotta" />
                 <Nav>
-                    <HamburguerMenu>hamburguinho aqui</HamburguerMenu>
-                    <Img src={Logo} alt="Logo Bergamotta" />
-                    <Ul> 
+                    <Ul>
                         <Li><A href="">BLOG</A></Li>
                         <Li><A href="">PERFIL</A></Li>
                         <Li><A href="">CADASTRO</A></Li>
                         <Li><A href="">QUEM SOMOS</A></Li>
-                        <Li><A href="">SEJA UM PARCEIRO</A></Li>
+                        <Li><A href="/sobrenos">SEJA UM PARCEIRO</A></Li>
                     </Ul>
-                    <Link texto="Login" redirect="/login" />
                 </Nav>
+                <ButtonLogin text="Login" redirect="/login" />
+            </DivHeader>
         </header>
     );
 }
