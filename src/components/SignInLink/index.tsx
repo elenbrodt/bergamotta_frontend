@@ -1,12 +1,12 @@
 import { Link } from "react-router-dom";
 
-function SingInLink (){
+function SignInLink (){
     return(
         <>
             <p>Não possui uma conta?</p>
-            <Link to="/singin">Cadastre-se Aqui</Link>
+            <Link to="/signin">Cadastre-se Aqui</Link>
         </>
     )
 }
 
-export default SingInLink
+export default SignInLink

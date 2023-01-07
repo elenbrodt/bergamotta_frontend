@@ -4,7 +4,7 @@ import InputLogin from "../../components/InputLogin";
 
 import LogoSrc from "../../assets/image/logo_vertical.png";
 import {Box} from "./styles"
-function SingIn() {
+function SignIn() {
   return (
     <Box>
       <Link to="/">
@@ -17,9 +17,8 @@ function SingIn() {
         type="password"
         placeholder="Digite sua senha"
       />
-      
     </Box>
   );
 }
 
-export default SingIn;
+export default SignIn;

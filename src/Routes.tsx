@@ -3,7 +3,7 @@ import Home from "./pages/Home"
 import Search from "./pages/Search"
 import About from './pages/About';
 import Login from './pages/Login'
-import SingIn from './pages/SingIn';
+import SingIn from './pages/SignIn';
 
 export default function Routes() {
     return (  
@@ -13,7 +13,7 @@ export default function Routes() {
             <Route path="/restaurantes" element={<Home/>}/>
             <Route path="/sobrenos" element={<About/>}/>   
             <Route path="/login" element={<Login/>}/>
-            <Route path="/singin" element={<SingIn/>}/>           
+            <Route path="/signin" element={<SingIn/>}/>           
         </WrapperRoutes>
     </BrowserRouter>   
 

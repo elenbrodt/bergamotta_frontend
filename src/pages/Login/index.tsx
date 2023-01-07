@@ -4,7 +4,7 @@ import InputLogin from "../../components/InputLogin";
 import PasswordReminder from "../../components/PasswordReminder";
 import { Link } from "react-router-dom";
 import TitleLogin from "../../components/TitleLogin";
-import SingInLink from "../../components/SingInLink";
+import SingInLink from "../../components/SignInLink";
 
 function Login() {
   return (
