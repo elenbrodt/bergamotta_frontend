@@ -9,7 +9,9 @@ function SearchInput() {
       <SearchIcon />
       <InputBase
         placeholder="Encontre restaurantes..."
-        inputProps={{ "aria-label": "search" }}
+        inputProps={{ "aria-label": "search" }
+        }
+       
       />
     </SearchBox>
   );
