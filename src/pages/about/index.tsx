@@ -2,7 +2,7 @@ import Header from "../../components/Header";
 import { Title, Title2, TitleButton, Text, Overlaid1, Orangebg1, Imgbody,
  UpperBody, UpperBodyLeft, UpperBodyRight, BottonBody, BottonBodyLeft, BottonBodyRight,
  GreenBannerContainer, FormContainer, FormDiv, Title3, Labels, NormalInput, TextInput,
- FormBtn, FormContainerRight, Orangebg2, Overlaid2 } from './styles';
+FormBtn, FormContainerRight, Orangebg2, Overlaid2 } from './styles';
 import bodyimg1 from "../../assets/imagesAbout/veg 001 1.png"
 import vector1 from "../../assets/imagesAbout/Vector1.png"
 import vector2 from "../../assets/imagesAbout/Vector2.png"

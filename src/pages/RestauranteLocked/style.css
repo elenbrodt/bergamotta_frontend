@@ -1,0 +1,136 @@
+.conteudo-main{
+    display: flex;
+    justify-content: center;
+    
+}
+.section-primary{
+    margin-top: 32px;
+}
+.imagem-restaurante{
+    width: 528px;
+}
+.style-rest-primary{
+    display: flex;
+    gap: 10px;
+}
+
+.section-primary h1{
+    color: #000000;
+    font-size: 40px;
+    line-height: 44px;
+    font-weight: 700;
+    
+
+}
+.section-primary button {
+    background-color: white;
+    border: none;
+    margin-left: 79px;
+}
+
+.section-primary span {
+    font-size: 20px;
+    margin-bottom: 5px;
+}
+
+.section-primary .span-phone {
+    margin-left: 178px;
+    font-weight: 700;
+    line-height: 28px;
+    
+}
+.section-primary .span-phone .span-insta{
+    margin-top: 15px;
+    font-weight: 700;
+    line-height: 28px;
+}
+.section-primary h2{
+    color: #FE6806;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 26.4px;
+    margin-top: 20px;
+}
+.section-primary p {
+    color: #27AE60;
+    border: 1px solid #27AE60;
+    width: 220px;
+    height: 55px;
+    padding-top: 14.5px;
+    padding-left:31.5px ;
+    border-radius: 50px;
+    font-size: 18px;
+    font-weight: 700 ;
+    
+}
+.validacoes{
+    display: flex;
+}
+.paragrafh-secondary{
+    margin-left: 9px;
+}
+
+
+.section-secondary{
+    margin-left: 130px;
+}
+
+.section-secondary h2{
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 35.2px;
+    color: #FE6806;
+
+}
+
+.section-secondary .persona{
+    display: flex;
+}
+
+.section-secondary span {
+    font-size: 20px;
+    line-height: 22px;
+    font-weight: 700;
+    margin-top: 35px;
+    margin-left: 16px;
+
+}
+.section-secondary p {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 22px;
+    width: 640px;
+    margin-top: 12px;
+}
+.section-secondary .box-avaliacoes{
+    display: flex;
+    width: 640px;
+    background-color: #27AE60;
+    height: 167px;
+    border: none;
+    margin-top: 27px;
+}
+
+.section-secondary .box-avaliacoes p{
+    font-size: 20px;
+    color: #ffffff;
+    font-weight: 700;
+    line-height: 28px;
+    width: 181px;
+    height: 84px;
+    margin-top: 42px;
+    margin-left: 57px;
+    justify-content: center;
+}
+
+.section-secondary .box-avaliacoes a {
+    background-color: #FE6806;
+    color: #ffffff;
+    width: 200px;
+    height: 30px;
+    border-radius: 50px;
+    padding-top: 15px;
+    padding-left: 30px;
+    margin-left: 72px;
+    margin-top: 58px;
+}
