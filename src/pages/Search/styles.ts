@@ -4,8 +4,7 @@ import styled from 'styled-components';
 
 export const SideBar = styled.div`
     width: 40vw;
-    margin: 5vh 10vw;
-    
+    align-self: center; 
 `
 export const SearchContainer = styled.div`
     display: flex;
