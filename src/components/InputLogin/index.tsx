@@ -2,26 +2,13 @@ import { InputBaseLogin, InputBox, InputLabel, InputBorder, IconPassword } from 
 //import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 
 interface InputLoginProps {
-  label: string;
+  label?: string;
   type: string;
   placeholder: string;
 }
 
 function InputLogin(props: InputLoginProps) {
   switch (props.type) {
-    case "email":
-      return (
-        <InputBox>
-          <InputLabel>{props.label}</InputLabel>
-          <InputBorder>
-            <InputBaseLogin
-              placeholder={props.placeholder}
-              inputProps={{ "aria-label": "search" }}
-              type={props.type}
-            />
-          </InputBorder>
-        </InputBox>
-      );
     case "password":
       return (
         <InputBox>
@@ -38,7 +25,18 @@ function InputLogin(props: InputLoginProps) {
       );
 
     default:
-      return null;
+      return (
+        <InputBox>
+          <InputLabel>{props.label}</InputLabel>
+          <InputBorder>
+            <InputBaseLogin
+              placeholder={props.placeholder}
+              inputProps={{ "aria-label": "search" }}
+              type={props.type}
+            />
+          </InputBorder>
+        </InputBox>
+      );
   }
 }
 
