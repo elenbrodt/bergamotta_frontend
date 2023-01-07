@@ -1,5 +1,6 @@
 import {  CardContent, CardMedia, Rating } from '@mui/material';
 import { CardBergamotta } from './styles';
+import "./style.css"
 
 interface CardProps {
     name: string;
@@ -11,7 +12,7 @@ function CardPlace (props: CardProps){
 
     const value = 1;
     return(
-        <CardBergamotta >
+        <CardBergamotta id="myCard">
             <CardMedia
             component="img"
             alt="place_example"

@@ -1,6 +1,6 @@
 import Header from "../../components/Header"
 import Box from "../../components/Box"
-import Link from "../../components/Link"
+import Link from "../../components/Button"
 import Veg from "../../assets/imagesHome/veg.png";
 import { P, VegImg, ConnectionDiv, ConnectionBlock } from "./style";
 
@@ -12,9 +12,8 @@ function Home() {
                 <ConnectionDiv>
                     <ConnectionBlock>
                         <P>Conectando pessoas, propósitos e experiências gastronômicas</P>
-                        <Link texto="Criar conexões" redirect="#" size="small" />
                     </ConnectionBlock>
-                    <VegImg src={Veg} alt="comida vegana" />
+                    {/* <VegImg src={Veg} alt="comida vegana" /> */}
                 </ConnectionDiv>
             </Box>
         </div>
