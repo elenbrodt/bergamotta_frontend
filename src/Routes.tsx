@@ -12,15 +12,12 @@ export default function Routes() {
     <BrowserRouter>
         <WrapperRoutes>
             <Route path="/" element={<Search/>}/>
-            <Route path="/restaurantes" element={<Home/>}/>
+            <Route path="/home" element={<Home/>}/>
              <Route path="/sobrenos" element={<About/>}/>    
             <Route path="/blog" element={<Blog/>}/>
             <Route path="/login" element={<Login/>}/>
             <Route path="/signin" element={<SignIn/>}/>
             <Route path="/restaurantlocked" element={<RestaurantLocked/>}/>         
         </WrapperRoutes>
-    </BrowserRouter>   
-
-
-
+    </BrowserRouter>
     )}
