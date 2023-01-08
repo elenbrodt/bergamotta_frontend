@@ -1,7 +1,7 @@
 import {Routes as WrapperRoutes, Route, BrowserRouter} from 'react-router-dom';
 import Home from "./pages/Home"
 import Search from "./pages/Search"
-import About from './pages/about';
+import About from './pages/About';
 import Login from './pages/Login'
 import SignIn from './pages/SignIn';
 import Blog from './pages/Blog';

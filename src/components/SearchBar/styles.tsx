@@ -4,6 +4,6 @@ import styled from 'styled-components';
 export const SearchBarStyle = styled.div`
   display: flex;
   flex-direction: row;
-  gap: 2vw;
+  gap: 15px;
   height: 56px;
 `

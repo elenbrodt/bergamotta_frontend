@@ -16,8 +16,8 @@ function CardPlace (props: CardProps){
             <CardMedia
             component="img"
             alt="place_example"
-            height="150"
-            image= "https://i0.wp.com/mercadoeconsumo.com.br/wp-content/uploads/2019/04/Que-comida-saud%C3%A1vel-que-nada-brasileiro-gosta-de-fast-food.jpg?resize=1140%2C570&ssl=1"
+            id="imageCard"
+            image= {props.image_link}
             />
             <CardContent>
                 <h5>{props.name}</h5>

@@ -6,14 +6,11 @@ export const FilterButton = styled.button`
   align-items:center;
   justify-content: center;
   width: 200px;
-  gap: 10px;
   border-radius: 36px;
   border: 2px solid ${colors.secondary};
   color: ${colors.secondary};
   cursor: pointer;
   background: none;
-  margin: 0;
-  padding: 0;
 `
 export const FilterLinkText = styled.p`
   font-family: ${fonts.secondary};

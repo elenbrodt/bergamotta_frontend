@@ -33,7 +33,7 @@ export default function SideList (){
         <div>
             <Title>Lista de Restaurantes</Title>
             {places.map((place, index)=> (
-                <CardPlace name={place.name} opening_hours={place.opening_hours} image_link={place.image_link}/>
+                <CardPlace key={index} name={place.name} opening_hours={place.opening_hours} image_link={place.image_link}/>
             ))}
       
         </div>
