@@ -6,7 +6,6 @@ import Header from "../../components/Header"
 import SideList from "../../components/SideList"
 
 import {CITY} from '../../mock/city';
-import {POINTS} from '../../mock/points';
 import SearchBar from '../../components/SearchBar';
 
 function Search (){
@@ -18,7 +17,7 @@ function Search (){
                     <SearchBar/>
                     <SideList/>
                 </SideBar>
-                <Map points={POINTS} city={CITY}/>
+                <Map city={CITY}/>
             </SearchContainer>
             
         </div>
