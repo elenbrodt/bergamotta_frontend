@@ -17,7 +17,6 @@ function Points (){
       try {
         const response = await listPlace();
         setPlaces(response.data);
-        console.log(response.data);
       } catch (error) {
         alert("Deu algo errado no catch");
       }

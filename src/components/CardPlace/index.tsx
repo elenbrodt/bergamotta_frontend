@@ -1,10 +1,11 @@
 import {  CardContent, CardMedia, Rating } from '@mui/material';
-import { CardBergamotta, PriceBox } from './styles';
+import { CardBergamotta, PriceBox, LinkCard } from './styles';
 import "./style.css"
 import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
 
 
 interface CardProps {
+    id: string;
     name: string;
     opening_hours: string;
     image_link: string;
@@ -39,10 +40,11 @@ function Price (price:number ){
     }
 }
 function CardPlace (props: CardProps){
-    
+    const id= "/restaurantlocked/"+ props.id;
     const value = 1;
     return(
-        <CardBergamotta id="myCard">
+        <LinkCard to={id}>
+            <CardBergamotta id="myCard">
             <CardMedia
             component="img"
             alt="place_example"
@@ -54,9 +56,10 @@ function CardPlace (props: CardProps){
                 <Rating value={value} readOnly/>
                 {Price(props.average_ticket_price)}
                 <p>{props.opening_hours}</p>
-            </CardContent>
-            
+            </CardContent>      
       </CardBergamotta>
+        </LinkCard>
+        
     )
 }
 export default CardPlace

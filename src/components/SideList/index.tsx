@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import CardPlace from "../CardPlace";
 
 interface Place {
+  id:string;
   name: string;
   latitude: number;
   longitude: number;
@@ -20,7 +21,6 @@ export default function SideList() {
       try {
         const response = await listPlace();
         setPlaces(response.data);
-        console.log(response.data);
       } catch (error) {
         alert("Deu algo errado no catch");
       }
@@ -33,6 +33,7 @@ export default function SideList() {
       <Title>Lista de Restaurantes</Title>
       {places.map((place, index) => (
         <CardPlace
+          id={place.id}
           key={index}
           name={place.name}
           opening_hours={place.opening_hours}
