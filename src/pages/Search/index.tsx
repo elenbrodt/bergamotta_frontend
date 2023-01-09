@@ -17,7 +17,7 @@ function Search (){
                 <SideBar>
                     <SearchBar/>
                     <SideList/>
-                    <GreenBanner id="greenCard" texto="Entre com sua conta para ter acesso a lista compoleta"
+                    <GreenBanner id="greenCard" texto="Entre com sua conta para ter acesso a lista completa"
                         title = "Quer acessar mais restaurantes?" btn_text="CRIE SUA CONTA"/>
                      <CardPlace
                         id="000"

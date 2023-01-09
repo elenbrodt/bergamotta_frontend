@@ -1,8 +1,6 @@
 import Header from "../../components/Header"
 import { RoundImage, ImgRound, MainDiv, ChangeButton, UserName, FormDiv, UserLabel, UserInput, SaveButton } from "./styles"
 
-
-
 function ConfigUser() {
     return (
         <div className="App">
