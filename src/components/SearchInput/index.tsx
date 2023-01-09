@@ -1,17 +1,19 @@
-import InputBase from "@mui/material/InputBase";
-import SearchIcon from "@mui/icons-material/Search";
 
+import SearchIcon from "@mui/icons-material/Search";
+import InputBase from "@mui/material/InputBase";
+import "./style.css"
 import { SearchBox } from "./styles";
 
 function SearchInput() {
   return (
     <SearchBox>
-      <SearchIcon />
+      <SearchIcon id="icon"/>
       <InputBase
-        placeholder="Encontre restaurantes..."
+        placeholder="São Paulo"
         inputProps={{ "aria-label": "search" }
         }
-       
+        id="input"
+        disabled={false}
       />
     </SearchBox>
   );

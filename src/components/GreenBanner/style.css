@@ -3,6 +3,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    flex-wrap: wrap;
     align-items: center;
     gap: 30px;
     width: 100%;
@@ -46,4 +47,40 @@
     font-size: 20px;
     line-height: 28px;
     color: #FFFFFF;
+}
+
+#greenCard h2{
+    margin: 0;
+    font-weight: 700;
+    font-family: Nunito;
+    font-size: 20px;
+    line-height: 28px;
+    color: #FFFFFF;
+    text-align: center;
+    width: 320px;
+}
+
+#greenCard p{
+    font-weight: 400;
+    font-family: Nunito;
+    font-size: 18px;
+    line-height: 25px;
+    color: #FFFFFF;
+    text-align: center;
+    width: 233px;
+}
+
+#greenCard a{
+    height: 52px;
+    width: 218px;
+}
+
+#greenCard{
+    gap: 8px;
+    background-color: #27AE60;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    height: 147px;
+    width: 100%;
 }

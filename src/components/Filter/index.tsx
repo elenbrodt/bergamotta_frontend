@@ -1,8 +1,10 @@
-import TuneIcon from '@mui/icons-material/Tune';
+//import TuneIcon from '@mui/icons-material/Tune';
 import { Button, Checkbox, Dialog, DialogActions, DialogContent, FormControlLabel, FormGroup } from '@mui/material';
 import { useState } from 'react';
+import FilterIcon from "../../assets/image/filter.png"
 import { FilterButton, FilterLinkText, FilterTitle } from './styles';
 import "./style.css"
+import IconButton from '@mui/material/IconButton';
 
 interface FilterProps {
     texto: string;
@@ -21,8 +23,10 @@ export default function  Filter(props: FilterProps){
 
     return(
         <>
-        <FilterButton onClick={handleClickOpen}> 
-            <TuneIcon/>
+        <FilterButton id="buttonFilter" onClick={handleClickOpen}> 
+            <IconButton>
+                <img src={FilterIcon} alt="iconfilter"/>
+            </IconButton>
             <FilterLinkText>{props.texto}</FilterLinkText>
         </FilterButton>
         <Dialog  open={open} onClose={handleClose}>

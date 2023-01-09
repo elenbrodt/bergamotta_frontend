@@ -1,30 +1,66 @@
 import {  CardContent, CardMedia, Rating } from '@mui/material';
-import { CardBergamotta } from './styles';
+import { CardBergamotta, PriceBox, LinkCard } from './styles';
 import "./style.css"
+import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
+
 
 interface CardProps {
+    id: string;
     name: string;
     opening_hours: string;
     image_link: string;
+    average_ticket_price: number;
+    theme?: string;
 }
 
+function Price (price:number ){
+    
+    if (price < 50){
+        return(
+            <PriceBox>
+                <AttachMoneyIcon/>
+            </PriceBox>
+            
+        )
+    }
+    if (50 >= price || price <= 89){
+        return (
+            <PriceBox>
+                <AttachMoneyIcon/>
+                <AttachMoneyIcon/>
+            </PriceBox>
+        )
+    }else if (price >90){
+        return(
+            <PriceBox>
+                <AttachMoneyIcon/>
+                <AttachMoneyIcon/>
+                <AttachMoneyIcon/>
+            </PriceBox>
+        )
+    }
+}
 function CardPlace (props: CardProps){
-
+    const id= "/restaurantlocked/"+ props.id;
     const value = 1;
     return(
-        <CardBergamotta id="myCard">
+        <LinkCard to={id} className={props.theme}>
+            <CardBergamotta id="myCard" className={props.theme}>
             <CardMedia
             component="img"
             alt="place_example"
-            height="150"
-            image= "https://i0.wp.com/mercadoeconsumo.com.br/wp-content/uploads/2019/04/Que-comida-saud%C3%A1vel-que-nada-brasileiro-gosta-de-fast-food.jpg?resize=1140%2C570&ssl=1"
+            id="imageCard"
+            image= {props.image_link}
             />
             <CardContent>
                 <h5>{props.name}</h5>
                 <Rating value={value} readOnly/>
+                {Price(props.average_ticket_price)}
                 <p>{props.opening_hours}</p>
-            </CardContent>
+            </CardContent>      
       </CardBergamotta>
+        </LinkCard>
+        
     )
 }
 export default CardPlace

@@ -8,12 +8,14 @@ import Vector from "../../assets/imageRestaurantLocked/Vector (3).png"
 import Phone from "../../assets/imageRestaurantLocked/Phone-filled.png"
 import Header from "../../components/Header"
 import Rating from "../../components/Rating"
+import RestaurantComponent from '../../components/Restaurant';
 
 function RestaurantLocked() {
-
+  const urlId = window.location.pathname.split("/")[2];
   return (
     <div >
     <Header />
+    {RestaurantComponent(urlId)}
     <main>
       <div className='conteudo-main'>
       <section className='section-primary'>
@@ -24,7 +26,7 @@ function RestaurantLocked() {
         </div>
         <span><img src={Icon} alt="" />  Aberto até às 22h</span>
         <div>
-        <button>Avaliação por estrelas</button>
+        <Rating/>
         <button>Avaliação por preço</button>
         </div>
         <span><img className='span-insta' src={Vector} alt="" />@restaurantea</span>
