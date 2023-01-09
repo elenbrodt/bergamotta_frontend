@@ -24,7 +24,7 @@ export default function Routes() {
             <Route path="/restaurantlocked" element={<RestaurantLocked/>}/> 
             <Route path="/configuser" element={<ConfigUser/>}/>         
             <Route path="/userfavorites" element={<UserFavorites/>}/>        
-            <Route path="/blogarticle" element={<BlogArticle/>}/>  
+            <Route path="/blogarticle/:id" element={<BlogArticle/>}/>  
         </WrapperRoutes>
     </BrowserRouter>
     )}
