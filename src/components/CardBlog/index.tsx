@@ -1,5 +1,5 @@
-import {  CardContent, CardMedia } from '@mui/material';
-import { CardBlog, TitleBlog, TextBlog, BlogLinks } from './styles';
+import { CardMedia } from '@mui/material';
+import { CardBlog, TitleBlog, TextBlog, BlogLinks, ContentCard } from './styles';
 import "./styles.css"
 
 interface CardBlogProps {
@@ -18,10 +18,10 @@ function BlogCard (props: CardBlogProps){
             height="242"
             image= {props.image_link}
             />
-            <CardContent>
+            <ContentCard>
                 <TitleBlog>{props.name}</TitleBlog>
                 <TextBlog>{props.subtitle}</TextBlog>
-            </CardContent>
+            </ContentCard>
       </CardBlog>
       </BlogLinks>
     )

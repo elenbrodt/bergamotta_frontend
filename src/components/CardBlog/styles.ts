@@ -1,11 +1,17 @@
 import styled from 'styled-components';
-import { Card } from '@mui/material';
+import { Card, CardContent } from '@mui/material';
 import { colors, fonts } from '../../styles/theme';
 
 export const CardBlog = styled(Card)`
 display: flex;
 flex-direction: column;
 `
+export const ContentCard = styled(CardContent)`
+display: flex;
+flex-direction: column;
+gap: 50px;
+`
+
 export const TitleBlog = styled.h5`
 width: 619px;
 height: 27px;

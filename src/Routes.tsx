@@ -6,6 +6,8 @@ import Login from './pages/Login'
 import SignIn from './pages/SignIn';
 import Blog from './pages/Blog';
 import RestaurantLocked from './pages/RestauranteLocked';
+import ConfigUser from './pages/ConfigUser';
+import UserFavorites from './pages/UserFavorites';
 
 export default function Routes() {
     return (  
@@ -18,6 +20,10 @@ export default function Routes() {
             <Route path="/login" element={<Login/>}/>
             <Route path="/signin" element={<SignIn/>}/>
             <Route path="/restaurantlocked/:id" element={<RestaurantLocked/>}/>         
+            <Route path="/restaurantlocked" element={<RestaurantLocked/>}/> 
+            <Route path="/configuser" element={<ConfigUser/>}/>         
+            <Route path="/userfavorites" element={<UserFavorites/>}/>        
+
         </WrapperRoutes>
     </BrowserRouter>
     )}
