@@ -20,7 +20,7 @@ function Home() {
             <header>
                 <Header />
             </header>
-            <body>
+            <main>
                 <UpperBody>
                     <UpperBodyLeft>
                         <Title>Te ajudamos a encontrar<br></br>
@@ -93,7 +93,7 @@ function Home() {
                         <Overlaid3 src={bodyimage2} alt="Senhor Impressionado" />
                     </FormContainerRight>
                 </FormContainer>
-            </body>
+            </main>
         </div>
     );
 }
