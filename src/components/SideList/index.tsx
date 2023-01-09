@@ -2,7 +2,7 @@ import { Title } from "./styles";
 import { listPlace } from "../../services/MainApi/search";
 import { useEffect, useState } from "react";
 import CardPlace from "../CardPlace";
-
+import "./styles.css"
 interface Place {
   id:string;
   name: string;
@@ -31,7 +31,7 @@ export default function SideList() {
   return (
     <div>
       <Title>Lista de Restaurantes</Title>
-      {places.map((place, index) => (
+      {places.slice(0,4).map((place, index) => (
         <CardPlace
           id={place.id}
           key={index}
@@ -41,6 +41,7 @@ export default function SideList() {
           average_ticket_price = {place.average_ticket_price}
         />
       ))}
+      
     </div>
   );
 }

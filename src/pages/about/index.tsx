@@ -48,7 +48,9 @@ function About() {
                     </BottonBodyRight>
                 </BottonBody>
                 <GreenBannerContainer>
-                    <GreenBanner texto="Cadastre-se agora mesmo e tenha acesso a milhares de restaurantes." />
+                    <GreenBanner texto="Cadastre-se agora mesmo e tenha acesso a milhares de restaurantes."
+                            title = "O que você está esperando?" btn_text="Quero fazer parte!"
+                    />
                 </GreenBannerContainer>
                 <FormContainer>
                     <div>
