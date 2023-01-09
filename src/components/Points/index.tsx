@@ -3,9 +3,13 @@ import { listPlace } from "../../services/MainApi/search";
 import Markers from "../Markers";
 
 interface Place {
-    name: string;
-    latitude: number;
-    longitude: number;
+  id: string;
+  name: string;
+  latitude: number;
+  longitude: number;
+  image_link: string;
+  average_ticket_price: number;
+  opening_hours: string;
   }
 
 function Points (){
