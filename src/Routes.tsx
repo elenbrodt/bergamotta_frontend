@@ -8,6 +8,7 @@ import Blog from './pages/Blog';
 import RestaurantLocked from './pages/RestauranteLocked';
 import ConfigUser from './pages/ConfigUser';
 import UserFavorites from './pages/UserFavorites';
+import BlogArticle from './pages/BlogArticle';
 
 export default function Routes() {
     return (  
@@ -23,7 +24,7 @@ export default function Routes() {
             <Route path="/restaurantlocked" element={<RestaurantLocked/>}/> 
             <Route path="/configuser" element={<ConfigUser/>}/>         
             <Route path="/userfavorites" element={<UserFavorites/>}/>        
-
+            <Route path="/blogarticle" element={<BlogArticle/>}/>  
         </WrapperRoutes>
     </BrowserRouter>
     )}
