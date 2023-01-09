@@ -29,7 +29,7 @@ export default function SideList() {
   }, [setPlaces]);
 
   return (
-    <div>
+    <div id="sideListStyled">
       <Title>Lista de Restaurantes</Title>
       {places.slice(0,4).map((place, index) => (
         <CardPlace

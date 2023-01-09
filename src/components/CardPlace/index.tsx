@@ -10,6 +10,7 @@ interface CardProps {
     opening_hours: string;
     image_link: string;
     average_ticket_price: number;
+    theme?: string;
 }
 
 function Price (price:number ){
@@ -43,8 +44,8 @@ function CardPlace (props: CardProps){
     const id= "/restaurantlocked/"+ props.id;
     const value = 1;
     return(
-        <LinkCard to={id}>
-            <CardBergamotta id="myCard">
+        <LinkCard to={id} className={props.theme}>
+            <CardBergamotta id="myCard" className={props.theme}>
             <CardMedia
             component="img"
             alt="place_example"

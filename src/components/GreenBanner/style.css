@@ -82,6 +82,5 @@
     flex-direction: column;
     flex-wrap: wrap;
     height: 147px;
-    width: 620px;
-    align-self: flex-start;
+    width: 100%;
 }

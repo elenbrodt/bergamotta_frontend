@@ -6,8 +6,7 @@ import { Link } from 'react-router-dom';
 
 export const CardBergamotta = styled (Card)`
     display: flex;
-    max-width: 500px;
-    
+    max-width: 37vw;
 `
 
 export const PriceBox = styled.div`
