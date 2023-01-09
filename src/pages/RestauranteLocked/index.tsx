@@ -33,11 +33,11 @@ function RestaurantLocked() {
         <span><img className='span-phone' src={Phone} alt="" />(99) 9999-9999</span>
         <h2>O que mais curtem no local</h2>
         <div className='validacoes'>
-        <p>Atendimento acolhedor</p>
+        <p className='paragrafh-primary'>Atendimento acolhedor</p>
         <p className='paragrafh-secondary'>Instagramável</p>
         </div>
         <div className='validacoes'>
-        <p>Alteração de ingredientes</p>
+        <p  className='paragrafh-primary'>Alteração de ingredientes</p>
         <p className='paragrafh-secondary'>Aconchegante</p>
         </div>
       </section>
