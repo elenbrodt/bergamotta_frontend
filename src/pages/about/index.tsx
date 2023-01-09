@@ -18,7 +18,7 @@ function About() {
             <header>
                 <Header />
             </header>
-            <body>
+            <main>
                 <UpperBody>
                     <UpperBodyLeft>
                         <Title>Te ajudamos a encontrar<br></br>
@@ -75,7 +75,7 @@ function About() {
                         <Overlaid2 src={bodyimage3} alt="Senhor Impressionado" />
                     </FormContainerRight>
                 </FormContainer>
-            </body>
+            </main>
         </div>
     );
 }
