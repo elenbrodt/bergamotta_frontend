@@ -1,9 +1,13 @@
 import {SignInLinkBox, LinkSignIn} from "./style";
-function SignInLink (){
+type SignInLinkProps={
+    text: string;
+    link: string;
+}
+function SignInLink (props: SignInLinkProps){
     return(
         <SignInLinkBox>
-            <p>Não possui uma conta?</p>
-            <LinkSignIn to="/signin">Cadastre-se Aqui</LinkSignIn>
+            <p>${props.text}</p>
+            <LinkSignIn to="/signin">${props.link}</LinkSignIn>
         </SignInLinkBox>
     )
 }

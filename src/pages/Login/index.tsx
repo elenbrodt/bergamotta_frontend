@@ -1,10 +1,11 @@
-import { LoginBox, Inputs, SubmitButton } from "./styles";
+import { LoginBox, Inputs } from "./styles";
 import LogoSrc from "../../assets/image/logo_vertical.png";
 import InputLogin from "../../components/InputLogin";
 import PasswordReminder from "../../components/PasswordReminder";
 import { Link } from "react-router-dom";
 import TitleLogin from "../../components/TitleLogin";
 import SignInLink from "../../components/SignInLink";
+import Button from "../../components/Button";
 
 function Login() {
   return (
@@ -22,8 +23,8 @@ function Login() {
         />
       </Inputs>
       <PasswordReminder />
-      <SubmitButton theme="submit" text="Login" redirect="/"/>
-      <SignInLink />
+      <Button theme="submit" text="Login" redirect="/"/>
+      <SignInLink text="Não possui uma conta?" link="Cadastre-se Aqui"/>
     </LoginBox>
   );
 }

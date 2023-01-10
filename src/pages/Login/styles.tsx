@@ -18,6 +18,3 @@ export const Inputs =styled.div`
     align-items: center;
     gap: 5vh;
 `
-export const SubmitButton = styled (Button)`
-    background-color: ${colors.black}
-`
