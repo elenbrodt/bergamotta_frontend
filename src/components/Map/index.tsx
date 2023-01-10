@@ -1,10 +1,13 @@
 //import { useState } from 'react';
 import { MapContainer, TileLayer} from 'react-leaflet'
 import "./styles.css"
-import { City} from "../../types"
-
 import Points from '../Points';
-
+type City = {
+    title: string;
+    lat: number;
+    lng: number;
+    zoom: number;
+  };
 type MapProps = {
     city: City;
 }

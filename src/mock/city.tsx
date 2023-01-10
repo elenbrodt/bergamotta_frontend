@@ -1,5 +1,9 @@
-import {City} from '../types';
-
+type City = {
+  title: string;
+  lat: number;
+  lng: number;
+  zoom: number;
+};
 export const CITY: City = {
   title: 'São Paulo',
   lat: -23.5406643,

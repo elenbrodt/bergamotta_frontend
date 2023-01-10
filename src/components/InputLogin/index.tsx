@@ -5,6 +5,7 @@ interface InputLoginProps {
   label?: string;
   type: string;
   placeholder: string;
+  theme?: string;
 }
 
 function InputLogin(props: InputLoginProps) {
@@ -12,8 +13,8 @@ function InputLogin(props: InputLoginProps) {
     case "password":
       return (
         <InputBox>
-          <InputLabel>{props.label}</InputLabel>
-          <InputBorder>
+          <InputLabel >{props.label}</InputLabel>
+          <InputBorder >
             <InputBaseLogin
               placeholder={props.placeholder}
               inputProps={{ "aria-label": "search" }}
@@ -27,12 +28,13 @@ function InputLogin(props: InputLoginProps) {
     default:
       return (
         <InputBox>
-          <InputLabel>{props.label}</InputLabel>
-          <InputBorder>
+          <InputLabel className={props.theme}>{props.label}</InputLabel>
+          <InputBorder >
             <InputBaseLogin
               placeholder={props.placeholder}
               inputProps={{ "aria-label": "search" }}
               type={props.type}
+              className={props.theme}
             />
           </InputBorder>
         </InputBox>

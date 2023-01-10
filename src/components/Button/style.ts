@@ -12,7 +12,7 @@ export const ButtonLogin = styled.a`
     margin: auto 5%;
     padding: 0px 50px;
     height: 55px;
-    border-radius: 36px;
+    border-radius: ${props=> props.theme === "signin_owner" ? "" : "36px;"};
     border: hidden;
     color: ${colors.white};
     font-family: ${fonts.secondary};

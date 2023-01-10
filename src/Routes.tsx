@@ -9,6 +9,7 @@ import RestaurantLocked from './pages/RestauranteLocked';
 import ConfigUser from './pages/ConfigUser';
 import UserFavorites from './pages/UserFavorites';
 import BlogArticle from './pages/BlogArticle';
+import SignInOwner from './pages/SignInOwner';
 
 export default function Routes() {
     return (  
@@ -25,6 +26,7 @@ export default function Routes() {
             <Route path="/configuser" element={<ConfigUser/>}/>         
             <Route path="/userfavorites" element={<UserFavorites/>}/>        
             <Route path="/blogarticle/:id" element={<BlogArticle/>}/>  
+            <Route path="cadastrorestaurante" element={<SignInOwner/>}/>
         </WrapperRoutes>
     </BrowserRouter>
     )}
