@@ -1,4 +1,4 @@
-import { LoginBox } from "./styles";
+import { LoginBox, Inputs } from "./styles";
 import LogoSrc from "../../assets/image/logo_vertical.png";
 import InputLogin from "../../components/InputLogin";
 import PasswordReminder from "../../components/PasswordReminder";
@@ -12,13 +12,15 @@ function Login() {
       <Link to="/">
         <img src={LogoSrc} alt="logo_bergamotta" />{" "}
       </Link>
-      <TitleLogin title={"Olá, que bom ter você de volta!👋"} />
-      <InputLogin type="email" placeholder="exemplo@email.com" label="Email" />
-      <InputLogin
-        type="password"
-        placeholder="Digite sua senha"
-        label="Senha"
-      />
+      <TitleLogin id="title" title={"Olá, que bom ter você de volta!👋"} />
+      <Inputs>
+        <InputLogin type="email" placeholder="exemplo@email.com" label="Email" />
+        <InputLogin
+          type="password"
+          placeholder="Digite sua senha"
+          label="Senha"
+        />
+      </Inputs>
       <PasswordReminder />
       <SingInLink />
     </LoginBox>
