@@ -25,8 +25,6 @@ function Login() {
       <SubmitButton theme="submit" text="Login" redirect="/"/>
       <SignInLink />
     </LoginBox>
-   
-    
   );
 }
 export default Login;
