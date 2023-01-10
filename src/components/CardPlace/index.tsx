@@ -42,7 +42,7 @@ function Price (price:number ){
 }
 function CardPlace (props: CardProps){
     const id= "/restaurantlocked/"+ props.id;
-    const value = 1;
+    
     return(
         <LinkCard to={id} className={props.theme}>
             <CardBergamotta id="myCard" className={props.theme}>
@@ -54,7 +54,7 @@ function CardPlace (props: CardProps){
             />
             <CardContent>
                 <h5>{props.name}</h5>
-                <Rating value={value} readOnly/>
+                <Rating value={3.5} precision={0.5} readOnly/>
                 {Price(props.average_ticket_price)}
                 <p>{props.opening_hours}</p>
             </CardContent>      
