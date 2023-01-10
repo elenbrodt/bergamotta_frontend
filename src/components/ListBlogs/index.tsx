@@ -4,6 +4,7 @@ import BlogCard from "../CardBlog";
 import { DivCard } from "./styles"
 
 interface BlogList {
+    id:string;
     image_link: string;
     name: string;
     subtitle: string;    
@@ -30,7 +31,7 @@ export default function ListBlogs() {
         <DivCard>
             {blogs.map((blog, index)=> {
                 return (
-                    <BlogCard image_link={blog.image_link} name={blog.name} subtitle={blog.subtitle} />
+                    <BlogCard id={blog.id} image_link={blog.image_link} name={blog.name} subtitle={blog.subtitle} />
                 );
             })} 
         </DivCard>

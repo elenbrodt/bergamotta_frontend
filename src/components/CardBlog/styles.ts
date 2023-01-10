@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { Card, CardContent } from '@mui/material';
 import { colors, fonts } from '../../styles/theme';
+import { Link } from 'react-router-dom';
 
 export const CardBlog = styled(Card)`
 display: flex;
@@ -33,6 +34,6 @@ overflow: hidden;
 text-overflow: ellipsis;
 -webkit-line-clamp: 2;
 `
-export const BlogLinks = styled.a`
+export const BlogLinks = styled(Link)`
 text-decoration: none;
 `
