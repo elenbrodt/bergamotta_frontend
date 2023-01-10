@@ -12,7 +12,8 @@ export const colors = {
     light_one: "#F5F6FA",
     light_two: "#B6BFD8",
     gray: "#E0E0E0",
-    white: "#FFFFFF"
+    white: "#FFFFFF", 
+    link: "#2F89FC"
 }
 
 export const fonts = {

@@ -1,11 +1,10 @@
-import { Link } from "react-router-dom";
-
+import {SignInLinkBox, LinkSignIn} from "./style";
 function SignInLink (){
     return(
-        <>
+        <SignInLinkBox>
             <p>Não possui uma conta?</p>
-            <Link to="/signin">Cadastre-se Aqui</Link>
-        </>
+            <LinkSignIn to="/signin">Cadastre-se Aqui</LinkSignIn>
+        </SignInLinkBox>
     )
 }
 

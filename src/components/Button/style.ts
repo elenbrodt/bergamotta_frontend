@@ -2,9 +2,10 @@ import styled from "styled-components"
 import { colors, fonts } from "../../styles/theme";
 
 export const ButtonLogin = styled.a`
-    background-color: ${colors.secondary};
+    background-color: ${props=> props.theme === "submit" ? colors.black : colors.secondary};
     display: flex;
     justify-content: center;
+    width: ${props=> props.theme === "submit" ? "17vw" : ""};
     align-items: center;
     text-align: center;
     text-decoration: none;

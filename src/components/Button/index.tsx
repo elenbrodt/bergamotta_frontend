@@ -3,11 +3,12 @@ import { ButtonLogin } from "./style";
 interface ButtonProps {
     text: string;
     redirect: string;
+    theme?: string;
 }
 
 function Button (props: ButtonProps) {
     return (
-<ButtonLogin href={props.redirect}>{props.text}</ButtonLogin>
+<ButtonLogin theme="submit" href={props.redirect}>{props.text}</ButtonLogin>
     );
 }
 

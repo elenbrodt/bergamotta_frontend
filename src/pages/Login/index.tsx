@@ -1,10 +1,10 @@
-import { LoginBox, Inputs } from "./styles";
+import { LoginBox, Inputs, SubmitButton } from "./styles";
 import LogoSrc from "../../assets/image/logo_vertical.png";
 import InputLogin from "../../components/InputLogin";
 import PasswordReminder from "../../components/PasswordReminder";
 import { Link } from "react-router-dom";
 import TitleLogin from "../../components/TitleLogin";
-import SingInLink from "../../components/SignInLink";
+import SignInLink from "../../components/SignInLink";
 
 function Login() {
   return (
@@ -22,8 +22,11 @@ function Login() {
         />
       </Inputs>
       <PasswordReminder />
-      <SingInLink />
+      <SubmitButton theme="submit" text="Login" redirect="/"/>
+      <SignInLink />
     </LoginBox>
+   
+    
   );
 }
 export default Login;
