@@ -3,14 +3,14 @@ import { listBlog } from "../../services/MainApi/blog";
 import BlogCard from "../CardBlog";
 import { DivCard } from "./styles"
 
-interface Blog {
+interface BlogList {
     image_link: string;
     name: string;
     subtitle: string;    
 }
 
 export default function ListBlogs() {
-    const [blogs, setPlaces] = useState<Blog[]>([]);
+    const [blogs, setPlaces] = useState<BlogList[]>([]);
 
     useEffect (()=> {
         const getData = async () => {
