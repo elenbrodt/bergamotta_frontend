@@ -18,7 +18,7 @@ function SignInOwner() {
                 <InputLogin theme="signin" label="Horário de funcionamento" type="text" placeholder="Digite o horário" ></InputLogin>
                 <Container>
                 <InputLogin
-                    label="Ticker Médio"
+                    label="Ticket Médio"
                     type="text"
                     placeholder="Digite o valor"
                     theme="signin"

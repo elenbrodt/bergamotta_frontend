@@ -9,7 +9,7 @@ function SearchBar(){
     return (
         <SearchBarStyle>
             <SearchInput/>
-            <Filter texto='Filtros'/>
+            <Filter texto='Buscar'/>
         </SearchBarStyle>
     )
 }

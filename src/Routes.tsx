@@ -20,7 +20,7 @@ export default function Routes() {
              <Route path="/sobrenos" element={<About/>}/>    
             <Route path="/blog" element={<Blog/>}/>
             <Route path="/login" element={<Login/>}/>
-            <Route path="/signin" element={<SignIn/>}/>
+            <Route path="/cadastro" element={<SignIn/>}/>
             <Route path="/restaurantlocked/:id" element={<RestaurantLocked/>}/>         
             <Route path="/restaurantlocked" element={<RestaurantLocked/>}/> 
             <Route path="/configuser" element={<ConfigUser/>}/>         

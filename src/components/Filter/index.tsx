@@ -1,10 +1,12 @@
 //import TuneIcon from '@mui/icons-material/Tune';
-import { Button, Checkbox, Dialog, DialogActions, DialogContent, FormControlLabel, FormGroup } from '@mui/material';
+import { Checkbox, DialogActions, DialogContent, FormControlLabel } from '@mui/material';
 import { useState } from 'react';
 import FilterIcon from "../../assets/image/filter.png"
-import { FilterButton, FilterLinkText, FilterTitle } from './styles';
+import { DialogStyled, FilterButton, FilterLinkText, FilterTitle, FormGroupStyled } from './styles';
 import "./style.css"
 import IconButton from '@mui/material/IconButton';
+import { TAGS } from "../../mock/tags";
+import Button from '../Button';
 
 interface FilterProps {
     texto: string;
@@ -29,23 +31,60 @@ export default function  Filter(props: FilterProps){
             </IconButton>
             <FilterLinkText>{props.texto}</FilterLinkText>
         </FilterButton>
-        <Dialog  open={open} onClose={handleClose}>
-            <FilterTitle id="modal">Filtros</FilterTitle>
+        <DialogStyled open={open} onClose={handleClose}>
+            <FilterTitle>Filtros</FilterTitle>
             <DialogContent>
-                <FormGroup>
-                    <FormControlLabel control={<Checkbox defaultChecked />} label="Todas as lojas" />
-                    <FormControlLabel control={<Checkbox defaultChecked />} label="Restaurante" />
-                    <FormControlLabel control={<Checkbox defaultChecked />} label="Bar" />
-                    <FormControlLabel control={<Checkbox defaultChecked />} label="Restobar" />
-                    <FormControlLabel control={<Checkbox defaultChecked />} label="Bistrô" />
-                    <FormControlLabel control={<Checkbox defaultChecked />} label="Lanchonete" />
-                    <FormControlLabel control={<Checkbox defaultChecked />} label="Café" />
-                </FormGroup>
+                <FormGroupStyled>
+                    <h3>Tipos de loja</h3>
+                    {TAGS.map((tag, index) => 
+                        {if(tag.tag_type==="Tipos de loja" ){
+                            return <FormControlLabel
+                            control={<Checkbox />}
+                            label={tag.tag}
+                            key={index}
+                            />
+                            }else return ""
+                        }
+                    )}
+                    <h3>Tipo de cozinha</h3>
+                    {TAGS.map((tag, index) => 
+                        {if(tag.tag_type==="Tipo de cozinha" ){
+                            return <FormControlLabel
+                            control={<Checkbox />}
+                            label={tag.tag}
+                            key={index}
+                            />
+                            }else return ""
+                        }
+                    )}
+                    <h3>Categorias</h3>
+                    {TAGS.map((tag, index) => 
+                        {if(tag.tag_type==="Categorias" ){
+                            return <FormControlLabel
+                            control={<Checkbox />}
+                            label={tag.tag}
+                            key={index}
+                            />
+                            }else return ""
+                        }
+                    )}
+                    <h3>Experiências</h3>
+                    {TAGS.map((tag, index) => 
+                        {if(tag.tag_type==="Experiências" ){
+                            return <FormControlLabel
+                            control={<Checkbox />}
+                            label={tag.tag}
+                            key={index}
+                            />
+                            }else return ""
+                        }
+                    )}
+                </FormGroupStyled>
             </DialogContent>
             <DialogActions>
-                <Button onClick={handleClose}>Cancel</Button>
+                <Button text="Ver resultados" redirect='/'/>
             </DialogActions>
-        </Dialog>
+        </DialogStyled>
       </>
     )
 }

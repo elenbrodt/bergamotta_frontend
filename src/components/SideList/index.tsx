@@ -1,4 +1,4 @@
-import { Title } from "./styles";
+import { Title, Wrapper } from "./styles";
 import { listPlace } from "../../services/MainApi/search";
 import { useEffect, useState } from "react";
 import CardPlace from "../CardPlace";
@@ -29,7 +29,7 @@ export default function SideList() {
   }, [setPlaces]);
 
   return (
-    <div id="sideListStyled">
+    <Wrapper>
       <Title>Lista de Restaurantes</Title>
       {places.slice(0,4).map((place, index) => (
         <CardPlace
@@ -42,6 +42,6 @@ export default function SideList() {
         />
       ))}
       
-    </div>
+    </Wrapper>
   );
 }

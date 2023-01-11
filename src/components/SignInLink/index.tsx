@@ -6,8 +6,8 @@ type SignInLinkProps={
 function SignInLink (props: SignInLinkProps){
     return(
         <SignInLinkBox>
-            <p>${props.text}</p>
-            <LinkSignIn to="/signin">${props.link}</LinkSignIn>
+            <p>{props.text}</p>
+            <LinkSignIn to="/signin">{props.link}</LinkSignIn>
         </SignInLinkBox>
     )
 }

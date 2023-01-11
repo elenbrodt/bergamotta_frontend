@@ -1,3 +1,4 @@
+import { Dialog, FormGroup } from '@mui/material';
 import styled from 'styled-components';
 import {colors, fonts} from "../../styles/theme";
 
@@ -25,4 +26,19 @@ export const FilterTitle = styled.h2`
   weight: 700;
   font-size: 48px;
   text-align: center;
+`
+export const FormGroupStyled = styled(FormGroup)`
+    height: 100%;;
+    width: 100%;
+    .MuiFormControlLabel-label{
+        font-family:${fonts.secondary};
+        font-size: 14px;
+        font-weight: 700;
+    }
+`
+
+export const DialogStyled = styled(Dialog)`
+    .MuiDialogContent-root{
+      width: 35vw;
+    }
 `

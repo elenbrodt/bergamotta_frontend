@@ -1,4 +1,6 @@
+import { Link } from "react-router-dom";
 import "./style.css";
+
 interface GreenBannerProps {
     title: string;
     texto: string;    
@@ -11,7 +13,7 @@ function GreenBanner(props: GreenBannerProps) {
         <div className="banner" id={props.id}>
             <h2 className="bannertitle">{props.title}</h2>
             <p className="bannertext">{props.texto}</p>
-            <a className="bannerbtn" href="/cadastro">{props.btn_text}</a>
+            <Link className="bannerbtn" to="/cadastro">{props.btn_text}</Link>
         </div>
     );
 }

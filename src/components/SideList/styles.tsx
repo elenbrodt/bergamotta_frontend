@@ -12,3 +12,7 @@ export const Title = styled.h2`
 export const GreenBannerStyled = styled (GreenBanner)`
     color: pink;
 `
+export const Wrapper = styled.div`
+    
+    padding: 1vh 0px 0px 4vw;
+`
