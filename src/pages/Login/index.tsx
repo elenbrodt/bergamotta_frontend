@@ -11,16 +11,17 @@ function Login() {
   return (
     <LoginBox>
       <Link to="/">
-        <img src={LogoSrc} alt="logo_bergamotta" />{" "}
+        <img src={LogoSrc} alt="logo_bergamotta" />
       </Link>
       <TitleLogin id="title" title={"Olá, que bom ter você de volta!👋"} />
       <Inputs>
-        <InputLogin type="email" placeholder="exemplo@email.com" label="Email" />
-        <InputLogin
-          type="password"
-          placeholder="Digite sua senha"
-          label="Senha"
-        />
+       { //<InputLogin type="email" placeholder="exemplo@email.com" label="Email"  />
+        //<InputLogin
+        //  type="password"
+        //  placeholder="Digite sua senha"
+        //  label="Senha"
+        // />
+  }
       </Inputs>
       <PasswordReminder />
       <Button theme="submit" text="Login" redirect="/"/>

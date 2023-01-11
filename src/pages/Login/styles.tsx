@@ -17,3 +17,5 @@ export const Inputs =styled.div`
     gap: 5vh;
     width: 100%;
 `
+
+

@@ -13,13 +13,13 @@ export const Container = styled.div`
     gap: 1vw;
 `
 
-export const SignInOwnerBox = styled.div`
+export const SignInPlaceBox = styled.div`
     display: flex;
     justify-content: space-between;
     gap: 8vw;
 `
 export const FormGroupStyled = styled(FormGroup)`
-    height: 115vh;
+    height: 150vh;
     width: 40vw;
     .MuiFormControlLabel-label{
         font-family:${fonts.secondary};
@@ -27,7 +27,7 @@ export const FormGroupStyled = styled(FormGroup)`
         font-weight: 700;
     }
 `
-export const SignInOwnerContainer = styled.div`
+export const SignInPlaceContainer = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
