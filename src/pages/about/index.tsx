@@ -11,9 +11,16 @@ import vector2 from "../../assets/imagesAbout/Vector2.png"
 import bodyimg2 from "../../assets/imagesAbout/Rectangle 62.png"
 import bodyimage3 from "../../assets/imagesAbout/persona 12 1.png"
 import GreenBanner from "../../components/GreenBanner";
+import { useForm } from "react-hook-form";
+import { whatsApp } from "../../utilities/whatsapp";
+import { Footer } from "../../components/Footer";
 
-function About() {
-    return (
+function About(): JSX.Element {
+
+    const { register, handleSubmit, formState: { errors } } = useForm();
+  const onSubmit = (data: any) => whatsApp(data.name, data.whatsapp, data.mensagem);
+  
+      return (
         <div className="App">
             <header>
                 <Header />
@@ -55,21 +62,24 @@ function About() {
                 <FormContainer>
                     <div>
                         <Title3>Dúvidas? Fale com a gente</Title3>
-                        <FormDiv>
+                        <FormDiv onSubmit={handleSubmit(onSubmit)}>
                             <br />
                             <Labels>Nome</Labels>
                             <br />
-                            <NormalInput type="name" name="name" />
+                            <NormalInput {...register("name", { required: true })}/>
+                            {errors.name && <p>Esse campo é obrigatório</p>}
                             <br />
                             <Labels>Whatsapp</Labels>
                             <br />
-                            <NormalInput type="whatsapp" name="whatsapp" />
+                            <NormalInput {...register("whatsapp", { required: true })} />
+                            {errors.whatsapp && <p>Esse campo é obrigatório</p>}
                             <br />
                             <Labels>Mensagem</Labels>
                             <br />
-                            <TextInput></TextInput>
+                            <TextInput {...register("mensagem", { required: true })}/>
+                            {errors.mensagem && <p>Esse campo é obrigatório</p>}
                             <br />
-                            <FormBtn href="/">Enviar</FormBtn>
+                            <FormBtn>Enviar</FormBtn>
                         </FormDiv>
                     </div>
                     <FormContainerRight>
@@ -77,6 +87,7 @@ function About() {
                         <Overlaid2 src={bodyimage3} alt="Senhor Impressionado" />
                     </FormContainerRight>
                 </FormContainer>
+                <Footer/>
             </main>
         </div>
     );
