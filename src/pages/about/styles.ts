@@ -142,7 +142,6 @@ background-color: ${colors.light_one};
 `
 export const GreenBannerContainer = styled.div`
 margin-top: 122px;
-width: 100%;
 `
 export const FormContainer = styled.div`
 display: flex;

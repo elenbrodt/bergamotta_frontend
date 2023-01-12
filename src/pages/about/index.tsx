@@ -30,7 +30,7 @@ function About(): JSX.Element {
                     <UpperBodyLeft>
                         <Title>Te ajudamos a encontrar<br></br>
                             experiencias gastronômicas incríveis</Title>
-                        <TitleButton href="/">Buscar experiências</TitleButton>
+                        <TitleButton href="/search">Buscar experiências</TitleButton>
                     </UpperBodyLeft>
                     <UpperBodyRight>
                         <Imgbody src={bodyimg1} alt="Experiências Incríveis" />
@@ -55,7 +55,7 @@ function About(): JSX.Element {
                     </BottonBodyRight>
                 </BottonBody>
                 <GreenBannerContainer>
-                    <GreenBanner texto="Cadastre-se agora mesmo e tenha acesso a milhares de restaurantes."
+                    <GreenBanner href="/cadastro" texto="Cadastre-se agora mesmo e tenha acesso a milhares de restaurantes."
                             title = "O que você está esperando?" btn_text="Quero fazer parte!"
                     />
                 </GreenBannerContainer>
