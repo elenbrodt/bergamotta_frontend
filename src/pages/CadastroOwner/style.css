@@ -28,7 +28,7 @@
 	 margin-right: 25px;
 }
 
-p{
+.cadastro_owner p{
     margin-bottom: 15px;
 	margin-left: 20px;
 	margin-top: 5px;
@@ -36,7 +36,7 @@ p{
 	font-weight: 700;
 
 }
-button{
+.btn_cadastro_owner{
     width: 702px;
     height: 96px;
     color: #ffffff;

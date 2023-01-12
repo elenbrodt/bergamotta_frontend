@@ -4,12 +4,12 @@ import InputLogin from "../../components/InputLogin";
 import UserType from "../../components/UserType";
 import LogoSrc from "../../assets/image/logo_vertical.png";
 import {Box, Inputs, RadioGroupStyled, Container} from "./styles"
-import Button from "../../components/Button";
 import SignInLink from "../../components/SignInLink";
 import { useState } from "react";
 import { createUser } from "../../services/MainApi/sign_in";
 import { useForm } from "react-hook-form";
 import { FormControl } from "@mui/material";
+import SubmitButton from "../../components/SubmitButton";
 
 function SignUp() {
 
@@ -91,8 +91,7 @@ function SignUp() {
               <UserType user_type="user" text="Sou usuário"></UserType>
               <UserType user_type="owner" text="Sou restaurante"></UserType>
           </RadioGroupStyled>
-          <button type="submit">teste</button>
-          <Button theme="submit" text="Login" redirect="/"/>
+          <SubmitButton text="Login"/>  
         </form>
       <SignInLink text="Já possui cadastro?" link="Faça login aqui"/>
     </Box>

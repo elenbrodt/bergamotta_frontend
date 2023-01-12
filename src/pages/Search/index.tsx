@@ -8,8 +8,12 @@ import {CITY} from '../../mock/city';
 import SearchBar from '../../components/SearchBar';
 import GreenBanner from '../../components/GreenBanner';
 import CardPlace from '../../components/CardPlace';
+import { useUser } from '../../store/modules/user';
 
 function Search (){
+
+    const user = useUser();
+    
     return(
         <div className="App">
             <Header/>
@@ -17,9 +21,11 @@ function Search (){
                 <SideBar>
                     <SearchBar/>
                     <SideList/>
-                    <GreenBanner href='/cadastro' id="greenCard" texto="Entre com sua conta para ter acesso a lista completa"
-                        title = "Quer acessar mais restaurantes?" btn_text="CRIE SUA CONTA"/>
-                     <CardPlace
+                    {!user?.isLogged && 
+                        <GreenBanner href='/cadastro' id="greenCard" texto="Entre com sua conta para ter acesso a lista completa"
+                        title = "Quer acessar mais restaurantes?" btn_text="CRIE SUA CONTA"/> }
+                    {!user?.isLogged && 
+                        <CardPlace
                         id="000"
                         key="00"
                         name="Restaurant"
@@ -27,7 +33,7 @@ function Search (){
                         image_link="https://www.kitano.com.br/wp-content/uploads/2019/07/SSP_2480-Frango-assado-com-salsa-e-cebolinha-1.jpg"
                         average_ticket_price = {200}
                         theme="blocked"
-                    />
+                    />}                    
                 </SideBar>
                 <Map city={CITY}/>
             </SearchContainer>

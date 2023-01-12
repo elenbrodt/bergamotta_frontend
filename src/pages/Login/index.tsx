@@ -2,16 +2,16 @@ import { LoginBox, Inputs } from "./styles";
 import LogoSrc from "../../assets/image/logo_vertical.png";
 import InputLogin from "../../components/InputLogin";
 import PasswordReminder from "../../components/PasswordReminder";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import TitleLogin from "../../components/TitleLogin";
 import SignInLink from "../../components/SignInLink";
-import Button from "../../components/Button";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
 import { authUser } from "../../services/MainApi/login";
 import { FormControl } from "@mui/material";
 import {useDispatch} from 'react-redux'
 import { setUser } from "../../store/modules/user";
+import SubmitButton from "../../components/SubmitButton";
 
 function Login() {
   const { register, handleSubmit } = useForm();
@@ -20,6 +20,7 @@ function Login() {
   const [password, setPassword] = useState<string>("");
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const onSubmit = (data: any) => {
     console.log(data);
@@ -36,7 +37,7 @@ function Login() {
           token: response.data,
           email,
       }))
-      alert("Deu certo o login");
+      navigate("/")
     } catch (error) {
       alert("Algo deu errado no catch");
     }
@@ -66,11 +67,10 @@ function Login() {
               name="password"
             />
           </FormControl>
-          <button type="submit">Logar</button>
+          <SubmitButton text="Logar"/>
         </Inputs>
       </form>
       <PasswordReminder />
-      <Button theme="submit" text="Login" redirect="/" />
       <SignInLink text="Não possui uma conta?" link="Cadastre-se Aqui" />
     </LoginBox>
   );
