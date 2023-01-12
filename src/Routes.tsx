@@ -16,8 +16,8 @@ export default function Routes() {
     return (
         <BrowserRouter>
             <WrapperRoutes>
-                <Route path="/" element={<Home />} />
-                <Route path="/search" element={<Search />} />
+                <Route path="/parceiro" element={<Home />} />
+                <Route path="/" element={<Search />} />
                 <Route path="/sobrenos" element={<About />} />
                 <Route path="/blog" element={<Blog />} />
                 <Route path="/login" element={<Login />} />
@@ -25,7 +25,7 @@ export default function Routes() {
                 <Route path="/restaurantlocked/:id" element={<RestaurantLocked />} />
                 <Route path="/restaurantlocked" element={<RestaurantLocked />} />
                 <Route path="/configuser" element={<ConfigUser />} />
-                <Route path="/userfavorites" element={<UserFavorites />} />
+                <Route path="/perfil" element={<UserFavorites />} />
                 <Route path="/blogarticle/:id" element={<BlogArticle />} />
                 <Route path="cadastrorestaurante" element={<SignInPlace />} />
             </WrapperRoutes>

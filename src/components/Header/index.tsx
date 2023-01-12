@@ -10,14 +10,17 @@ function Header() {
                 <HamburguerMenu>
                     <MenuHamburguer />
                 </HamburguerMenu>
-                <ImgLogo src={Logo} alt="Logo Bergamotta" />
+                <NavLink to="/">
+                    <ImgLogo src={Logo} alt="Logo Bergamotta" />
+                </NavLink>
+                
                 <Nav>
                     <Ul>
-                        <Li><NavLink to="">BLOG</NavLink></Li>
-                        <Li><NavLink to="">PERFIL</NavLink></Li>
-                        <Li><NavLink to="">CADASTRO</NavLink></Li>
-                        <Li><NavLink to="">QUEM SOMOS</NavLink></Li>
-                        <Li><NavLink to="/sobrenos">SEJA UM PARCEIRO</NavLink></Li>
+                        <Li><NavLink to="/blog">BLOG</NavLink></Li>
+                        <Li><NavLink to="/perfil">PERFIL</NavLink></Li>
+                        <Li><NavLink to="/cadastro">CADASTRO</NavLink></Li>
+                        <Li><NavLink to="/sobrenos">QUEM SOMOS</NavLink></Li>
+                        <Li><NavLink to="/parceiro">SEJA UM PARCEIRO</NavLink></Li>
                     </Ul>
                 </Nav>
                 <ButtonLogin text="Login" redirect="/login" />

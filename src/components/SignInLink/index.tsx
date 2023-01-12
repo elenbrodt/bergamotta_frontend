@@ -7,7 +7,7 @@ function SignInLink (props: SignInLinkProps){
     return(
         <SignInLinkBox>
             <p>{props.text}</p>
-            <LinkSignIn to="/signin">{props.link}</LinkSignIn>
+            <LinkSignIn to="/cadastro">{props.link}</LinkSignIn>
         </SignInLinkBox>
     )
 }
