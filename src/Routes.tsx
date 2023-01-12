@@ -10,7 +10,7 @@ import ConfigUser from './pages/ConfigUser';
 import UserFavorites from './pages/UserFavorites';
 import BlogArticle from './pages/BlogArticle';
 import SignInPlace from './pages/SignInPlace';
-import Footer from './components/Footer';
+import CadastroOwner from "./pages/CadastroOwner";
 
 export default function Routes() {
     return (
@@ -28,8 +28,9 @@ export default function Routes() {
                 <Route path="/perfil" element={<UserFavorites />} />
                 <Route path="/blogarticle/:id" element={<BlogArticle />} />
                 <Route path="cadastrorestaurante" element={<SignInPlace />} />
+                <Route path="/cadastroowner" element={<CadastroOwner/>}/>
+
             </WrapperRoutes>
-            <Footer />
         </BrowserRouter>
     );
 }

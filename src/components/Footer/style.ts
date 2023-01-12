@@ -3,7 +3,7 @@ import { colors, fonts } from "../../styles/theme"
 import { Link } from "react-router-dom";
 
 
-export const Footer = styled.footer`
+export const Footerstyle = styled.footer`
     width: 100%;
     background-color: ${colors.light_one};
     height: 12%;

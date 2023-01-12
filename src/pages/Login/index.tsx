@@ -6,26 +6,72 @@ import { Link } from "react-router-dom";
 import TitleLogin from "../../components/TitleLogin";
 import SignInLink from "../../components/SignInLink";
 import Button from "../../components/Button";
+import { useForm } from "react-hook-form";
+import { useState } from "react";
+import { authUser } from "../../services/MainApi/login";
+import { FormControl } from "@mui/material";
+import {useDispatch} from 'react-redux'
+import { setUser } from "../../store/modules/user";
 
 function Login() {
+  const { register, handleSubmit } = useForm();
+
+  const [email, setEmail] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+
+  const dispatch = useDispatch();
+
+  const onSubmit = (data: any) => {
+    console.log(data);
+    setEmail(data.email);
+    setPassword(data.password);
+    login();
+  };
+
+  const login = async () => {
+    try {
+      const response = await authUser({ email, password });
+      console.log(response.data);
+      dispatch(setUser({
+          token: response.data,
+          email,
+      }))
+      alert("Deu certo o login");
+    } catch (error) {
+      alert("Algo deu errado no catch");
+    }
+  };
+
   return (
     <LoginBox>
       <Link to="/">
         <img src={LogoSrc} alt="logo_bergamotta" />
       </Link>
       <TitleLogin id="title" title={"Olá, que bom ter você de volta!👋"} />
-      <Inputs>
-       { //<InputLogin type="email" placeholder="exemplo@email.com" label="Email"  />
-        //<InputLogin
-        //  type="password"
-        //  placeholder="Digite sua senha"
-        //  label="Senha"
-        // />
-  }
-      </Inputs>
+      <form id="myForm" onSubmit={handleSubmit(onSubmit)}>
+        <Inputs>
+          <FormControl fullWidth {...register("email")}>
+            <InputLogin
+              type="email"
+              placeholder="exemplo@email.com"
+              label="Email"
+              name="email"
+            />
+          </FormControl>
+          <FormControl fullWidth {...register("password")}>
+            <InputLogin
+              type="password"
+              placeholder="Digite sua senha"
+              label="Senha"
+              name="password"
+            />
+          </FormControl>
+          <button type="submit">Logar</button>
+        </Inputs>
+      </form>
       <PasswordReminder />
-      <Button theme="submit" text="Login" redirect="/"/>
-      <SignInLink text="Não possui uma conta?" link="Cadastre-se Aqui"/>
+      <Button theme="submit" text="Login" redirect="/" />
+      <SignInLink text="Não possui uma conta?" link="Cadastre-se Aqui" />
     </LoginBox>
   );
 }

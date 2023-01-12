@@ -224,6 +224,7 @@ font-family: ${fonts.primary};
 export const NormalInput = styled.input`
 width: 527px;
 height: 40px;
+font-size: 22px;
 background: rgba(255, 255, 255, 0.08);
 border: 1px solid #B6BFD8;
 border-radius: 10px;
@@ -232,6 +233,7 @@ border-radius: 10px;
 export const TextInput = styled.textarea`
 width: 527px;
 height: 120px;
+font-size: 22px;
 box-sizing: border-box;
 background: rgba(255, 255, 255, 0.08);
 border: 1px solid #B6BFD8;
@@ -246,8 +248,9 @@ color: ${colors.dark_one};
 font-family: ${fonts.secondary};
 `
 
-export const FormBtn = styled.a`
+export const FormBtn = styled.button`
 text-decoration: none;
+cursor: pointer;
 display: flex;
 justify-content: center;
 text-align: center;

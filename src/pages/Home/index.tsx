@@ -13,8 +13,15 @@ import bodyimage2 from "../../assets/imagesAbout/persona 12 1.png"
 import vector3 from "../../assets/imagesAbout/Vector3.png"
 import bodyimg3 from "../../assets/imagesAbout/persona 6 1.png"
 import GreenBanner from "../../components/GreenBanner";
+import { useForm } from "react-hook-form";
+import { whatsApp } from "../../utilities/whatsapp";
+import { Footer } from "../../components/Footer";
 
 function Home() {
+
+    const { register, handleSubmit, formState: { errors } } = useForm();
+  const onSubmit = (data: any) => whatsApp(data.name, data.whatsapp, data.mensagem);
+
     return (
         <div className="App">
             <header>
@@ -23,9 +30,9 @@ function Home() {
             <main>
                 <UpperBody>
                     <UpperBodyLeft>
-                        <Title>Te ajudamos a encontrar<br></br>
-                            experiencias gastronômicas incríveis</Title>
-                        <TitleButton href="/">Buscar experiências</TitleButton>
+                        <Title>Conectando pessoas, propósitos e<br></br>
+                            experiencias gastronômicas</Title>
+                        <TitleButton href="/">Criar conexões</TitleButton>
                     </UpperBodyLeft>
                     <UpperBodyRight>
                         <Imgbody src={bodyimg0} alt="Experiências Incríveis" />
@@ -66,27 +73,32 @@ function Home() {
                     </LowerBodyRight>
                 </LowerBody>
                 <GreenBannerContainer>
-                    <GreenBanner texto="Cadastre-se agora mesmo e tenha acesso a milhares de restaurantes."
+                    <GreenBanner href="/" texto="+5 milhões de usuários no site +25 mil restaurantes parceiros
+                     +33 milhões buscas no ano +1,2 bilhões de reais em vendas para 
+                     os restaurantes no ano +719 cidades em 23 estados"
                         title = "O que você está esperando?" btn_text="Quero fazer parte!"/>
                 </GreenBannerContainer>
                 <FormContainer>
                     <div>
                         <Title4>Dúvidas? Fale com a gente</Title4>
-                        <FormDiv>
+                        <FormDiv onSubmit={handleSubmit(onSubmit)}>
                             <br />
                             <Labels>Nome</Labels>
                             <br />
-                            <NormalInput type="name" name="name" />
+                            <NormalInput {...register("name", { required: true })}/>
+                            {errors.name && <p>Esse campo é obrigatório</p>}
                             <br />
                             <Labels>Whatsapp</Labels>
                             <br />
-                            <NormalInput type="whatsapp" name="whatsapp" />
+                            <NormalInput {...register("whatsapp", { required: true })} />
+                            {errors.whatsapp && <p>Esse campo é obrigatório</p>}
                             <br />
                             <Labels>Mensagem</Labels>
                             <br />
-                            <TextInput></TextInput>
+                            <TextInput {...register("mensagem", { required: true })}/>
+                            {errors.mensagem && <p>Esse campo é obrigatório</p>}
                             <br />
-                            <FormBtn href="/">Enviar</FormBtn>
+                            <FormBtn>Enviar</FormBtn>
                         </FormDiv>
                     </div>
                     <FormContainerRight>
@@ -94,6 +106,7 @@ function Home() {
                         <Overlaid3 src={bodyimage2} alt="Senhor Impressionado" />
                     </FormContainerRight>
                 </FormContainer>
+                <Footer/>
             </main>
         </div>
     );

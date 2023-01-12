@@ -9,6 +9,9 @@ export const LoginBox = styled.div`
     margin: 0 auto;
     margin-bottom: 5vh;
     width: 40vw;
+    #myForm{
+        width: 100%
+    }
 `
 export const Inputs =styled.div`
     display: flex;

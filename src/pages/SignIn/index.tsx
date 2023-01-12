@@ -8,8 +8,12 @@ import Button from "../../components/Button";
 import SignInLink from "../../components/SignInLink";
 import { useState } from "react";
 import { createUser } from "../../services/MainApi/sign_in";
+import { useForm } from "react-hook-form";
+import { FormControl } from "@mui/material";
 
 function SignIn() {
+
+  const { register, handleSubmit } = useForm();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -19,8 +23,18 @@ function SignIn() {
   const [state, setState] = useState("");
   const [country, setCountry] = useState("");
 
-
-  const getData = async () => {    
+  const onSubmit = (data: any) =>{
+    console.log(data)
+    setEmail(data.email)
+    setPassword(data.password)
+    setName(data.name)
+    setImageLink(data.image_link)
+    setCity(data.city)
+    setState(data.state)
+    setCountry(data.country)
+    userCreate()
+  }
+  const userCreate = async () => {    
     const req ={
         email: email, 
         password: password, 
@@ -37,40 +51,40 @@ function SignIn() {
     }
   };
 
-
-  const handleSubmit = (event: any) => {
-    event.preventDefault();
-    getData();
-    setEmail("");
-    setPassword("");
-    setName("");
-    setCity("");
-    setImageLink("");
-    setState("");
-    setCountry("");
-  };
-
   return (
     <Box>
         <Link to="/">
           <img src={LogoSrc} alt="logo_bergamotta" />{" "}
         </Link>
         <TitleLogin title="Crie sua conta" />
-        <form onSubmit={handleSubmit} id="form">
+        <form id="form" onSubmit={handleSubmit(onSubmit)}>
           <Inputs>
-            <InputLogin type="text" placeholder="Digite seu usuário" value={name} onChange={setName}/>
-            <InputLogin type="email" placeholder="Digite seu email" value={email} onChange={setEmail}/>
-            <InputLogin
-              type="password"
-              value={password}
-              placeholder="Digite sua senha"
-              onChange={setPassword}
-            />
-            <InputLogin type="text" placeholder="Insira link da sua imagem de avatar" value={image_link} onChange={setImageLink}/>            
+            <FormControl fullWidth {...register("name")}>
+              <InputLogin type="text" placeholder="Digite seu usuário" name="name" />
+            </FormControl>
+            <FormControl fullWidth {...register("email")}>
+              <InputLogin type="email" placeholder="Digite seu email" name="email"/>
+            </FormControl>
+            <FormControl fullWidth {...register("password")}>
+              <InputLogin
+                type="password"
+                name="password"
+                placeholder="Digite sua senha"
+              />
+            </FormControl>
+            <FormControl fullWidth {...register("image_link")}>
+              <InputLogin type="text" placeholder="Insira link da sua imagem de avatar" name="image_link"/>
+            </FormControl>
             <Container>
-              <InputLogin type="text" placeholder="Digite sua cidade" value={city} onChange={setCity}/>
-              <InputLogin type="text" placeholder="Digite seu estado" value={state} onChange={setState}/>
-              <InputLogin type="text" placeholder="Digite o país" value={country} onChange={setCountry}/>
+              <FormControl fullWidth {...register("city")}>
+                <InputLogin type="text" placeholder="Digite sua cidade" name="city"/>
+              </FormControl>
+              <FormControl fullWidth {...register("state")}>
+                <InputLogin type="text" placeholder="Digite seu estado" name="state"/>
+              </FormControl>
+              <FormControl fullWidth {...register("country")}>
+                <InputLogin type="text" placeholder="Digite o país" name="country"/>
+              </FormControl>
             </Container>
           </Inputs>
           <RadioGroupStyled color="secondary" row defaultValue="user" >

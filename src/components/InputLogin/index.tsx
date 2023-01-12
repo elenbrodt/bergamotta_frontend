@@ -1,4 +1,5 @@
 //import { ChangeEvent } from "react";
+
 import { InputBaseLogin, InputBox, InputLabel, InputBorder, IconPassword } from "./styles";
 //import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 
@@ -7,8 +8,9 @@ interface InputLoginProps {
   type: string;
   placeholder: string;
   theme?: string;
-  value?: string;
-  onChange: (value:string) => void;
+  name?: string;
+  //onChange: (value:string) => void;
+  
 }
 
 function InputLogin(props: InputLoginProps) {
@@ -23,8 +25,9 @@ function InputLogin(props: InputLoginProps) {
               placeholder={props.placeholder}
               inputProps={{ "aria-label": "search" }}
               type={props.type}
-             onChange={(event: any) => props.onChange(event.target.value)}
-             value={props.value}
+             //onChange={(event: any) => props.onChange(event.target.value)}
+              name={props.name}
+            
             />
             <IconPassword />
           </InputBorder>
@@ -39,10 +42,11 @@ function InputLogin(props: InputLoginProps) {
             <InputBaseLogin
               placeholder={props.placeholder}
               inputProps={{ "aria-label": "search" }}
-              value={props.value}
+              name={props.name}
               type={props.type}
               className={props.theme}
-              onChange={(event: any) => props.onChange(event.target.value)}
+             
+              //onChange={(event: any) => props.onChange(event.target.value)}
             />
           </InputBorder>
         </InputBox>

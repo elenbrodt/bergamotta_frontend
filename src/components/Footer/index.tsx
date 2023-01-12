@@ -1,18 +1,18 @@
-import { Footer, ImgLogo, Nav, NavLink, Div } from "./style"
+import { Footerstyle, ImgLogo, Nav, NavLink, Div } from "./style"
 import Logo from "../../assets/image/logo.png";
 
-export default function () {
+export function Footer () {
     return (
-        <Footer>
+        <Footerstyle>
             <ImgLogo src={Logo} alt="Logo Bergamotta" />
             <Nav>
-                <NavLink to="">Quem somos</NavLink>
-                <NavLink to="">Seja um parceiro</NavLink>
-                <NavLink to="">Contato</NavLink>
+                <NavLink to="/search">Busca</NavLink>
+                <NavLink to="/partner">Seja um parceiro</NavLink>
+                <NavLink to="/sobrenos">Quem somos</NavLink>
             </Nav>
             <Div>
 
             </Div>
-        </Footer>
+        </Footerstyle>
     );
 }
