@@ -250,6 +250,7 @@ font-family: ${fonts.secondary};
 
 export const FormBtn = styled.button`
 text-decoration: none;
+cursor: pointer;
 display: flex;
 justify-content: center;
 text-align: center;

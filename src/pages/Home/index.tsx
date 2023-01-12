@@ -30,9 +30,9 @@ function Home() {
             <main>
                 <UpperBody>
                     <UpperBodyLeft>
-                        <Title>Te ajudamos a encontrar<br></br>
-                            experiencias gastronômicas incríveis</Title>
-                        <TitleButton href="/search">Buscar experiências</TitleButton>
+                        <Title>Conectando pessoas, propósitos e<br></br>
+                            experiencias gastronômicas</Title>
+                        <TitleButton href="/">Criar conexões</TitleButton>
                     </UpperBodyLeft>
                     <UpperBodyRight>
                         <Imgbody src={bodyimg0} alt="Experiências Incríveis" />
@@ -73,7 +73,9 @@ function Home() {
                     </LowerBodyRight>
                 </LowerBody>
                 <GreenBannerContainer>
-                    <GreenBanner texto="Cadastre-se agora mesmo e tenha acesso a milhares de restaurantes."
+                    <GreenBanner href="/" texto="+5 milhões de usuários no site +25 mil restaurantes parceiros
+                     +33 milhões buscas no ano +1,2 bilhões de reais em vendas para 
+                     os restaurantes no ano +719 cidades em 23 estados"
                         title = "O que você está esperando?" btn_text="Quero fazer parte!"/>
                 </GreenBannerContainer>
                 <FormContainer>
