@@ -17,7 +17,7 @@ import { useForm } from "react-hook-form";
 import { whatsApp } from "../../utilities/whatsapp";
 import { Footer } from "../../components/Footer";
 
-function Home() {
+function Partners() {
 
     const { register, handleSubmit, formState: { errors } } = useForm();
   const onSubmit = (data: any) => whatsApp(data.name, data.whatsapp, data.mensagem);
@@ -112,4 +112,4 @@ function Home() {
     );
 }
 
-export default Home;
+export default Partners;

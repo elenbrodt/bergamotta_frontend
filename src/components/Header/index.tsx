@@ -16,12 +16,12 @@ function Header() {
                 
                 <Nav>
                     <Ul>
-                        <Li><NavLink to="/search">BUSCA</NavLink></Li>
+                        <Li><NavLink to="/">BUSCA</NavLink></Li>
                         <Li><NavLink to="/blog">BLOG</NavLink></Li>
-                        <Li><NavLink to="">PERFIL</NavLink></Li>
-                        <Li><NavLink to="/signin">CADASTRO</NavLink></Li>
+                        <Li><NavLink to="/perfil">PERFIL</NavLink></Li>
+                        <Li><NavLink to="/parceiros">SEJA UM PARCEIRO</NavLink></Li>
                         <Li><NavLink to="/sobrenos">QUEM SOMOS</NavLink></Li>
-                        <Li><NavLink to="">SEJA UM PARCEIRO</NavLink></Li>
+                        <Li><NavLink to="/cadastro">CADASTRO</NavLink></Li>
                     </Ul>
                 </Nav>
                 <ButtonLogin text="Login" redirect="/login" />

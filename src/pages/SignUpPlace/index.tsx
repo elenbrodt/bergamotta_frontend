@@ -15,7 +15,7 @@ import Button from "../../components/Button";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
 
-function SignInPlace() {
+function SignUpPlace() {
   const { register, handleSubmit } = useForm();
  
   const [name, setName] = useState<string>("");
@@ -277,4 +277,4 @@ function SignInPlace() {
     </SignInPlaceContainer>
   );
 }
-export default SignInPlace;
+export default SignUpPlace;

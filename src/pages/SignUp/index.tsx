@@ -11,7 +11,7 @@ import { createUser } from "../../services/MainApi/sign_in";
 import { useForm } from "react-hook-form";
 import { FormControl } from "@mui/material";
 
-function SignIn() {
+function SignUp() {
 
   const { register, handleSubmit } = useForm();
 
@@ -99,4 +99,4 @@ function SignIn() {
   );
 }
 
-export default SignIn;
+export default SignUp;
