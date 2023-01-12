@@ -1,0 +1,49 @@
+.cadastro-owner{
+    margin-left: 400px;
+    margin-top: 50px;
+}
+
+.configurando-input{
+	width: 702px;
+	height: 79px;
+	border-radius: 15px;
+}
+.inputs-especificos{
+	display: flex;
+}
+
+.config-input-secondary{
+	height: 79px;
+	width: 340px;
+	border-radius: 15px;
+	margin-right: 22px;
+}
+.inputs-especificos-secondary{
+	display: flex;
+}
+.config-input-tertiary{
+	 width: 218px;
+	 height: 79px;
+	 border-radius: 15px;
+	 margin-right: 25px;
+}
+
+p{
+    margin-bottom: 15px;
+	margin-left: 20px;
+	margin-top: 5px;
+	font-size: 18px;
+	font-weight: 700;
+
+}
+button{
+    width: 702px;
+    height: 96px;
+    color: #ffffff;
+    background-color: #6CB935;
+    border-style: none;
+    margin-top: 20px;
+    font-size: 20px;
+    font-weight: 700;
+	margin-bottom: 20px;
+}

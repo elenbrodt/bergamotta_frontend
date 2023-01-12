@@ -10,6 +10,7 @@ import ConfigUser from './pages/ConfigUser';
 import UserFavorites from './pages/UserFavorites';
 import BlogArticle from './pages/BlogArticle';
 import SignInPlace from './pages/SignInPlace';
+import CadastroOwner from "./pages/CadastroOwner";
 
 export default function Routes() {
     return (
@@ -27,6 +28,8 @@ export default function Routes() {
                 <Route path="/userfavorites" element={<UserFavorites />} />
                 <Route path="/blogarticle/:id" element={<BlogArticle />} />
                 <Route path="cadastrorestaurante" element={<SignInPlace />} />
+                <Route path="/cadastroowner" element={<CadastroOwner/>}/>
+
             </WrapperRoutes>
         </BrowserRouter>
     );
