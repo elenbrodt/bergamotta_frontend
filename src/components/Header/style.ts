@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { colors, fonts } from "../../styles/theme"
+import { Link } from "react-router-dom"
 
 export const Ul = styled.ul`
     @media(max-width:1025px){
@@ -16,7 +17,7 @@ export const Li = styled.li`
     font-family: ${fonts.secondary}
 `
 
-export const A = styled.a`
+export const NavLink = styled(Link)`
     color: ${colors.dark_two};
     font-family: ${fonts.secondary};
     font-weight: 400;

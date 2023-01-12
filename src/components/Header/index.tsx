@@ -1,7 +1,7 @@
 import ButtonLogin from "../Button";
 import MenuHamburguer from "../MenuHamburguer"
 import Logo from "../../assets/image/logo.png";
-import { Ul, Li, A, DivHeader, Nav, ImgLogo, HamburguerMenu } from "./style";
+import { Ul, Li, DivHeader, Nav, ImgLogo, HamburguerMenu, NavLink } from "./style";
 
 function Header() {
     return (
@@ -13,11 +13,11 @@ function Header() {
                 <ImgLogo src={Logo} alt="Logo Bergamotta" />
                 <Nav>
                     <Ul>
-                        <Li><A href="">BLOG</A></Li>
-                        <Li><A href="">PERFIL</A></Li>
-                        <Li><A href="">CADASTRO</A></Li>
-                        <Li><A href="">QUEM SOMOS</A></Li>
-                        <Li><A href="/sobrenos">SEJA UM PARCEIRO</A></Li>
+                        <Li><NavLink to="">BLOG</NavLink></Li>
+                        <Li><NavLink to="">PERFIL</NavLink></Li>
+                        <Li><NavLink to="">CADASTRO</NavLink></Li>
+                        <Li><NavLink to="">QUEM SOMOS</NavLink></Li>
+                        <Li><NavLink to="/sobrenos">SEJA UM PARCEIRO</NavLink></Li>
                     </Ul>
                 </Nav>
                 <ButtonLogin text="Login" redirect="/login" />
