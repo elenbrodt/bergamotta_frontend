@@ -10,7 +10,6 @@ import ConfigUser from './pages/ConfigUser';
 import UserFavorites from './pages/UserFavorites';
 import BlogArticle from './pages/BlogArticle';
 import SignInPlace from './pages/SignInPlace';
-import Footer from './components/Footer';
 
 export default function Routes() {
     return (
@@ -29,7 +28,6 @@ export default function Routes() {
                 <Route path="/blogarticle/:id" element={<BlogArticle />} />
                 <Route path="cadastrorestaurante" element={<SignInPlace />} />
             </WrapperRoutes>
-            <Footer />
         </BrowserRouter>
     );
 }
