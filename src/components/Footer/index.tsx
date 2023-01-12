@@ -6,9 +6,9 @@ export function Footer () {
         <Footerstyle>
             <ImgLogo src={Logo} alt="Logo Bergamotta" />
             <Nav>
-                <NavLink to="">Quem somos</NavLink>
-                <NavLink to="">Seja um parceiro</NavLink>
-                <NavLink to="">Contato</NavLink>
+                <NavLink to="/search">Busca</NavLink>
+                <NavLink to="/partner">Seja um parceiro</NavLink>
+                <NavLink to="/sobrenos">Quem somos</NavLink>
             </Nav>
             <Div>
 
