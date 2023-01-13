@@ -3,7 +3,7 @@ import "./style.css";
 
 interface GreenBannerProps {
     title: string;
-    texto: string;    
+    texto?: string;    
     btn_text: string;
     id?:string;
     href:string;

@@ -3,9 +3,16 @@ import Cookie from 'js-cookie'
 import { useSelector } from 'react-redux';
 
 export interface UserState{
-    token?: string,
-    email?: string, 
-    isLogged: boolean;
+    token?: string, 
+    findUser: {
+        id: string,
+        name:string,
+        email:string,
+        password: string,
+        passwordExpired:null,
+        passwordReset: null,
+    },
+    isLogged: boolean,
 }
 
 const userReduce = createSlice({
@@ -17,7 +24,7 @@ const userReduce = createSlice({
         setUser(state, action){
             const user = {
                 token: action.payload.token,
-                email: action.payload.email,
+                findUser: action.payload.token.findUser,
                 isLogged: true
             }
             Object.assign(state, user);
@@ -26,7 +33,8 @@ const userReduce = createSlice({
         removeUser(state, action){
             Object.assign(state, {
                 token: undefined,
-                email: undefined,
+                findUser: undefined,
+    
                 isLogged: false,
             })
         }

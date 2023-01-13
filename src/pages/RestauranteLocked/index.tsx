@@ -1,62 +1,83 @@
-import React from 'react';
-import './style.css';
-import Imagem from "../../assets/imageRestaurantLocked/image 1 (1).png"
-import Persona from "../../assets/imageRestaurantLocked/persona 7 1.png"
-import Fav from "../../assets/imageRestaurantLocked/Fav.png"
-import Icon from "../../assets/imageRestaurantLocked/Icon 24x24.png"
-import Vector from "../../assets/imageRestaurantLocked/Vector (3).png"
-import Phone from "../../assets/imageRestaurantLocked/Phone-filled.png"
+import React, { useEffect, useState } from 'react';
 import Header from "../../components/Header"
 import Rating from "../../components/Rating"
-import RestaurantComponent from '../../components/Restaurant';
+import AccessTimeFilledIcon from '@mui/icons-material/AccessTimeFilled';
+import { byIdPlace } from '../../services/MainApi/restaurant';
+import {Box, Container, Title, Column, PlaceContainer} from "./style"
+import InstagramIcon from '@mui/icons-material/Instagram'
+import PhoneIcon from '@mui/icons-material/Phone'
+import GreenBanner from '../../components/GreenBanner';
+interface Place {
+  id:string;
+  name: string;
+  latitude: number;
+  longitude: number;
+  opening_hours: string;
+  image_link: string;
+  average_ticket_price: number;
+  social_media: string;
+  phone: string;
+}
 
 function RestaurantLocked() {
   const urlId = window.location.pathname.split("/")[2];
+  const [place, setPlace] = useState<Place>();
+  useEffect(() => {
+    const getData = async () => {
+      try {
+        const response = await byIdPlace(urlId);
+        setPlace(response.data);
+      } catch (error) {
+        alert("Deu algo errado no catch");
+      }
+    };
+    getData();
+  }, [setPlace, urlId]);
   return (
     <div >
-    <Header />
-    {RestaurantComponent(urlId)}
-    <main>
-      <div className='conteudo-main'>
-      <section className='section-primary'>
-        <img className='imagem-restaurante' src={Imagem} alt="imagem do restaurante" />
-        <div className='style-rest-primary'>
-        <h1>Restaurante da Maria</h1>
-        <button><img src={Fav} alt="favoritar" /></button>
-        </div>
-        <span><img src={Icon} alt="" />  Aberto até às 22h</span>
-        <div>
-        <Rating/>
-        <button>Avaliação por preço</button>
-        </div>
-        <span><img className='span-insta' src={Vector} alt="" />@restaurantea</span>
-        <span><img className='span-phone' src={Phone} alt="" />(99) 9999-9999</span>
-        <h2>O que mais curtem no local</h2>
-        <div className='validacoes'>
-        <p className='paragrafh-primary'>Atendimento acolhedor</p>
-        <p className='paragrafh-secondary'>Instagramável</p>
-        </div>
-        <div className='validacoes'>
-        <p  className='paragrafh-primary'>Alteração de ingredientes</p>
-        <p className='paragrafh-secondary'>Aconchegante</p>
-        </div>
-      </section>
-
-      <section className='section-secondary'>
-        <h2>Últimas avaliações</h2>
-        <div className='persona'>
-        <img src={Persona} alt="imagem da persona" />
-        <span>John Doe</span>
-        </div>
-        <p>Várias opções de pratos que pareciam muito bons. Sem arrependimentos, a comida tava <br/>deliciosa!</p>
-        <div className='box-avaliacoes'>
-          <p>Crie sua conta e acesse mais avaliações</p>
-          <a>VER MAIS<br/>AVALIAÇÕES</a>
-        </div>
-      </section>
-
-      </div>
-     </main>
+      <Header />
+      <PlaceContainer className="main">
+        <Column>
+          <Box>
+            <img src={place?.image_link} alt="Imagem restaurante"/>
+            <Title>{place?.name}</Title>
+            <Container>
+            <Box>
+              <Container>
+                <AccessTimeFilledIcon/>
+                {place?.opening_hours}
+              </Container>
+              <Rating/>
+              <Container>
+                <InstagramIcon/>
+                {place?.social_media}
+              </Container>
+            </Box>
+            <Box>
+              <p>Favoritar</p>
+              <p>Price</p>
+              <Container>
+                <PhoneIcon/>
+                {place?.phone}
+              </Container>
+            </Box>
+            </Container>
+          </Box>
+          <Box>
+            <h3>O que mais curtem no local</h3>
+          </Box>
+        </Column>
+        <Column>
+          <Box>
+            <h2>Últimas avaliações</h2>
+            <p>Card avaliações</p>
+            
+          </Box>
+          <GreenBanner href='/cadastro' id="greenCard"
+            title = "Crie sua conta e acesse mais avaliações" btn_text="VER MAIS AVALIAÇÕES"/>
+        </Column>
+        
+      </PlaceContainer>
 
     </div>
     

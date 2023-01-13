@@ -23,7 +23,6 @@ function Login() {
   const navigate = useNavigate();
 
   const onSubmit = (data: any) => {
-    console.log(data);
     setEmail(data.email);
     setPassword(data.password);
     login();
@@ -35,7 +34,7 @@ function Login() {
       console.log(response.data);
       dispatch(setUser({
           token: response.data,
-          email,
+          findUser: response.data.token,
       }))
       navigate("/")
     } catch (error) {

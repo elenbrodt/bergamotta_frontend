@@ -17,9 +17,10 @@ import {
 import "./style.css";
 import IconButton from "@mui/material/IconButton";
 import { TAGS } from "../../mock/tags";
-import Button from "../Button";
 import { useForm } from "react-hook-form";
 import { filters } from "../../services/MainApi/filter";
+import SubmitButton from "../SubmitButton";
+import FilterSearch from "../../components/FilterSearch";
 
 interface FilterProps {
   texto: string;
@@ -33,10 +34,12 @@ export default function Filter(props: FilterProps) {
   const [place_profiles_ids, setPlaceProfiles] = useState([""]);
 
   const onSubmit = (data: any) => {
-    setPlaceTypes(data.place_types_ids)
-    setFoodTypes(data.food_types_ids)
-    setPlaceProfiles(data.place_profiles_ids)
+
+    setPlaceTypes(data.place_types_ids);
+    setFoodTypes(data.food_types_ids);
+    setPlaceProfiles(data.place_profiles_ids);
     getData();
+    
   };
 
   const [open, setOpen] = useState(false);
@@ -54,16 +57,17 @@ export default function Filter(props: FilterProps) {
       place_types_ids: place_types_ids,
       food_types_ids: food_types_ids,
       place_profiles_ids: place_profiles_ids,
-      
     };
     try {
       const response = await filters(req);
-      console.log(response);
+      FilterSearch(response);
+      console.log(response)
+      
     } catch (error) {
-      alert("Deu algo errado no catch");
+      alert("Deu algo errado no catch!!!");
     }
   };
-
+  
   return (
     <>
       <FilterButton id="buttonFilter" onClick={handleClickOpen}>
@@ -74,8 +78,8 @@ export default function Filter(props: FilterProps) {
       </FilterButton>
       <DialogStyled open={open} onClose={handleClose}>
         <FilterTitle>Filtros</FilterTitle>
-        <DialogContent>
-          <form onSubmit={handleSubmit(onSubmit)}>
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <DialogContent>
             <FormGroupStyled>
               <h3>Tipos de loja</h3>
               {TAGS.map((tag, index) => {
@@ -95,7 +99,7 @@ export default function Filter(props: FilterProps) {
                 if (tag.tag_type === "food_types_ids") {
                   return (
                     <FormControlLabel
-                    {...register("food_types_ids")}
+                      {...register("food_types_ids")}
                       control={<Checkbox value={tag.tag_id} />}
                       label={tag.tag}
                       key={index}
@@ -108,7 +112,7 @@ export default function Filter(props: FilterProps) {
                 if (tag.tag_type === "place_profiles_ids") {
                   return (
                     <FormControlLabel
-                    {...register("place_profiles_ids")}
+                      {...register("place_profiles_ids")}
                       control={<Checkbox value={tag.tag_id} />}
                       label={tag.tag}
                       key={index}
@@ -116,13 +120,12 @@ export default function Filter(props: FilterProps) {
                   );
                 } else return "";
               })}
-              <button type="submit">teste</button>
             </FormGroupStyled>
-          </form>
-        </DialogContent>
-        <DialogActions>
-          <Button text="Ver resultados" redirect="/" />
-        </DialogActions>
+          </DialogContent>
+          <DialogActions>
+            <SubmitButton text="Ver resultados" />
+          </DialogActions>
+        </form>
       </DialogStyled>
     </>
   );

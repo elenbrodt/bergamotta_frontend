@@ -24,7 +24,6 @@ function SignUp() {
   const [country, setCountry] = useState("");
 
   const onSubmit = (data: any) =>{
-    console.log(data)
     setEmail(data.email)
     setPassword(data.password)
     setName(data.name)

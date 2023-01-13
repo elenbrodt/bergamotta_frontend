@@ -11,7 +11,7 @@ function App() {
 
   useEffect (()=>{
     const user = Cookie.get("user")
-    console.log(user)
+    
     if (user){
       dispatch(setUser(JSON.parse(user)))
     }

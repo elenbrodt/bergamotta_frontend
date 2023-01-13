@@ -6,7 +6,5 @@ export function filters(req: any)
          {  place_types_ids: req.place_types_ids, 
             food_types_ids: req.food_types_ids, 
             place_profiles_ids: req.place_profiles_ids})
-            .then(function (response){
-                console.log(response)
-            })
+            
 }

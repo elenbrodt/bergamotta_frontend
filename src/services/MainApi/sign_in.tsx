@@ -10,7 +10,5 @@ export function createUser(req: any)
             city: req.city, 
             state:req.state, 
             country: req.country})
-            .then(function (response){
-                console.log(response)
-            })
+        
 }
