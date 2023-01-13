@@ -18,7 +18,6 @@ export default function ListBlogs() {
             try{
                 const response = await listBlog();
                 setPlaces (response.data);
-                console.log(response.data)
                 
             }catch(error){
                 alert("Deu algo errado no catch")
