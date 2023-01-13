@@ -4,7 +4,9 @@ import Logo from "../../assets/image/logo.png";
 export function Footer () {
     return (
         <Footerstyle>
+            <a href="/">
             <ImgLogo src={Logo} alt="Logo Bergamotta" />
+            </a>
             <Nav>
                 <NavLink to="/search">Busca</NavLink>
                 <NavLink to="/partner">Seja um parceiro</NavLink>
