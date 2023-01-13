@@ -5,7 +5,7 @@ import { Footer } from "../../components/Footer";
 import { useUser } from "../../store/modules/user";
 import { useEffect, useState } from "react";
 import { byIdUser } from "../../services/MainApi/user_profile";
-import { BlogCommentComponent}  from "../../components/BlogComment"
+import BlogCommentComponent from "../../components/BlogComment"
 
 interface UserDataProps {
     id: string;
