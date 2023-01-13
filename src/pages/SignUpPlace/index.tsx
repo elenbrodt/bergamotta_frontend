@@ -11,9 +11,9 @@ import {
 import { TAGS } from "../../mock/tags";
 import { Link } from "react-router-dom";
 import LogoSrc from "../../assets/image/logo_vertical.png";
-import Button from "../../components/Button";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
+import SubmitButton from "../../components/SubmitButton";
 
 function SignUpPlace() {
   const { register, handleSubmit } = useForm();
@@ -262,18 +262,10 @@ function SignUpPlace() {
                 }else return "";
             })}
             </FormGroupStyled>
-            <Button
-              theme="signin_owner"
-              text="Salvar alterações"
-              redirect="/"
-            />
+            <SubmitButton theme="signin_owner" text="Salvar alterações" />
           </Box>
-
           </form>
-          
-        
       </SignInPlaceBox>
-      
     </SignInPlaceContainer>
   );
 }

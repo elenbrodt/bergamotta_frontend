@@ -39,7 +39,7 @@ export default function CadastroOwner () {
   <input type="text" placeholder="    digite o País" className='config-input-tertiary'/>
   </div>
   </div>
-  <button>Salvar alterações</button>
+  <button className="btn_cadastro_owner">Salvar alterações</button>
   </div>
   </>
     )
