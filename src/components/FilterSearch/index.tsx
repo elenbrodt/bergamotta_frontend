@@ -1,4 +1,3 @@
-import CardPlace from "../CardPlace";
 
 interface Place {
     id:string;
@@ -12,6 +11,8 @@ interface Place {
 interface FilterSearchProps {
     data: Place[]
 }
+
+
 function FilterSearch (props: FilterSearchProps){
     const data = props.data
     return (

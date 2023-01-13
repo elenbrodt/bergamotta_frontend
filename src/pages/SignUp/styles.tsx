@@ -28,4 +28,5 @@ export const RadioGroupStyled = styled (RadioGroup)`
 export const Container = styled.div`
     display: flex;
     gap: 1vw;
+    width: 100%;
 `
