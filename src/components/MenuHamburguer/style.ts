@@ -1,10 +1,6 @@
 import styled from "styled-components";
 import { colors, fonts } from "../../styles/theme"
 
-export const ImgHamburguer = styled.img`
-   color: black;
-   width: 50px;
-`
 export const DivHamburguer = styled.div`
    display: flex;
    justify-content: center;
