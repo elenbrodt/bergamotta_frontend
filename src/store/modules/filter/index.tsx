@@ -42,9 +42,9 @@ const filterReduce = createSlice({
         },
         removeFilter (state, action){
             Object.assign(state, {
-                place_types_ids: [],
-                food_types_ids: [],
-                place_profiles_ids: [],
+                place_types_ids: [null],
+                food_types_ids: [null],
+                place_profiles_ids: [null],
                 isFiltered: false,
             })
         }

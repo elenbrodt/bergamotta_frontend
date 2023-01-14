@@ -33,6 +33,23 @@ export default function SideList() {
       alert("Deu algo errado no catch");
     }
   };
+
+  const getDataFilter = async (place_types_ids:any, food_types_ids:any, place_profiles_ids:any) => {
+    const req = {
+      place_types_ids: place_types_ids,
+      food_types_ids: food_types_ids,
+      place_profiles_ids: place_profiles_ids,
+    };
+
+    try {
+      const response = await filters(req);
+      setPlaces(response.data)
+      console.log(response.data)
+    } catch (error) {
+      alert("Deu algo errado no catch");
+    }
+  };
+
   useEffect(()=>{  
     if(!filter.isFiltered){
        getData();
@@ -41,21 +58,6 @@ export default function SideList() {
       getDataFilter(filter.place_types_ids, filter.food_types_ids, filter.place_profiles_ids);
     }
   }, [filter])
-
-  const getDataFilter = async (place_types_ids:any, food_types_ids:any, place_profiles_ids:any) => {
-    const req = {
-      place_types_ids: place_types_ids,
-      food_types_ids: food_types_ids,
-      place_profiles_ids: place_profiles_ids,
-    };
-    try {
-      const response = await filters(req);
-      setPlaces(response.data)
-      
-    } catch (error) {
-      alert("Deu algo errado no catch");
-    }
-  };
 
   const handleClcik=()=>{
       dispatch(removeFilter({}));
