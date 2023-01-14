@@ -7,17 +7,15 @@ import { setUser } from './store/modules/user';
 function App() {
 
   const dispatch = useDispatch();
-  
-
   useEffect (()=>{
     const user = Cookie.get("user")
-    
+  
     if (user){
       dispatch(setUser(JSON.parse(user)))
     }
-  }, [])
-  return (
 
+    }, [dispatch])
+  return (
     <Routes/>   
   );
 }

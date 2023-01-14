@@ -34,7 +34,6 @@ const userReduce = createSlice({
             Object.assign(state, {
                 token: undefined,
                 findUser: undefined,
-    
                 isLogged: false,
             })
         }

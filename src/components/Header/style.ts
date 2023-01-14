@@ -58,7 +58,7 @@ export const ImgLogo = styled.img`
     }
 `
 
-export const HamburguerMenu = styled.p`
+export const HamburguerMenu = styled.div`
     display:none;
     @media (max-width:768px){
         display: block;

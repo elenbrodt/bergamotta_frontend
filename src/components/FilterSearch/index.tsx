@@ -12,13 +12,13 @@ interface FilterSearchProps {
     data: Place[]
 }
 
-
 function FilterSearch (props: FilterSearchProps){
+  
+
     const data = props.data
     return (
       data.map((place, index)=>(
-        console.log(place)
-        
+        <p>{place.name}</p>
       ))
     )
 }

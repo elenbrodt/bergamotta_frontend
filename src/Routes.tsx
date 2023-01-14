@@ -24,12 +24,12 @@ export default function Routes() {
                 <Route path="/cadastro" element={<SignUp />} />
                 <Route path="/restaurantlocked/:id" element={<RestaurantLocked />} />
                 <Route path="/restaurantlocked" element={<RestaurantLocked />} />
-                <Route path="/configuser" element={<ConfigUser />} />
+                <Route path ="/configuser" element={<ConfigUser />} />
                 <Route path="/perfil" element={<UserFavorites />} />
                 <Route path="/blogarticle/:id" element={<BlogArticle />} />
                 <Route path="/cadastrorestaurante" element={<SignUpPlace />} />
                 <Route path="/cadastroowner" element={<CadastroOwner/>}/>
-            </WrapperRoutes>
+            </WrapperRoutes>        
         </BrowserRouter>
     );
 }

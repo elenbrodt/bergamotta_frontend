@@ -5,6 +5,7 @@ import { Ul, Li, DivHeader, Nav, ImgLogo, HamburguerMenu, NavLink } from "./styl
 import { useUser } from '../../store/modules/user';
 import { useEffect, useState } from "react";
 import { byIdOwner } from "../../services/MainApi/owner";
+import { byIdUser } from "../../services/MainApi/user_profile";
 
 function Header() {
     const user = useUser();
@@ -16,8 +17,13 @@ function Header() {
             console.log(idUser)
             const getData = async () => {
                 try {
-                    const response = await byIdOwner(idUser);
-                    if(response.data.id){
+                    const responseOwner = await byIdOwner(idUser);
+                    const responseUser = await byIdUser(idUser);
+                    if(responseOwner.data.id){
+                        setUserType("owner")
+                    }
+                    console.log("aquiii agora",responseUser.data)
+                    if(responseUser.data.id){
                         setUserType("owner")
                     }
                 } catch (error: any) {
@@ -37,13 +43,13 @@ function Header() {
                 <HamburguerMenu>
                     <MenuHamburguer />
                 </HamburguerMenu>
-                    <NavLink to="/">
+                <NavLink to="/">
                     <ImgLogo src={Logo} alt="Logo Bergamotta" />
                 </NavLink>
                 <Nav>
                     <Ul>
                         <Li><NavLink to="/">Busca</NavLink></Li>
-                        <Li><NavLink to="/">Blog</NavLink></Li>
+                        <Li><NavLink to="/blog">Blog</NavLink></Li>
                         <Li><NavLink to="/">Editar Perfil</NavLink></Li>
                         <Li><NavLink to="/sobrenos">Quem Somos</NavLink></Li>
                         <Li><NavLink to="/parceiros">Seja Um Parceiro</NavLink></Li>
@@ -83,9 +89,9 @@ function Header() {
                     </NavLink>
                     <Nav>
                         <Ul>
-                            <Li><NavLink to="/">Blog</NavLink></Li>
-                            <Li><NavLink to="/">Perfil</NavLink></Li>
-                            <Li><NavLink to="/">Seja Um Parceiro</NavLink></Li>
+                            <Li><NavLink to="/blog">Blog</NavLink></Li>
+                            <Li><NavLink to="/perfil">Perfil</NavLink></Li>
+                            <Li><NavLink to="/parceiro">Seja Um Parceiro</NavLink></Li>
                             <Li><NavLink to="/sobrenos">Quem Somos</NavLink></Li>
                             <Li><NavLink to="/cadastro">Cadastro</NavLink></Li>
                         </Ul>

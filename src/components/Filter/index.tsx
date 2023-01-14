@@ -15,12 +15,12 @@ import {
   FormGroupStyled,
 } from "./styles";
 import "./style.css";
-import IconButton from "@mui/material/IconButton";
 import { TAGS } from "../../mock/tags";
 import { useForm } from "react-hook-form";
-import { filters } from "../../services/MainApi/filter";
 import SubmitButton from "../SubmitButton";
-import FilterSearch from "../../components/FilterSearch";
+import { useDispatch } from "react-redux";
+import { setFilter } from "../../store/modules/filter";
+import { useNavigate } from "react-router-dom";
 
 interface FilterProps {
   texto: string;
@@ -28,52 +28,31 @@ interface FilterProps {
 
 export default function Filter(props: FilterProps) {
   const { register, handleSubmit } = useForm();
-
-  const [place_types_ids, setPlaceTypes] = useState([""]);
-  const [food_types_ids, setFoodTypes] = useState([""]);
-  const [place_profiles_ids, setPlaceProfiles] = useState([""]);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const onSubmit = (data: any) => {
-
-    setPlaceTypes(data.place_types_ids);
-    setFoodTypes(data.food_types_ids);
-    setPlaceProfiles(data.place_profiles_ids);
-    getData();
-    
+    dispatch(setFilter({
+      place_types_ids: data.place_types_ids,
+      food_types_ids: data.food_types_ids,
+      place_profiles_ids: data.place_profiles_ids
+    }))
+    handleClose();
   };
 
   const [open, setOpen] = useState(false);
-
   const handleClickOpen = () => {
     setOpen(true);
   };
-
   const handleClose = () => {
     setOpen(false);
-  };
-
-  const getData = async () => {
-    const req = {
-      place_types_ids: place_types_ids,
-      food_types_ids: food_types_ids,
-      place_profiles_ids: place_profiles_ids,
-    };
-    try {
-      const response = await filters(req);
-      FilterSearch(response);
-      console.log(response)
-      
-    } catch (error) {
-      alert("Deu algo errado no catch!!!");
-    }
+    navigate('/');
   };
   
   return (
     <>
       <FilterButton id="buttonFilter" onClick={handleClickOpen}>
-        <IconButton>
           <img src={FilterIcon} alt="iconfilter" />
-        </IconButton>
         <FilterLinkText>{props.texto}</FilterLinkText>
       </FilterButton>
       <DialogStyled open={open} onClose={handleClose}>
