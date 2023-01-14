@@ -3,15 +3,15 @@ import Header from "../../components/Header"
 import { ContainerBlog } from "./styles"
 import { Footer } from "../../components/Footer";
 import { useUser } from "../../store/modules/user";
-import { useEffect, useState } from "react";
-import { byIdUser } from "../../services/MainApi/user_profile";
+// import { useEffect, useState } from "react";
+// import { byIdUser } from "../../services/MainApi/user_profile";
 import BlogCommentComponent from "../../components/BlogComment"
 
-interface UserDataProps {
-    id: string;
-    name: string;
-    image_link: string;    
-  }
+// interface UserDataProps {
+//     id: string;
+//     name: string;
+//     image_link: string;    
+//   }
 
 
 function BlogArticle() {
@@ -20,19 +20,19 @@ function BlogArticle() {
     const userData = useUser();
   const idUser = userData.findUser.id;
 
-  const [user, setUser] = useState<UserDataProps>();
-  useEffect(() => {
-    const getData = async () => {
-      try {
-        const response = await byIdUser(idUser);
-        setUser(response.data);
-      } catch (error) {
-        alert("Deu algo errado no catch");
-      }
-    };
-    getData();
+//   const [user, setUser] = useState<UserDataProps>();
+//   useEffect(() => {
+//     const getData = async () => {
+//       try {
+//         const response = await byIdUser(idUser);
+//         setUser(response.data);
+//       } catch (error) {
+//         alert("Deu algo errado no catch");
+//       }
+//     };
+//     getData();
     
-  }, [setUser, idUser]);
+//   }, [setUser, idUser]);
 
     return (
         <div className="App">
