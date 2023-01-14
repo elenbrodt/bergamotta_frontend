@@ -17,3 +17,7 @@ export function createBlogComment(req: any, props: string) {
                 'Authorization': `Bearer ${req.token}`              
             }})
 }
+
+export function blogCommentList(props:string) {
+    return baseApi.get(`/blogcomments/${props}`)
+}
