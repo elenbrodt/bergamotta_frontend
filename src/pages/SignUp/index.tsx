@@ -94,8 +94,8 @@ function SignUp() {
         <form id="form" onSubmit={handleSubmit(onSubmit)}>
           <Inputs>
             <RadioGroupStyled color="secondary" row defaultValue="user" >
-                <UserType user_type="user" text="Sou usuário" onChange={handleClick}></UserType>
-                <UserType user_type="owner" text="Sou restaurante" onChange={handleClick}></UserType>
+                <UserType name="user" user_type="user" text="Sou usuário" onChange={handleClick}></UserType>
+                <UserType name="owner" user_type="owner" text="Sou restaurante" onChange={handleClick}></UserType>
             </RadioGroupStyled>
             <FormControl fullWidth {...register("name")}>
               <InputLogin type="text" placeholder="Digite seu usuário" name="name" />

@@ -6,5 +6,5 @@ interface authUserPayload {
 }
 
 export function authUser(payload: authUserPayload) {
-  return baseApi.post("/authentication", payload);
+  return baseApi.post("/userauthentication", payload);
 }

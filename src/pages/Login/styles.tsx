@@ -1,5 +1,6 @@
 import styled from 'styled-components';
-
+import {  FormControlLabel, RadioGroup } from "@mui/material";
+import { fonts } from "../../styles/theme";
 export const LoginBox = styled.div`
     display: flex;
     flex-direction: column;
@@ -20,5 +21,20 @@ export const Inputs =styled.div`
     gap: 5vh;
     width: 100%;
 `
-
-
+export const Container = styled.div`
+    display: flex;
+    gap: 1vw;
+    width: 100%;
+`
+export const FormControlLabelStyled = styled (FormControlLabel)`
+    .MuiFormControlLabel-label{
+        font-family:${fonts.secondary}
+        font-size: 18px;
+        font-weight: 700;
+    }
+`
+export const RadioGroupStyled = styled (RadioGroup)`
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+`

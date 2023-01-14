@@ -32,15 +32,13 @@ export default function Filter(props: FilterProps) {
   const navigate = useNavigate();
 
   const onSubmit = (data: any) => {
-    console.log("um", data)
     dispatch(setFilter({
       place_types_ids: data.place_types_ids,
       food_types_ids: data.food_types_ids,
       place_profiles_ids: data.place_profiles_ids
     }))
     reset(data.place_types_ids, data.food_types_ids)
-    reset(data.place_profiles_ids)
-    console.log("dois", data)
+    reset(data.place_profiles_ids) 
     handleClose();
   };
 
