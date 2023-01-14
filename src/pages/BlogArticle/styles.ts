@@ -18,4 +18,13 @@ line-height: 26px;
 text-decoration: none;
 text-align: center;
 `
-
+export const CommentTitle = styled.p`
+display: block;
+padding-left: 15%;
+margin-top: 70px;
+font-family: ${fonts.secondary};
+font-weight: 700;
+font-size: 24px;
+line-height: 26px;
+color: ${colors.black};
+`
