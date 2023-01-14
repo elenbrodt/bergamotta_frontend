@@ -8,7 +8,7 @@ interface ButtonProps {
 
 function Button (props: ButtonProps) {
     return (
-<ButtonLogin theme={props.theme} href={props.redirect}>{props.text}</ButtonLogin>
+        <ButtonLogin theme={props.theme} href={props.redirect}>{props.text}</ButtonLogin>
     );
 }
 
