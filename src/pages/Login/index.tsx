@@ -6,7 +6,6 @@ import { Link, useNavigate } from "react-router-dom";
 import TitleLogin from "../../components/TitleLogin";
 import SignInLink from "../../components/SignInLink";
 import { useForm } from "react-hook-form";
-import { useState } from "react";
 import { authUser } from "../../services/MainApi/login";
 import { FormControl } from "@mui/material";
 import {useDispatch} from 'react-redux'
@@ -16,22 +15,16 @@ import SubmitButton from "../../components/SubmitButton";
 function Login() {
   const { register, handleSubmit } = useForm();
 
-  const [email, setEmail] = useState<string>("");
-  const [password, setPassword] = useState<string>("");
-
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const onSubmit = (data: any) => {
-    setEmail(data.email);
-    setPassword(data.password);
-    login();
+    login(data.email, data.password);
   };
 
-  const login = async () => {
+  const login = async (email:any, password:any) => {
     try {
       const response = await authUser({ email, password });
-      console.log(response.data);
       dispatch(setUser({
           token: response.data,
           findUser: response.data.token,
