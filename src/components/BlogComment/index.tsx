@@ -39,7 +39,7 @@ export default function BlogCommentComponent(id: string) {
         const token = userToken.findUser.id
 
         const onSubmit = (data: any,) =>{
-          setComment(data)
+          setComment(data.comment)
           setDate("")
           setRecipe_id(urlId)
           setUser_id(id)          
