@@ -76,7 +76,7 @@ export default function BlogCommentComponent(id: string) {
                     </UserName>
                 </UserDiv>
                 <FormDiv onSubmit={handleSubmit(onSubmit)}>
-                    <CommentInput {...register("comment")}/>
+                    <CommentInput {...register("comment")} name ="comment"/>
                     <CommentBtn>Comentar</CommentBtn>
                 </FormDiv>
             </GeneralDiv>

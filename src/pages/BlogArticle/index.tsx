@@ -1,11 +1,12 @@
 import BlogComponent from "../../components/BlogArticle";
 import Header from "../../components/Header"
-import { ContainerBlog } from "./styles"
+import { ContainerBlog, CommentTitle } from "./styles"
 import { Footer } from "../../components/Footer";
 import { useUser } from "../../store/modules/user";
 // import { useEffect, useState } from "react";
 // import { byIdUser } from "../../services/MainApi/user_profile";
 import BlogCommentComponent from "../../components/BlogComment"
+import ListBlogComments from "../../components/BlogCommentsList"
 
 // interface UserDataProps {
 //     id: string;
@@ -44,7 +45,9 @@ function BlogArticle() {
                     {BlogComponent(urlId)}
                 </ContainerBlog>  
                 {userData.isLogged && BlogCommentComponent(idUser)}     
-                {!userData.isLogged && <a href="/login">Logar para comentar</a>}      
+                {!userData.isLogged && <a href="/login">Logar para comentar</a>}
+                <CommentTitle>Comentários</CommentTitle>
+                <ListBlogComments/>
             </main>
             <footer>
                 <Footer />
