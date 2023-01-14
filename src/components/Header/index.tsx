@@ -3,7 +3,6 @@ import MenuHamburguer from "../MenuHamburguer"
 import Logo from "../../assets/image/logo.png";
 import { Ul, Li, DivHeader, Nav, ImgLogo, HamburguerMenu, NavLink } from "./style";
 import { useUser } from '../../store/modules/user';
-import { useEffect, useState } from "react";
 import { useOwner } from "../../store/modules/owner";
 
 function Header() {
