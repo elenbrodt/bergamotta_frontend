@@ -1,5 +1,5 @@
 import { CheckBox } from "@mui/icons-material";
-import { ToggleButton } from "@mui/material";
+import { Rating, ToggleButton } from "@mui/material";
 import styled from "styled-components";
 import { colors, fonts } from "../../styles/theme";
 
@@ -146,3 +146,9 @@ export const ColumnRating = styled.div`
     background-color: ${(props) => (props ? "none" : colors.primary)};
   }
 `;
+
+export const StyledRating = styled (Rating)`
+    & .MuiRating-iconFilled{
+        color:${colors.secondary}
+    }
+`

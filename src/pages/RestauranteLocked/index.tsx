@@ -12,10 +12,10 @@ import {
   ColumnLastRatings,
   ContainerGreen,
   ColumnRating,
+  StyledRating,
 } from "./style";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import PhoneIcon from "@mui/icons-material/Phone";
-import GreenBanner from "../../components/GreenBanner";
 import {
   averageById,
   cozyById,
@@ -37,7 +37,7 @@ import { userFavoriteById } from "../../services/MainApi/favorites";
 import { useUser } from "../../store/modules/user";
 import CardRating from "../../components/CardRating";
 import { Link } from "react-router-dom";
-
+import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
 import { useForm } from "react-hook-form";
 
 interface Place {
@@ -60,6 +60,7 @@ function RestaurantLocked() {
   const at = socials?.split("/")[3];
 
   const [value, setValue] = useState<number>(1); //rating stars
+  const [price, setPrice] = useState<number>(1);
 
   const [goods, setGoods] = useState<string[]>([]);
 
@@ -76,6 +77,15 @@ function RestaurantLocked() {
         const response = await byIdPlace(urlId);
         setPlace(response.data);
         setSocials(response.data.social_media);
+        if (response.data.average_ticket_price < 50){
+          setPrice(1);
+        }
+        if (50 >= response.data.average_ticket_price || response.data.average_ticket_price <= 89){
+          setPrice(2);
+        }
+        else if (response.data.average_ticket_price > 90) {
+          setPrice(3);
+        }
       } catch (error) {
         alert("Deu algo errado no catch");
       }
@@ -93,7 +103,7 @@ function RestaurantLocked() {
     const getRatingWelcoming = async () => {
       try {
         const response = await welcomingServiceById(urlId);
-        if (response.data == "good") {
+        if (response.data === "good") {
           setGoods((goods) => [...goods, "Atendimento Acolhedor"]);
         }
       } catch (error) {
@@ -104,7 +114,7 @@ function RestaurantLocked() {
     const getIngredientSubstitution = async () => {
       try {
         const response = await ingredientSubstitutionById(urlId);
-        if (response.data == "good") {
+        if (response.data === "good") {
           setGoods((goods) => [...goods, "Alteração de ingredientes"]);
         }
       } catch (error) {
@@ -115,7 +125,7 @@ function RestaurantLocked() {
     const getInstagrammableFoodById = async () => {
       try {
         const response = await instagrammableFoodById(urlId);
-        if (response.data == "good") {
+        if (response.data === "good") {
           setGoods((goods) => [...goods, "Instagramável"]);
         }
       } catch (error) {
@@ -126,7 +136,7 @@ function RestaurantLocked() {
     const getTastyFoodById = async () => {
       try {
         const response = await tastyFoodById(urlId);
-        if (response.data == "good") {
+        if (response.data === "good") {
           setGoods((goods) => [...goods, "Saboroso"]);
         }
       } catch (error) {
@@ -137,7 +147,7 @@ function RestaurantLocked() {
     const getCozyById = async () => {
       try {
         const response = await cozyById(urlId);
-        if (response.data == "good") {
+        if (response.data === "good") {
           setGoods((goods) => [...goods, "Aconchegante"]);
         }
       } catch (error) {
@@ -148,7 +158,7 @@ function RestaurantLocked() {
     const getServiceSpeed = async () => {
       try {
         const response = await serviceSpeed(urlId);
-        if (response.data == "good") {
+        if (response.data === "good") {
           setGoods((goods) => [...goods, "Rápido atendimento"]);
         }
       } catch (error) {
@@ -167,6 +177,7 @@ function RestaurantLocked() {
       };
       getFavorites();
     }
+    
   }, [setPlace, urlId, user]);
 
   const [toggle, setToggle] = useState<boolean>(true);
@@ -209,7 +220,13 @@ function RestaurantLocked() {
                     checkedIcon={<Favorite color='error' />}
                   />
                 </div>
-                <p className='favorite_box'>Price</p>
+                <StyledRating
+                  value={price}
+                  readOnly
+                  max={3}
+                  icon={<AttachMoneyIcon fontSize="inherit"/>}
+                  emptyIcon={<AttachMoneyIcon fontSize="inherit"/>}
+                />
                 <Container className='favorite_box'>
                   <PhoneIcon />
                   {place?.phone}
@@ -314,7 +331,14 @@ function RestaurantLocked() {
                   checkedIcon={<Favorite color='error' />}
                 />
               </div>
-              <p className='favorite_box'>Price</p>
+              <StyledRating
+                  className='favorite_box'
+                  value={price}
+                  readOnly
+                  max={3}
+                  icon={<AttachMoneyIcon fontSize="inherit"/>}
+                  emptyIcon={<AttachMoneyIcon fontSize="inherit"/>}
+                />
               <Container className='favorite_box'>
                 <PhoneIcon />
                 {place?.phone}

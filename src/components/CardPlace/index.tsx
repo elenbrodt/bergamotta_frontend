@@ -1,9 +1,9 @@
 import { CardContent, CardMedia, Rating } from "@mui/material";
-import { CardBergamotta, PriceBox, LinkCard } from "./styles";
+import { CardBergamotta, LinkCard, Container } from "./styles";
 import "./style.css";
-import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
 import { averageById } from "../../services/MainApi/ratings";
 import { useEffect, useState } from "react";
+import AccessTimeFilledIcon from "@mui/icons-material/AccessTimeFilled";
 
 interface CardProps {
   id: string;
@@ -14,49 +14,25 @@ interface CardProps {
   theme?: string;
 }
 
-function Price(price: number) {
-  if (price < 50) {
-    return (
-      <PriceBox>
-        <AttachMoneyIcon />
-      </PriceBox>
-    );
-  }
-  if (50 >= price || price <= 89) {
-    return (
-      <PriceBox>
-        <AttachMoneyIcon />
-        <AttachMoneyIcon />
-      </PriceBox>
-    );
-  } else if (price > 90) {
-    return (
-      <PriceBox>
-        <AttachMoneyIcon />
-        <AttachMoneyIcon />
-        <AttachMoneyIcon />
-      </PriceBox>
-    );
-  }
-}
 function CardPlace(props: CardProps) {
   const id = "/restaurantlocked/" + props.id;
-  const [value, setValue] = useState<number>(1);
-
-  const getAverage = async () => {
-    try {
-      const response = await averageById(props.id);
-      setValue(response.data);
-    } catch (error) {
-      alert("Deu algo errado no catch");
-    }
-  };
+  const [value, setValue] = useState<number>(1); //rating stars
 
   useEffect(() => {
+    const getAverage = async () => {
+      try {
+        const response = await averageById(props.id);
+        setValue(response.data);
+      } catch (error) {
+        alert("Deu algo errado no catch");
+      }
+    };
     if (props.id !== "000") {
       getAverage();
     }
-  });
+  }, [ props]);
+
+  
 
   return (
     <LinkCard to={id} className={props.theme}>
@@ -70,8 +46,10 @@ function CardPlace(props: CardProps) {
         <CardContent>
           <h5>{props.name}</h5>
           <Rating value={value} precision={0.5} readOnly />
-          {Price(props.average_ticket_price)}
-          <p>{props.opening_hours}</p>
+          <Container>
+            <AccessTimeFilledIcon />
+            <p>{props.opening_hours}</p>
+          </Container>
         </CardContent>
       </CardBergamotta>
     </LinkCard>

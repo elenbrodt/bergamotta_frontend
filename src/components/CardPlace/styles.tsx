@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import { Card } from '@mui/material';
-import { colors } from '../../styles/theme';
 import { Link } from 'react-router-dom';
 
 
@@ -9,15 +8,18 @@ export const CardBergamotta = styled (Card)`
     max-width: 37vw;
 `
 
-export const PriceBox = styled.div`
-    display: flex;
-    color: ${colors.secondary};
-`
-
 export const LinkCard = styled (Link)`
     text-decoration: none;
     &:hover{
         border: 2px solid black;
     }
 
+`
+export const Container = styled.div`
+    display: flex;
+    align-items: center;
+    gap: 0.5vw;
+    p{
+        width: 40%;
+    }
 `

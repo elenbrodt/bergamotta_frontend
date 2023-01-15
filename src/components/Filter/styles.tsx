@@ -6,7 +6,8 @@ export const FilterButton = styled.button`
   display: flex;
   align-items:center;
   justify-content: center;
-  width: 14vw;
+  width: 18vw;
+  gap: 1vw;
   border-radius: 36px;
   border: 2px solid ${colors.secondary};
   color: ${colors.secondary};
