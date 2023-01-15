@@ -1,18 +1,37 @@
-import React, { useEffect, useState } from 'react';
-import Header from "../../components/Header"
-import AccessTimeFilledIcon from '@mui/icons-material/AccessTimeFilled';
-import { byIdPlace } from '../../services/MainApi/restaurant';
-import {Box, Container, Title, Column, PlaceContainer, FavoriteButton} from "./style"
-import InstagramIcon from '@mui/icons-material/Instagram'
-import PhoneIcon from '@mui/icons-material/Phone'
-import GreenBanner from '../../components/GreenBanner';
-import { averageById, cozyById, ingredientSubstitutionById, instagrammableFoodById, serviceSpeed, tastyFoodById, welcomingServiceById } from '../../services/MainApi/ratings';
-import {  Checkbox, Rating } from '@mui/material';
-import { Favorite, FavoriteBorder } from '@mui/icons-material';
-import { userFavoriteById } from '../../services/MainApi/favorites';
-import { useUser } from '../../store/modules/user';
+import React, { useEffect, useRef, useState } from "react";
+import Header from "../../components/Header";
+import AccessTimeFilledIcon from "@mui/icons-material/AccessTimeFilled";
+import { byIdPlace } from "../../services/MainApi/restaurant";
+import {
+  Box,
+  Container,
+  Title,
+  Column,
+  PlaceContainer,
+  GoodsTags,
+  ColumnLastRatings,
+  ContainerGreen,
+} from "./style";
+import InstagramIcon from "@mui/icons-material/Instagram";
+import PhoneIcon from "@mui/icons-material/Phone";
+import GreenBanner from "../../components/GreenBanner";
+import {
+  averageById,
+  cozyById,
+  ingredientSubstitutionById,
+  instagrammableFoodById,
+  serviceSpeed,
+  tastyFoodById,
+  welcomingServiceById,
+} from "../../services/MainApi/ratings";
+import { Checkbox, Rating } from "@mui/material";
+import { Favorite, FavoriteBorder } from "@mui/icons-material";
+import { userFavoriteById } from "../../services/MainApi/favorites";
+import { useUser } from "../../store/modules/user";
+import CardRating from "../../components/CardRating";
+import { Link } from "react-router-dom";
 interface Place {
-  id:string;
+  id: string;
   name: string;
   latitude: number;
   longitude: number;
@@ -29,14 +48,19 @@ function RestaurantLocked() {
   const [socials, setSocials] = useState<string>();
   const [value, setValue] = useState<number>(1);
 
+  const [goods, setGoods] = useState<string[]>([]);
+
   const user = useUser();
-  
+
+  const dataFetchRef = useRef(false);
   useEffect(() => {
+    if (dataFetchRef.current) return;
+    dataFetchRef.current = true;
     const getData = async () => {
       try {
         const response = await byIdPlace(urlId);
         setPlace(response.data);
-        setSocials(response.data.social_media)
+        setSocials(response.data.social_media);
       } catch (error) {
         alert("Deu algo errado no catch");
       }
@@ -54,7 +78,9 @@ function RestaurantLocked() {
     const getRatingWelcoming = async () => {
       try {
         const response = await welcomingServiceById(urlId);
-        console.log(response.data)
+        if (response.data == "good") {
+          setGoods((goods) => [...goods, "Atendimento Acolhedor"]);
+        }
       } catch (error) {
         alert("Deu algo errado no catch");
       }
@@ -63,7 +89,9 @@ function RestaurantLocked() {
     const getIngredientSubstitution = async () => {
       try {
         const response = await ingredientSubstitutionById(urlId);
-        console.log(response.data)
+        if (response.data == "good") {
+          setGoods((goods) => [...goods, "Alteração de ingredientes"]);
+        }
       } catch (error) {
         alert("Deu algo errado no catch");
       }
@@ -72,7 +100,9 @@ function RestaurantLocked() {
     const getInstagrammableFoodById = async () => {
       try {
         const response = await instagrammableFoodById(urlId);
-        console.log(response.data)
+        if (response.data == "good") {
+          setGoods((goods) => [...goods, "Instagramável"]);
+        }
       } catch (error) {
         alert("Deu algo errado no catch");
       }
@@ -81,7 +111,9 @@ function RestaurantLocked() {
     const getTastyFoodById = async () => {
       try {
         const response = await tastyFoodById(urlId);
-        console.log(response.data)
+        if (response.data == "good") {
+          setGoods((goods) => [...goods, "Saboroso"]);
+        }
       } catch (error) {
         alert("Deu algo errado no catch");
       }
@@ -90,7 +122,9 @@ function RestaurantLocked() {
     const getCozyById = async () => {
       try {
         const response = await cozyById(urlId);
-        console.log(response.data)
+        if (response.data == "good") {
+          setGoods((goods) => [...goods, "Aconchegante"]);
+        }
       } catch (error) {
         alert("Deu algo errado no catch");
       }
@@ -99,79 +133,95 @@ function RestaurantLocked() {
     const getServiceSpeed = async () => {
       try {
         const response = await serviceSpeed(urlId);
-        console.log(response.data)
+        if (response.data == "good") {
+          setGoods((goods) => [...goods, "Rápido atendimento"]);
+        }
       } catch (error) {
         alert("Deu algo errado no catch");
       }
     };
     getServiceSpeed();
-    
-    
-    
-  }, [setPlace, urlId, user.findUser, user.isLogged, user.token]);
+  }, [setPlace, urlId, user]);
 
-  if (user.isLogged){
+  if (user.isLogged) {
     const getFavorites = async () => {
       try {
         const response = await userFavoriteById(user.token, urlId);
-        console.log(response)
+        console.log(response);
       } catch (error) {
         alert("Deu algo errado no catch");
       }
     };
-    getFavorites(); 
+    getFavorites();
   }
-  const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
-
+  const label = { inputProps: { "aria-label": "Checkbox demo" } };
+  console.log(goods);
   const at = socials?.split("/")[3];
   return (
-    <div >
+    <div>
       <Header />
-      <PlaceContainer className="main">
+      <PlaceContainer className='main'>
         <Column>
-          <Box>
-            <img src={place?.image_link} alt="Imagem restaurante"/>
+          <div>
+            <img src={place?.image_link} alt='Imagem restaurante' />
             <Title>{place?.name}</Title>
-            <Container>
+          </div>
+          <Container>
             <Box>
               <Container>
-                <AccessTimeFilledIcon/>
+                <AccessTimeFilledIcon />
                 {place?.opening_hours}
               </Container>
-              <Rating value={value} precision={0.5} readOnly/>
+              <Rating id='stars' value={value} precision={0.5} readOnly />
               <Container>
-                <InstagramIcon/>
+                <InstagramIcon />
                 {at}
               </Container>
             </Box>
             <Box>
-              <div id="favorite"><Checkbox  {...label} icon={<FavoriteBorder color="error"/>}  checkedIcon={<Favorite color="error"/>} /></div>
-              <p>Price</p>
-              <Container>
-                <PhoneIcon/>
+              <div className='favorite_box'>
+                <Checkbox
+                  {...label}
+                  defaultChecked
+                  disabled
+                  icon={<FavoriteBorder color='error' />}
+                  checkedIcon={<Favorite color='error' />}
+                />
+              </div>
+              <p className='favorite_box'>Price</p>
+              <Container className='favorite_box'>
+                <PhoneIcon />
                 {place?.phone}
               </Container>
             </Box>
-            </Container>
-          </Box>
+          </Container>
+
           <Box>
-            <h3>O que mais curtem no local</h3>
+            <GoodsTags>
+              {goods.map((good, index) => (
+                <p key={index}>{good}</p>
+              ))}
+            </GoodsTags>
           </Box>
         </Column>
-        <Column>
+        <ColumnLastRatings>
           <Box>
             <h2>Últimas avaliações</h2>
-            <p>Card avaliações</p>
-            
+            <CardRating
+              id='0000000'
+              name='Jane Doe'
+              image_link='https://s2.static.brasilescola.uol.com.br/be/2020/12/peixe.jpg'
+            />
           </Box>
-          <GreenBanner href='/cadastro' id="greenCard"
-            title = "Crie sua conta e acesse mais avaliações" btn_text="VER MAIS AVALIAÇÕES"/>
-        </Column>
-        
+          <ContainerGreen>
+            <p>Cadastre-se e saiba mais o que estão dizendo</p>
+            <Link id='signup' to='/cadastro'>
+              CRIE SUA CONTA
+            </Link>
+          </ContainerGreen>
+        </ColumnLastRatings>
       </PlaceContainer>
-
     </div>
-    
   );
 }
 
