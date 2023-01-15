@@ -11,6 +11,7 @@ import {
   GoodsTags,
   ColumnLastRatings,
   ContainerGreen,
+  ColumnRating,
 } from "./style";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import PhoneIcon from "@mui/icons-material/Phone";
@@ -24,12 +25,21 @@ import {
   tastyFoodById,
   welcomingServiceById,
 } from "../../services/MainApi/ratings";
-import { Checkbox, Rating } from "@mui/material";
+import {
+  Checkbox,
+  FormControl,
+  Rating,
+  ToggleButton,
+  ToggleButtonGroup,
+} from "@mui/material";
 import { Favorite, FavoriteBorder } from "@mui/icons-material";
 import { userFavoriteById } from "../../services/MainApi/favorites";
 import { useUser } from "../../store/modules/user";
 import CardRating from "../../components/CardRating";
 import { Link } from "react-router-dom";
+
+import { useForm } from "react-hook-form";
+
 interface Place {
   id: string;
   name: string;
@@ -44,13 +54,18 @@ interface Place {
 
 function RestaurantLocked() {
   const urlId = window.location.pathname.split("/")[2];
+
   const [place, setPlace] = useState<Place>();
   const [socials, setSocials] = useState<string>();
-  const [value, setValue] = useState<number>(1);
+  const at = socials?.split("/")[3];
+
+  const [value, setValue] = useState<number>(1); //rating stars
 
   const [goods, setGoods] = useState<string[]>([]);
 
   const user = useUser();
+
+  const { register, handleSubmit } = useForm();
 
   const dataFetchRef = useRef(false);
   useEffect(() => {
@@ -141,22 +156,134 @@ function RestaurantLocked() {
       }
     };
     getServiceSpeed();
+    if (user.isLogged) {
+      const getFavorites = async () => {
+        try {
+          const response = await userFavoriteById(user.token, urlId);
+          console.log(response.data);
+        } catch (error) {
+          alert("Deu algo errado no catch");
+        }
+      };
+      getFavorites();
+    }
   }, [setPlace, urlId, user]);
 
+  const [toggle, setToggle] = useState<boolean>(true);
+  const handleClick = () => {
+    setToggle(!toggle);
+  };
+
+  const onSubmit = (data: any) => {
+    console.log(data);
+  };
+
   if (user.isLogged) {
-    const getFavorites = async () => {
-      try {
-        const response = await userFavoriteById(user.token, urlId);
-        console.log(response);
-      } catch (error) {
-        alert("Deu algo errado no catch");
-      }
-    };
-    getFavorites();
+    return (
+      <div>
+        <Header />
+        <PlaceContainer className='main'>
+          <Column>
+            <div>
+              <img src={place?.image_link} alt='Imagem restaurante' />
+              <Title>{place?.name}</Title>
+            </div>
+            <Container>
+              <Box>
+                <Container>
+                  <AccessTimeFilledIcon />
+                  {place?.opening_hours}
+                </Container>
+                <Rating id='stars' value={value} precision={0.5} readOnly />
+                <Container>
+                  <InstagramIcon />
+                  {at}
+                </Container>
+              </Box>
+              <Box>
+                <div className='favorite_box'>
+                  <Checkbox
+                    defaultChecked
+                    disabled
+                    icon={<FavoriteBorder color='error' />}
+                    checkedIcon={<Favorite color='error' />}
+                  />
+                </div>
+                <p className='favorite_box'>Price</p>
+                <Container className='favorite_box'>
+                  <PhoneIcon />
+                  {place?.phone}
+                </Container>
+              </Box>
+            </Container>
+            <Box>
+              <GoodsTags>
+                {goods.map((good, index) => (
+                  <p key={index}>{good}</p>
+                ))}
+              </GoodsTags>
+            </Box>
+            <Box>
+              <h2>Últimas avaliações</h2>
+              <CardRating
+                id='0000000'
+                name='Jane Doe'
+                image_link='https://s2.static.brasilescola.uol.com.br/be/2020/12/peixe.jpg'
+              />
+            </Box>
+          </Column>
+          <ColumnRating>
+            <form onSubmit={handleSubmit(onSubmit)}>
+              <FormControl {...register("rating-stars")}>
+                <p>Conte como foi sua experiência</p>
+                {/* <Rating
+                  name='simple-controlled'
+                  defaultValue={2}
+                  onChange={(event, newValue) => {
+                    setValue(event);
+                  }}
+                /> */}
+              </FormControl>
+              <ToggleButtonGroup {...register("welcoming")}>
+                <p>Conte o que mais gostou no local</p>
+                <GoodsTags>
+                  <ToggleButton
+                    value={toggle}
+                    name='welcoming'
+                    onChange={() => {
+                      setToggle(!toggle);
+                    }}
+                  >
+                    Atendimento acolhedor
+                  </ToggleButton>
+                  {/* <ToggleButton
+                    value='check'
+                    selected={toggle}
+                    onChange={() => {
+                      setToggle(!toggle);
+                    }}
+                  >
+                    Aletração de ingredientes
+                  </ToggleButton>
+                  <ToggleButton
+                    value='check'
+                    selected={toggle}
+                    onChange={() => {
+                      setToggle(!toggle);
+                    }}
+                  >
+                    Instagramável
+                  </ToggleButton> */}
+                </GoodsTags>
+              </ToggleButtonGroup>
+              <button type='submit'>teste</button>
+            </form>
+          </ColumnRating>
+        </PlaceContainer>
+      </div>
+    );
   }
-  const label = { inputProps: { "aria-label": "Checkbox demo" } };
-  console.log(goods);
-  const at = socials?.split("/")[3];
+
   return (
     <div>
       <Header />
@@ -181,7 +308,6 @@ function RestaurantLocked() {
             <Box>
               <div className='favorite_box'>
                 <Checkbox
-                  {...label}
                   defaultChecked
                   disabled
                   icon={<FavoriteBorder color='error' />}
