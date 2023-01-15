@@ -9,57 +9,103 @@ import {
   FormGroupStyled,
 } from "./style";
 import { TAGS } from "../../mock/tags";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import LogoSrc from "../../assets/image/logo_vertical.png";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
 import SubmitButton from "../../components/SubmitButton";
+import { createPlace } from "../../services/MainApi/sign_in_place";
+import { useOwner } from "../../store/modules/owner";
 
 function SignUpPlace() {
+  
+  const navigate = useNavigate();
   const { register, handleSubmit } = useForm();
- 
-  const [name, setName] = useState<string>("");
-  const[city, setCity] = useState<string>("");
-  const[state, setState] = useState<string>("");
-  const [country, setCountry] = useState<string>("");
-  const[zipcode, setZipcode] = useState<string>("");
-  const[district, setDistrict] = useState<string>("");
-  const [street, setStreet] = useState<string>("");
-  const[place_number, setPlaceNumber] = useState<string>("");
-  const[complement, setComplement] = useState<number>(0);
-  const[image_link, setImageLink] = useState<string>("");
-  const[capacity, setCapacity] = useState<string>("");
-  const[description, setDescription] = useState<string>("");
-  const[phone, setPhone] = useState<string>("");
-  const[average_ticket_price, setTicketPrice] = useState<string>("");
-  const[opening_hours, setOpeningHours] = useState<string>("");
-  const[payment, setPayment] = useState<string>("");
-  const[social_media, setSocialMedia] = useState<string>("");
-  const [place_types_ids, setPlaceTypes] = useState([""]);
-  const [food_types_ids, setFoodTypes] = useState([""]);
-  const [place_profiles_ids, setPlaceProfiles] = useState([""]);
- 
+  const ownerData = useOwner()
+  const ownerId = ownerData.findOwner.id
+
+  // const [name, setName] = useState<string>("");
+  // const[city, setCity] = useState<string>("");
+  // const[state, setState] = useState<string>("");
+  // const [country, setCountry] = useState<string>("");
+  // const[zipcode, setZipcode] = useState<string>("");
+  // const[district, setDistrict] = useState<string>("");
+  // const [street, setStreet] = useState<string>("");
+  // const[place_number, setPlaceNumber] = useState<string>("");
+  // const[complement, setComplement] = useState<number>(0);
+  // const[image_link, setImageLink] = useState<string>("");
+  // const[capacity, setCapacity] = useState<string>("");
+  // const[description, setDescription] = useState<string>("");
+  // const[phone, setPhone] = useState<string>("");
+  // const[average_ticket_price, setTicketPrice] = useState<string>("");
+  // const[opening_hours, setOpeningHours] = useState<string>("");
+  // const[payment, setPayment] = useState<string>("");
+  // const[social_media, setSocialMedia] = useState<string>("");
+  // const [place_types_ids, setPlaceTypes] = useState([""]);
+  // const [food_types_ids, setFoodTypes] = useState([""]);
+  // const [place_profiles_ids, setPlaceProfiles] = useState([""]);
+
+  // const onSubmit = (data: any) => {
+  //   setName(data.name)
+  //   setCity(data.city)
+  //   setState(data.state)
+  //   setCountry(data.country)
+  //   setZipcode(data.zipcode)
+  //   setDistrict(data.district)
+  //   setStreet(data.street)
+  //   setPlaceNumber(data.place_number)
+  //   setComplement(data.complement)
+  //   setImageLink(data.image_link)
+  //   setCapacity(data.capacity)
+  //   setDescription(data.description)
+  //   setPhone(data.phone)
+  //   setTicketPrice(data.average_ticket_price)
+  //   setOpeningHours(data.opening_hours)
+  //   setPayment(data.payment)
+  //   setSocialMedia(data.social_media)
+  //   setPlaceTypes(data.place_types_ids)
+  //   setFoodTypes(data.food_types_ids)
+  //   setPlaceProfiles(data.place_profiles_ids)
+  // };
+
   const onSubmit = (data: any) => {
-    setName(data.name)
-    setCity(data.city)
-    setState(data.state)
-    setCountry(data.country)
-    setZipcode(data.zipcode)
-    setDistrict(data.district)
-    setStreet(data.street)
-    setPlaceNumber(data.place_number)
-    setComplement(data.complement)
-    setImageLink(data.image_link)
-    setCapacity(data.capacity)
-    setDescription(data.description)
-    setPhone(data.phone)
-    setTicketPrice(data.average_ticket_price)
-    setOpeningHours(data.opening_hours)
-    setPayment(data.payment)
-    setSocialMedia(data.social_media)
-    setPlaceTypes(data.place_types_ids)
-    setFoodTypes(data.food_types_ids)
-    setPlaceProfiles(data.place_profiles_ids)
+    placeCreate(data.name, data.place_types_ids, data.food_types_ids, data.place_profiles_ids, data.city, data.state, data.country, data.zipcode, data.district,
+      data.street, data.place_number, data.complement, data.image_link, data.capacity, data.description, data.phone, data.average_ticket_price, data.social_media,
+      data.opening_hours, data.payment)
+      navigate("/")
+  }
+
+  const placeCreate = async (name: string, place_types_ids: any, food_types_ids: any, place_profiles_ids: any, city: string, state: string, country: string,
+    zipcode: string, district: string, street: string, place_number: string, complement: string, image_link: string, capacity: string, description: string,
+    phone: string, average_ticket_price: string, social_media: string, opening_hours: string, payment: string) => {
+    const req = {
+      name: name,
+      place_types_ids: [place_types_ids],
+      food_types_ids: [food_types_ids],
+      place_profiles_ids: [place_profiles_ids],
+      city: city,
+      state: state,
+      country: country,
+      zipcode: zipcode,
+      district: district,
+      street: street,
+      place_number: place_number,
+      complement: complement,
+      image_link: image_link,
+      capacity: capacity,
+      description: description,
+      phone: phone,
+      average_ticket_price: average_ticket_price,
+      social_media: social_media,
+      opening_hours: opening_hours,
+      payment: payment,
+    }
+    try {
+      const response = await createPlace(req, ownerId);
+      console.log(response)
+    } catch (error) {
+      alert("Deu algo errado no catch");
+    }
   };
 
 
@@ -69,7 +115,7 @@ function SignUpPlace() {
         <img src={LogoSrc} alt="logo_bergamotta" />
       </Link>
       <SignInPlaceBox>
-          <form onSubmit={handleSubmit(onSubmit)}>
+        <form onSubmit={handleSubmit(onSubmit)}>
           <Box>
             <FormControl {...register("name")}>
               <InputLogin
@@ -84,34 +130,43 @@ function SignUpPlace() {
               <InputLogin
                 theme="signin"
                 label="Rua"
-                name="street"            
+                name="street"
                 type="text"
-                placeholder="Digite seu endereço"
+                placeholder="Digite a rua do seu endereço"
+              />
+            </FormControl>
+            <FormControl {...register("place_number")}>
+              <InputLogin
+                theme="signin"
+                label="Número"
+                name="place_number"
+                type="text"
+                placeholder="Digite o número do endereçor"
               />
             </FormControl>
             <FormControl {...register("complement")}>
               <InputLogin
                 theme="signin"
                 label="Complemento"
-                name="complement"            
+                name="complement"
                 type="text"
-                placeholder="Digite seu complemento"
+                placeholder="Digite o complemento"
               />
             </FormControl>
-            <FormControl {...register("place_number")}>
+            <FormControl {...register("district")}>
               <InputLogin
                 theme="signin"
-                label="Complemento"
-                name="place_number"            
+                label="Bairro"
+                name="district"
                 type="text"
-                placeholder="Digite seu place_number"
-              />place_number
+                placeholder="Digite seu bairro"
+              />
             </FormControl>
             <FormControl {...register("city")}>
               <InputLogin
                 theme="signin"
                 label="Cidade"
-                name="city"            
+                name="city"
                 type="text"
                 placeholder="Digite sua cidade"
               />
@@ -120,7 +175,7 @@ function SignUpPlace() {
               <InputLogin
                 theme="signin"
                 label="Estado"
-                name="state"            
+                name="state"
                 type="text"
                 placeholder="Digite seu estado"
               />
@@ -129,7 +184,7 @@ function SignUpPlace() {
               <InputLogin
                 theme="signin"
                 label="País"
-                name="country"            
+                name="country"
                 type="text"
                 placeholder="Digite seu país"
               />
@@ -138,18 +193,9 @@ function SignUpPlace() {
               <InputLogin
                 theme="signin"
                 label="CEP"
-                name="zipcode"            
+                name="zipcode"
                 type="text"
                 placeholder="Digite seu CEP"
-              />
-            </FormControl>
-            <FormControl {...register("district")}>
-              <InputLogin
-                theme="signin"
-                label="district"
-                name="district"            
-                type="text"
-                placeholder="Digite seu district"
               />
             </FormControl>
             <FormControl {...register("opening_hours")}>
@@ -161,7 +207,7 @@ function SignUpPlace() {
                 placeholder="Digite o horário"
               />
             </FormControl>
-            
+
             <Container>
               <FormControl {...register("average_ticket_price")}>
                 <InputLogin
@@ -186,9 +232,9 @@ function SignUpPlace() {
                   label="Capacidade"
                   type="text"
                   name="capacity"
-                  placeholder="Digite a capacidade do local"
+                  placeholder="Digite a lotação"
                   theme="signin"
-                />capacity
+                />
               </FormControl>
             </Container>
             <FormControl {...register("image_link")}>
@@ -215,7 +261,7 @@ function SignUpPlace() {
                 theme="text"
                 name="phone"
                 type="text"
-                placeholder="Digite seu número"
+                placeholder="Digite seu telefone para contato"
               />
             </FormControl>
             <FormControl {...register("social_media")}>
@@ -235,36 +281,36 @@ function SignUpPlace() {
                 if (tag.tag_type === "place_profiles_ids") {
                   return (
                     <FormControlLabel
-                    {...register("place_profiles_ids")}
+                      {...register("place_profiles_ids")}
                       control={<Checkbox value={tag.tag_id} />}
                       label={tag.tag}
                       key={index}
                     />
                   );
-                }else if(tag.tag_type === "food_types_ids"){
+                } else if (tag.tag_type === "food_types_ids") {
                   return (
                     <FormControlLabel
-                    {...register("food_types_ids")}
+                      {...register("food_types_ids")}
                       control={<Checkbox value={tag.tag_id} />}
                       label={tag.tag}
                       key={index}
                     />
                   );
-                }else if(tag.tag_type === "place_types_ids"){
+                } else if (tag.tag_type === "place_types_ids") {
                   return (
                     <FormControlLabel
-                    {...register("place_types_ids")}
+                      {...register("place_types_ids")}
                       control={<Checkbox value={tag.tag_id} />}
                       label={tag.tag}
                       key={index}
                     />
                   );
-                }else return "";
-            })}
+                } else return "";
+              })}
             </FormGroupStyled>
-            <SubmitButton theme="signin_owner" text="Salvar alterações" />
+            <SubmitButton theme="signin_owner" text="Cadastrar Estabelecimento" />
           </Box>
-          </form>
+        </form>
       </SignInPlaceBox>
     </SignInPlaceContainer>
   );
