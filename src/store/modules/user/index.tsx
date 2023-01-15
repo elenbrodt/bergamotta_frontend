@@ -36,6 +36,7 @@ const userReduce = createSlice({
                 findUser: undefined,
                 isLogged: false,
             })
+            Cookie.set("user", "")
         }
     }
 

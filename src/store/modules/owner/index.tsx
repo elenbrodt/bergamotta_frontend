@@ -42,6 +42,7 @@ const ownerReduce = createSlice({
                 findOwner: undefined,
                 isLogged: false,
             })
+            Cookie.set("owner", "")
         }
     }
 
