@@ -3,56 +3,70 @@ import TitleLogin from "../../components/TitleLogin";
 import InputLogin from "../../components/InputLogin";
 import LogoSrc from "../../assets/image/logo_vertical.png";
 import { Box, Inputs, Container, SaveButton } from "./styles"
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { FormControl } from "@mui/material";
 import { updateUser } from "../../services/MainApi/user_profile";
 import { useUser } from "../../store/modules/user";
 import { byIdUser } from "../../services/MainApi/user_profile";
+interface User {
+    id: string, 
+    name: string, 
+    email:string, 
+    image_link: string,
+    password: string,
+    city: string,
+    state: string, 
+    country: string
+}
 
 function UpdateUser() {
 
-    const userData = useUser()
-    const userId = userData.findUser.id
-
+    const userUser = useUser()
     
+    const [userData, setUserData] = useState<string>("")
 
-    const getData = async () => {
-        try {
-            const response = await byIdUser(userId);
-            return response
-        } catch (error) {
-            alert("Deu algo errado no catch");
+    const [user, setUser] = useState<User>();
+    
+    useEffect(()=>{
+        if (userUser.isLogged){
+            setUserData(userUser.findUser.id)
+            const getData = async () => {
+                try {
+                    const response = await byIdUser(userData);
+                    setUser(response.data)
+                } catch (error) {
+                    alert("Deu algo errado no catch");
+                }
+            };
+            getData();
         }
-    };
-    
-    const user = getData()
-
+    }, [userUser, userData])
     const { register, handleSubmit } = useForm();
 
     const navigate = useNavigate();
 
-    const [email, setEmail] = useState("");
+/*     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [name, setName] = useState("");
     const [image_link, setImageLink] = useState("");
     const [city, setCity] = useState("");
     const [state, setState] = useState("");
-    const [country, setCountry] = useState("");
+    const [country, setCountry] = useState(""); */
 
 
     const onSubmit = (data: any) => {
-        setEmail(data.email)
+        /* setEmail(data.email)
         setPassword(data.password)
         setName(data.name)
         setImageLink(data.image_link)
         setCity(data.city)
         setState(data.state)
-        setCountry(data.country)
-        userUpdate()
-        navigate("/profile")
+        setCountry(data.country) */
+        userUpdate(data.email, data.password, data.name, data.image_link, data.city, data.state, data.country )
+        navigate("/perfil")
     }
-    const userUpdate = async () => {
+    const userUpdate = async (email: string, password: string, name: string, image_link: string, city: string, state: string, country:string) => {
         const req = {
             email: email,
             password: password,
@@ -63,7 +77,7 @@ function UpdateUser() {
             country: country
         }
         try {
-            const response = await updateUser(req, userId);
+            const response = await updateUser(req, userData);
             console.log(response)
         } catch (error) {
             alert("Deu algo errado no catch");
@@ -71,6 +85,7 @@ function UpdateUser() {
     };
 
     return (
+        
         <Box>
             <Link to="/">
                 <img src={LogoSrc} alt="logo_bergamotta" />{" "}
@@ -108,7 +123,7 @@ function UpdateUser() {
                 </Inputs>
                 <SaveButton>Salvar Alterações</SaveButton>
             </form>
-        </Box>
+        </Box> 
     );
 }
 
