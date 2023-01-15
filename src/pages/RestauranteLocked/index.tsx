@@ -6,10 +6,11 @@ import {Box, Container, Title, Column, PlaceContainer, FavoriteButton} from "./s
 import InstagramIcon from '@mui/icons-material/Instagram'
 import PhoneIcon from '@mui/icons-material/Phone'
 import GreenBanner from '../../components/GreenBanner';
-import { averageById } from '../../services/MainApi/ratings';
+import { averageById, cozyById, ingredientSubstitutionById, instagrammableFoodById, serviceSpeed, tastyFoodById, welcomingServiceById } from '../../services/MainApi/ratings';
 import {  Checkbox, Rating } from '@mui/material';
 import { Favorite, FavoriteBorder } from '@mui/icons-material';
-import { colors } from '../../styles/theme';
+import { userFavoriteById } from '../../services/MainApi/favorites';
+import { useUser } from '../../store/modules/user';
 interface Place {
   id:string;
   name: string;
@@ -28,6 +29,8 @@ function RestaurantLocked() {
   const [socials, setSocials] = useState<string>();
   const [value, setValue] = useState<number>(1);
 
+  const user = useUser();
+  
   useEffect(() => {
     const getData = async () => {
       try {
@@ -48,18 +51,76 @@ function RestaurantLocked() {
       }
     };
     getAverage();
-    /* const getFavorites = async () => {
+    const getRatingWelcoming = async () => {
       try {
-        const response = await userFavoritesById(urlId);
-        console.log()
+        const response = await welcomingServiceById(urlId);
+        console.log(response.data)
       } catch (error) {
         alert("Deu algo errado no catch");
       }
     };
-    getFavorites(); */
+    getRatingWelcoming();
+    const getIngredientSubstitution = async () => {
+      try {
+        const response = await ingredientSubstitutionById(urlId);
+        console.log(response.data)
+      } catch (error) {
+        alert("Deu algo errado no catch");
+      }
+    };
+    getIngredientSubstitution();
+    const getInstagrammableFoodById = async () => {
+      try {
+        const response = await instagrammableFoodById(urlId);
+        console.log(response.data)
+      } catch (error) {
+        alert("Deu algo errado no catch");
+      }
+    };
+    getInstagrammableFoodById();
+    const getTastyFoodById = async () => {
+      try {
+        const response = await tastyFoodById(urlId);
+        console.log(response.data)
+      } catch (error) {
+        alert("Deu algo errado no catch");
+      }
+    };
+    getTastyFoodById();
+    const getCozyById = async () => {
+      try {
+        const response = await cozyById(urlId);
+        console.log(response.data)
+      } catch (error) {
+        alert("Deu algo errado no catch");
+      }
+    };
+    getCozyById();
+    const getServiceSpeed = async () => {
+      try {
+        const response = await serviceSpeed(urlId);
+        console.log(response.data)
+      } catch (error) {
+        alert("Deu algo errado no catch");
+      }
+    };
+    getServiceSpeed();
     
-  }, [setPlace, urlId]);
+    
+    
+  }, [setPlace, urlId, user.findUser, user.isLogged, user.token]);
 
+  if (user.isLogged){
+    const getFavorites = async () => {
+      try {
+        const response = await userFavoriteById(user.token, urlId);
+        console.log(response)
+      } catch (error) {
+        alert("Deu algo errado no catch");
+      }
+    };
+    getFavorites(); 
+  }
   const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 
   const at = socials?.split("/")[3];
@@ -84,7 +145,7 @@ function RestaurantLocked() {
               </Container>
             </Box>
             <Box>
-                <Checkbox {...label} icon={<FavoriteBorder color="error"/>}  checkedIcon={<Favorite color="error"/>} />
+              <div id="favorite"><Checkbox  {...label} icon={<FavoriteBorder color="error"/>}  checkedIcon={<Favorite color="error"/>} /></div>
               <p>Price</p>
               <Container>
                 <PhoneIcon/>
