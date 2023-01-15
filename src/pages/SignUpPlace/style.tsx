@@ -36,6 +36,7 @@ export const SignInPlaceContainer = styled.div`
     gap: 5vh;
 `
 export const TagsTitle = styled.h5`
+margin-top: 40px;
     font-family:${fonts.secondary};
     font-size: 20px;
     font-weight: 700;
