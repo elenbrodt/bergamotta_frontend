@@ -1,4 +1,5 @@
 import { CheckBox } from "@mui/icons-material";
+import { ToggleButton } from "@mui/material";
 import styled from "styled-components";
 import { colors, fonts } from "../../styles/theme";
 
@@ -75,14 +76,14 @@ export const ColumnLastRatings = styled.div`
 `;
 export const GoodsTags = styled.div`
   display: flex;
-  flex-wrap:wrap;
+  flex-wrap: wrap;
   width: 100%;
   gap: 1vh;
   justify-content: space-between;
-  p{
+  p {
     border: 1px solid ${colors.secondary};
     border-radius: 36px;
-    font-family=${fonts.primary};
+    font-family: ${fonts.primary};
     font-size: 18px;
     font-weight: 700;
     padding: 2.5vh 1vw;
@@ -117,5 +118,31 @@ export const ContainerGreen = styled.div`
     width: 20%;
     text-align: center;
     line-height: 28px;
+  }
+`;
+
+export const ColumnRating = styled.div`
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  width: 44vw;
+  gap: 2vh;
+  button {
+    border: 1px solid ${colors.secondary};
+    border-radius: 36px;
+    font-family: ${fonts.primary};
+    font-size: 18px;
+    font-weight: 700;
+    padding: 2.5vh 1vw;
+    color: ${colors.secondary};
+    width: 17.5vw;
+    text-align: center;
+    background: none;
+    background-color: ${(props) => (props ? "none" : colors.primary)};
+    cursor: pointer;
+  }
+  .MuiToggleButton-root {
+    text-transform: capitalize;
+    background-color: ${(props) => (props ? "none" : colors.primary)};
   }
 `;
