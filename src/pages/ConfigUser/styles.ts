@@ -1,67 +1,35 @@
 import styled from 'styled-components';
+import { RadioGroup } from "@mui/material";
 import { colors, fonts } from '../../styles/theme';
 
-export const MainDiv = styled.div`
-display: flex;
-flex-direction: column;
-align-items: center;
+export const Box = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10vh;
+    margin: 3vh auto;
+    margin-bottom: 5vh;
+    width: 50vw;
+    #form{
+        width:100%;
+    }
 `
-export const RoundImage = styled.div`
-margin-top: 51px;
-width: 210px;
-height: 210px;
-border-radius: 100px;
+export const Inputs =styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1vh;
+    width: 100%;
 `
-export const ImgRound = styled.img`
-width: 210px;
-height: 210px;
-border-radius: 100px;
+export const RadioGroupStyled = styled (RadioGroup)`
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
 `
-export const UserName = styled.h2`
-font-family: ${fonts.primary};
-font-weight: 700;
-font-size: 32px;
-line-height: 35px;
-color: ${colors.black};
-`
-export const ChangeButton = styled.a`
-font-family: ${fonts.secondary};
-font-weight: 700;
-font-size: 20px;
-line-height: 28px;
-color: ${colors.white};
-text-decoration: none;
-display: flex;
-justify-content: center;
-text-align: center;
-align-items: center;
-width: 239px;
-height: 60px;
-background: ${colors.secondary};
-border-radius: 36px;
-`
-export const FormDiv = styled.div`
-margin-top: 33px;
-display: flex;
-flex-direction: column;
-align-items: flex-start;
-gap: 20px;
-`
-export const UserLabel = styled.label`
-font-family: ${fonts.secondary};
-width: 97px;
-height: 34.53px;
-font-weight: 700;
-font-size: 18px;
-line-height: 25px;
-color: ${colors.black};
-`
-export const UserInput = styled.input`
-width: 578.43px;
-height: 78.92px;
-border: 1px solid #202024;
-border-radius: 10px;
-font-size: 28px;
+export const Container = styled.div`
+    display: flex;
+    gap: 1vw;
+    width: 100%;
 `
 export const SaveButton = styled.button`
 margin-top: 33px;
