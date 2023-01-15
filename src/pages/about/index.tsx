@@ -25,11 +25,11 @@ import {
   Orangebg2,
   Overlaid2,
 } from "./styles";
-//import bodyimg1 from "../../assets/imagesAbout/veg 001 1.png"
-//import vector1 from "../../assets/imagesAbout/Vector1.png"
-//import vector2 from "../../assets/imagesAbout/Vector2.png"
-//import bodyimg2 from "../../assets/imagesAbout/Rectangle 62.png"
-//import bodyimage3 from "../../assets/imagesAbout/persona 12 1.png"
+import bodyimg1 from "../../assets/imagesAbout/veg 001 1.png";
+import vector1 from "../../assets/imagesAbout/Vector1.png";
+import vector2 from "../../assets/imagesAbout/Vector2.png";
+import bodyimg2 from "../../assets/imagesAbout/Rectangle 62.png";
+import bodyimage3 from "../../assets/imagesAbout/persona 12 1.png";
 import GreenBanner from "../../components/GreenBanner";
 import { useForm } from "react-hook-form";
 import { whatsApp } from "../../utilities/whatsapp";
@@ -59,13 +59,13 @@ function About(): JSX.Element {
             <TitleButton href='/search'>Buscar experiências</TitleButton>
           </UpperBodyLeft>
           <UpperBodyRight>
-            <Imgbody src={""} alt='Experiências Incríveis' />
+            <Imgbody src={bodyimg1} alt='Experiências Incríveis' />
           </UpperBodyRight>
         </UpperBody>
         <BottonBody>
           <BottonBodyLeft>
-            <Orangebg1 src={""} alt='Fundo Laranja' />
-            <Overlaid1 src={""} alt='Casal Empolgado' />
+            <Orangebg1 src={vector1} alt='Fundo Laranja' />
+            <Overlaid1 src={bodyimg2} alt='Casal Empolgado' />
           </BottonBodyLeft>
           <BottonBodyRight>
             <Title2>Quem Somos</Title2>
@@ -116,8 +116,8 @@ function About(): JSX.Element {
             </FormDiv>
           </div>
           <FormContainerRight>
-            <Orangebg2 src={""} alt='Fundo Laranja' />
-            <Overlaid2 src={""} alt='Senhor Impressionado' />
+            <Orangebg2 src={vector2} alt='Fundo Laranja' />
+            <Overlaid2 src={bodyimage3} alt='Senhor Impressionado' />
           </FormContainerRight>
         </FormContainer>
         <Footer />

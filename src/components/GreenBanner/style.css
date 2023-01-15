@@ -1,84 +1,84 @@
 .banner {
-    background-color: #27AE60;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 30px;
-    width: 100%;
-    height: 332px;
+  background-color: #27ae60;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  width: 100%;
+  height: 332px;
 }
 
 .bannertitle {
-    text-align: center;
-    margin: 0;
-    font-weight: 700;
-    font-size: 40px;
-    color: #FFFFFF;
+  text-align: center;
+  margin: 0;
+  font-weight: 700;
+  font-size: 40px;
+  color: #ffffff;
 }
 
 .bannertext {
-    margin: 0;
-    height: 84px;
-    font-weight: 700;
-    font-size: 20px;
-    line-height: 28px;
-    text-decoration: none;
-    color: #FFFFFF;
-    text-align: center;
+  margin: 0;
+  height: 84px;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 28px;
+  text-decoration: none;
+  color: #ffffff;
+  text-align: center;
 }
 
 .bannerbtn {
-    font-family: 'Nunito';
-    text-decoration: none;
-    display: flex;
-    justify-content: center;
-    text-align: center;
-    align-items: center;
-    margin: 0;
-    height: 60px;
-    width: 269px;
-    border-radius: 36px;
-    background: #FE6806;
-    border: hidden;
-    font-weight: 700;
-    font-size: 20px;
-    line-height: 28px;
-    color: #FFFFFF;
+  font-family: "Nunito";
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  margin: 0;
+  height: 60px;
+  width: 269px;
+  border-radius: 36px;
+  background: #fe6806;
+  border: hidden;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 28px;
+  color: #ffffff;
 }
 
-#greenCard h2{
-    margin: 0;
-    font-weight: 700;
-    font-family: Nunito;
-    font-size: 20px;
-    line-height: 28px;
-    color: #FFFFFF;
-    text-align: center;
-    width: 320px;
+#greenCard h2 {
+  margin: 0;
+  font-weight: 700;
+  font-family: Nunito;
+  font-size: 20px;
+  line-height: 28px;
+  color: #ffffff;
+  text-align: center;
+  width: 320px;
 }
 
-#greenCard p{
-    font-weight: 400;
-    font-family: Nunito;
-    font-size: 18px;
-    line-height: 25px;
-    color: #FFFFFF;
-    text-align: center;
-    width: 233px;
+#greenCard p {
+  font-weight: 400;
+  font-family: Nunito;
+  font-size: 18px;
+  line-height: 25px;
+  color: #ffffff;
+  text-align: center;
+  width: 233px;
 }
 
-#greenCard a{
-    height: 52px;
-    width: 218px;
+#greenCard a {
+  height: 52px;
+  width: 218px;
 }
 
-#greenCard{
-    gap: 8px;
-    background-color: #27AE60;
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    height: 147px;
-    width: 100%;
+#greenCard {
+  gap: 8px;
+  background-color: #27ae60;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  height: 147px;
+  width: 100%;
 }
