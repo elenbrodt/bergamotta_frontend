@@ -2,6 +2,8 @@ import {  CardContent, CardMedia, Rating } from '@mui/material';
 import { CardBergamotta, PriceBox, LinkCard } from './styles';
 import "./style.css"
 import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
+import { averageById } from '../../services/MainApi/ratings';
+import { useState } from 'react';
 
 
 interface CardProps {
@@ -42,6 +44,17 @@ function Price (price:number ){
 }
 function CardPlace (props: CardProps){
     const id= "/restaurantlocked/"+ props.id;
+    const [value, setValue] = useState<number>(1);
+
+    const getAverage = async () => {
+        try {
+          const response = await averageById(props.id);
+          setValue(response.data);
+        } catch (error) {
+          alert("Deu algo errado no catch");
+        }
+      };
+    getAverage();
     
     return(
         <LinkCard to={id} className={props.theme}>
@@ -54,7 +67,7 @@ function CardPlace (props: CardProps){
             />
             <CardContent>
                 <h5>{props.name}</h5>
-                <Rating value={3.5} precision={0.5} readOnly/>
+                <Rating value={value} precision={0.5} readOnly/>
                 {Price(props.average_ticket_price)}
                 <p>{props.opening_hours}</p>
             </CardContent>      
