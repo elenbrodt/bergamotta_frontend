@@ -1,3 +1,4 @@
+import { CheckBox } from '@mui/icons-material';
 import styled from 'styled-components';
 import {colors} from "../../styles/theme";
 
@@ -28,6 +29,8 @@ export const Title = styled.h1`
 `
 export const Container = styled.div`
     display: flex;
+    gap: 1vw;
+    align-items: center;
 `
 export const PlaceContainer = styled.div`
     display: flex;
@@ -37,4 +40,7 @@ export const Column = styled.div`
     display: flex;
     flex-direction: column;
     width: 50vw;
+`
+export const FavoriteButton = styled (CheckBox)`
+    color:${colors.error};
 `
