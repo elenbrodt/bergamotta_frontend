@@ -4,6 +4,7 @@ import Logo from "../../assets/image/logo.png";
 import { Ul, Li, DivHeader, Nav, ImgLogo, HamburguerMenu, NavLink } from "./style";
 import { useUser } from '../../store/modules/user';
 import { useOwner } from "../../store/modules/owner";
+import LogoutButton from "../LogoutButton";
 
 function Header() {
     const user = useUser();
@@ -27,7 +28,7 @@ function Header() {
                         <Li><NavLink to="/parceiros">Seja Um Parceiro</NavLink></Li>
                     </Ul>
                 </Nav>
-                <ButtonLogin text="Login" redirect="/perfil" />
+                <LogoutButton/>
             </DivHeader> 
         </header>)
     }
@@ -48,7 +49,7 @@ function Header() {
                             <Li><NavLink to="/">Configurações usuário</NavLink></Li>
                         </Ul>
                     </Nav>
-                    <ButtonLogin text="Login" redirect="/login" />
+                    <LogoutButton/>
             </DivHeader>
         </header>)
     }   
@@ -66,7 +67,7 @@ function Header() {
                     <Ul>
                         <Li><NavLink to="/blog">Blog</NavLink></Li>
                         <Li><NavLink to="/perfil">Perfil</NavLink></Li>
-                        <Li><NavLink to="/parceiro">Seja Um Parceiro</NavLink></Li>
+                        <Li><NavLink to="/parceiros">Seja Um Parceiro</NavLink></Li>
                         <Li><NavLink to="/sobrenos">Quem Somos</NavLink></Li>
                         <Li><NavLink to="/cadastro">Cadastro</NavLink></Li>
                     </Ul>
