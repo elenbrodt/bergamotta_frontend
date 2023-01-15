@@ -5,7 +5,8 @@ import {colors} from "../../styles/theme";
 export const Box = styled.div`
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
+    
     h3{
         color: ${colors.primary};
         font-size: 24px;
@@ -19,6 +20,9 @@ export const Box = styled.div`
     }
     img{
         width: 30vw;
+    }
+    #favorite{
+       align-self: flex-end;
     }
 `
 export const Title = styled.h1`
@@ -40,6 +44,7 @@ export const Column = styled.div`
     display: flex;
     flex-direction: column;
     width: 50vw;
+    align-items: center;
 `
 export const FavoriteButton = styled (CheckBox)`
     color:${colors.error};
