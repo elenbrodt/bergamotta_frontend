@@ -6,7 +6,7 @@ import Login from './pages/Login'
 import SignUp from './pages/SignUp';
 import Blog from './pages/Blog';
 import RestaurantLocked from './pages/RestauranteLocked';
-import ConfigUser from './pages/ConfigUser';
+import UpdateUser from './pages/ConfigUser';
 import UserFavorites from './pages/UserFavorites';
 import BlogArticle from './pages/BlogArticle';
 import SignUpPlace from './pages/SignUpPlace';
@@ -24,7 +24,7 @@ export default function Routes() {
                 <Route path="/cadastro" element={<SignUp />} />
                 <Route path="/restaurantlocked/:id" element={<RestaurantLocked />} />
                 <Route path="/restaurantlocked" element={<RestaurantLocked />} />
-                <Route path ="/configuser" element={<ConfigUser />} />
+                <Route path ="/atualizarusuario" element={<UpdateUser />} />
                 <Route path="/perfil" element={<UserFavorites />} />
                 <Route path="/blogarticle/:id" element={<BlogArticle />} />
                 <Route path="/cadastrorestaurante" element={<SignUpPlace />} />
