@@ -3,7 +3,7 @@ import { CardBergamotta, PriceBox, LinkCard } from "./styles";
 import "./style.css";
 import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
 import { averageById } from "../../services/MainApi/ratings";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 
 interface CardProps {
   id: string;
@@ -43,8 +43,6 @@ function CardPlace(props: CardProps) {
   const id = "/restaurantlocked/" + props.id;
   const [value, setValue] = useState<number>(1);
 
-  const dataFetchRef = useRef(false);
-
   const getAverage = async () => {
     try {
       const response = await averageById(props.id);
@@ -55,8 +53,6 @@ function CardPlace(props: CardProps) {
   };
 
   useEffect(() => {
-    if (dataFetchRef.current) return;
-    dataFetchRef.current = true;
     if (props.id !== "000") {
       getAverage();
     }
