@@ -66,7 +66,7 @@ function About(): JSX.Element {
             <Overlaid1 src={bodyimg2} alt='Casal Empolgado' />
           </BottonBodyLeft>
           <BottonBodyRight>
-            <Title2>Quem Somos</Title2>
+            <Title2 >Quem Somos</Title2>
             <Text>
               A Bergamotta é uma plataforma que contecta<br></br>
               restaurantes a clientes que adotaram uma dieta<br></br>
@@ -119,7 +119,7 @@ function About(): JSX.Element {
           </FormContainerRight>
         </FormContainer>
       </div>
-        <Footer />
+        
     </div>
   );
 }
