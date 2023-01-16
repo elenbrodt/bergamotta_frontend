@@ -9,7 +9,6 @@ import { useState } from "react";
 import { createUser } from "../../services/MainApi/sign_in";
 import { useForm } from "react-hook-form";
 import { FormControl } from "@mui/material";
-import SubmitButton from "../../components/SubmitButton";
 import { createOwner } from "../../services/MainApi/owner";
 
 function SignUp() {
