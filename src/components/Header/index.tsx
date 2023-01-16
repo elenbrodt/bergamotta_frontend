@@ -39,7 +39,7 @@ function Header() {
                 <NavLink to='/blog'>Blog</NavLink>
               </Li>
               <Li>
-                <NavLink to='/'>Editar Perfil</NavLink>
+                <NavLink to='/editarperfil'>Editar Perfil</NavLink>
               </Li>
               <Li>
                 <NavLink to='/sobrenos'>Quem Somos</NavLink>
