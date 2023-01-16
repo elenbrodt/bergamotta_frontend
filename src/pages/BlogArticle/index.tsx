@@ -76,7 +76,7 @@ function BlogArticle() {
     }
   }, [setUser, urlId, userData]);
 
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit, formState: { errors } } = useForm();
     
   const onSubmit = (data: any) => {
     
@@ -137,7 +137,8 @@ function BlogArticle() {
                 <UserName>{user?.name}</UserName>
               </UserDiv>
               <FormDiv onSubmit={handleSubmit(onSubmit)}>
-                <CommentInput {...register("comment")} name='comment' />
+                <CommentInput {...register("comment", { required: true })} name='comment' /><br></br>
+                {errors.comment && <p>Esse campo é obrigatório</p>}
                 <CommentBtn onClick={reset}>Comentar</CommentBtn>
               </FormDiv>
             </GeneralDiv>
