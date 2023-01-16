@@ -1,16 +1,12 @@
-import { Link, useNavigate } from "react-router-dom";
-import TitleLogin from "../../components/TitleLogin";
-import InputLogin from "../../components/InputLogin";
-import LogoSrc from "../../assets/image/logo_vertical.png";
+import { useNavigate } from "react-router-dom";
 import { Box, Inputs, Container, SaveButton, UpdateInput } from "./styles";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import { FormControl } from "@mui/material";
+
 import { updateUser } from "../../services/MainApi/user_profile";
 import { useUser } from "../../store/modules/user";
 import { byIdUser } from "../../services/MainApi/user_profile";
 import Header from "../../components/Header";
-import ImageUser from "../../components/ImageUpdates";
 import { Footer } from "../../components/Footer";
 interface User {
   name: string;

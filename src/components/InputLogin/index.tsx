@@ -1,12 +1,6 @@
 //import { ChangeEvent } from "react";
 
-import {
-  InputBaseLogin,
-  InputBox,
-  InputLabel,
-  InputBorder,
-  IconPassword,
-} from "./styles";
+import { InputBaseLogin, InputBox, InputLabel } from "./styles";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import Visibility from "@mui/icons-material/Visibility";
 import { useState } from "react";
@@ -30,7 +24,7 @@ function InputLogin(props: InputLoginProps) {
       return (
         <InputBox>
           <InputLabel>{props.label}</InputLabel>
-          <InputBorder>
+          <div className='container'>
             <InputBaseLogin
               placeholder={props.placeholder}
               type={showPassword ? "text" : "password"}
@@ -38,14 +32,15 @@ function InputLogin(props: InputLoginProps) {
               defaultValue={props.defaultValue}
               value={props.value}
             />
-            <IconButton
-              aria-label='toggle password visibility'
-              onClick={handleClickShowPassword}
-              edge='end'
-            >
-              {showPassword ? <Visibility /> : <VisibilityOff />}
-            </IconButton>
-          </InputBorder>
+            <i>
+              <IconButton
+                aria-label='toggle password visibility'
+                onClick={handleClickShowPassword}
+              >
+                {showPassword ? <Visibility /> : <VisibilityOff />}
+              </IconButton>
+            </i>
+          </div>
         </InputBox>
       );
 
@@ -53,17 +48,15 @@ function InputLogin(props: InputLoginProps) {
       return (
         <InputBox>
           <InputLabel className={props.theme}>{props.label}</InputLabel>
-          <InputBorder>
-            <InputBaseLogin
-              placeholder={props.placeholder}
-              //inputProps={{ "aria-label": "search" }}
-              name={props.name}
-              type={props.type}
-              className={props.theme}
-              defaultValue={props.defaultValue}
-              value={props.value}
-            />
-          </InputBorder>
+          <InputBaseLogin
+            placeholder={props.placeholder}
+            //inputProps={{ "aria-label": "search" }}
+            name={props.name}
+            type={props.type}
+            className={props.theme}
+            defaultValue={props.defaultValue}
+            value={props.value}
+          />
         </InputBox>
       );
   }

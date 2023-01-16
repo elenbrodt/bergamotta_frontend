@@ -1,11 +1,10 @@
-import { Title} from "./styles"
-import "./styles.css"
+import { Title } from "./styles";
+
 interface TitleLoginProps {
-    title: string;
-    id?: string;
+  title: string;
 }
 
-function TitleLogin (props: TitleLoginProps){
-    return <Title className={props.id}>{props.title}</Title>
+function TitleLogin(props: TitleLoginProps) {
+  return <Title>{props.title}</Title>;
 }
-export default TitleLogin
+export default TitleLogin;

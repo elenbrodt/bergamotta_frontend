@@ -1,13 +1,19 @@
+import { IconButton } from "@mui/material";
 import styled from "styled-components";
 import { colors, fonts } from "./../../styles/theme";
-import { InputBase } from "@mui/material";
-import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 
 export const InputBox = styled.div`
   display: flex;
   flex-direction: column;
   gap: 2vh;
   width: 100%;
+  .container {
+    display: flex;
+    align-items: center;
+  }
+  i {
+    margin-left: -10%;
+  }
 `;
 export const InputLabel = styled.h4`
   font-family: ${fonts.secondary};
@@ -23,14 +29,5 @@ export const InputBaseLogin = styled.input`
   font-family: ${fonts.secondary};
   border-radius: 10px;
   padding: 2.5vh;
-`;
-export const InputBorder = styled.div`
-  display: flex;
-  border: solid 1px ${colors.dark_one};
-  border-radius: 10px;
-  align-items: center;
-  padding: 2.5vh;
-`;
-export const IconPassword = styled(VisibilityOffIcon)`
-  margin-right: 10px;
+  font-size: 16px;
 `;

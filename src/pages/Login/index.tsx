@@ -21,7 +21,11 @@ import { setOwner } from "../../store/modules/owner";
 import { useState } from "react";
 
 function Login() {
-  const { register, handleSubmit, formState: { errors } } = useForm();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -76,7 +80,7 @@ function Login() {
       <Link to='/'>
         <img src={LogoSrc} alt='logo_bergamotta' />
       </Link>
-      <TitleLogin id='title' title={"Olá, que bom ter você de volta!👋"} />
+      <TitleLogin title={"Olá, que bom ter você de volta!👋"} />
       <form id='myForm' onSubmit={handleSubmit(onSubmit)}>
         <Inputs>
           <FormControl fullWidth {...register("email", { required: true })}>
