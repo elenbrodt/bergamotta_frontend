@@ -18,6 +18,7 @@ export const ImgRound = styled.img`
   border-radius: 100px;
 `;
 export const UserName = styled.h2`
+margin-top: 20px;
   font-family: ${fonts.primary};
   font-weight: 700;
   font-size: 32px;
@@ -25,14 +26,20 @@ export const UserName = styled.h2`
   color: ${colors.black};
 `;
 export const FavoritesDiv = styled.div`
+margin-top: 100px;
   display: flex;
+  width: 100%;
 `;
 export const FavoritesDivLeft = styled.div`
+width: 50%;
   display: flex;
   flex-wrap: wrap;
+  margin-left: 15%;
 `;
 export const FavTitles = styled.h3`
-  flex-grow: 2;
+display: block;
+  flex-basis: 100%;
+  margin-bottom: 25px;
   width: 174px;
   height: 27px;
   font-family: ${fonts.secondary};
@@ -41,7 +48,12 @@ export const FavTitles = styled.h3`
   line-height: 26px;
   color: ${colors.black};
 `;
+export const PlacesDiv = styled.div`
+max-width: 100%;
+`;
 export const FavoritesDivRight = styled.div`
+width: 50%;
   display: flex;
   flex-wrap: wrap;
+  margin-left: 15%;
 `;

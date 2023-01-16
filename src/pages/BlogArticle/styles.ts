@@ -29,8 +29,8 @@ export const CommentTitle = styled.p`
   color: ${colors.black};
 `;
 export const TitleComments = styled.p`
-display: block;
-padding-left: 15%;
+  display: block;
+  padding-left: 15%;
   margin-top: 90px;
   margin-bottom: 25px;
   font-family: ${fonts.secondary};
@@ -38,7 +38,7 @@ padding-left: 15%;
   font-size: 24px;
   line-height: 26px;
   color: ${colors.black};
-`
+`;
 
 export const Container = styled.div`
   margin-top: 90px;
@@ -81,12 +81,13 @@ export const FormDiv = styled.form`
   gap: 15px;
   flex-grow: 3;
 `;
-export const CommentInput = styled.textarea`
+export const CommentInput = styled.input`
   width: 85%;
   height: 76px;
   border: 1px solid #202024;
   border-radius: 10px;
-  font-size: 22px;
+  font-size: 18px;
+  padding-left: 1vw;
 `;
 export const CommentBtn = styled.button`
   cursor: pointer;
@@ -159,19 +160,19 @@ export const TitleTextBlog = styled.p`
 `;
 
 export const LoginLink = styled.a`
-margin-top: 60px;
-text-align: center;
-display: block;
-text-decoration: none;
-font-family: ${fonts.primary};
-color: ${colors.secondary};
-font-weight: 700;
-font-size: 24px;
-line-height: 26px;
-`
+  margin-top: 60px;
+  text-align: center;
+  display: block;
+  text-decoration: none;
+  font-family: ${fonts.primary};
+  color: ${colors.secondary};
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 26px;
+`;
 export const LittleTitles = styled.p`
-font-family: ${fonts.primary};
-color: ${colors.black};
-text-align: center;
-font-size: 22px;
-`
+  font-family: ${fonts.primary};
+  color: ${colors.black};
+  text-align: center;
+  font-size: 22px;
+`;

@@ -1,7 +1,7 @@
-import styled from 'styled-components';
-import { Card, CardContent } from '@mui/material';
-import { colors, fonts } from '../../styles/theme';
-import { Link } from 'react-router-dom';
+import styled from "styled-components";
+import { Card, CardContent } from "@mui/material";
+import { colors, fonts } from "../../styles/theme";
+import { Link } from "react-router-dom";
 
 export const CardBlog = styled(Card)`
 display: flex;
@@ -58,5 +58,5 @@ text-overflow: ellipsis;
 }
 `
 export const BlogLinks = styled(Link)`
-text-decoration: none;
-`
+  text-decoration: none;
+`;

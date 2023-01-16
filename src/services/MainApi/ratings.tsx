@@ -23,3 +23,6 @@ export function cozyById(props: string) {
 export function serviceSpeed(props: string) {
   return baseApi.get(`/servicespeed/${props}`);
 }
+export function userratingById( props: string) {
+  return baseApi.get(`/ratingbyuser/${props}`);
+}
