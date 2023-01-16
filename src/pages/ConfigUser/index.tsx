@@ -12,8 +12,6 @@ import { byIdUser } from "../../services/MainApi/user_profile";
 import Header from "../../components/Header";
 import ImageUser from "../../components/ImageUpdates";
 import { Footer } from "../../components/Footer";
-import { Footer } from "../../components/Footer";
-
 interface User {
   name: string;
   email: string;
@@ -94,68 +92,62 @@ function UpdateUser() {
   };
 
   return (
-    <Box>
-      <Link to='/'>
-        <img src={LogoSrc} alt='logo_bergamotta' />{" "}
-      </Link>
-      <TitleLogin title='Crie sua conta' />
-      <form id='form' onSubmit={handleSubmit(onSubmit)}>
-        <Inputs>
-          <FormControl fullWidth {...register("name")}>
-            <InputLogin
+    <div>
+      <Header />
+      <Box>
+        <img src={userData?.image_link} alt='Imagem de perfil' />
+        <form id='form' onSubmit={handleSubmit(onSubmit)}>
+          <Inputs>
+            <UpdateInput
               type='text'
               placeholder='Digite seu usuário'
-              name='name'
+              defaultValue={userData?.name}
+              {...register("name")}
             />
-          </FormControl>
-          <FormControl fullWidth {...register("email")}>
-            <InputLogin
+            <UpdateInput
               type='email'
               placeholder='Digite seu email'
-              name='email'
+              {...register("email")}
+              defaultValue={userData?.email}
             />
-          </FormControl>
-          <FormControl fullWidth {...register("password")}>
-            <InputLogin
+            <UpdateInput
               type='password'
-              name='password'
               placeholder='Digite sua senha'
+              defaultValue={userData?.password}
+              {...register("password")}
             />
-          </FormControl>
-          <FormControl fullWidth {...register("image_link")}>
-            <InputLogin
+            <UpdateInput
               type='text'
               placeholder='Insira link da sua imagem de avatar'
-              name='image_link'
+              defaultValue={userData?.image_link}
+              {...register("image_link")}
             />
-          </FormControl>
-          <Container>
-            <FormControl fullWidth {...register("city")}>
-              <InputLogin
+            <Container>
+              <UpdateInput
                 type='text'
                 placeholder='Digite sua cidade'
-                name='city'
+                defaultValue={userData?.city}
+                {...register("city")}
               />
-            </FormControl>
-            <FormControl fullWidth {...register("state")}>
-              <InputLogin
+              <UpdateInput
                 type='text'
                 placeholder='Digite seu estado'
-                name='state'
+                defaultValue={userData?.state}
+                {...register("state")}
               />
-            </FormControl>
-            <FormControl fullWidth {...register("country")}>
-              <InputLogin
+              <UpdateInput
                 type='text'
                 placeholder='Digite o país'
-                name='country'
+                defaultValue={userData?.country}
+                {...register("country")}
               />
-            </FormControl>
-          </Container>
-        </Inputs>
-        <SaveButton>Salvar Alterações</SaveButton>
-      </form>
-    </Box>
+            </Container>
+          </Inputs>
+          <SaveButton type='submit'>Salvar Alterações</SaveButton>
+        </form>
+      </Box>
+      <Footer />
+    </div>
   );
 }
 

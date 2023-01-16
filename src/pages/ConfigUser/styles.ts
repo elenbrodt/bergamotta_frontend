@@ -56,3 +56,12 @@ export const SaveButton = styled.button`
   border: none;
   cursor: pointer;
 `;
+
+export const UpdateInput = styled.input`
+  width: 100%;
+  height: ${(props) => (props.className === "description" ? "200px" : "")};
+  border: solid 1px ${colors.dark_one};
+  font-family: ${fonts.secondary};
+  border-radius: 10px;
+  padding: 2.5vh;
+`;
