@@ -16,10 +16,11 @@ import { useEffect, useRef, useState } from "react";
 import SubmitButton from "../../components/SubmitButton";
 import { createPlace } from "../../services/MainApi/sign_up_place";
 import { useOwner } from "../../store/modules/owner";
+import { Footer } from "../../components/Footer";
 
 function SignUpPlace() {
   const navigate = useNavigate();
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit, formState: { errors } } = useForm();
 
   const ownerData = useOwner();
   const [owner_id, setOwnerId] = useState<string>("");
@@ -124,15 +125,16 @@ function SignUpPlace() {
       <form id='my-form' onSubmit={handleSubmit(onSubmit)}>
         <SignUpPlaceBox>
           <Column>
-            <FormControl {...register("name")}>
+            <FormControl {...register("name", { required: true })}>
               <InputLogin
                 label='Estabelecimento'
                 type='text'
                 placeholder='Digite o nome do estabelecimento'
                 name='name'
               />
+              {errors.name && <p>Esse campo é obrigatório</p>}
             </FormControl>
-            <FormControl {...register("street")}>
+            <FormControl {...register("street", { required: true })}>
               <InputLogin
                 theme='signin'
                 label='Rua'
@@ -140,9 +142,10 @@ function SignUpPlace() {
                 type='text'
                 placeholder='Digite a rua do seu endereço'
               />
+              {errors.street && <p>Esse campo é obrigatório</p>}
             </FormControl>
             <Container>
-              <FormControl {...register("place_number")}>
+              <FormControl {...register("place_number", { required: true })}>
                 <InputLogin
                   theme='signin'
                   label='Número'
@@ -150,6 +153,7 @@ function SignUpPlace() {
                   type='text'
                   placeholder='Digite o número do endereço'
                 />
+                {errors.place_number && <p>Esse campo é obrigatório</p>}
               </FormControl>
               <FormControl {...register("complement")}>
                 <InputLogin
@@ -160,7 +164,7 @@ function SignUpPlace() {
                   placeholder='Digite o complemento'
                 />
               </FormControl>
-              <FormControl {...register("zipcode")}>
+              <FormControl {...register("zipcode", { required: true })}>
                 <InputLogin
                   theme='signin'
                   label='CEP'
@@ -168,10 +172,11 @@ function SignUpPlace() {
                   type='text'
                   placeholder='Digite seu CEP'
                 />
+                {errors.zipcode && <p>Esse campo é obrigatório</p>}
               </FormControl>
             </Container>
             <Container>
-              <FormControl {...register("district")}>
+              <FormControl {...register("district", { required: true })}>
                 <InputLogin
                   theme='signin'
                   label='Bairro'
@@ -179,8 +184,9 @@ function SignUpPlace() {
                   type='text'
                   placeholder='Digite seu bairro'
                 />
+                {errors.district && <p>Esse campo é obrigatório</p>}
               </FormControl>
-              <FormControl {...register("city")}>
+              <FormControl {...register("city", { required: true })}>
                 <InputLogin
                   theme='signin'
                   label='Cidade'
@@ -188,8 +194,9 @@ function SignUpPlace() {
                   type='text'
                   placeholder='Digite sua cidade'
                 />
+                {errors.city && <p>Esse campo é obrigatório</p>}
               </FormControl>
-              <FormControl {...register("state")}>
+              <FormControl {...register("state", { required: true })}>
                 <InputLogin
                   theme='signin'
                   label='Estado'
@@ -197,8 +204,9 @@ function SignUpPlace() {
                   type='text'
                   placeholder='Digite seu estado'
                 />
+                {errors.state && <p>Esse campo é obrigatório</p>}
               </FormControl>
-              <FormControl {...register("country")}>
+              <FormControl {...register("country", { required: true })}>
                 <InputLogin
                   theme='signin'
                   label='País'
@@ -206,10 +214,11 @@ function SignUpPlace() {
                   type='text'
                   placeholder='Digite seu país'
                 />
+                {errors.country && <p>Esse campo é obrigatório</p>}
               </FormControl>
             </Container>
             <Container>
-              <FormControl {...register("average_ticket_price")}>
+              <FormControl {...register("average_ticket_price", { required: true })}>
                 <InputLogin
                   label='Ticket Médio'
                   type='text'
@@ -217,8 +226,9 @@ function SignUpPlace() {
                   placeholder='Digite o valor'
                   theme='signin'
                 />
+                {errors.average_ticket_price && <p>Esse campo é obrigatório</p>}
               </FormControl>
-              <FormControl {...register("payment")}>
+              <FormControl {...register("payment", { required: true })}>
                 <InputLogin
                   label='Meios de pagamento'
                   type='text'
@@ -226,6 +236,7 @@ function SignUpPlace() {
                   placeholder='Digite o valor'
                   theme='signin'
                 />
+                {errors.payment && <p>Esse campo é obrigatório</p>}
               </FormControl>
               <FormControl {...register("capacity", { valueAsNumber: true })}>
                 <InputLogin
@@ -237,7 +248,7 @@ function SignUpPlace() {
                 />
               </FormControl>
             </Container>
-            <FormControl {...register("image_link")}>
+            <FormControl {...register("image_link", { required: true })}>
               <InputLogin
                 theme='signin'
                 label='Foto do estabelecimento'
@@ -245,9 +256,10 @@ function SignUpPlace() {
                 name='image_link'
                 placeholder='Link da imagem do estabelecimento'
               />
+              {errors.image_link && <p>Esse campo é obrigatório</p>}
             </FormControl>
             <Container>
-              <FormControl {...register("opening_hours")}>
+              <FormControl {...register("opening_hours", { required: true })}>
                 <InputLogin
                   theme='signin'
                   label='Horário de funcionamento'
@@ -255,8 +267,9 @@ function SignUpPlace() {
                   type='text'
                   placeholder='Digite o horário'
                 />
+                {errors.opening_hours && <p>Esse campo é obrigatório</p>}
               </FormControl>
-              <FormControl {...register("phone")}>
+              <FormControl {...register("phone", { required: true })}>
                 <InputLogin
                   label='Telefone'
                   theme='text'
@@ -264,8 +277,9 @@ function SignUpPlace() {
                   type='text'
                   placeholder='Digite seu telefone para contato'
                 />
+                {errors.phone && <p>Esse campo é obrigatório</p>}
               </FormControl>
-              <FormControl {...register("social_media")}>
+              <FormControl {...register("social_media", { required: true })}>
                 <InputLogin
                   label='Social Media'
                   theme='text'
@@ -273,9 +287,10 @@ function SignUpPlace() {
                   type='text'
                   placeholder='Digite seu link do Instagram'
                 />
+                {errors.social_media && <p>Esse campo é obrigatório</p>}
               </FormControl>
             </Container>
-            <FormControl {...register("description")}>
+            <FormControl {...register("description", { required: true })}>
               <InputLogin
                 label='Descrição'
                 theme='description'
@@ -283,6 +298,7 @@ function SignUpPlace() {
                 type='text'
                 placeholder='Digite um breve texto de apresentação'
               />
+              {errors.description && <p>Esse campo é obrigatório</p>}
             </FormControl>
           </Column>
           <Column>
@@ -318,14 +334,15 @@ function SignUpPlace() {
                   );
                 } else return "";
               })}
-            </FormGroupStyled>
-            <SubmitButton
+            </FormGroupStyled>            
+          </Column>
+        </SignUpPlaceBox>
+        <SubmitButton
               theme='signin_owner'
               text='Cadastrar Estabelecimento'
             />
-          </Column>
-        </SignUpPlaceBox>
       </form>
+      <Footer></Footer>
     </SignUpPlaceContainer>
   );
 }

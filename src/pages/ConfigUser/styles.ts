@@ -44,7 +44,7 @@ export const SaveButton = styled.button`
   align-items: center;
   padding: 16px 24px;
   gap: 8px;
-  width: 100%;
+  width: 583px;
   height: 96px;
   background: ${colors.secondary};
   border-radius: 4px;
@@ -55,13 +55,4 @@ export const SaveButton = styled.button`
   color: ${colors.white};
   border: none;
   cursor: pointer;
-`;
-
-export const UpdateInput = styled.input`
-  width: 100%;
-  height: ${(props) => (props.className === "description" ? "200px" : "")};
-  border: solid 1px ${colors.dark_one};
-  font-family: ${fonts.secondary};
-  border-radius: 10px;
-  padding: 2.5vh;
 `;

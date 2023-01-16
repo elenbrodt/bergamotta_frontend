@@ -8,7 +8,7 @@ function YellowBanner() {
         <MainDiv>
             <LeftDiv>
                 <TitleBanner>Venha trocar ideia com outros<br></br>bergamotters</TitleBanner>
-                <BannerButton href="/">Participe da comunidade</BannerButton>
+                <BannerButton href="http://t.me/bergamotters">Participe da comunidade</BannerButton>
             </LeftDiv>
             <RightDiv>
             <ImgBanner src={imgBanner} alt="imagem do banner" />

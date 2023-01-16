@@ -39,6 +39,7 @@ import CardRating from "../../components/CardRating";
 import { Link } from "react-router-dom";
 import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
 import { useForm } from "react-hook-form";
+import { Footer } from "../../components/Footer";
 
 interface Place {
   id: string;
@@ -372,6 +373,7 @@ function RestaurantLocked() {
           </ContainerGreen>
         </ColumnLastRatings>
       </PlaceContainer>
+      <Footer></Footer>
     </div>
   );
 }

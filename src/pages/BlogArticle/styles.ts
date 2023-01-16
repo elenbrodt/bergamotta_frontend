@@ -169,3 +169,9 @@ font-weight: 700;
 font-size: 24px;
 line-height: 26px;
 `
+export const LittleTitles = styled.p`
+font-family: ${fonts.primary};
+color: ${colors.black};
+text-align: center;
+font-size: 22px;
+`

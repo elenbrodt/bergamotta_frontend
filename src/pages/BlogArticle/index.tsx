@@ -18,6 +18,7 @@ import {
   TitleBlog,
   LoginLink,
   TitleComments,
+  LittleTitles
 } from "./styles";
 import { Footer } from "../../components/Footer";
 import { useUser } from "../../store/modules/user";
@@ -75,7 +76,7 @@ function BlogArticle() {
     }
   }, [setUser, urlId, userData]);
 
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit, formState: { errors } } = useForm();
     
   const onSubmit = (data: any) => {
     
@@ -106,20 +107,23 @@ function BlogArticle() {
     }
   };
 
+  const [seed, setSeed] = useState(1);
+  const reset = () => {
+       setSeed(Math.random());
+   }
+
   return (
     <div className='App'>
-      <header>
         <Header />
-      </header>
-      <main>
+      <div>
         <ArticleContainer>
           <ArticleImg src={blog?.image_link} alt='Imagem Titulo' />
           <TitleBlog>{blog?.name}</TitleBlog>
           <SubtitleBlog>{blog?.subtitle}</SubtitleBlog>
           <IntroductionBlog>{blog?.introduction}</IntroductionBlog>
-          <p>INGREDIENTES</p>
+          <LittleTitles>Ingredientes</LittleTitles>
           <TextBlog>{blog?.ingredients}</TextBlog>
-          <p>PASSO A PASSO</p>
+          <LittleTitles>Passo a passo</LittleTitles>
           <TextBlog>{blog?.directions}</TextBlog>
         </ArticleContainer>
         {userData.isLogged && (
@@ -133,8 +137,9 @@ function BlogArticle() {
                 <UserName>{user?.name}</UserName>
               </UserDiv>
               <FormDiv onSubmit={handleSubmit(onSubmit)}>
-                <CommentInput {...register("comment")} name='comment' />
-                <CommentBtn>Comentar</CommentBtn>
+                <CommentInput {...register("comment", { required: true })} name='comment' /><br></br>
+                {errors.comment && <p>Esse campo é obrigatório</p>}
+                <CommentBtn onClick={reset}>Comentar</CommentBtn>
               </FormDiv>
             </GeneralDiv>
           </Container>
@@ -143,11 +148,9 @@ function BlogArticle() {
           <LoginLink href='/login'>Logar para comentar</LoginLink>
         )}
         <TitleComments>Comentários</TitleComments>
-        <ListBlogComments />
-      </main>
-      <footer>
+        <ListBlogComments key={seed}/>
+      </div>
         <Footer />
-      </footer>
     </div>
   );
 }

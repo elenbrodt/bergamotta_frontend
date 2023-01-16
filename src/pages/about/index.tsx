@@ -46,10 +46,8 @@ function About(): JSX.Element {
 
   return (
     <div className='App'>
-      <header>
-        <Header />
-      </header>
-      <main>
+      <Header />
+      <div>
         <UpperBody>
           <UpperBodyLeft>
             <Title>
@@ -120,8 +118,8 @@ function About(): JSX.Element {
             <Overlaid2 src={bodyimage3} alt='Senhor Impressionado' />
           </FormContainerRight>
         </FormContainer>
+      </div>
         <Footer />
-      </main>
     </div>
   );
 }

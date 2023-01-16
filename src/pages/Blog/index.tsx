@@ -1,17 +1,15 @@
 import Header from "../../components/Header";
 import ListBlogs from "../../components/ListBlogs";
+import { Footer } from "../../components/Footer";
 
 function Blog() {
     return (
         <div className="App">
-            <header>
                 <Header />
-            </header>
-            <body>
                 <div>
                     <ListBlogs />
                 </div>
-            </body>
+            <Footer></Footer>
         </div>
     );
 }
