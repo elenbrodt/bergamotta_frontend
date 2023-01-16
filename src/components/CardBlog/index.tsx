@@ -14,7 +14,7 @@ function BlogCard (props: CardBlogProps){
     const id= "/blogarticle/"+ props.id;
 
     return(
-
+        <div>
         <BlogLinks to={id}>
         <CardBlog id="card">
             <CardMedia
@@ -29,6 +29,7 @@ function BlogCard (props: CardBlogProps){
             </ContentCard>
       </CardBlog>
       </BlogLinks>
+      </div>
     )
 }
 export default BlogCard;
