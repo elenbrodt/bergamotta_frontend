@@ -7,3 +7,7 @@ export function userFavoriteById(req: any, props: string) {
     },
   });
 }
+
+export function userFavoritesById( props: string) {
+  return baseApi.get(`/userfavorites/${props}`);
+}
