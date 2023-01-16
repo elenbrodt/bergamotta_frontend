@@ -31,8 +31,6 @@ export default function ListBlogComments() {
         getData();
     }, [setBlogComment, urlRecipeId])
     
-    console.log(blogComments)
-
     return (
         <div>
             {blogComments.map((blog, index)=> {
