@@ -1,7 +1,5 @@
-import BlogComponent from "../../components/BlogArticle";
 import Header from "../../components/Header";
 import {
-  ContainerBlog,
   CommentTitle,
   Container,
   TitleDiv,
@@ -25,7 +23,6 @@ import { Footer } from "../../components/Footer";
 import { useUser } from "../../store/modules/user";
 import { useEffect, useState } from "react";
 import { byIdUser } from "../../services/MainApi/user_profile";
-import BlogCommentComponent from "../../components/BlogComment";
 import ListBlogComments from "../../components/BlogCommentsList";
 import { createBlogComment } from "../../services/MainApi/blog_comment";
 import { useForm } from "react-hook-form";
@@ -52,7 +49,6 @@ function BlogArticle() {
   const userData = useUser();
 
   const [user, setUser] = useState<UserDataProps>();
-  const [token, setToken] = useState<string>("");
 
   const [blog, setBlog] = useState<Blog>();
 
@@ -76,48 +72,35 @@ function BlogArticle() {
         }
       };
       getData();
-      console.log(userData);
-      //setToken(userData.token);
     }
-  }, [setUser]);
+  }, [setUser, urlId, userData]);
 
   const { register, handleSubmit } = useForm();
-
-  /*   const [comment, setComment] = useState("");
-  const [date, setDate] = useState("");
-  const [recipe_id, setRecipe_id] = useState("");
-  const [user_id, setUser_id] = useState(""); */
-
+    
   const onSubmit = (data: any) => {
-    /* setComment(data.comment);
-    setDate("");
-    setRecipe_id(urlId);
-    setUser_id(data.id); */
+    
     blogCommentCreate(
       data.comment,
-      data.date,
-      data.recipe_id,
-      data.user_id,
-      token
+      "",
+      urlId,
+      userData.findUser.id,      
     );
   };
   const blogCommentCreate = async (
     comment: string,
     date: string,
     recipe_id: string,
-    user_id: string,
-    token: string
+    user_id: string,   
   ) => {
     const req = {
       comment: comment,
       date: date,
       recipe_id: recipe_id,
-      user_id: user_id,
-      token: token,
+      user_id: user_id, 
     };
     try {
       const response = await createBlogComment(req, urlId);
-      //console.log(response);
+      console.log(response);
     } catch (error) {
       alert("Deu algo errado no catch");
     }
