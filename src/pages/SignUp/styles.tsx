@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { RadioGroup } from "@mui/material";
+import SubmitButton from '../../components/SubmitButton';
 
 export const Box = styled.div`
     display: flex;
@@ -29,4 +30,8 @@ export const Container = styled.div`
     display: flex;
     gap: 1vw;
     width: 100%;
+`
+export const Button = styled(SubmitButton)`
+margin-top: 50px;
+margin-left: 300px;
 `
