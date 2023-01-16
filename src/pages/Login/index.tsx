@@ -21,7 +21,7 @@ import { setOwner } from "../../store/modules/owner";
 import { useState } from "react";
 
 function Login() {
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit, formState: { errors } } = useForm();
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -79,21 +79,23 @@ function Login() {
       <TitleLogin id='title' title={"Olá, que bom ter você de volta!👋"} />
       <form id='myForm' onSubmit={handleSubmit(onSubmit)}>
         <Inputs>
-          <FormControl fullWidth {...register("email")}>
+          <FormControl fullWidth {...register("email", { required: true })}>
             <InputLogin
               type='email'
               placeholder='exemplo@email.com'
               label='Email'
               name='email'
             />
+            {errors.email && <p>Esse campo é obrigatório</p>}
           </FormControl>
-          <FormControl fullWidth {...register("password")}>
+          <FormControl fullWidth {...register("password", { required: true })}>
             <InputLogin
               type='password'
               placeholder='Digite sua senha'
               label='Senha'
               name='password'
             />
+            {errors.password && <p>Esse campo é obrigatório</p>}
           </FormControl>
           <RadioGroupStyled color='secondary' row defaultValue='user'>
             <FormControlLabelStyled
