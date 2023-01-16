@@ -107,6 +107,11 @@ function BlogArticle() {
     }
   };
 
+  const [seed, setSeed] = useState(1);
+  const reset = () => {
+       setSeed(Math.random());
+   }
+
   return (
     <div className='App'>
         <Header />
@@ -133,7 +138,7 @@ function BlogArticle() {
               </UserDiv>
               <FormDiv onSubmit={handleSubmit(onSubmit)}>
                 <CommentInput {...register("comment")} name='comment' />
-                <CommentBtn>Comentar</CommentBtn>
+                <CommentBtn onClick={reset}>Comentar</CommentBtn>
               </FormDiv>
             </GeneralDiv>
           </Container>
@@ -142,7 +147,7 @@ function BlogArticle() {
           <LoginLink href='/login'>Logar para comentar</LoginLink>
         )}
         <TitleComments>Comentários</TitleComments>
-        <ListBlogComments />
+        <ListBlogComments key={seed}/>
       </div>
         <Footer />
     </div>
