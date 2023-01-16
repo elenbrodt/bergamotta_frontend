@@ -28,7 +28,6 @@ interface UserProfileProps {
 
 function UserProfile() {
   const userCookies = useUser();
-
   const [user, setUser] = useState<UserProfileProps>();
   const [idUser, setIdUser] = useState<string>("");
   useEffect(() => {
@@ -54,10 +53,7 @@ function UserProfile() {
       <main>
         <MainDiv>
           <RoundImage>
-            <ImgRound
-              src='https://img.freepik.com/fotos-gratis/estilo-de-vida-beleza-e-moda-conceito-de-emocoes-de-pessoas-jovem-gerente-de-escritorio-feminino-asiatico-ceo-com-expressao-satisfeita-em-pe-sobre-um-fundo-branco-sorrindo-com-os-bracos-cruzados-sobre-o-peito_1258-59329.jpg?w=2000'
-              alt='test'
-            />
+            <ImgRound src={user?.image_link} alt='test' />
           </RoundImage>
           <UserName>{user?.name}</UserName>
           <FavoritesDiv>

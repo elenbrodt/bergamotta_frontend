@@ -18,6 +18,8 @@ interface InputLoginProps {
   placeholder: string;
   theme?: string;
   name?: string;
+  defaultValue?: any;
+  value?: any;
 }
 
 function InputLogin(props: InputLoginProps) {
@@ -31,9 +33,10 @@ function InputLogin(props: InputLoginProps) {
           <InputBorder>
             <InputBaseLogin
               placeholder={props.placeholder}
-              inputProps={{ "aria-label": "search" }}
               type={showPassword ? "text" : "password"}
               name={props.name}
+              defaultValue={props.defaultValue}
+              value={props.value}
             />
             <IconButton
               aria-label='toggle password visibility'
@@ -53,12 +56,12 @@ function InputLogin(props: InputLoginProps) {
           <InputBorder>
             <InputBaseLogin
               placeholder={props.placeholder}
-              inputProps={{ "aria-label": "search" }}
+              //inputProps={{ "aria-label": "search" }}
               name={props.name}
               type={props.type}
               className={props.theme}
-
-              //onChange={(event: any) => props.onChange(event.target.value)}
+              defaultValue={props.defaultValue}
+              value={props.value}
             />
           </InputBorder>
         </InputBox>

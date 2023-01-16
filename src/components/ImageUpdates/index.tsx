@@ -1,20 +1,19 @@
 import { useUser } from "../../store/modules/user";
 import { byIdUser } from "../../services/MainApi/user_profile";
 import { useEffect, useState } from "react";
-import { ImgDiv, UserImg } from "./style"
+import { ImgDiv, UserImg } from "./style";
 
-interface User {
+/* interface User {
     image_link: string;
-}
+} */
 
-export default function ImageUser(id:string) {
-    
-    const userData = useUser()
+export default function ImageUser(props: string) {
+  /*     const userData = useUser()
     const userId = userData.findUser.id
     
-    const [user, setUser] = useState<User>()
+    const [user, setUser] = useState<User>() */
 
-    useEffect(() => {
+  /*     useEffect(() => {
         const getData = async () => {
           try {
             const response = await byIdUser(userId);
@@ -24,10 +23,10 @@ export default function ImageUser(id:string) {
           }
         };
         getData();
-      }, [setUser, userId]);
+      }, [setUser, userId]); */
   return (
     <ImgDiv>
-      <UserImg src={user?.image_link} alt="imagem do usuário" />
+      <UserImg src={props} alt='imagem do usuário' />
     </ImgDiv>
   );
 }
