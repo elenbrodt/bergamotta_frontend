@@ -17,7 +17,7 @@ import {
   IntroductionBlog,
   TitleBlog,
   LoginLink,
-  TitleComments
+  TitleComments,
 } from "./styles";
 import { Footer } from "../../components/Footer";
 import { useUser } from "../../store/modules/user";
@@ -139,7 +139,9 @@ function BlogArticle() {
             </GeneralDiv>
           </Container>
         )}
-        {!userData.isLogged && <LoginLink href='/login'>Logar para comentar</LoginLink>}
+        {!userData.isLogged && (
+          <LoginLink href='/login'>Logar para comentar</LoginLink>
+        )}
         <TitleComments>Comentários</TitleComments>
         <ListBlogComments />
       </main>

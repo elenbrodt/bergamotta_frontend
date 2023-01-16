@@ -113,7 +113,11 @@ function Login() {
         </Inputs>
       </form>
       <PasswordReminder />
-      <SignInLink text='Não possui uma conta?' link='Cadastre-se Aqui' />
+      <SignInLink
+        href='/cadastro'
+        text='Não possui uma conta?'
+        link='Cadastre-se Aqui'
+      />
     </LoginBox>
   );
 }
