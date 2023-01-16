@@ -1,26 +1,29 @@
-import { Dialog, FormGroup } from '@mui/material';
-import styled from 'styled-components';
-import {colors, fonts} from "../../styles/theme";
+import { Dialog, FormGroup } from "@mui/material";
+import styled from "styled-components";
+import { colors, fonts } from "../../styles/theme";
 
 export const FilterButton = styled.button`
   display: flex;
-  align-items:center;
+  align-items: center;
   justify-content: center;
   width: 18vw;
-  gap: 1vw;
+  gap: 0.5vw;
   border-radius: 36px;
   border: 2px solid ${colors.secondary};
   color: ${colors.secondary};
   cursor: pointer;
   background: none;
-`
+  img {
+    width: 1.67vw;
+  }
+`;
 export const FilterLinkText = styled.p`
   font-family: ${fonts.secondary};
   font-weight: 400;
   font-size: 20px;
   color: ${colors.black};
   margin: 0;
-`
+`;
 export const FilterTitle = styled.h2`
   font-family: ${fonts.primary};
   color: ${colors.primary};
@@ -28,21 +31,21 @@ export const FilterTitle = styled.h2`
   font-size: 48px;
   text-align: center;
   padding-top: 3vh;
-`
+`;
 export const FormGroupStyled = styled(FormGroup)`
-    height: 100%;
-    width: 100%;
-    .MuiFormControlLabel-label{
-        font-family:${fonts.secondary};
-        font-size: 14px;
-        font-weight: 700;
-    }
-     & h3{
-      padding: 2vh 0 2vh 0;
-     }
-`
+  height: 100%;
+  width: 100%;
+  .MuiFormControlLabel-label {
+    font-family: ${fonts.secondary};
+    font-size: 14px;
+    font-weight: 700;
+  }
+  & h3 {
+    padding: 2vh 0 2vh 0;
+  }
+`;
 export const DialogStyled = styled(Dialog)`
-    .MuiDialogContent-root{
-      width: 35vw;
-    }
-`
+  .MuiDialogContent-root {
+    width: 35vw;
+  }
+`;

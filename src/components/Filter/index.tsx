@@ -32,13 +32,15 @@ export default function Filter(props: FilterProps) {
   const navigate = useNavigate();
 
   const onSubmit = (data: any) => {
-    dispatch(setFilter({
-      place_types_ids: data.place_types_ids,
-      food_types_ids: data.food_types_ids,
-      place_profiles_ids: data.place_profiles_ids
-    }))
-    reset(data.place_types_ids, data.food_types_ids)
-    reset(data.place_profiles_ids) 
+    dispatch(
+      setFilter({
+        place_types_ids: data.place_types_ids,
+        food_types_ids: data.food_types_ids,
+        place_profiles_ids: data.place_profiles_ids,
+      })
+    );
+    reset(data.place_types_ids, data.food_types_ids);
+    reset(data.place_profiles_ids);
     handleClose();
   };
 
@@ -48,13 +50,13 @@ export default function Filter(props: FilterProps) {
   };
   const handleClose = () => {
     setOpen(false);
-    navigate('/');
+    navigate("/");
   };
-  
+
   return (
     <>
-      <FilterButton id="buttonFilter" onClick={handleClickOpen}>
-          <img src={FilterIcon} alt="iconfilter" />
+      <FilterButton id='buttonFilter' onClick={handleClickOpen}>
+        <img src={FilterIcon} alt='iconfilter' />
         <FilterLinkText>{props.texto}</FilterLinkText>
       </FilterButton>
       <DialogStyled open={open} onClose={handleClose}>
@@ -68,7 +70,7 @@ export default function Filter(props: FilterProps) {
                   return (
                     <FormControlLabel
                       {...register("place_types_ids")}
-                      control={<Checkbox value={tag.tag_id}/>}
+                      control={<Checkbox value={tag.tag_id} />}
                       label={tag.tag}
                       key={index}
                     />
@@ -104,7 +106,7 @@ export default function Filter(props: FilterProps) {
             </FormGroupStyled>
           </DialogContent>
           <DialogActions>
-            <SubmitButton text="Ver resultados" />
+            <SubmitButton text='Ver resultados' />
           </DialogActions>
         </form>
       </DialogStyled>

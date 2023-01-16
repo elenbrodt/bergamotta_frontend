@@ -5,7 +5,7 @@ export const SearchBarStyle = styled.div`
   display: flex;
   flex-direction: row;
   gap: 0.75vw;
-  height: 12vh;
+  height: 8vh;
   padding: 1vh 1vw 0px 4vw;
   position: sticky;
   top: 0px;
