@@ -1,5 +1,4 @@
-import { CheckBox } from "@mui/icons-material";
-import { Rating, ToggleButton } from "@mui/material";
+import { Rating } from "@mui/material";
 import styled from "styled-components";
 import { colors, fonts } from "../../styles/theme";
 
@@ -35,6 +34,7 @@ export const Box = styled.div`
     font-size: 45px;
   }
 `;
+
 export const Title = styled.h1`
     color: ${colors.black},
     font-family:${fonts.primary};
@@ -138,17 +138,21 @@ export const ColumnRating = styled.div`
     width: 17.5vw;
     text-align: center;
     background: none;
-    background-color: ${(props) => (props ? "none" : colors.primary)};
     cursor: pointer;
   }
-  .MuiToggleButton-root {
-    text-transform: capitalize;
-    background-color: ${(props) => (props ? "none" : colors.primary)};
+  #myForm {
+    display: flex;
+    flex-direction: column;
+    gap: 2vh;
+  }
+  #rating_btn {
+    width: 60%;
+    align-self: center;
   }
 `;
 
-export const StyledRating = styled (Rating)`
-    & .MuiRating-iconFilled{
-        color:${colors.secondary}
-    }
-`
+export const StyledRating = styled(Rating)`
+  & .MuiRating-iconFilled {
+    color: ${colors.secondary};
+  }
+`;

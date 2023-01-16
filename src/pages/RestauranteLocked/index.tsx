@@ -29,6 +29,7 @@ import {
   Checkbox,
   FormControl,
   Rating,
+  TextField,
   ToggleButton,
   ToggleButtonGroup,
 } from "@mui/material";
@@ -40,6 +41,8 @@ import { Link } from "react-router-dom";
 import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
 import { useForm } from "react-hook-form";
 import { Footer } from "../../components/Footer";
+import { TAGS } from "../../mock/tags";
+import { colors } from "../../styles/theme";
 
 interface Place {
   id: string;
@@ -172,8 +175,8 @@ function RestaurantLocked() {
     if (user.isLogged) {
       const getFavorites = async () => {
         try {
-          const response = await userFavoriteById(user.token, urlId);
-          console.log(response.data);
+          const response = await userFavoriteById(user.findUser.id, urlId);
+          console.log("oie:", response.data);
         } catch (error) {
           alert("Deu algo errado no catch");
         }
@@ -182,14 +185,37 @@ function RestaurantLocked() {
     }
   }, [setPlace, urlId, user]);
 
-  const [toggle, setToggle] = useState<boolean>(true);
-  const handleClick = () => {
-    setToggle(!toggle);
-  };
-
   const onSubmit = (data: any) => {
     console.log(data);
   };
+
+  const [isWelcoming, setIsWelcoming] = useState(false);
+  const handleWelcoming = () => {
+    setIsWelcoming(!isWelcoming);
+  };
+  const [ingredientSubstitution, setIngredientSubstitution] = useState(false);
+  const handleIngridientSubstitution = () => {
+    setIngredientSubstitution(!ingredientSubstitution);
+  };
+  const [isInstagrammable, setIsInstagrammable] = useState(false);
+  const handleIsInstagrammable = () => {
+    setIsInstagrammable(!isInstagrammable);
+  };
+
+  const [isTasty, setIsTasty] = useState(false);
+  const handleIsTasty = () => {
+    setIsTasty(!isTasty);
+  };
+  const [isCozy, setIsCozy] = useState(false);
+  const handleIsCozy = () => {
+    setIsCozy(!isCozy);
+  };
+  const [isServiceSpeed, setIsServiceSpeed] = useState(false);
+  const handleIsServiceSpeed = () => {
+    setIsServiceSpeed(!isServiceSpeed);
+  };
+
+  const [userValue, setUserValue] = useState<number>(1);
 
   if (user.isLogged) {
     return (
@@ -252,50 +278,98 @@ function RestaurantLocked() {
             </Box>
           </Column>
           <ColumnRating>
-            <form onSubmit={handleSubmit(onSubmit)}>
-              <FormControl {...register("rating-stars")}>
-                <p>Conte como foi sua experiência</p>
-                {/* <Rating
-                  name='simple-controlled'
-                  defaultValue={2}
+            <p>Conte como foi sua experiência</p>
+            <form id='myForm' onSubmit={handleSubmit(onSubmit)}>
+              <FormControl {...register("general_rating")}>
+                <Rating
                   onChange={(event, newValue) => {
-                    setValue(event);
+                    setUserValue(newValue as number);
                   }}
-                /> */}
+                  value={userValue}
+                />
               </FormControl>
-              <ToggleButtonGroup {...register("welcoming")}>
-                <p>Conte o que mais gostou no local</p>
-                <GoodsTags>
-                  <ToggleButton
-                    value={toggle}
-                    name='welcoming'
-                    onChange={() => {
-                      setToggle(!toggle);
-                    }}
-                  >
-                    Atendimento acolhedor
-                  </ToggleButton>
-                  {/* <ToggleButton
-                    value='check'
-                    selected={toggle}
-                    onChange={() => {
-                      setToggle(!toggle);
-                    }}
-                  >
-                    Aletração de ingredientes
-                  </ToggleButton>
-                  <ToggleButton
-                    value='check'
-                    selected={toggle}
-                    onChange={() => {
-                      setToggle(!toggle);
-                    }}
-                  >
-                    Instagramável
-                  </ToggleButton> */}
-                </GoodsTags>
-              </ToggleButtonGroup>
-              <button type='submit'>teste</button>
+              <p>O que mais gostou no local</p>
+              <GoodsTags>
+                <button
+                  style={{
+                    backgroundColor: isWelcoming ? colors.secondary : "",
+                    color: isWelcoming ? "white" : "",
+                  }}
+                  onClick={handleWelcoming}
+                  value={isWelcoming.toString()}
+                  {...register("welcoming_service")}
+                  type='button'
+                >
+                  Ambiente acolhedor
+                </button>
+                <button
+                  style={{
+                    backgroundColor: ingredientSubstitution
+                      ? colors.secondary
+                      : "",
+                    color: ingredientSubstitution ? "white" : "",
+                  }}
+                  onClick={handleIngridientSubstitution}
+                  type='button'
+                  value={ingredientSubstitution.toString()}
+                  {...register("ingredient_substitution")}
+                >
+                  Substituição de ingredientes
+                </button>
+                <button
+                  style={{
+                    backgroundColor: isInstagrammable ? colors.secondary : "",
+                    color: isInstagrammable ? "white" : "",
+                  }}
+                  onClick={handleIsInstagrammable}
+                  type='button'
+                  value={isInstagrammable.toString()}
+                  {...register("instagrammable_food")}
+                >
+                  Instagramável
+                </button>
+                <button
+                  style={{
+                    backgroundColor: isTasty ? colors.secondary : "",
+                    color: isTasty ? "white" : "",
+                  }}
+                  onClick={handleIsTasty}
+                  type='button'
+                  value={isTasty.toString()}
+                  {...register("tasty_food")}
+                >
+                  Saboroso
+                </button>
+                <button
+                  style={{
+                    backgroundColor: isCozy ? colors.secondary : "",
+                    color: isCozy ? "white" : "",
+                  }}
+                  onClick={handleIsCozy}
+                  type='button'
+                  value={isCozy.toString()}
+                  {...register("cozy")}
+                >
+                  Ambiente Aconchegante
+                </button>
+                <button
+                  style={{
+                    backgroundColor: isServiceSpeed ? colors.secondary : "",
+                    color: isServiceSpeed ? "white" : "",
+                  }}
+                  onClick={handleIsServiceSpeed}
+                  type='button'
+                  value={isServiceSpeed.toString()}
+                  {...register("service_speed")}
+                >
+                  Agilidade no Atendimento
+                </button>
+              </GoodsTags>
+              <p>Compartilhe com a gente sua experiência</p>
+              <TextField />
+              <button id='rating_btn' type='submit'>
+                Enviar
+              </button>
             </form>
           </ColumnRating>
         </PlaceContainer>
