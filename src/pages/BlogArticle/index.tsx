@@ -18,16 +18,20 @@ import {
   TitleBlog,
   LoginLink,
   TitleComments,
-  LittleTitles
+  LittleTitles,
 } from "./styles";
 import { Footer } from "../../components/Footer";
 import { useUser } from "../../store/modules/user";
 import { useEffect, useState } from "react";
 import { byIdUser } from "../../services/MainApi/user_profile";
 import ListBlogComments from "../../components/BlogCommentsList";
-import { createBlogComment } from "../../services/MainApi/blog_comment";
+import {
+  blogCommentList,
+  createBlogComment,
+} from "../../services/MainApi/blog_comment";
 import { useForm } from "react-hook-form";
 import { byIdBlog } from "../../services/MainApi/blog";
+import CardBlogComment from "../../components/CardBlogComments";
 
 interface UserDataProps {
   id: string;
@@ -42,6 +46,17 @@ interface Blog {
   introduction: string;
   ingredients: string;
   directions: string;
+}
+interface User {
+  image_link: string;
+  name: string;
+}
+
+interface BlogCommentList {
+  id: string;
+  date: string;
+  comment: string;
+  user: User;
 }
 
 function BlogArticle() {
@@ -76,28 +91,26 @@ function BlogArticle() {
     }
   }, [setUser, urlId, userData]);
 
-  const { register, handleSubmit, formState: { errors } } = useForm();
-    
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
   const onSubmit = (data: any) => {
-    
-    blogCommentCreate(
-      data.comment,
-      "",
-      urlId,
-      userData.findUser.id,      
-    );
+    blogCommentCreate(data.comment, "", urlId, userData.findUser.id);
   };
   const blogCommentCreate = async (
     comment: string,
     date: string,
     recipe_id: string,
-    user_id: string,   
+    user_id: string
   ) => {
     const req = {
       comment: comment,
       date: date,
       recipe_id: recipe_id,
-      user_id: user_id, 
+      user_id: user_id,
     };
     try {
       const response = await createBlogComment(req, urlId);
@@ -109,12 +122,34 @@ function BlogArticle() {
 
   const [seed, setSeed] = useState(1);
   const reset = () => {
-       setSeed(Math.random());
-   }
+    setSeed(Math.random());
+  };
+
+  const [blogComments, setBlogComment] = useState<BlogCommentList[]>([]);
+
+  useEffect(() => {
+    const getData = async () => {
+      try {
+        const response = await blogCommentList(urlId);
+        setBlogComment([
+          ...blogComments,
+          {
+            id: response.data.id,
+            date: response.data.date,
+            comment: response.data.comment,
+            user: response.data.user,
+          },
+        ]);
+      } catch (error) {
+        alert("Deu algo errado no catch");
+      }
+    };
+    getData();
+  }, [setBlogComment, urlId]);
 
   return (
     <div className='App'>
-        <Header />
+      <Header />
       <div>
         <ArticleContainer>
           <ArticleImg src={blog?.image_link} alt='Imagem Titulo' />
@@ -137,7 +172,12 @@ function BlogArticle() {
                 <UserName>{user?.name}</UserName>
               </UserDiv>
               <FormDiv onSubmit={handleSubmit(onSubmit)}>
-                <CommentInput {...register("comment", { required: true })} name='comment' /><br></br>
+                <CommentInput
+                  {...register("comment", { required: true })}
+                  name='comment'
+                  placeholder='Faça um comentário'
+                />
+                <br></br>
                 {errors.comment && <p>Esse campo é obrigatório</p>}
                 <CommentBtn onClick={reset}>Comentar</CommentBtn>
               </FormDiv>
@@ -148,9 +188,9 @@ function BlogArticle() {
           <LoginLink href='/login'>Logar para comentar</LoginLink>
         )}
         <TitleComments>Comentários</TitleComments>
-        <ListBlogComments key={seed}/>
+        <ListBlogComments key={seed} />
       </div>
-        <Footer />
+      <Footer />
     </div>
   );
 }
