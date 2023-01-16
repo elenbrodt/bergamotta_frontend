@@ -4,15 +4,16 @@ import Header from "../../components/Header";
 import SideList from "../../components/SideList";
 import { Footer } from "../../components/Footer";
 
-
 import { CITY } from "../../mock/city";
 import SearchBar from "../../components/SearchBar";
 import GreenBanner from "../../components/GreenBanner";
 import CardPlace from "../../components/CardPlace";
 import { useUser } from "../../store/modules/user";
+import { useOwner } from "../../store/modules/owner";
 
 function Search() {
   const user = useUser();
+  const owner = useOwner();
 
   return (
     <div className='App'>
@@ -21,7 +22,7 @@ function Search() {
         <SideBar>
           <SearchBar />
           <SideList />
-          {!user?.isLogged && (
+          {!user?.isLogged && !owner?.isLogged && (
             <GreenBanner
               href='/cadastro'
               id='greenCard'
@@ -30,7 +31,7 @@ function Search() {
               btn_text='CRIE SUA CONTA'
             />
           )}
-          {!user?.isLogged && (
+          {!user?.isLogged && !owner?.isLogged && (
             <CardPlace
               id='000'
               key='00'

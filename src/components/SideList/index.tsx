@@ -7,6 +7,7 @@ import { useUser } from "../../store/modules/user";
 import { filters } from "../../services/MainApi/filter";
 import { removeFilter, useFilter } from "../../store/modules/filter";
 import { useDispatch } from "react-redux";
+import { useOwner } from "../../store/modules/owner";
 
 interface Place {
   id: string;
@@ -20,6 +21,7 @@ interface Place {
 
 export default function SideList() {
   const user = useUser();
+  const owner = useOwner();
   const [places, setPlaces] = useState<Place[]>([]);
 
   const filter = useFilter();
@@ -81,7 +83,8 @@ export default function SideList() {
         </Container>
       )}
       <Title>Lista de Restaurantes</Title>
-      {!user.isLogged &&
+      {!user?.isLogged &&
+        !owner?.isLogged &&
         places
           .slice(0, 4)
           .map((place, index) => (
@@ -94,7 +97,7 @@ export default function SideList() {
               average_ticket_price={place.average_ticket_price}
             />
           ))}
-      {user.isLogged &&
+      {(user?.isLogged || owner?.isLogged) &&
         places.map((place, index) => (
           <CardPlace
             id={place.id}

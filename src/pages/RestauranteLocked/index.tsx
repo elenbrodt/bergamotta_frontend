@@ -77,13 +77,15 @@ function RestaurantLocked() {
         const response = await byIdPlace(urlId);
         setPlace(response.data);
         setSocials(response.data.social_media);
-        if (response.data.average_ticket_price < 50){
+        if (response.data.average_ticket_price < 50) {
           setPrice(1);
         }
-        if (50 >= response.data.average_ticket_price || response.data.average_ticket_price <= 89){
+        if (
+          50 >= response.data.average_ticket_price ||
+          response.data.average_ticket_price <= 89
+        ) {
           setPrice(2);
-        }
-        else if (response.data.average_ticket_price > 90) {
+        } else if (response.data.average_ticket_price > 90) {
           setPrice(3);
         }
       } catch (error) {
@@ -177,7 +179,6 @@ function RestaurantLocked() {
       };
       getFavorites();
     }
-    
   }, [setPlace, urlId, user]);
 
   const [toggle, setToggle] = useState<boolean>(true);
@@ -224,8 +225,8 @@ function RestaurantLocked() {
                   value={price}
                   readOnly
                   max={3}
-                  icon={<AttachMoneyIcon fontSize="inherit"/>}
-                  emptyIcon={<AttachMoneyIcon fontSize="inherit"/>}
+                  icon={<AttachMoneyIcon fontSize='inherit' />}
+                  emptyIcon={<AttachMoneyIcon fontSize='inherit' />}
                 />
                 <Container className='favorite_box'>
                   <PhoneIcon />
@@ -332,13 +333,13 @@ function RestaurantLocked() {
                 />
               </div>
               <StyledRating
-                  className='favorite_box'
-                  value={price}
-                  readOnly
-                  max={3}
-                  icon={<AttachMoneyIcon fontSize="inherit"/>}
-                  emptyIcon={<AttachMoneyIcon fontSize="inherit"/>}
-                />
+                className='favorite_box'
+                value={price}
+                readOnly
+                max={3}
+                icon={<AttachMoneyIcon fontSize='inherit' />}
+                emptyIcon={<AttachMoneyIcon fontSize='inherit' />}
+              />
               <Container className='favorite_box'>
                 <PhoneIcon />
                 {place?.phone}
