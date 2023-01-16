@@ -18,6 +18,7 @@ import {
   TitleBlog,
   LoginLink,
   TitleComments,
+  LittleTitles
 } from "./styles";
 import { Footer } from "../../components/Footer";
 import { useUser } from "../../store/modules/user";
@@ -115,9 +116,9 @@ function BlogArticle() {
           <TitleBlog>{blog?.name}</TitleBlog>
           <SubtitleBlog>{blog?.subtitle}</SubtitleBlog>
           <IntroductionBlog>{blog?.introduction}</IntroductionBlog>
-          <p>INGREDIENTES</p>
+          <LittleTitles>Ingredientes</LittleTitles>
           <TextBlog>{blog?.ingredients}</TextBlog>
-          <p>PASSO A PASSO</p>
+          <LittleTitles>Passo a passo</LittleTitles>
           <TextBlog>{blog?.directions}</TextBlog>
         </ArticleContainer>
         {userData.isLogged && (
