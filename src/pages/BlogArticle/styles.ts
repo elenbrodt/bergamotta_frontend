@@ -20,14 +20,25 @@ export const LinkLogin = styled.a`
 `;
 export const CommentTitle = styled.p`
   display: block;
-  padding-left: 15%;
   margin-top: 70px;
+  margin-bottom: 25px;
   font-family: ${fonts.secondary};
   font-weight: 700;
   font-size: 24px;
   line-height: 26px;
   color: ${colors.black};
 `;
+export const TitleComments = styled.p`
+display: block;
+padding-left: 15%;
+  margin-top: 90px;
+  margin-bottom: 25px;
+  font-family: ${fonts.secondary};
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 26px;
+  color: ${colors.black};
+`
 
 export const Container = styled.div`
   margin-top: 90px;
@@ -146,3 +157,15 @@ export const TitleTextBlog = styled.p`
   font-size: 24px;
   line-height: 26px;
 `;
+
+export const LoginLink = styled.a`
+margin-top: 60px;
+text-align: center;
+display: block;
+text-decoration: none;
+font-family: ${fonts.primary};
+color: ${colors.secondary};
+font-weight: 700;
+font-size: 24px;
+line-height: 26px;
+`

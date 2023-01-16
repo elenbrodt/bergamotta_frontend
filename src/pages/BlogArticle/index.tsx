@@ -18,6 +18,8 @@ import {
   TextBlog,
   IntroductionBlog,
   TitleBlog,
+  LoginLink,
+  TitleComments
 } from "./styles";
 import { Footer } from "../../components/Footer";
 import { useUser } from "../../store/modules/user";
@@ -154,8 +156,8 @@ function BlogArticle() {
             </GeneralDiv>
           </Container>
         )}
-        {!userData.isLogged && <a href='/login'>Logar para comentar</a>}
-        <CommentTitle>Comentários</CommentTitle>
+        {!userData.isLogged && <LoginLink href='/login'>Logar para comentar</LoginLink>}
+        <TitleComments>Comentários</TitleComments>
         <ListBlogComments />
       </main>
       <footer>
