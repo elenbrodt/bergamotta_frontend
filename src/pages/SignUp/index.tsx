@@ -3,13 +3,14 @@ import TitleLogin from "../../components/TitleLogin";
 import InputLogin from "../../components/InputLogin";
 import UserType from "../../components/UserType";
 import LogoSrc from "../../assets/image/logo_vertical.png";
-import { Box, Inputs, RadioGroupStyled, Container,Button } from "./styles";
+import { Box, Inputs, RadioGroupStyled, Container, Button } from "./styles";
 import SignInLink from "../../components/SignInLink";
 import { useState } from "react";
 import { createUser } from "../../services/MainApi/sign_in";
 import { useForm } from "react-hook-form";
 import { FormControl } from "@mui/material";
 import { createOwner } from "../../services/MainApi/owner";
+import { Footer } from "../../components/Footer";
 
 function SignUp() {
   const { register, handleSubmit, formState: { errors } } = useForm();
@@ -103,106 +104,109 @@ function SignUp() {
   };
 
   return (
-    <Box>
-      <Link to='/'>
-        <img src={LogoSrc} alt='logo_bergamotta' />{" "}
-      </Link>
-      <TitleLogin title='Crie sua conta' />
-      <form id='form' onSubmit={handleSubmit(onSubmit)}>
-        <Inputs>
-          <RadioGroupStyled color='secondary' row defaultValue='user'>
-            <UserType
-              name='user'
-              user_type='user'
-              text='Sou usuário'
-              onChange={handleClick}
-            ></UserType>
-            <UserType
-              name='owner'
-              user_type='owner'
-              text='Sou restaurante'
-              onChange={handleClick}
-            ></UserType>
-          </RadioGroupStyled>
-          <FormControl fullWidth {...register("name", { required: true })}>
-            <InputLogin
-              type='text'
-              placeholder='Digite seu usuário'
-              name='name'
+    <div>
+      <Box>
+        <Link to='/'>
+          <img src={LogoSrc} alt='logo_bergamotta' />{" "}
+        </Link>
+        <TitleLogin title='Crie sua conta' />
+        <form id='form' onSubmit={handleSubmit(onSubmit)}>
+          <Inputs>
+            <RadioGroupStyled color='secondary' row defaultValue='user'>
+              <UserType
+                name='user'
+                user_type='user'
+                text='Sou usuário'
+                onChange={handleClick}
+              ></UserType>
+              <UserType
+                name='owner'
+                user_type='owner'
+                text='Sou restaurante'
+                onChange={handleClick}
+              ></UserType>
+            </RadioGroupStyled>
+            <FormControl fullWidth {...register("name", { required: true })}>
+              <InputLogin
+                type='text'
+                placeholder='Digite seu usuário'
+                name='name'
               />
               {errors.name && <p>Esse campo é obrigatório</p>}
-          </FormControl>
-          <FormControl fullWidth {...register("email", { required: true })}>
-            <InputLogin
-              type='email'
-              placeholder='Digite seu email'
-              name='email'
-            />
-            {errors.email && <p>Esse campo é obrigatório</p>}
-          </FormControl>
-          <FormControl fullWidth {...register("password", { required: true })}>
-            <InputLogin
-              type='password'
-              name='password'
-              placeholder='Digite sua senha'
-            />
-            {errors.password && <p>Esse campo é obrigatório</p>}
-          </FormControl>
-          <FormControl fullWidth {...register("image_link", { required: true })}>
-            <InputLogin
-              type='text'
-              placeholder='Insira link da sua imagem de avatar'
-              name='image_link'
-            />
-            {errors.image_link && <p>Esse campo é obrigatório</p>}
-          </FormControl>
-          <Container>
-            <FormControl fullWidth {...register("city", { required: true })}>
+            </FormControl>
+            <FormControl fullWidth {...register("email", { required: true })}>
+              <InputLogin
+                type='email'
+                placeholder='Digite seu email'
+                name='email'
+              />
+              {errors.email && <p>Esse campo é obrigatório</p>}
+            </FormControl>
+            <FormControl fullWidth {...register("password", { required: true })}>
+              <InputLogin
+                type='password'
+                name='password'
+                placeholder='Digite sua senha'
+              />
+              {errors.password && <p>Esse campo é obrigatório</p>}
+            </FormControl>
+            <FormControl fullWidth {...register("image_link", { required: true })}>
               <InputLogin
                 type='text'
-                placeholder='Digite sua cidade'
-                name='city'
+                placeholder='Insira link da sua imagem de avatar'
+                name='image_link'
               />
-              {errors.city && <p>Esse campo é obrigatório</p>}
+              {errors.image_link && <p>Esse campo é obrigatório</p>}
             </FormControl>
-            <FormControl fullWidth {...register("state", { required: true })}>
-              <InputLogin
-                type='text'
-                placeholder='Digite seu estado'
-                name='state'
-              />
-              {errors.state && <p>Esse campo é obrigatório</p>}
-            </FormControl>
-            <FormControl fullWidth {...register("country", { required: true })}>
-              <InputLogin
-                type='text'
-                placeholder='Digite o país'
-                name='country'
-              />
-              {errors.country && <p>Esse campo é obrigatório</p>}
-            </FormControl>
-          </Container>
-          {toggle && (
             <Container>
-              <FormControl fullWidth {...register("cnpj", { required: true })}>
-                <InputLogin type='text' placeholder='CNPJ' name='cnpj' />
-                {errors.cnpj && <p>Esse campo é obrigatório</p>}
+              <FormControl fullWidth {...register("city", { required: true })}>
+                <InputLogin
+                  type='text'
+                  placeholder='Digite sua cidade'
+                  name='city'
+                />
+                {errors.city && <p>Esse campo é obrigatório</p>}
               </FormControl>
-              <FormControl fullWidth {...register("role", { required: true })}>
-                <InputLogin type='text' placeholder='Ocupação' name='role' />
-                {errors.role && <p>Esse campo é obrigatório</p>}
+              <FormControl fullWidth {...register("state", { required: true })}>
+                <InputLogin
+                  type='text'
+                  placeholder='Digite seu estado'
+                  name='state'
+                />
+                {errors.state && <p>Esse campo é obrigatório</p>}
+              </FormControl>
+              <FormControl fullWidth {...register("country", { required: true })}>
+                <InputLogin
+                  type='text'
+                  placeholder='Digite o país'
+                  name='country'
+                />
+                {errors.country && <p>Esse campo é obrigatório</p>}
               </FormControl>
             </Container>
-          )}
-        </Inputs>
-        <Button text='Cadastro' />
-      </form>
-      <SignInLink
-        text='Já possui cadastro?'
-        href='/login'
-        link='Faça login aqui'
-      />
-    </Box>
+            {toggle && (
+              <Container>
+                <FormControl fullWidth {...register("cnpj", { required: true })}>
+                  <InputLogin type='text' placeholder='CNPJ' name='cnpj' />
+                  {errors.cnpj && <p>Esse campo é obrigatório</p>}
+                </FormControl>
+                <FormControl fullWidth {...register("role", { required: true })}>
+                  <InputLogin type='text' placeholder='Ocupação' name='role' />
+                  {errors.role && <p>Esse campo é obrigatório</p>}
+                </FormControl>
+              </Container>
+            )}
+          </Inputs>
+          <Button text='Cadastro' />
+        </form>
+        <SignInLink
+          text='Já possui cadastro?'
+          href='/login'
+          link='Faça login aqui'
+        />
+      </Box>
+      <Footer></Footer>
+    </div>
   );
 }
 

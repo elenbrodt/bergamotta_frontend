@@ -45,9 +45,7 @@ function Search() {
         </SideBar>
         <Map city={CITY} />
       </SearchContainer>
-      <footer>
-        <Footer />
-      </footer>
+      <Footer />
     </div>
   );
 }

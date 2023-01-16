@@ -9,6 +9,8 @@ import { FormControl } from "@mui/material";
 import { updateUser } from "../../services/MainApi/user_profile";
 import { useUser } from "../../store/modules/user";
 import { byIdUser } from "../../services/MainApi/user_profile";
+import { Footer } from "../../components/Footer";
+
 interface User {
     id: string, 
     name: string, 
@@ -85,7 +87,7 @@ function UpdateUser() {
     };
 
     return (
-        
+        <div>
         <Box>
             <Link to="/">
                 <img src={LogoSrc} alt="logo_bergamotta" />{" "}
@@ -124,6 +126,8 @@ function UpdateUser() {
                 <SaveButton>Salvar Alterações</SaveButton>
             </form>
         </Box> 
+            <Footer></Footer>
+            </div>
     );
 }
 

@@ -108,10 +108,8 @@ function BlogArticle() {
 
   return (
     <div className='App'>
-      <header>
         <Header />
-      </header>
-      <main>
+      <div>
         <ArticleContainer>
           <ArticleImg src={blog?.image_link} alt='Imagem Titulo' />
           <TitleBlog>{blog?.name}</TitleBlog>
@@ -144,10 +142,8 @@ function BlogArticle() {
         )}
         <TitleComments>Comentários</TitleComments>
         <ListBlogComments />
-      </main>
-      <footer>
+      </div>
         <Footer />
-      </footer>
     </div>
   );
 }

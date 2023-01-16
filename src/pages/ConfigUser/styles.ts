@@ -32,11 +32,11 @@ export const Container = styled.div`
     width: 100%;
 `
 export const SaveButton = styled.button`
-margin-top: 33px;
-display: flex;
+display: block;
 justify-content: center;
 align-items: center;
-padding: 16px 24px;
+margin: auto;
+margin-top: 33px;
 gap: 8px;
 width: 583px;
 height: 96px;

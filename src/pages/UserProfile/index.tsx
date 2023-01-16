@@ -48,9 +48,7 @@ function UserProfile() {
 
   return (
     <div className='App'>
-      <header>
-        <Header />
-      </header>
+      <Header />
       <main>
         <MainDiv>
           <RoundImage>
@@ -70,9 +68,7 @@ function UserProfile() {
           </FavoritesDiv>
         </MainDiv>
       </main>
-      <footer>
-        <Footer />
-      </footer>
+      <Footer />
     </div>
   );
 }

@@ -20,13 +20,11 @@ import { Footer } from "../../components/Footer";
 function Partners() {
 
     const { register, handleSubmit, formState: { errors } } = useForm();
-  const onSubmit = (data: any) => whatsApp(data.name, data.whatsapp, data.mensagem);
+    const onSubmit = (data: any) => whatsApp(data.name, data.whatsapp, data.mensagem);
 
     return (
         <div className="App">
-            <header>
-                <Header />
-            </header>
+            <Header />
             <main>
                 <UpperBody>
                     <UpperBodyLeft>
@@ -76,7 +74,7 @@ function Partners() {
                     <GreenBanner href="/" texto="+5 milhões de usuários no site +25 mil restaurantes parceiros
                      +33 milhões buscas no ano +1,2 bilhões de reais em vendas para 
                      os restaurantes no ano +719 cidades em 23 estados"
-                        title = "O que você está esperando?" btn_text="Quero fazer parte!"/>
+                        title="O que você está esperando?" btn_text="Quero fazer parte!" />
                 </GreenBannerContainer>
                 <FormContainer>
                     <div>
@@ -85,7 +83,7 @@ function Partners() {
                             <br />
                             <Labels>Nome</Labels>
                             <br />
-                            <NormalInput {...register("name", { required: true })}/>
+                            <NormalInput {...register("name", { required: true })} />
                             {errors.name && <p>Esse campo é obrigatório</p>}
                             <br />
                             <Labels>Whatsapp</Labels>
@@ -95,7 +93,7 @@ function Partners() {
                             <br />
                             <Labels>Mensagem</Labels>
                             <br />
-                            <TextInput {...register("mensagem", { required: true })}/>
+                            <TextInput {...register("mensagem", { required: true })} />
                             {errors.mensagem && <p>Esse campo é obrigatório</p>}
                             <br />
                             <FormBtn>Enviar</FormBtn>
@@ -106,8 +104,8 @@ function Partners() {
                         <Overlaid3 src={bodyimage2} alt="Senhor Impressionado" />
                     </FormContainerRight>
                 </FormContainer>
-                <Footer/>
             </main>
+            <Footer />
         </div>
     );
 }
