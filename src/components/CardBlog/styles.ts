@@ -3,7 +3,7 @@ import { Card, CardContent } from "@mui/material";
 import { colors, fonts } from "../../styles/theme";
 import { Link } from "react-router-dom";
 
-export const CardBergamottaBlog = styled(Card)`
+export const CardBlog = styled(Card)`
   display: flex;
   flex-direction: column;
 `;
