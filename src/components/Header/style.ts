@@ -6,6 +6,7 @@ export const Ul = styled.ul`
   display: flex;
   width: 100%;
   justify-content: space-between;
+  padding: 40px;
   @media (max-width: 1025px) {
     padding: 5px;
   }
@@ -72,12 +73,12 @@ export const LinkLogin = styled(Link)`
   background-color: ${colors.secondary};
   display: flex;
   justify-content: center;
-  width: 10vw;
+  width: 8vw;
   align-items: center;
   text-decoration: none;
   padding: 0px 50px;
   height: 55px;
-  border-radius: 36px;
+  border-radius: 46px;
   color: ${colors.white};
   font-family: ${fonts.secondary};
   font-weight: 600;
