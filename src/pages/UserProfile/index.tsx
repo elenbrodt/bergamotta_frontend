@@ -27,23 +27,21 @@ interface UserProfileProps {
 }
 
 function UserProfile() {
-  const userCookies = useUser();
-  const [user, setUser] = useState<UserProfileProps>();
-  const [idUser, setIdUser] = useState<string>("");
+  const user = useUser();
+  const [userData, setUserData] = useState<UserProfileProps>();
   useEffect(() => {
-    if (userCookies.isLogged) {
-      setIdUser(userCookies.findUser.id);
+    if (user.isLogged) {
       const getData = async () => {
         try {
-          const response = await byIdUser(idUser);
-          setUser(response.data);
+          const response = await byIdUser(user.findUser.id);
+          setUserData(response.data);
         } catch (error) {
           alert("Deu algo errado no catch");
         }
       };
       getData();
     }
-  }, [setUser, idUser]);
+  }, [setUserData, user]);
 
   return (
     <div className='App'>
@@ -51,9 +49,9 @@ function UserProfile() {
       <main>
         <MainDiv>
           <RoundImage>
-            <ImgRound src={user?.image_link} alt='test' />
+            <ImgRound src={userData?.image_link} alt='test' />
           </RoundImage>
-          <UserName>{user?.name}</UserName>
+          <UserName>{userData?.name}</UserName>
           <FavoritesDiv>
             <FavoritesDivLeft>
               <FavTitles>Seus Favoritos</FavTitles>

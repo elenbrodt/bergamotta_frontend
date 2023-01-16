@@ -22,13 +22,11 @@ function UpdateUser() {
   const user = useUser();
 
   const [userId, setUserId] = useState<string>("");
-  const [token, setToken] = useState<string>("");
   const [userData, setUserData] = useState<User>();
 
   useEffect(() => {
     if (user.isLogged) {
       setUserId(user.findUser.id);
-      setToken(user.token);
       const getData = async () => {
         try {
           const response = await byIdUser(user.findUser.id);
@@ -41,11 +39,42 @@ function UpdateUser() {
     }
   }, [user, userId]);
 
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit } = useForm({
+    defaultValues: {
+      name: userData?.name,
+      email: userData?.email,
+      password: userData?.password,
+      image_link: userData?.image_link,
+      city: userData?.city,
+      state: userData?.state,
+      country: userData?.country,
+    },
+  });
 
   const navigate = useNavigate();
 
   const onSubmit = (data: any) => {
+    if (data.email == "") {
+      data.email = userData?.email;
+    }
+    if (data.password == "") {
+      data.password = userData?.password;
+    }
+    if (data.name == "") {
+      data.name = userData?.name;
+    }
+    if (data.image_link == "") {
+      data.image_link = userData?.image_link;
+    }
+    if (data.city == "") {
+      data.city = userData?.city;
+    }
+    if (data.state == "") {
+      data.state = userData?.state;
+    }
+    if (data.country == "") {
+      data.country = userData?.country;
+    }
     userUpdate(
       data.email,
       data.password,
@@ -53,8 +82,7 @@ function UpdateUser() {
       data.image_link,
       data.city,
       data.state,
-      data.country,
-      token
+      data.country
     );
   };
 
@@ -65,8 +93,7 @@ function UpdateUser() {
     image_link: string,
     city: string,
     state: string,
-    country: string,
-    token: string
+    country: string
   ) => {
     const req = {
       email: email,
@@ -76,7 +103,6 @@ function UpdateUser() {
       city: city,
       state: state,
       country: country,
-      token: token,
     };
     try {
       const response = await updateUser(req, userId);

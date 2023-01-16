@@ -6,7 +6,7 @@ export const Footerstyle = styled.footer`
   width: 100%;
   background-color: ${colors.light_one};
   height: 15vh;
-
+  position: absolute;
   bottom: 0;
   margin-top: 5px;
   display: flex;
