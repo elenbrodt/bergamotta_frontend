@@ -2,6 +2,8 @@ import Map from "../../components/Map";
 import { SearchContainer, SideBar } from "./styles";
 import Header from "../../components/Header";
 import SideList from "../../components/SideList";
+import { Footer } from "../../components/Footer";
+
 
 import { CITY } from "../../mock/city";
 import SearchBar from "../../components/SearchBar";
@@ -42,6 +44,9 @@ function Search() {
         </SideBar>
         <Map city={CITY} />
       </SearchContainer>
+      <footer>
+        <Footer />
+      </footer>
     </div>
   );
 }
