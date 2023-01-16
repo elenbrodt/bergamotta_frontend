@@ -1,59 +1,168 @@
 import BlogComponent from "../../components/BlogArticle";
-import Header from "../../components/Header"
-import { ContainerBlog, CommentTitle } from "./styles"
+import Header from "../../components/Header";
+import {
+  ContainerBlog,
+  CommentTitle,
+  Container,
+  TitleDiv,
+  GeneralDiv,
+  UserDiv,
+  UserImg,
+  UserName,
+  FormDiv,
+  CommentInput,
+  CommentBtn,
+  ArticleContainer,
+  ArticleImg,
+  SubtitleBlog,
+  TextBlog,
+  IntroductionBlog,
+  TitleBlog,
+} from "./styles";
 import { Footer } from "../../components/Footer";
 import { useUser } from "../../store/modules/user";
-// import { useEffect, useState } from "react";
-// import { byIdUser } from "../../services/MainApi/user_profile";
-import BlogCommentComponent from "../../components/BlogComment"
-import ListBlogComments from "../../components/BlogCommentsList"
+import { useEffect, useState } from "react";
+import { byIdUser } from "../../services/MainApi/user_profile";
+import BlogCommentComponent from "../../components/BlogComment";
+import ListBlogComments from "../../components/BlogCommentsList";
+import { createBlogComment } from "../../services/MainApi/blog_comment";
+import { useForm } from "react-hook-form";
+import { byIdBlog } from "../../services/MainApi/blog";
 
-// interface UserDataProps {
-//     id: string;
-//     name: string;
-//     image_link: string;    
-//   }
-
-
-function BlogArticle() {
-    const urlId = window.location.pathname.split("/")[2];
-
-    const userData = useUser();
-  const idUser = userData.findUser.id;
-
-//   const [user, setUser] = useState<UserDataProps>();
-//   useEffect(() => {
-//     const getData = async () => {
-//       try {
-//         const response = await byIdUser(idUser);
-//         setUser(response.data);
-//       } catch (error) {
-//         alert("Deu algo errado no catch");
-//       }
-//     };
-//     getData();
-    
-//   }, [setUser, idUser]);
-
-    return (
-        <div className="App">
-            <header>
-                <Header />
-            </header>
-            <main>
-                <ContainerBlog>
-                    {BlogComponent(urlId)}
-                </ContainerBlog>  
-                {userData.isLogged && BlogCommentComponent(idUser)}     
-                {!userData.isLogged && <a href="/login">Logar para comentar</a>}
-                <CommentTitle>Comentários</CommentTitle>
-                <ListBlogComments/>
-            </main>
-            <footer>
-                <Footer />
-            </footer>
-        </div>
-    )
+interface UserDataProps {
+  id: string;
+  name: string;
+  image_link: string;
+}
+interface Blog {
+  id: string;
+  image_link: string;
+  name: string;
+  subtitle: string;
+  introduction: string;
+  ingredients: string;
+  directions: string;
 }
 
-export default BlogArticle
+function BlogArticle() {
+  const urlId = window.location.pathname.split("/")[2];
+
+  const userData = useUser();
+
+  const [user, setUser] = useState<UserDataProps>();
+  const [token, setToken] = useState<string>("");
+
+  const [blog, setBlog] = useState<Blog>();
+
+  useEffect(() => {
+    const getBlog = async () => {
+      try {
+        const response = await byIdBlog(urlId);
+        setBlog(response.data);
+      } catch (error) {
+        alert("Deu algo errado no catch");
+      }
+    };
+    getBlog();
+    if (userData.isLogged) {
+      const getData = async () => {
+        try {
+          const response = await byIdUser(userData.findUser.id);
+          setUser(response.data);
+        } catch (error) {
+          alert("Deu algo errado no catch");
+        }
+      };
+      getData();
+      console.log(userData);
+      //setToken(userData.token);
+    }
+  }, [setUser]);
+
+  const { register, handleSubmit } = useForm();
+
+  /*   const [comment, setComment] = useState("");
+  const [date, setDate] = useState("");
+  const [recipe_id, setRecipe_id] = useState("");
+  const [user_id, setUser_id] = useState(""); */
+
+  const onSubmit = (data: any) => {
+    /* setComment(data.comment);
+    setDate("");
+    setRecipe_id(urlId);
+    setUser_id(data.id); */
+    blogCommentCreate(
+      data.comment,
+      data.date,
+      data.recipe_id,
+      data.user_id,
+      token
+    );
+  };
+  const blogCommentCreate = async (
+    comment: string,
+    date: string,
+    recipe_id: string,
+    user_id: string,
+    token: string
+  ) => {
+    const req = {
+      comment: comment,
+      date: date,
+      recipe_id: recipe_id,
+      user_id: user_id,
+      token: token,
+    };
+    try {
+      const response = await createBlogComment(req, urlId);
+      //console.log(response);
+    } catch (error) {
+      alert("Deu algo errado no catch");
+    }
+  };
+
+  return (
+    <div className='App'>
+      <header>
+        <Header />
+      </header>
+      <main>
+        <ArticleContainer>
+          <ArticleImg src={blog?.image_link} alt='Imagem Titulo' />
+          <TitleBlog>{blog?.name}</TitleBlog>
+          <SubtitleBlog>{blog?.subtitle}</SubtitleBlog>
+          <IntroductionBlog>{blog?.introduction}</IntroductionBlog>
+          <p>INGREDIENTES</p>
+          <TextBlog>{blog?.ingredients}</TextBlog>
+          <p>PASSO A PASSO</p>
+          <TextBlog>{blog?.directions}</TextBlog>
+        </ArticleContainer>
+        {userData.isLogged && (
+          <Container>
+            <TitleDiv>
+              <CommentTitle>Comentar</CommentTitle>
+            </TitleDiv>
+            <GeneralDiv>
+              <UserDiv>
+                <UserImg src={user?.image_link} alt='Imagem User' />
+                <UserName>{user?.name}</UserName>
+              </UserDiv>
+              <FormDiv onSubmit={handleSubmit(onSubmit)}>
+                <CommentInput {...register("comment")} name='comment' />
+                <CommentBtn>Comentar</CommentBtn>
+              </FormDiv>
+            </GeneralDiv>
+          </Container>
+        )}
+        {!userData.isLogged && <a href='/login'>Logar para comentar</a>}
+        <CommentTitle>Comentários</CommentTitle>
+        <ListBlogComments />
+      </main>
+      <footer>
+        <Footer />
+      </footer>
+    </div>
+  );
+}
+
+export default BlogArticle;
