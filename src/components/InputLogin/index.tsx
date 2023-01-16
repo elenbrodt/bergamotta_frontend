@@ -40,7 +40,7 @@ function InputLogin(props: InputLoginProps) {
               onClick={handleClickShowPassword}
               edge='end'
             >
-              {showPassword ? <VisibilityOff /> : <Visibility />}
+              {showPassword ? <Visibility /> : <VisibilityOff />}
             </IconButton>
           </InputBorder>
         </InputBox>

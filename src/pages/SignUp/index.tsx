@@ -17,32 +17,39 @@ function SignUp() {
 
   const navigate = useNavigate();
 
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [name, setName] = useState("");
-  const [image_link, setImageLink] = useState("");
-  const [city, setCity] = useState("");
-  const [state, setState] = useState("");
-  const [country, setCountry] = useState("");
-  const [cnpj, setCnpj] = useState("");
-  const [role, setRole] = useState("");
-
   const onSubmit = (data: any) => {
-    setEmail(data.email);
-    setPassword(data.password);
-    setName(data.name);
-    setImageLink(data.image_link);
-    setCity(data.city);
-    setState(data.state);
-    setCountry(data.country);
-    userCreate();
+    userCreate(
+      data.email,
+      data.password,
+      data.name,
+      data.image_link,
+      data.city,
+      data.state,
+      data.country
+    );
     if (data.cnpj) {
-      setCnpj(data.cnpj);
-      setRole(data.role);
-      ownerCreate();
+      ownerCreate(
+        data.email,
+        data.password,
+        data.name,
+        data.image_link,
+        data.city,
+        data.state,
+        data.country,
+        data.cnpj,
+        data.role
+      );
     }
   };
-  const userCreate = async () => {
+  const userCreate = async (
+    email: string,
+    password: string,
+    name: string,
+    image_link: string,
+    city: string,
+    state: string,
+    country: string
+  ) => {
     const req = {
       email: email,
       password: password,
@@ -60,7 +67,17 @@ function SignUp() {
       alert("Deu algo errado no catch");
     }
   };
-  const ownerCreate = async () => {
+  const ownerCreate = async (
+    email: string,
+    password: string,
+    name: string,
+    image_link: string,
+    city: string,
+    state: string,
+    country: string,
+    cnpj: string,
+    role: string
+  ) => {
     const req = {
       email: email,
       password: password,
@@ -75,15 +92,17 @@ function SignUp() {
     try {
       const response = await createOwner(req);
       console.log(response);
-      navigate("/login");
+      navigate("/cadastrorestaurante");
     } catch (error) {
       alert("Deu algo errado no catch");
     }
   };
+
   const [toggle, setToggle] = useState<boolean>(false);
   const handleClick = () => {
     setToggle(!toggle);
   };
+
   return (
     <Box>
       <Link to='/'>
@@ -168,7 +187,7 @@ function SignUp() {
             </Container>
           )}
         </Inputs>
-        <SubmitButton text='Login' />
+        <SubmitButton text='Cadastro' />
       </form>
       <SignInLink
         text='Já possui cadastro?'

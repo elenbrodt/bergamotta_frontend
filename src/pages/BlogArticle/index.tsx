@@ -1,7 +1,5 @@
-import BlogComponent from "../../components/BlogArticle";
 import Header from "../../components/Header";
 import {
-  ContainerBlog,
   CommentTitle,
   Container,
   TitleDiv,
@@ -19,13 +17,12 @@ import {
   IntroductionBlog,
   TitleBlog,
   LoginLink,
-  TitleComments
+  TitleComments,
 } from "./styles";
 import { Footer } from "../../components/Footer";
 import { useUser } from "../../store/modules/user";
 import { useEffect, useState } from "react";
 import { byIdUser } from "../../services/MainApi/user_profile";
-import BlogCommentComponent from "../../components/BlogComment";
 import ListBlogComments from "../../components/BlogCommentsList";
 import { createBlogComment } from "../../services/MainApi/blog_comment";
 import { useForm } from "react-hook-form";
@@ -156,7 +153,9 @@ function BlogArticle() {
             </GeneralDiv>
           </Container>
         )}
-        {!userData.isLogged && <LoginLink href='/login'>Logar para comentar</LoginLink>}
+        {!userData.isLogged && (
+          <LoginLink href='/login'>Logar para comentar</LoginLink>
+        )}
         <TitleComments>Comentários</TitleComments>
         <ListBlogComments />
       </main>
