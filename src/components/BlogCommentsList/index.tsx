@@ -33,11 +33,11 @@ export default function ListBlogComments() {
     
     return (
         <div>
-            {blogComments.map((blog, index)=> {
-                return (
+            {blogComments.map((blog, index)=> index < 5 &&
+                 (
                     <CardBlogComment id={blog.id} date={blog.date} comment={blog.comment} user={blog.user} />
-                );
-            })} 
+                )
+            )} 
         </div>
     )
 }
