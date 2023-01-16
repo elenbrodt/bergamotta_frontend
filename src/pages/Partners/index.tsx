@@ -71,7 +71,7 @@ function Partners() {
                     </LowerBodyRight>
                 </LowerBody>
                 <GreenBannerContainer>
-                    <GreenBanner href="/" texto="+5 milhões de usuários no site +25 mil restaurantes parceiros
+                    <GreenBanner href="/cadastro" texto="+5 milhões de usuários no site +25 mil restaurantes parceiros
                      +33 milhões buscas no ano +1,2 bilhões de reais em vendas para 
                      os restaurantes no ano +719 cidades em 23 estados"
                         title="O que você está esperando?" btn_text="Quero fazer parte!" />
