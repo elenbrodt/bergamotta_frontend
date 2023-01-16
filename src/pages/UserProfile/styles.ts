@@ -49,7 +49,7 @@ display: block;
   color: ${colors.black};
 `;
 export const PlacesDiv = styled.div`
-max-width: 100%;
+max-width: 90%;
 `;
 export const FavoritesDivRight = styled.div`
 width: 50%;
