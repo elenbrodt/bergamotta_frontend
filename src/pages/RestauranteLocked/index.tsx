@@ -28,6 +28,7 @@ import {
 import {
   Checkbox,
   FormControl,
+  FormControlLabel,
   Rating,
   TextField,
   ToggleButton,
@@ -281,12 +282,23 @@ function RestaurantLocked() {
             <p>Conte como foi sua experiência</p>
             <form id='myForm' onSubmit={handleSubmit(onSubmit)}>
               <FormControl {...register("general_rating")}>
-                <Rating
-                  onChange={(event, newValue) => {
-                    setUserValue(newValue as number);
-                  }}
-                  value={userValue}
-                />
+                <>
+                  <input
+                    name='general_rating'
+                    type='number'
+                    value={userValue}
+                    hidden
+                    readOnly
+                  />
+                  <Rating
+                    name='general_rating'
+                    value={userValue}
+                    precision={1}
+                    onChange={(_, value) => {
+                      setUserValue(value as number);
+                    }}
+                  />
+                </>
               </FormControl>
               <p>O que mais gostou no local</p>
               <GoodsTags>
