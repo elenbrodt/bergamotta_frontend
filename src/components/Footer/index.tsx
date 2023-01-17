@@ -8,8 +8,8 @@ export function Footer() {
         <ImgLogo src={Logo} alt='Logo Bergamotta' />
       </a>
       <Nav>
-        <NavLink to='/search'>Busca</NavLink>
-        <NavLink to='/partner'>Seja um parceiro</NavLink>
+        <NavLink to='/'>Busca</NavLink>
+        <NavLink to='/parceiros'>Seja um parceiro</NavLink>
         <NavLink to='/sobrenos'>Quem somos</NavLink>
       </Nav>
       <Div></Div>
