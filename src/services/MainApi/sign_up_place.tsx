@@ -25,3 +25,7 @@ export function createPlace(req: any) {
     payment: req.payment,
   });
 }
+
+export function placeByOwnerId( props: string) {
+  return baseApi.get(`/placebyowner/${props}`);
+}
