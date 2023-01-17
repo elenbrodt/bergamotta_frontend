@@ -64,6 +64,7 @@ export const UserImg = styled.img`
   height: 85px;
   width: 80px;
   border-radius: 100px;
+  
 `;
 export const UserName = styled.h3`
   font-family: ${fonts.secondary};
@@ -121,11 +122,19 @@ export const ArticleContainer = styled.div`
   justify-content: center;
   align-items: center;
   gap: 30px;
+  @media (max-width: 475px){
+    margin-left: -10%;
+    margin-right: 5%;
+  }
 `;
 export const ArticleImg = styled.img`
   width: 100%;
   height: 600px;
   border-radius: 10px;
+  @media (max-width: 475px){
+    height: 300px;
+    width: 120%;
+  }
 `;
 
 export const TitleBlog = styled.h2`
@@ -133,18 +142,31 @@ export const TitleBlog = styled.h2`
   font-weight: 700;
   font-size: 32px;
   line-height: 35px;
+  @media (max-width: 475px){
+    font-size: 24px;
+    line-height: 25px;
+  
+  }
 `;
 export const SubtitleBlog = styled.h3`
   font-family: ${fonts.secondary};
   font-weight: 400;
   font-size: 26px;
   line-height: 32px;
+  @media (max-width: 475px){
+    font-size: 20px;
+    line-height: 23px;
+  }
 `;
 export const IntroductionBlog = styled.h4`
   font-family: ${fonts.secondary};
   font-weight: 400;
   font-size: 22px;
   line-height: 26px;
+  @media (max-width: 475px){
+      font-size: 18px;
+      line-height: 20px;
+  }
 `;
 export const TextBlog = styled.p`
   font-family: ${fonts.secondary};
