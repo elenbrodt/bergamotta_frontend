@@ -1,5 +1,7 @@
+import { useEffect } from "react";
 import { Marker, Popup } from "react-leaflet";
 import CardPlace from "../../components/CardPlace";
+import { useOwner } from "../../store/modules/owner";
 import { useUser } from "../../store/modules/user";
 
 interface Points {
@@ -16,8 +18,10 @@ type MapProps = {
 };
 function Markers(props: MapProps) {
   const user = useUser();
+  const owner = useOwner();
   const { points } = props;
-  if (user.isLogged) {
+
+  if (user.isLogged || owner.isLogged) {
     return (
       <>
         {points.map((point, index) => (

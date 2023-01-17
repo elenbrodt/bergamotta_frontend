@@ -68,7 +68,7 @@ function SignUp() {
     try {
       const response = await createUser(req);
       console.log(response);
-      //navigate("/login");
+      navigate("/login");
     } catch (error) {
       alert("Deu algo errado no catch");
     }
@@ -98,7 +98,7 @@ function SignUp() {
     try {
       const response = await createOwner(req);
       console.log(response);
-      //navigate("/cadastrorestaurante");
+      navigate("/cadastrorestaurante");
     } catch (error) {
       alert("Deu algo errado no catch");
     }
