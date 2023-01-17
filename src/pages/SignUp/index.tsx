@@ -13,21 +13,17 @@ import { createOwner } from "../../services/MainApi/owner";
 import { Footer } from "../../components/Footer";
 
 function SignUp() {
-  const { register, handleSubmit, formState: { errors } } = useForm();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
 
   const navigate = useNavigate();
 
   const onSubmit = (data: any) => {
-    userCreate(
-      data.email,
-      data.password,
-      data.name,
-      data.image_link,
-      data.city,
-      data.state,
-      data.country
-    );
-    if (data.cnpj) {
+    console.log(data);
+    if (toggle) {
       ownerCreate(
         data.email,
         data.password,
@@ -38,6 +34,16 @@ function SignUp() {
         data.country,
         data.cnpj,
         data.role
+      );
+    } else {
+      userCreate(
+        data.email,
+        data.password,
+        data.name,
+        data.image_link,
+        data.city,
+        data.state,
+        data.country
       );
     }
   };
@@ -62,7 +68,7 @@ function SignUp() {
     try {
       const response = await createUser(req);
       console.log(response);
-      navigate("/login");
+      //navigate("/login");
     } catch (error) {
       alert("Deu algo errado no catch");
     }
@@ -92,7 +98,7 @@ function SignUp() {
     try {
       const response = await createOwner(req);
       console.log(response);
-      navigate("/cadastrorestaurante");
+      //navigate("/cadastrorestaurante");
     } catch (error) {
       alert("Deu algo errado no catch");
     }
@@ -112,16 +118,14 @@ function SignUp() {
         <TitleLogin title='Crie sua conta' />
         <form id='form' onSubmit={handleSubmit(onSubmit)}>
           <Inputs>
-            <RadioGroupStyled color='secondary' row defaultValue='user'>
+            <RadioGroupStyled color='secondary' row>
               <UserType
-                name='user'
-                user_type='user'
+                value='user'
                 text='Sou usuário'
                 onChange={handleClick}
               ></UserType>
               <UserType
-                name='owner'
-                user_type='owner'
+                value='owner'
                 text='Sou restaurante'
                 onChange={handleClick}
               ></UserType>
@@ -142,7 +146,10 @@ function SignUp() {
               />
               {errors.email && <p>Esse campo é obrigatório</p>}
             </FormControl>
-            <FormControl fullWidth {...register("password", { required: true })}>
+            <FormControl
+              fullWidth
+              {...register("password", { required: true })}
+            >
               <InputLogin
                 type='password'
                 name='password'
@@ -150,7 +157,10 @@ function SignUp() {
               />
               {errors.password && <p>Esse campo é obrigatório</p>}
             </FormControl>
-            <FormControl fullWidth {...register("image_link", { required: true })}>
+            <FormControl
+              fullWidth
+              {...register("image_link", { required: true })}
+            >
               <InputLogin
                 type='text'
                 placeholder='Insira link da sua imagem de avatar'
@@ -175,7 +185,10 @@ function SignUp() {
                 />
                 {errors.state && <p>Esse campo é obrigatório</p>}
               </FormControl>
-              <FormControl fullWidth {...register("country", { required: true })}>
+              <FormControl
+                fullWidth
+                {...register("country", { required: true })}
+              >
                 <InputLogin
                   type='text'
                   placeholder='Digite o país'
@@ -186,11 +199,17 @@ function SignUp() {
             </Container>
             {toggle && (
               <Container>
-                <FormControl fullWidth {...register("cnpj", { required: true })}>
+                <FormControl
+                  fullWidth
+                  {...register("cnpj", { required: true })}
+                >
                   <InputLogin type='text' placeholder='CNPJ' name='cnpj' />
                   {errors.cnpj && <p>Esse campo é obrigatório</p>}
                 </FormControl>
-                <FormControl fullWidth {...register("role", { required: true })}>
+                <FormControl
+                  fullWidth
+                  {...register("role", { required: true })}
+                >
                   <InputLogin type='text' placeholder='Ocupação' name='role' />
                   {errors.role && <p>Esse campo é obrigatório</p>}
                 </FormControl>

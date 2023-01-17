@@ -56,7 +56,7 @@ function PlaceProfile() {
       const getData = async () => {
         try {
           const response = await placeByOwnerId(owner.findOwner.id);
-          console.log(response.data);
+          setPlace(response.data);
         } catch (error) {
           console.error(error);
           alert("Deu algo errado no catch 2");
