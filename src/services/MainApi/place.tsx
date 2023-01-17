@@ -1,12 +1,12 @@
 import baseApi from "./config";
 
-export function createPlace(req: any) {
-  return baseApi.post("/createplace", {
-    owner_id: req.owner_id,
+export function byIdPlace(props: string) {
+  return baseApi.get(`/place/${props}`);
+}
+
+export function updatePlace(req: any) {
+  return baseApi.put(`/place/${req.place_id}`, {
     name: req.name,
-    place_types: req.place_types_ids,
-    food_types: req.food_types_ids,
-    place_profiles: req.place_profiles_ids,
     city: req.city,
     state: req.state,
     country: req.country,
@@ -23,10 +23,6 @@ export function createPlace(req: any) {
     social_media: req.social_media,
     opening_hours: req.opening_hours,
     payment: req.payment,
+    owner_id: req.owner_id,
   });
-}
-
-export function placeByOwnerId(props: string) {
-  console.log(props);
-  return baseApi.get(`/placebyowner/${props}`);
 }

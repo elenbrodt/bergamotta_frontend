@@ -8,6 +8,8 @@ import { useUser } from "../../store/modules/user";
 import { byIdUser } from "../../services/MainApi/user_profile";
 import Header from "../../components/Header";
 import { Footer } from "../../components/Footer";
+import { useOwner } from "../../store/modules/owner";
+import { byIdOwner, updateOwner } from "../../services/MainApi/owner";
 interface User {
   name: string;
   email: string;
@@ -17,12 +19,25 @@ interface User {
   state: string;
   country: string;
 }
-
+interface Owner {
+  name: string;
+  email: string;
+  image_link: string;
+  password: string;
+  city: string;
+  state: string;
+  country: string;
+  cnpj: string;
+  role: string;
+}
 function UpdateUser() {
   const user = useUser();
+  const owner = useOwner();
 
   const [userId, setUserId] = useState<string>("");
   const [userData, setUserData] = useState<User>();
+  const [ownerData, setOwnerData] = useState<Owner>();
+  const [ownerId, setOwnerId] = useState<string>("");
 
   useEffect(() => {
     if (user.isLogged) {
@@ -37,19 +52,25 @@ function UpdateUser() {
       };
       getData();
     }
+    if (owner.isLogged) {
+      setOwnerId(owner.findOwner.id);
+      const getDataOwner = async () => {
+        try {
+          const response = await byIdOwner(owner.findOwner.id);
+          setOwnerData(response.data);
+        } catch (error) {
+          alert("Deu algo errado no catch");
+        }
+      };
+      getDataOwner();
+    }
   }, [user, userId]);
 
-  const { register, handleSubmit } = useForm({
-    defaultValues: {
-      name: userData?.name,
-      email: userData?.email,
-      password: userData?.password,
-      image_link: userData?.image_link,
-      city: userData?.city,
-      state: userData?.state,
-      country: userData?.country,
-    },
-  });
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
 
   const navigate = useNavigate();
 
@@ -75,15 +96,37 @@ function UpdateUser() {
     if (data.country == "") {
       data.country = userData?.country;
     }
-    userUpdate(
-      data.email,
-      data.password,
-      data.name,
-      data.image_link,
-      data.city,
-      data.state,
-      data.country
-    );
+
+    if (user.isLogged) {
+      userUpdate(
+        data.email,
+        data.password,
+        data.name,
+        data.image_link,
+        data.city,
+        data.state,
+        data.country
+      );
+    }
+    if (owner.isLogged) {
+      if (data.cnpj == "") {
+        data.cnpj = ownerData?.cnpj;
+      }
+      if (data.role == "") {
+        data.role = ownerData?.role;
+      }
+      ownerUpdate(
+        data.email,
+        data.password,
+        data.name,
+        data.image_link,
+        data.city,
+        data.state,
+        data.country,
+        data.cnpj,
+        data.role
+      );
+    }
   };
 
   const userUpdate = async (
@@ -113,57 +156,156 @@ function UpdateUser() {
     }
   };
 
+  const ownerUpdate = async (
+    email: string,
+    password: string,
+    name: string,
+    image_link: string,
+    city: string,
+    state: string,
+    country: string,
+    cnpj: string,
+    role: string
+  ) => {
+    const req = {
+      email: email,
+      password: password,
+      name: name,
+      image_link: image_link,
+      city: city,
+      state: state,
+      country: country,
+      cnpj: cnpj,
+      role: role,
+    };
+    try {
+      const response = await updateOwner(req, ownerId);
+      console.log(response);
+      navigate("/");
+    } catch (error) {
+      alert("Deu algo errado no catch");
+    }
+  };
   return (
     <div>
       <Header />
       <Box>
-        <img src={userData?.image_link} alt='Imagem de perfil' />
+        {user.isLogged && (
+          <img src={userData?.image_link} alt='Imagem de perfil' />
+        )}
+        {owner.isLogged && (
+          <img src={ownerData?.image_link} alt='Imagem de perfil' />
+        )}
         <form id='form' onSubmit={handleSubmit(onSubmit)}>
           <Inputs>
-            <UpdateInput
-              type='text'
-              placeholder='Digite seu usuário'
-              defaultValue={userData?.name}
-              {...register("name")}
-            />
-            <UpdateInput
-              type='email'
-              placeholder='Digite seu email'
-              {...register("email")}
-              defaultValue={userData?.email}
-            />
-            <UpdateInput
-              type='password'
-              placeholder='Digite sua senha'
-              defaultValue={userData?.password}
-              {...register("password")}
-            />
-            <UpdateInput
-              type='text'
-              placeholder='Insira link da sua imagem de avatar'
-              defaultValue={userData?.image_link}
-              {...register("image_link")}
-            />
-            <Container>
-              <UpdateInput
-                type='text'
-                placeholder='Digite sua cidade'
-                defaultValue={userData?.city}
-                {...register("city")}
-              />
-              <UpdateInput
-                type='text'
-                placeholder='Digite seu estado'
-                defaultValue={userData?.state}
-                {...register("state")}
-              />
-              <UpdateInput
-                type='text'
-                placeholder='Digite o país'
-                defaultValue={userData?.country}
-                {...register("country")}
-              />
-            </Container>
+            {user.isLogged && (
+              <>
+                <UpdateInput
+                  type='text'
+                  placeholder='Digite seu usuário'
+                  defaultValue={userData?.name}
+                  {...register("name")}
+                />
+                <UpdateInput
+                  type='email'
+                  placeholder='Digite seu email'
+                  {...register("email")}
+                  defaultValue={userData?.email}
+                />
+                <UpdateInput
+                  type='password'
+                  placeholder='Digite sua senha'
+                  {...register("password")}
+                />
+                {errors.password && <p>Esse campo é obrigatório</p>}
+                <UpdateInput
+                  type='text'
+                  placeholder='Insira link da sua imagem de avatar'
+                  defaultValue={userData?.image_link}
+                  {...register("image_link")}
+                />
+                <Container>
+                  <UpdateInput
+                    type='text'
+                    placeholder='Digite sua cidade'
+                    defaultValue={userData?.city}
+                    {...register("city")}
+                  />
+                  <UpdateInput
+                    type='text'
+                    placeholder='Digite seu estado'
+                    defaultValue={userData?.state}
+                    {...register("state")}
+                  />
+                  <UpdateInput
+                    type='text'
+                    placeholder='Digite o país'
+                    defaultValue={userData?.country}
+                    {...register("country")}
+                  />
+                </Container>
+              </>
+            )}
+            {owner.isLogged && (
+              <>
+                <UpdateInput
+                  type='text'
+                  placeholder='Digite seu usuário'
+                  defaultValue={ownerData?.name}
+                  {...register("name")}
+                />
+                <UpdateInput
+                  type='email'
+                  placeholder='Digite seu email'
+                  {...register("email")}
+                  defaultValue={ownerData?.email}
+                />
+                <UpdateInput
+                  type='password'
+                  placeholder='Digite sua senha'
+                  {...register("password", { required: true })}
+                />
+                {errors.password && <p>Esse campo é obrigatório</p>}
+                <UpdateInput
+                  type='text'
+                  placeholder='Insira link da sua imagem de avatar'
+                  defaultValue={ownerData?.image_link}
+                  {...register("image_link")}
+                />
+                <Container>
+                  <UpdateInput
+                    type='text'
+                    placeholder='Digite sua cidade'
+                    defaultValue={ownerData?.city}
+                    {...register("city")}
+                  />
+                  <UpdateInput
+                    type='text'
+                    placeholder='Digite seu estado'
+                    defaultValue={ownerData?.state}
+                    {...register("state")}
+                  />
+                  <UpdateInput
+                    type='text'
+                    placeholder='Digite o país'
+                    defaultValue={ownerData?.country}
+                    {...register("country")}
+                  />
+                  <UpdateInput
+                    type='text'
+                    placeholder='Digite o CNPJ'
+                    defaultValue={ownerData?.cnpj}
+                    {...register("cnpj")}
+                  />
+                  <UpdateInput
+                    type='text'
+                    placeholder='Digite sua ocupação'
+                    defaultValue={ownerData?.role}
+                    {...register("role")}
+                  />
+                </Container>
+              </>
+            )}
           </Inputs>
           <SaveButton type='submit'>Salvar Alterações</SaveButton>
         </form>

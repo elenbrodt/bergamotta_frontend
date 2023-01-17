@@ -17,6 +17,7 @@ import SignUpPlace from "./pages/SignUpPlace";
 import CadastroOwner from "./pages/CadastroOwner";
 import ConfigUser from "./pages/ConfigUser";
 import PlaceProfile from "./pages/ProfilePlace";
+import ConfigPlace from "./pages/ConfigPlace";
 
 export default function Routes() {
   return (
@@ -37,6 +38,7 @@ export default function Routes() {
         <Route path='/cadastroowner' element={<CadastroOwner />} />
         <Route path='/editarperfil' element={<ConfigUser />} />
         <Route path='/restauranteperfil' element={<PlaceProfile />} />
+        <Route path='/editarperfilrestaurante/:id' element={<ConfigPlace />} />
       </WrapperRoutes>
     </BrowserRouter>
   );

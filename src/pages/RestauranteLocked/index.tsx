@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import Header from "../../components/Header";
 import AccessTimeFilledIcon from "@mui/icons-material/AccessTimeFilled";
-import { byIdPlace } from "../../services/MainApi/restaurant";
+import { byIdPlace } from "../../services/MainApi/place";
 import {
   Box,
   Container,
@@ -50,6 +50,7 @@ interface Place {
   average_ticket_price: number;
   social_media: string;
   phone: string;
+  owner_id: string;
 }
 
 interface User {
@@ -209,9 +210,7 @@ function RestaurantLocked() {
     tasty_food: boolean,
     cozy: boolean,
     service_speed: boolean,
-    comment: boolean,
-    place_id: string,
-    token: string
+    comment: string
   ) => {
     const req = {
       general_rating: general_rating,
@@ -219,12 +218,13 @@ function RestaurantLocked() {
       ingredient_substitution: ingredient_substitution,
       instagrammable_food: instagrammable_food,
       tasty_food: tasty_food,
-      cozy: cozy,
+      cozy: cozy as boolean,
       service_speed: service_speed,
       comment: comment,
       place_id: urlId,
-      token: user.token,
+      owner_id: place?.owner_id,
     };
+    console.log(typeof req.cozy);
     try {
       const response = await createRating(req);
       console.log(response);
@@ -242,9 +242,7 @@ function RestaurantLocked() {
       data.tasty_food as boolean,
       data.cozy as boolean,
       data.service_speed as boolean,
-      data.comment as boolean,
-      urlId as string,
-      user.token
+      data.comment as string
     );
   };
 
