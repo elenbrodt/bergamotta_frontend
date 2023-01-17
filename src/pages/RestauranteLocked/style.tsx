@@ -7,7 +7,7 @@ export const Box = styled.div`
   flex-direction: column;
   justify-content: space-between;
   width: 100%;
-  gap: 1vh;
+
   font-family: ${fonts.secondary};
   font-size: 20px;
   font-weight: 700;
@@ -26,12 +26,15 @@ export const Box = styled.div`
   }
   .favorite_box {
     align-self: flex-end;
+
     & .MuiSvgIcon-root {
       font-size: 33px;
     }
+    heigth: 30px;
   }
   #stars {
     font-size: 45px;
+    padding-bottom: 1vh;
   }
 `;
 
@@ -46,6 +49,11 @@ export const Title = styled.h1`
 export const Container = styled.div`
   display: flex;
   gap: 0.5vw;
+  align-items: center;
+`;
+export const Wrapped = styled.div`
+  display: flex;
+  justify-content: space-between;
   align-items: center;
 `;
 export const PlaceContainer = styled.div`
@@ -128,13 +136,13 @@ export const ColumnRating = styled.div`
   width: 44vw;
   gap: 2vh;
   button {
-    border: 1px solid ${colors.secondary};
+    border: 1px solid ${colors.dark_two};
     border-radius: 36px;
     font-family: ${fonts.primary};
     font-size: 18px;
     font-weight: 700;
     padding: 2.5vh 1vw;
-    color: ${colors.secondary};
+    color: ${colors.dark_two};
     width: 17.5vw;
     text-align: center;
     background: none;
@@ -148,11 +156,31 @@ export const ColumnRating = styled.div`
   #rating_btn {
     width: 60%;
     align-self: center;
+    border-radius: 0;
+    background-color: ${colors.secondary};
+    border: none;
+    color: white;
+    font-family: ${fonts.secondary};
+    line-height: 25px;
+  }
+  #userStars {
+    font-size: 70px;
+    align-self: center;
+  }
+  h3 {
+    font-size: 32px;
+    text-align: center;
+  }
+  p {
+    font-size: 20px;
+    font-weight: 700;
   }
 `;
 
 export const StyledRating = styled(Rating)`
   & .MuiRating-iconFilled {
-    color: ${colors.secondary};
+    color: ${colors.success};
   }
+  font-size: 40px;
+  margin-bottom: 9px;
 `;

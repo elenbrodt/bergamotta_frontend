@@ -30,9 +30,7 @@ function CardPlace(props: CardProps) {
     if (props.id !== "000") {
       getAverage();
     }
-  }, [ props]);
-
-  
+  }, [props]);
 
   return (
     <LinkCard to={id} className={props.theme}>
