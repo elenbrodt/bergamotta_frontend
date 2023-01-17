@@ -83,7 +83,7 @@ function Header() {
           </Nav>
           <ButtonsDiv>
           <LogoutButton />
-          <a href="/placeownercheck"><ImgCadastro src={cadastro} alt="cadastro"></ImgCadastro></a>
+          <a href="/verificarcadastro"><ImgCadastro src={cadastro} alt="cadastro"></ImgCadastro></a>
           </ButtonsDiv>
       </DivHeader>
       </header >
