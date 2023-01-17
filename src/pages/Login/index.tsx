@@ -19,6 +19,8 @@ import SubmitButton from "../../components/SubmitButton";
 import { authOwner } from "../../services/MainApi/login_owner";
 import { setOwner } from "../../store/modules/owner";
 import { useState } from "react";
+import { Footer } from "../../components/Footer";
+
 
 function Login() {
   const {
@@ -76,55 +78,58 @@ function Login() {
   };
 
   return (
-    <LoginBox>
-      <Link to='/'>
-        <img src={LogoSrc} alt='logo_bergamotta' />
-      </Link>
-      <TitleLogin title={"Olá, que bom ter você de volta!👋"} />
-      <form id='myForm' onSubmit={handleSubmit(onSubmit)}>
-        <Inputs>
-          <FormControl fullWidth {...register("email", { required: true })}>
-            <InputLogin
-              type='email'
-              placeholder='exemplo@email.com'
-              label='Email'
-              name='email'
-            />
-            {errors.email && <p>Esse campo é obrigatório</p>}
-          </FormControl>
-          <FormControl fullWidth {...register("password", { required: true })}>
-            <InputLogin
-              type='password'
-              placeholder='Digite sua senha'
-              label='Senha'
-              name='password'
-            />
-            {errors.password && <p>Esse campo é obrigatório</p>}
-          </FormControl>
-          <RadioGroupStyled color='secondary' row defaultValue='user'>
-            <FormControlLabelStyled
-              control={
-                <Radio color='success' value='user' onChange={handleChange} />
-              }
-              label='Sou usuário'
-            />
-            <FormControlLabelStyled
-              control={
-                <Radio color='success' value='owner' onChange={handleChange} />
-              }
-              label='Sou restaurante'
-            />
-          </RadioGroupStyled>
-          <SubmitButton text='Logar' />
-        </Inputs>
-      </form>
-      <PasswordReminder />
-      <SignInLink
-        href='/cadastro'
-        text='Não possui uma conta?'
-        link='Cadastre-se Aqui'
-      />
-    </LoginBox>
+    <>
+      <LoginBox>
+        <Link to='/'>
+          <img src={LogoSrc} alt='logo_bergamotta' />
+        </Link>
+        <TitleLogin title={"Olá, que bom ter você de volta!👋"} />
+        <form id='myForm' onSubmit={handleSubmit(onSubmit)}>
+          <Inputs>
+            <FormControl fullWidth {...register("email", { required: true })}>
+              <InputLogin
+                type='email'
+                placeholder='exemplo@email.com'
+                label='Email'
+                name='email'
+              />
+              {errors.email && <p>Esse campo é obrigatório</p>}
+            </FormControl>
+            <FormControl fullWidth {...register("password", { required: true })}>
+              <InputLogin
+                type='password'
+                placeholder='Digite sua senha'
+                label='Senha'
+                name='password'
+              />
+              {errors.password && <p>Esse campo é obrigatório</p>}
+            </FormControl>
+            <RadioGroupStyled color='secondary' row defaultValue='user'>
+              <FormControlLabelStyled
+                control={
+                  <Radio color='success' value='user' onChange={handleChange} />
+                }
+                label='Sou usuário'
+              />
+              <FormControlLabelStyled
+                control={
+                  <Radio color='success' value='owner' onChange={handleChange} />
+                }
+                label='Sou restaurante'
+              />
+            </RadioGroupStyled>
+            <SubmitButton text='Logar' />
+          </Inputs>
+        </form>
+        <PasswordReminder />
+        <SignInLink
+          href='/cadastro'
+          text='Não possui uma conta?'
+          link='Cadastre-se Aqui'
+        />
+      </LoginBox>
+      <Footer />
+    </>
   );
 }
 export default Login;
