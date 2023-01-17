@@ -1,7 +1,7 @@
 .banner {
   background-color: #27ae60;
   display: flex;
-  flex-direction: column;
+
   justify-content: center;
   align-items: center;
   gap: 30px;
@@ -77,8 +77,11 @@
   gap: 8px;
   background-color: #27ae60;
   display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
   height: 147px;
   width: 100%;
+}
+#container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }

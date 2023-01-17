@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { listPlace } from "../../services/MainApi/search";
+import { useUser } from "../../store/modules/user";
 import Markers from "../Markers";
 
 interface Place {
@@ -10,11 +11,10 @@ interface Place {
   image_link: string;
   average_ticket_price: number;
   opening_hours: string;
-  }
+}
 
-function Points (){
-
-    const [places, setPlaces] = useState<Place[]>([]);
+function Points() {
+  const [places, setPlaces] = useState<Place[]>([]);
 
   useEffect(() => {
     const getData = async () => {
@@ -30,8 +30,8 @@ function Points (){
 
   return (
     <>
-        <Markers points={places}/>
+      <Markers points={places} />
     </>
-  )
+  );
 }
-export default Points
+export default Points;

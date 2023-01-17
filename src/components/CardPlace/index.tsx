@@ -16,7 +16,7 @@ interface CardProps {
 
 function CardPlace(props: CardProps) {
   const id = "/restaurantlocked/" + props.id;
-  const [value, setValue] = useState<number>(1); //rating stars
+  const [value, setValue] = useState<number>(3); //rating stars
 
   useEffect(() => {
     const getAverage = async () => {

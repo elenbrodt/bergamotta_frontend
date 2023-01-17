@@ -37,7 +37,7 @@ function Search() {
               key='00'
               name='Restaurant'
               opening_hours='00h'
-              image_link='https://www.kitano.com.br/wp-content/uploads/2019/07/SSP_2480-Frango-assado-com-salsa-e-cebolinha-1.jpg'
+              image_link='https://images.pexels.com/photos/257816/pexels-photo-257816.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
               average_ticket_price={200}
               theme='blocked'
             />
