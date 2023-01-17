@@ -119,7 +119,7 @@ function About(): JSX.Element {
           </FormContainerRight>
         </FormContainer>
       </div>
-        
+      <Footer />
     </div>
   );
 }
