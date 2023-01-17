@@ -1,10 +1,11 @@
-import { TextField } from "@mui/material";
+import { Rating } from "@mui/material";
 import { UserImg, Container, Box } from "./styles";
 
 interface User {
-  id: string;
   image_link: string;
   name: string;
+  value?: string;
+  stars: number;
 }
 function CardRating(props: User) {
   return (
@@ -12,7 +13,8 @@ function CardRating(props: User) {
       <UserImg src={props.image_link} />
       <Box>
         <p>{props.name}</p>
-        <TextField />
+        <Rating value={props.stars} readOnly precision={0.5} />
+        <input value={props.value} readOnly />
       </Box>
     </Container>
   );

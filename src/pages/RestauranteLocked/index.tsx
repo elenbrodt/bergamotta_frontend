@@ -14,6 +14,7 @@ import {
   ColumnRating,
   StyledRating,
   Wrapped,
+  PlaceWrapper,
 } from "./style";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import PhoneIcon from "@mui/icons-material/Phone";
@@ -23,6 +24,7 @@ import {
   createRating,
   ingredientSubstitutionById,
   instagrammableFoodById,
+  ratingByPlaceId,
   serviceSpeed,
   tastyFoodById,
   welcomingServiceById,
@@ -50,17 +52,29 @@ interface Place {
   phone: string;
 }
 
+interface User {
+  name: string;
+  image_link: string;
+}
+
+interface Comment {
+  comment: string;
+  general_rating: number;
+  user: User;
+}
+
 function RestaurantLocked() {
   const urlId = window.location.pathname.split("/")[2];
 
   const [place, setPlace] = useState<Place>();
   const [socials, setSocials] = useState<string>();
   const at = socials?.split("/")[3];
-
+  const instagram = "https://www.instagram.com/" + at;
   const [value, setValue] = useState<number>(1); //rating stars
   const [price, setPrice] = useState<number>(1);
 
   const [goods, setGoods] = useState<string[]>([]);
+  const [comments, setComments] = useState<Comment[]>([]);
 
   const user = useUser();
 
@@ -91,6 +105,15 @@ function RestaurantLocked() {
       }
     };
     getData();
+    const getComments = async () => {
+      try {
+        const response = await ratingByPlaceId(urlId);
+        setComments(response.data);
+      } catch (error) {
+        alert("Deu algo errado no catch");
+      }
+    };
+    getComments();
     const getAverage = async () => {
       try {
         const response = await averageById(urlId);
@@ -258,12 +281,12 @@ function RestaurantLocked() {
         <Header />
         <PlaceContainer className='main'>
           <Column>
-            <div>
+            <PlaceWrapper>
               <img src={place?.image_link} alt='Imagem restaurante' />
               <div>
                 <Title>{place?.name}</Title>
               </div>
-            </div>
+            </PlaceWrapper>
             <Container>
               <Box>
                 <Wrapped>
@@ -293,8 +316,10 @@ function RestaurantLocked() {
                 </Wrapped>
                 <Wrapped>
                   <Container>
-                    <InstagramIcon />
-                    {at}
+                    <a href={instagram} className='link_instagram'>
+                      <InstagramIcon />
+                      {at}
+                    </a>
                   </Container>
                   <Container className='favorite_box'>
                     <PhoneIcon />
@@ -312,11 +337,17 @@ function RestaurantLocked() {
             </Box>
             <Box>
               <h2>Últimas avaliações</h2>
-              <CardRating
-                id='0000000'
-                name='Jane Doe'
-                image_link='https://s2.static.brasilescola.uol.com.br/be/2020/12/peixe.jpg'
-              />
+              {comments.map((comment, index) => {
+                return (
+                  <CardRating
+                    stars={comment.general_rating}
+                    name={comment.user.name}
+                    key={index}
+                    image_link={comment.user.image_link}
+                    value={comment.comment}
+                  />
+                );
+              })}
             </Box>
           </Column>
           <ColumnRating>
@@ -436,43 +467,47 @@ function RestaurantLocked() {
       <Header />
       <PlaceContainer className='main'>
         <Column>
-          <div>
+          <PlaceWrapper>
             <img src={place?.image_link} alt='Imagem restaurante' />
             <Title>{place?.name}</Title>
-          </div>
+          </PlaceWrapper>
           <Container>
             <Box>
-              <Container>
-                <AccessTimeFilledIcon />
-                {place?.opening_hours}
-              </Container>
-              <Rating id='stars' value={value} precision={0.5} readOnly />
-              <Container>
-                <InstagramIcon />
-                {at}
-              </Container>
-            </Box>
-            <Box>
-              <div className='favorite_box'>
-                <Checkbox
-                  defaultChecked
-                  disabled
-                  icon={<FavoriteBorder color='error' />}
-                  checkedIcon={<Favorite color='error' />}
+              <Wrapped>
+                <Container>
+                  <AccessTimeFilledIcon />
+                  {place?.opening_hours}
+                </Container>
+                <div className='favorite_box'>
+                  <Checkbox
+                    defaultChecked
+                    disabled
+                    icon={<FavoriteBorder color='error' />}
+                    checkedIcon={<Favorite color='error' />}
+                  />
+                </div>
+              </Wrapped>
+              <Wrapped>
+                <Rating id='stars' value={value} precision={0.5} readOnly />
+                <StyledRating
+                  value={price}
+                  readOnly
+                  max={3}
+                  className='favorite_box'
+                  icon={<AttachMoneyIcon fontSize='inherit' />}
+                  emptyIcon={<AttachMoneyIcon fontSize='inherit' />}
                 />
-              </div>
-              <StyledRating
-                className='favorite_box'
-                value={price}
-                readOnly
-                max={3}
-                icon={<AttachMoneyIcon fontSize='inherit' />}
-                emptyIcon={<AttachMoneyIcon fontSize='inherit' />}
-              />
-              <Container className='favorite_box'>
-                <PhoneIcon />
-                {place?.phone}
-              </Container>
+              </Wrapped>
+              <Wrapped>
+                <Container>
+                  <InstagramIcon />
+                  {at}
+                </Container>
+                <Container className='favorite_box'>
+                  <PhoneIcon />
+                  {place?.phone}
+                </Container>
+              </Wrapped>
             </Box>
           </Container>
 
@@ -487,11 +522,17 @@ function RestaurantLocked() {
         <ColumnLastRatings>
           <Box>
             <h2>Últimas avaliações</h2>
-            <CardRating
-              id='0000000'
-              name='Jane Doe'
-              image_link='https://s2.static.brasilescola.uol.com.br/be/2020/12/peixe.jpg'
-            />
+            {comments.map((comment, index) => {
+              return (
+                <CardRating
+                  stars={comment.general_rating}
+                  name={comment.user.name}
+                  key={index}
+                  image_link={comment.user.image_link}
+                  value={comment.comment}
+                />
+              );
+            })}
           </Box>
           <ContainerGreen>
             <p>Cadastre-se e saiba mais o que estão dizendo</p>

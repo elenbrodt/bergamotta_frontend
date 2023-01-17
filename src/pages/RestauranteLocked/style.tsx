@@ -7,7 +7,6 @@ export const Box = styled.div`
   flex-direction: column;
   justify-content: space-between;
   width: 100%;
-
   font-family: ${fonts.secondary};
   font-size: 20px;
   font-weight: 700;
@@ -22,6 +21,7 @@ export const Box = styled.div`
     font-size: 32px;
     font-weight: 700;
     line-height: 35.2px;
+    padding: 1vh 0 1vh 0;
     color: ${colors.primary};
   }
   .favorite_box {
@@ -38,6 +38,14 @@ export const Box = styled.div`
   }
 `;
 
+export const PlaceWrapper = styled.div`
+  img {
+    width: 100%;
+    height: 30vh;
+    border-radius: 10px;
+  }
+`;
+
 export const Title = styled.h1`
     color: ${colors.black},
     font-family:${fonts.primary};
@@ -50,6 +58,11 @@ export const Container = styled.div`
   display: flex;
   gap: 0.5vw;
   align-items: center;
+  .link_instagram {
+    text-decoration: none;
+    text-align: center;
+    color: ${colors.black};
+  }
 `;
 export const Wrapped = styled.div`
   display: flex;
@@ -69,11 +82,6 @@ export const Column = styled.div`
   flex-wrap: wrap;
   width: 36vw;
   gap: 2vh;
-  img {
-    width: 100%;
-    height: 30vh;
-    border-radius: 10px;
-  }
 `;
 export const ColumnLastRatings = styled.div`
   display: flex;
