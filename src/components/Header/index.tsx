@@ -71,10 +71,10 @@ function Header() {
                 <NavLink to='/sobrenos'>Quem somos</NavLink>
               </Li>
               <Li>
-                <NavLink to='/'>Perfil do restaurante</NavLink>
+                <NavLink to='/restauranteperfil'>Perfil do restaurante</NavLink>
               </Li>
               <Li>
-                <NavLink to='/'>Editar usuário</NavLink>
+                <NavLink to='/editarperfil'>Editar usuário</NavLink>
               </Li>
             </Ul>
           </Nav>
