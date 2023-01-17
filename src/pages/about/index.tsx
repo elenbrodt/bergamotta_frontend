@@ -66,8 +66,8 @@ function About(): JSX.Element {
             <Overlaid1 src={bodyimg2} alt='Casal Empolgado' />
           </BottonBodyLeft>
           <BottonBodyRight>
-            <Title2 >Quem Somos</Title2>
-            <Text>
+            <Title2 className="title-one" >Quem Somos</Title2>
+            <Text className="text-one">
               A Bergamotta é uma plataforma que contecta<br></br>
               restaurantes a clientes que adotaram uma dieta<br></br>
               vegetariana ou vegana sem abrir mão de vivenciar, da<br></br>
