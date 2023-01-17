@@ -13,27 +13,21 @@ import {
   ContainerGreen,
   ColumnRating,
   StyledRating,
+  Wrapped,
 } from "./style";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import PhoneIcon from "@mui/icons-material/Phone";
 import {
   averageById,
   cozyById,
+  createRating,
   ingredientSubstitutionById,
   instagrammableFoodById,
   serviceSpeed,
   tastyFoodById,
   welcomingServiceById,
 } from "../../services/MainApi/ratings";
-import {
-  Checkbox,
-  FormControl,
-  FormControlLabel,
-  Rating,
-  TextField,
-  ToggleButton,
-  ToggleButtonGroup,
-} from "@mui/material";
+import { Checkbox, FormControl, Rating, TextField } from "@mui/material";
 import { Favorite, FavoriteBorder } from "@mui/icons-material";
 import { userFavoriteById } from "../../services/MainApi/favorites";
 import { useUser } from "../../store/modules/user";
@@ -42,7 +36,6 @@ import { Link } from "react-router-dom";
 import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
 import { useForm } from "react-hook-form";
 import { Footer } from "../../components/Footer";
-import { TAGS } from "../../mock/tags";
 import { colors } from "../../styles/theme";
 
 interface Place {
@@ -177,7 +170,6 @@ function RestaurantLocked() {
       const getFavorites = async () => {
         try {
           const response = await userFavoriteById(user.findUser.id, urlId);
-          console.log("oie:", response.data);
         } catch (error) {
           alert("Deu algo errado no catch");
         }
@@ -186,8 +178,51 @@ function RestaurantLocked() {
     }
   }, [setPlace, urlId, user]);
 
+  const postRating = async (
+    general_rating: number,
+    welcoming_service: boolean,
+    ingredient_substitution: boolean,
+    instagrammable_food: boolean,
+    tasty_food: boolean,
+    cozy: boolean,
+    service_speed: boolean,
+    comment: boolean,
+    place_id: string,
+    token: string
+  ) => {
+    const req = {
+      general_rating: general_rating,
+      welcoming_service: welcoming_service,
+      ingredient_substitution: ingredient_substitution,
+      instagrammable_food: instagrammable_food,
+      tasty_food: tasty_food,
+      cozy: cozy,
+      service_speed: service_speed,
+      comment: comment,
+      place_id: urlId,
+      token: user.token,
+    };
+    try {
+      const response = await createRating(req);
+      console.log(response);
+    } catch (error) {
+      alert("Deu algo errado no catch");
+    }
+  };
+
   const onSubmit = (data: any) => {
-    console.log(data);
+    postRating(
+      data.general_rating as number,
+      data.welcoming_service as boolean,
+      data.ingredient_substitution as boolean,
+      data.instagrammable_food as boolean,
+      data.tasty_food as boolean,
+      data.cozy as boolean,
+      data.service_speed as boolean,
+      data.comment as boolean,
+      urlId as string,
+      user.token
+    );
   };
 
   const [isWelcoming, setIsWelcoming] = useState(false);
@@ -202,7 +237,6 @@ function RestaurantLocked() {
   const handleIsInstagrammable = () => {
     setIsInstagrammable(!isInstagrammable);
   };
-
   const [isTasty, setIsTasty] = useState(false);
   const handleIsTasty = () => {
     setIsTasty(!isTasty);
@@ -226,40 +260,47 @@ function RestaurantLocked() {
           <Column>
             <div>
               <img src={place?.image_link} alt='Imagem restaurante' />
-              <Title>{place?.name}</Title>
+              <div>
+                <Title>{place?.name}</Title>
+              </div>
             </div>
             <Container>
               <Box>
-                <Container>
-                  <AccessTimeFilledIcon />
-                  {place?.opening_hours}
-                </Container>
-                <Rating id='stars' value={value} precision={0.5} readOnly />
-                <Container>
-                  <InstagramIcon />
-                  {at}
-                </Container>
-              </Box>
-              <Box>
-                <div className='favorite_box'>
-                  <Checkbox
-                    defaultChecked
-                    disabled
-                    icon={<FavoriteBorder color='error' />}
-                    checkedIcon={<Favorite color='error' />}
+                <Wrapped>
+                  <Container>
+                    <AccessTimeFilledIcon />
+                    {place?.opening_hours}
+                  </Container>
+                  <div className='favorite_box'>
+                    <Checkbox
+                      defaultChecked
+                      disabled
+                      icon={<FavoriteBorder color='error' />}
+                      checkedIcon={<Favorite color='error' />}
+                    />
+                  </div>
+                </Wrapped>
+                <Wrapped>
+                  <Rating id='stars' value={value} precision={0.5} readOnly />
+                  <StyledRating
+                    value={price}
+                    readOnly
+                    max={3}
+                    className='favorite_box'
+                    icon={<AttachMoneyIcon fontSize='inherit' />}
+                    emptyIcon={<AttachMoneyIcon fontSize='inherit' />}
                   />
-                </div>
-                <StyledRating
-                  value={price}
-                  readOnly
-                  max={3}
-                  icon={<AttachMoneyIcon fontSize='inherit' />}
-                  emptyIcon={<AttachMoneyIcon fontSize='inherit' />}
-                />
-                <Container className='favorite_box'>
-                  <PhoneIcon />
-                  {place?.phone}
-                </Container>
+                </Wrapped>
+                <Wrapped>
+                  <Container>
+                    <InstagramIcon />
+                    {at}
+                  </Container>
+                  <Container className='favorite_box'>
+                    <PhoneIcon />
+                    {place?.phone}
+                  </Container>
+                </Wrapped>
               </Box>
             </Container>
             <Box>
@@ -279,7 +320,7 @@ function RestaurantLocked() {
             </Box>
           </Column>
           <ColumnRating>
-            <p>Conte como foi sua experiência</p>
+            <h3>Conte como foi sua experiência</h3>
             <form id='myForm' onSubmit={handleSubmit(onSubmit)}>
               <FormControl {...register("general_rating")}>
                 <>
@@ -293,6 +334,7 @@ function RestaurantLocked() {
                   <Rating
                     name='general_rating'
                     value={userValue}
+                    id='userStars'
                     precision={1}
                     onChange={(_, value) => {
                       setUserValue(value as number);
@@ -378,9 +420,9 @@ function RestaurantLocked() {
                 </button>
               </GoodsTags>
               <p>Compartilhe com a gente sua experiência</p>
-              <TextField />
+              <TextField multiline minRows={4} id='outlined-multiline-static' />
               <button id='rating_btn' type='submit'>
-                Enviar
+                Enviar avaliação
               </button>
             </form>
           </ColumnRating>
