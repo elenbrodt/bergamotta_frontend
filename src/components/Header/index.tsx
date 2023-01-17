@@ -1,4 +1,3 @@
-import ButtonLogin from "../Button";
 import MenuHamburguer from "../MenuHamburguer";
 import Logo from "../../assets/image/logo.png";
 import {
@@ -14,7 +13,6 @@ import {
 import { useUser } from "../../store/modules/user";
 import { useOwner } from "../../store/modules/owner";
 import LogoutButton from "../LogoutButton";
-import { Link } from "react-router-dom";
 
 function Header() {
   const user = useUser();
@@ -33,19 +31,19 @@ function Header() {
           <Nav>
             <Ul>
               <Li>
-                <NavLink to='/'>Busca</NavLink>
-              </Li>
-              <Li>
                 <NavLink to='/blog'>Blog</NavLink>
               </Li>
               <Li>
-                <NavLink to='/editarperfil'>Editar Perfil</NavLink>
+                <NavLink to='/perfil'>Perfil</NavLink>
               </Li>
               <Li>
-                <NavLink to='/sobrenos'>Quem Somos</NavLink>
+                <NavLink to='/atualizarusuario'>Editar usuário</NavLink>
               </Li>
               <Li>
-                <NavLink to='/parceiros'>Seja Um Parceiro</NavLink>
+                <NavLink to='/sobrenos'>Quem somos</NavLink>
+              </Li>
+              <Li>
+                <NavLink to='/parceiros'>Seja um parceiro</NavLink>
               </Li>
             </Ul>
           </Nav>
@@ -67,16 +65,16 @@ function Header() {
           <Nav>
             <Ul>
               <Li>
-                <NavLink to='/'>Buscar</NavLink>
+                <NavLink to='/blog'>Blog</NavLink>
               </Li>
               <Li>
-                <NavLink to='/sobrenos'>Quem Somos</NavLink>
+                <NavLink to='/sobrenos'>Quem somos</NavLink>
               </Li>
               <Li>
-                <NavLink to='/'>Configurações restaurante</NavLink>
+                <NavLink to='/'>Perfil do restaurante</NavLink>
               </Li>
               <Li>
-                <NavLink to='/'>Configurações usuário</NavLink>
+                <NavLink to='/'>Editar usuário</NavLink>
               </Li>
             </Ul>
           </Nav>

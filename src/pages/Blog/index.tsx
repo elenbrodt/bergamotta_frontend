@@ -9,7 +9,7 @@ function Blog() {
                 <div>
                     <ListBlogs />
                 </div>
-            <Footer></Footer>
+                <Footer></Footer>
         </div>
     );
 }
