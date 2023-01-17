@@ -12,11 +12,8 @@ interface GreenBannerProps {
 function GreenBanner(props: GreenBannerProps) {
   return (
     <div className='banner' id={props.id}>
-      <div className='container'>
-        <h2 className='bannertitle'>{props.title}</h2>
-        <p className='bannertext'>{props.texto}</p>
-      </div>
-
+      <h2 className='bannertitle'>{props.title}</h2>
+      <p className='bannertext'>{props.texto}</p>
       <Link className='bannerbtn' to={props.href}>
         {props.btn_text}
       </Link>

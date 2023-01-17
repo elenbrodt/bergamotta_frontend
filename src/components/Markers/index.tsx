@@ -26,6 +26,7 @@ function Markers(props: MapProps) {
             eventHandlers={{
               mouseover: (event) => event.target.openPopup(),
             }}
+            key={index}
           >
             <Popup>
               <CardPlace
@@ -50,6 +51,7 @@ function Markers(props: MapProps) {
           eventHandlers={{
             mouseover: (event) => event.target.openPopup(),
           }}
+          key={index}
         >
           <Popup>
             <CardPlace

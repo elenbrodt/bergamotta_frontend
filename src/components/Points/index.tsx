@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { listPlace } from "../../services/MainApi/search";
-import { useUser } from "../../store/modules/user";
 import Markers from "../Markers";
 
 interface Place {
@@ -26,7 +25,7 @@ function Points() {
       }
     };
     getData();
-  }, [setPlaces]);
+  }, [setPlaces, places]);
 
   return (
     <>

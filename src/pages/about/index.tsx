@@ -66,8 +66,8 @@ function About(): JSX.Element {
             <Overlaid1 src={bodyimg2} alt='Casal Empolgado' />
           </BottonBodyLeft>
           <BottonBodyRight>
-            <Title2 className="title-one" >Quem Somos</Title2>
-            <Text className="text-one">
+            <Title2 className='title-one'>Quem Somos</Title2>
+            <Text className='text-one'>
               A Bergamotta é uma plataforma que contecta<br></br>
               restaurantes a clientes que adotaram uma dieta<br></br>
               vegetariana ou vegana sem abrir mão de vivenciar, da<br></br>
@@ -85,8 +85,8 @@ function About(): JSX.Element {
         <GreenBannerContainer>
           <GreenBanner
             href='/cadastro'
-            texto='Cadastre-se agora mesmo e tenha acesso a milhares de restaurantes.'
-            title='O que você está esperando?'
+            texto='Tenha uma experiência Bergamotta e acesse milhares de restaurantes.'
+            title='Cadastre-se agora mesmo!'
             btn_text='Quero fazer parte!'
           />
         </GreenBannerContainer>
