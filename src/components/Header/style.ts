@@ -90,3 +90,14 @@ export const LinkLogin = styled(Link)`
     width: 0.1rem;
   }
 `;
+export const ButtonsDiv = styled.div`
+display: flex;
+justify-content: center;
+align-items: center;
+gap: 15px
+`
+export const ImgCadastro =styled.img`
+width: 50px;
+height: 40px;
+margin-right: -25px;
+`
