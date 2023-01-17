@@ -26,3 +26,6 @@ export function serviceSpeed(props: string) {
 export function userratingById( props: string) {
   return baseApi.get(`/ratingbyuser/${props}`);
 }
+export function ratingByPlaceId( props: string) {
+  return baseApi.get(`/usercomment/${props}`);
+}
