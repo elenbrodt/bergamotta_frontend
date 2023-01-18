@@ -21,7 +21,6 @@ import { setOwner } from "../../store/modules/owner";
 import { useState } from "react";
 import { Footer } from "../../components/Footer";
 
-
 function Login() {
   const {
     register,
@@ -95,7 +94,10 @@ function Login() {
               />
               {errors.email && <p>Esse campo é obrigatório</p>}
             </FormControl>
-            <FormControl fullWidth {...register("password", { required: true })}>
+            <FormControl
+              fullWidth
+              {...register("password", { required: true })}
+            >
               <InputLogin
                 type='password'
                 placeholder='Digite sua senha'
@@ -106,19 +108,15 @@ function Login() {
             </FormControl>
             <RadioGroupStyled color='secondary' row defaultValue='user'>
               <FormControlLabelStyled
-                control={
-                  <Radio color='success' value='user' onChange={handleChange} />
-                }
+                control={<Radio value='user' onChange={handleChange} />}
                 label='Sou usuário'
               />
               <FormControlLabelStyled
-                control={
-                  <Radio color='success' value='owner' onChange={handleChange} />
-                }
+                control={<Radio value='owner' onChange={handleChange} />}
                 label='Sou restaurante'
               />
             </RadioGroupStyled>
-            <SubmitButton text='Logar' />
+            <SubmitButton text='Login' />
           </Inputs>
         </form>
         <PasswordReminder />
