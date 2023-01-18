@@ -7,12 +7,23 @@ flex-direction: column;
 justify-content: center;
 align-items: center;
 gap: 90px;
+@media (max-width: 475px){
+    a {
+        width: 45%;
+        height: 50px;
+        font-size: 17px;
+    }
+
 `
 export const Logo = styled.img`
 margin-top: 100px;
 width: 35%;
 height: 35%;
 background-color: ${colors.white};
+@media (max-width: 475px){
+    width: 70%;
+    height: 70%;
+}
 `
 export const Text = styled.p`
 font-family: ${fonts.primary};
@@ -21,6 +32,10 @@ font-size: 32px;
 line-height: 35px;
 color: ${colors.black};
 text-align: center;
+@media (max-width: 475px){
+    font-size: 20px;
+    
+}
 `
 export const Button = styled.a`
 display: flex;
@@ -38,4 +53,6 @@ text-decoration: none;
 text-align: center;
 margin-bottom: 20vh;
 color: ${colors.white}
+
+
 `
