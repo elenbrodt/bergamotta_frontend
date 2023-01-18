@@ -51,30 +51,19 @@ function PlaceOwnerCheck() {
         }
     }, [setPlace, ownerData]);
 
-    if (!placeData?.name) {
         return (
             <div className="App">
                 <MainDiv>
                     <Logo src={logo} alt="" />
-                    <Text>Cadastre já o seu restaurante, e apareça<br></br> automaticamente em nossas buscas</Text>
-                    <Button href="/cadastrorestaurante">Cadastrar restaurante</Button>
+                    {!placeData?.name && <Text>Cadastre já o seu restaurante, e apareça<br></br> automaticamente em nossas buscas</Text>}
+                    {placeData?.name && <Text>Você já possui um restaurante cadastrado</Text>}
+                    {!placeData?.name && <Button href="/cadastrorestaurante">Cadastrar restaurante</Button>}
+                    {placeData?.name && <Button href="/">Retornar</Button>}
                 </MainDiv>
                 <Footer></Footer>
             </div>
         );
     }
-    if (placeData?.name) {
-        return (
-            <div className="App">
-                <MainDiv>
-                    <Logo src={logo} alt="" />
-                    <Text>Você já pussui um restaurante cadastrado</Text>
-                    <Button href="/">Retornar</Button>
-                </MainDiv>
-                <Footer></Footer>
-            </div>
-        );
-    }
-}
+    
 
 export default PlaceOwnerCheck;
