@@ -31,7 +31,11 @@ import {
 } from "../../services/MainApi/ratings";
 import { Checkbox, FormControl, Rating, TextField } from "@mui/material";
 import { Favorite, FavoriteBorder } from "@mui/icons-material";
-import { userFavoriteById } from "../../services/MainApi/favorites";
+import {
+  createFavorite,
+  deleteFavorite,
+  userFavoriteById,
+} from "../../services/MainApi/favorites";
 import { useUser } from "../../store/modules/user";
 import CardRating from "../../components/CardRating";
 import { Link } from "react-router-dom";
@@ -104,6 +108,7 @@ function RestaurantLocked() {
 
   const [goods, setGoods] = useState<string[]>([]);
   const [comments, setComments] = useState<Comment[]>([]);
+  const [isFavorite, setIsFavorite] = useState("");
 
   const user = useUser();
 
@@ -222,11 +227,12 @@ function RestaurantLocked() {
       const getFavorites = async () => {
         try {
           const response = await userFavoriteById(user.findUser.id, urlId);
-        } catch (error) {
-          alert("Deu algo errado no catch");
-        }
+          console.log(response.data);
+          setIsFavorite(response.data.id);
+        } catch (error: any) {}
       };
       getFavorites();
+      console.log(isFavorite);
     }
   }, [setPlace, urlId, user]);
 
@@ -247,8 +253,37 @@ function RestaurantLocked() {
     }
   };
 
+  const onClick = () => {
+    favoriteCreate();
+    console.log("entrou no click de criar");
+  };
+  const onClickRemove = () => {
+    favoriteRemove();
+    console.log("entrou no click de remover");
+  };
+
   const onSubmit = (data: any) => {
     postRating(data.comment);
+  };
+
+  const favoriteCreate = async () => {
+    const req = {
+      place_id: urlId,
+    };
+    try {
+      const response = await createFavorite(req, user.findUser.id);
+      console.log(response.data);
+    } catch (error) {}
+  };
+  const favoriteRemove = async () => {
+    const req = {
+      user_id: user.findUser.id,
+      user_place: urlId,
+    };
+    try {
+      const response = await deleteFavorite(req);
+      console.log(response.data);
+    } catch (error) {}
   };
 
   const [caracteristicasValues, setCaracteristicasValues] = useState<
@@ -291,12 +326,21 @@ function RestaurantLocked() {
                     {place?.opening_hours}
                   </Container>
                   <div className='favorite_box'>
-                    <Checkbox
-                      defaultChecked
-                      disabled
-                      icon={<FavoriteBorder color='error' />}
-                      checkedIcon={<Favorite color='error' />}
-                    />
+                    {isFavorite && (
+                      <Checkbox
+                        checked
+                        icon={<FavoriteBorder color='error' />}
+                        checkedIcon={<Favorite color='error' />}
+                        onClick={onClickRemove}
+                      />
+                    )}
+                    {!isFavorite && (
+                      <Checkbox
+                        icon={<FavoriteBorder color='error' />}
+                        checkedIcon={<Favorite color='error' />}
+                        onClick={onClick}
+                      />
+                    )}
                   </div>
                 </Wrapped>
                 <Wrapped>
