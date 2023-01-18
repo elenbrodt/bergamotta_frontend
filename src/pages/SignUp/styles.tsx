@@ -17,6 +17,20 @@ export const Box = styled.div`
     flex-direction: column;
     align-items: center;
     gap: 3vh;
+    
+  }
+  @media (max-width: 475px){
+    button{
+      width; 150px;
+    }
+    img{
+      width: 300px;
+      height: 150px;
+    }
+    h2{
+      font-size: 40px;
+      width: 300px;
+    }
   }
 `;
 export const Inputs = styled.div`
@@ -25,6 +39,9 @@ export const Inputs = styled.div`
   align-items: center;
   gap: 1vh;
   width: 100%;
+  @media (max-width: 475px){
+    width: 300px;
+  }
 `;
 export const RadioGroupStyled = styled(RadioGroup)`
   display: flex;
@@ -38,4 +55,7 @@ export const Container = styled.div`
   display: flex;
   gap: 1vw;
   width: 100%;
+  @media (max-width: 475px){
+    flex-wrap: wrap;
+  }
 `;

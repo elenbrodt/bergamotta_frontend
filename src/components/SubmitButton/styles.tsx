@@ -16,9 +16,13 @@ export const SubmitButtonStyled = styled.button`
   font-size: 18px;
   cursor: pointer;
   @media (max-width: 768px) {
-    max-width: 1rem;
+    width: 200px;
+  }
+  @media (max-width: 475px){
+    width: 150px;
+    height: 50px;
   }
   @media (max-width: 375px) {
-    width: 0.1rem;
+    width: 100px;
   }
 `;
