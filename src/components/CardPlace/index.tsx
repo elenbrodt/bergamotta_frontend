@@ -43,7 +43,7 @@ function CardPlace(props: CardProps) {
         />
         <CardContent>
           <h5>{props.name}</h5>
-          <Rating value={value} precision={0.5} readOnly />
+          <Rating id='stars' value={value} precision={0.5} readOnly />
           <Container>
             <AccessTimeFilledIcon />
             <p>{props.opening_hours}</p>
