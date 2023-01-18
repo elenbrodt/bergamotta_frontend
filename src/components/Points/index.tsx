@@ -25,7 +25,7 @@ function Points() {
       }
     };
     getData();
-  }, [setPlaces, places]);
+  }, [setPlaces]);
 
   return (
     <>
