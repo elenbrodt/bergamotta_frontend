@@ -2,11 +2,11 @@ import styled from "styled-components";
 import { colors, fonts } from "../../styles/theme";
 
 export const MainDiv = styled.div`
-  max-width: 620px;
   height: 166px;
   display: flex;
   background: #f8aa00;
-  margin-left: -10%;
+  margin-left: -15%;
+  margin-bottom: 1vh;
 `;
 export const LeftDiv = styled.div`
   display: flex;

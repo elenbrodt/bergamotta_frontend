@@ -257,7 +257,7 @@ function RestaurantLocked() {
     }
   };
 
-  const onClickRemove = () => {
+  const onClick = () => {
     setBool(!bool);
     if (isFavorite) {
       favoriteRemove();
@@ -334,16 +334,8 @@ function RestaurantLocked() {
                       checked={bool}
                       icon={<FavoriteBorder color='error' />}
                       checkedIcon={<Favorite color='error' />}
-                      onClick={onClickRemove}
+                      onClick={onClick}
                     />
-
-                    {/* {!isFavorite && (
-                      <Checkbox
-                        icon={<FavoriteBorder color='error' />}
-                        checkedIcon={<Favorite color='error' />}
-                        onClick={onClick}
-                      />
-                    )} */}
                   </div>
                 </Wrapped>
                 <Wrapped>
