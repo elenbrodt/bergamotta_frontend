@@ -24,7 +24,7 @@ function SignUp() {
 
   const onSubmit = (data: any) => {
     console.log(data);
-    if (toggle) {
+    if (!toggle) {
       ownerCreate(
         data.email,
         data.password,
@@ -99,7 +99,7 @@ function SignUp() {
     try {
       const response = await createOwner(req);
       console.log(response);
-      navigate("/cadastrorestaurante");
+      navigate("/login");
     } catch (error) {
       alert("Deu algo errado no catch");
     }
@@ -198,7 +198,7 @@ function SignUp() {
                 {errors.country && <p>Esse campo é obrigatório</p>}
               </FormControl>
             </Container>
-            {toggle && (
+            {!toggle && (
               <Container>
                 <FormControl
                   fullWidth
