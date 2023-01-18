@@ -18,6 +18,7 @@ import CadastroOwner from "./pages/CadastroOwner";
 import ConfigUser from "./pages/ConfigUser";
 import PlaceProfile from "./pages/ProfilePlace";
 import ConfigPlace from "./pages/ConfigPlace";
+import PlaceOwnerCheck from "./pages/PlaceOwnerCheck";
 
 export default function Routes() {
   return (
@@ -39,6 +40,7 @@ export default function Routes() {
         <Route path='/editarperfil' element={<ConfigUser />} />
         <Route path='/restauranteperfil' element={<PlaceProfile />} />
         <Route path='/editarperfilrestaurante/:id' element={<ConfigPlace />} />
+        <Route path='/verificarcadastro' element={<PlaceOwnerCheck />} />
       </WrapperRoutes>
     </BrowserRouter>
   );
