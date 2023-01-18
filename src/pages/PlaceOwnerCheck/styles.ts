@@ -13,7 +13,7 @@ gap: 90px;
         height: 50px;
         font-size: 17px;
     }
-
+}
 `
 export const Logo = styled.img`
 margin-top: 100px;
