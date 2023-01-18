@@ -29,6 +29,8 @@ export const FavoritesDiv = styled.div`
 margin-top: 100px;
   display: flex;
   width: 100%;
+  justify-content: flex-start;
+align-items: flex-start;
 `;
 export const FavoritesDivLeft = styled.div`
 width: 50%;
@@ -49,6 +51,8 @@ display: block;
   color: ${colors.black};
 `;
 export const PlacesDiv = styled.div`
+justify-content: flex-start;
+align-items: flex-start;
 max-width: 90%;
 `;
 export const FavoritesDivRight = styled.div`
