@@ -12,7 +12,7 @@ export const InputBox = styled.div`
     align-items: center;
   }
   i {
-    margin-left: -10%;
+    margin-left: -15%;
   }
 `;
 export const InputLabel = styled.h4`

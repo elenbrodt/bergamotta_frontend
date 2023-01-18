@@ -42,8 +42,8 @@ function Partners() {
                         <Overlaid1 src={bodyimg1} alt="Casal Empolgado" />
                     </MidBodyLeft>
                     <MidBodyRight>
-                        <Title2>Quem Somos</Title2>
-                        <Text>A Bergamotta é uma plataforma que contecta<br></br>
+                        <Title2 className='title-one'>Quem Somos</Title2>
+                        <Text className='text-one'>A Bergamotta é uma plataforma que contecta<br></br>
                             restaurantes a clientes que adotaram uma dieta<br></br>
                             vegetariana ou vegana sem abrir mão de vivenciar, da<br></br>
                             sua maneira, grandes momentos gastronômicos.</Text>

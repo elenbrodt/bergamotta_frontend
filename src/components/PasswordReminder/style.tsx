@@ -5,6 +5,21 @@ export const PasswordReminderBox = styled.div`
     display:flex;
     justify-content: space-between;
     width: 40vw;
+    @media (max-width: 475px){
+        p {
+            width: 150px;
+            margin-right: 40px;
+            margin-left: -60px;
+            
+        }
+       
+        a{
+            width: 200px;
+            margin-left: -45px;
+         
+       }
+    }
+    
 `
 export const Container = styled.div`
     display: flex;
@@ -17,7 +32,19 @@ export const Container = styled.div`
         color: ${colors.warning};
         text-decoration: none;
     }
+    @media (max-width: 475px){
+        
+        .MuiSvgIcon-root{
+            margin-left: -140px;
+            color: ${colors.secondary}
+        }
+    }
 `
 export const CheckCircleIconStyled = styled (CheckCircleIcon)`
     color: ${colors.secondary}
+    @media (max-width: 475px){
+        
+
+    }
+    
 `

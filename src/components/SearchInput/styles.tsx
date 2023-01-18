@@ -13,6 +13,7 @@ export const SearchBox = styled.div`
   & .MuiSvgIcon-root {
     font-size: 2rem;
   }
+  
 `;
 
 export const InputBaseStyled = styled.input`
