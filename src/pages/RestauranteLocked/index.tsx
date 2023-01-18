@@ -38,7 +38,7 @@ import {
 } from "../../services/MainApi/favorites";
 import { useUser } from "../../store/modules/user";
 import CardRating from "../../components/CardRating";
-import { Link } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
 import { useForm } from "react-hook-form";
 import { Footer } from "../../components/Footer";
@@ -109,6 +109,7 @@ function RestaurantLocked() {
   const [goods, setGoods] = useState<string[]>([]);
   const [comments, setComments] = useState<Comment[]>([]);
   const [isFavorite, setIsFavorite] = useState("");
+  const [bool, setBool] = useState<boolean>(false);
 
   const user = useUser();
 
@@ -227,14 +228,17 @@ function RestaurantLocked() {
       const getFavorites = async () => {
         try {
           const response = await userFavoriteById(user.findUser.id, urlId);
-          console.log(response.data);
           setIsFavorite(response.data.id);
-        } catch (error: any) {}
+          setBool(true);
+        } catch (error: any) {
+          setBool(false);
+        }
       };
       getFavorites();
-      console.log(isFavorite);
     }
-  }, [setPlace, urlId, user]);
+
+    console.log(bool);
+  }, [setPlace, urlId, user, setBool]);
 
   const postRating = async (comment: string) => {
     const req = {
@@ -253,13 +257,13 @@ function RestaurantLocked() {
     }
   };
 
-  const onClick = () => {
-    favoriteCreate();
-    console.log("entrou no click de criar");
-  };
   const onClickRemove = () => {
-    favoriteRemove();
-    console.log("entrou no click de remover");
+    setBool(!bool);
+    if (isFavorite) {
+      favoriteRemove();
+    } else {
+      favoriteCreate();
+    }
   };
 
   const onSubmit = (data: any) => {
@@ -269,20 +273,20 @@ function RestaurantLocked() {
   const favoriteCreate = async () => {
     const req = {
       place_id: urlId,
+      user_id: user.findUser.id,
     };
     try {
-      const response = await createFavorite(req, user.findUser.id);
-      console.log(response.data);
+      const response = await createFavorite(req);
     } catch (error) {}
   };
+
   const favoriteRemove = async () => {
     const req = {
       user_id: user.findUser.id,
-      user_place: urlId,
+      place_id: urlId,
     };
     try {
       const response = await deleteFavorite(req);
-      console.log(response.data);
     } catch (error) {}
   };
 
@@ -326,21 +330,20 @@ function RestaurantLocked() {
                     {place?.opening_hours}
                   </Container>
                   <div className='favorite_box'>
-                    {isFavorite && (
-                      <Checkbox
-                        checked
-                        icon={<FavoriteBorder color='error' />}
-                        checkedIcon={<Favorite color='error' />}
-                        onClick={onClickRemove}
-                      />
-                    )}
-                    {!isFavorite && (
+                    <Checkbox
+                      checked={bool}
+                      icon={<FavoriteBorder color='error' />}
+                      checkedIcon={<Favorite color='error' />}
+                      onClick={onClickRemove}
+                    />
+
+                    {/* {!isFavorite && (
                       <Checkbox
                         icon={<FavoriteBorder color='error' />}
                         checkedIcon={<Favorite color='error' />}
                         onClick={onClick}
                       />
-                    )}
+                    )} */}
                   </div>
                 </Wrapped>
                 <Wrapped>

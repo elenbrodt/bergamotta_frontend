@@ -12,9 +12,10 @@ export function userFavoritesById(props: string) {
   return baseApi.get(`/userfavorites/${props}`);
 }
 
-export function createFavorite(props: any, req: string) {
-  return baseApi.post(`/createfavorite/${req}`, {
+export function createFavorite(props: any) {
+  return baseApi.post(`/createfavorite`, {
     place_id: props.place_id,
+    user_id: props.user_id,
   });
 }
 
