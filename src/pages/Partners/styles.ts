@@ -217,6 +217,17 @@ flex-direction: column;
 align-items: flex-start;
 padding-left: 4% ;
 justify-content: center;
+@media (max-width: 475px){
+    h2{
+        font-size: 20px;
+        margin-left: 50px;
+        margin-top: -70px;
+    }
+    li{
+        font-size: 16px;
+        margin-left: 14px;
+    }
+}
 `
 export const LowerBodyRight = styled.div`
 display: flex;
@@ -244,8 +255,8 @@ color: ${colors.black};
 font-weight: 400;
 font-size: 20px;
 line-height: 60px;
-@media (max-width; 475px){
-    font-size; 11px;
+@media (max-width: 475px){
+    width: 300px;
 }
 `
 export const Orangebg2 = styled.img`
@@ -255,7 +266,10 @@ height: 825.25px;
 @media (max-width: 475px){
     width:260px;
     height: 330px;
+    margin-left: 210px;
+    margin-top: -300px;
 }
+
 
 `
 export const Overlaid2 = styled.img`
@@ -265,6 +279,12 @@ margin-top: 84px;
 z-index: 1;
 width: 706px;
 height: 740px;
+@media (max-width: 475px){
+    width: 290px;
+    height: 290px;
+    margin-left:180px;
+    margin-top: -262px;
+}
 `
 
 export const GreenBannerContainer = styled.div`
@@ -273,7 +293,7 @@ width: 100%;
 @media (max-width: 475px ){
     height: 192px;
     font-size: 25px;
-    margin-top: 20px;
+    
     .bannertitle{
         font-size: 20px;
     }
@@ -309,6 +329,15 @@ export const FormDiv = styled.form`
 display: flex;
 flex-direction: column;
 margin-left: 57px;
+@media (max-width: 475px){
+    button{
+        width: 109px;
+    height: 36px;
+    font-size: 14px;
+    margin-right: 95px;
+    margin-bottom: 20px;
+    }
+}
 `
 export const Title4 = styled.h3`
 width: 417px;
@@ -358,7 +387,7 @@ line-height: 28px;
 color: ${colors.dark_one};
 font-family: ${fonts.secondary};
 @media(max-width: 475px){
-    font-size: 14px;
+    font-size: 16px;
 }
 `
 
@@ -382,16 +411,17 @@ font-weight: 700;
 font-size: 20px;
 line-height: 28px;
 color: ${colors.white}
+@media (max-width: 475px){
+    width: 100px;
+}
+
 
 `
 
 export const Orangebg3 = styled.img`
 width: 780.88px;
 height: 662.04px;
-@media (max-width:475px){
-        width: 480px;
-        height: 362px;
-    }
+
 `
 export const Overlaid3 = styled.img`
 position: absolute;
@@ -401,8 +431,4 @@ z-index: 1;
 width: 685px;
 height: 501px;
 float: inline-start;
-@media (max-width:475px){
-        width: 385px;
-        height: 201px;
-    }
 `
