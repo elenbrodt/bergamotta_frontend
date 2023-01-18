@@ -230,15 +230,14 @@ function RestaurantLocked() {
     }
   }, [setPlace, urlId, user]);
 
-  const postRating = async (general_rating: number, comment: string) => {
+  const postRating = async (comment: string) => {
     const req = {
-      general_rating: general_rating,
+      general_rating: userValue,
       comment: comment,
       place_id: urlId,
       user_id: user.findUser.id,
       ...caracteristicasValues,
     };
-    console.log(typeof req.general_rating);
 
     try {
       const response = await createRating(req);
@@ -249,7 +248,7 @@ function RestaurantLocked() {
   };
 
   const onSubmit = (data: any) => {
-    postRating(data.general_rating, data.comment);
+    postRating(data.comment);
   };
 
   const [caracteristicasValues, setCaracteristicasValues] = useState<
@@ -352,13 +351,7 @@ function RestaurantLocked() {
             <form id='myForm' onSubmit={handleSubmit(onSubmit)}>
               <FormControl {...register("general_rating")}>
                 <>
-                  <input
-                    name='general_rating'
-                    type='number'
-                    value={userValue}
-                    hidden
-                    readOnly
-                  />
+                  <input name='general_rating' type='number' hidden readOnly />
                   <Rating
                     value={userValue}
                     id='userStars'
