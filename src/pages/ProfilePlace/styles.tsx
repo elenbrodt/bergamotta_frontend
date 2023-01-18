@@ -33,6 +33,24 @@ export const Box = styled.div`
     width: 100%;
     height: 28vh;
   }
+  @media (max-width: 475px){
+    
+    h3{
+      font-size: 20px;
+      width: 300px;;
+      margin-left: 30px;
+      margin-bottom: 3vh;
+    }
+   #stars{
+    font-size: 30px;
+    margin-right: 10px;
+   }
+   #img_place{
+    
+   }
+  
+  }
+ 
 `;
 export const GoodsTags = styled.div`
   display: flex;
@@ -90,12 +108,19 @@ export const ContainerName = styled.div`
   .MuiIconButton-root {
     background-color: ${colors.gray};
   }
+  
+  }
 `;
 
 export const Wrapper = styled.div`
   display: flex;
   justify-content: space-between;
   margin: 3vh 5vw;
+  @media (max-width: 475px){
+    align-items: center;
+    flex-direction: column;
+    margin-left: -100px;
+  }
 `;
 
 export const AverageRating = styled.div`
@@ -125,4 +150,8 @@ export const Border = styled.div`
   padding: 1vh;
   border-radius: 10px;
   margin-bottom: 2.3vh;
+  @media (max-width: 475px){
+    width: 300px;
+    height: 35vh;
+  }
 `;
