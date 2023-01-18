@@ -106,7 +106,7 @@ export default function SideList() {
       {(user?.isLogged || owner?.isLogged) &&
         filteredPlaces.map((place, index) => {
           if (index === 4) {
-            return <YellowBanner />;
+            return <YellowBanner key={index} />;
           }
           return (
             <CardPlace
