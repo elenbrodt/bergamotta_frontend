@@ -32,15 +32,15 @@ export function ratingByPlaceId(props: string) {
 
 export function createRating(req: any) {
   return baseApi.post(`/createrating`, {
-    general_rating: req.general_rating as number,
-    welcoming_service: req.ingredient_substitution as boolean,
-    ingredient_substitution: req.ingredient_substitution as boolean,
+    general_rating: req.general_rating,
+    welcoming_service: req.ingredient_substitution,
+    ingredient_substitution: req.ingredient_substitution,
     instagrammable_food: req.instagrammable_food,
     tasty_food: req.tasty_food,
     cozy: req.cozy,
     service_speed: req.service_speed,
     comment: req.comment,
     place_id: req.place_id,
-    owner_id: req.owner_id,
+    user_id: req.user_id,
   });
 }

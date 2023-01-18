@@ -39,6 +39,7 @@ import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
 import { useForm } from "react-hook-form";
 import { Footer } from "../../components/Footer";
 import { colors } from "../../styles/theme";
+import InputLogin from "../../components/InputLogin";
 
 interface Place {
   id: string;
@@ -63,6 +64,33 @@ interface Comment {
   general_rating: number;
   user: User;
 }
+
+const caracteristicas = [
+  {
+    label: "Atendimento acolhedor",
+    value: "welcoming_service",
+  },
+  {
+    label: "Alteração de ingredientes",
+    value: "ingredient_substitution",
+  },
+  {
+    label: "Instagramável",
+    value: "instagrammable_food",
+  },
+  {
+    label: "Comida gostosa",
+    value: "tasty_food",
+  },
+  {
+    label: "Ambiente aconchegante",
+    value: "cozy",
+  },
+  {
+    label: "Serviço rápido",
+    value: "service_speed",
+  },
+];
 
 function RestaurantLocked() {
   const urlId = window.location.pathname.split("/")[2];
@@ -202,29 +230,16 @@ function RestaurantLocked() {
     }
   }, [setPlace, urlId, user]);
 
-  const postRating = async (
-    general_rating: number,
-    welcoming_service: boolean,
-    ingredient_substitution: boolean,
-    instagrammable_food: boolean,
-    tasty_food: boolean,
-    cozy: boolean,
-    service_speed: boolean,
-    comment: string
-  ) => {
+  const postRating = async (general_rating: number, comment: string) => {
     const req = {
       general_rating: general_rating,
-      welcoming_service: welcoming_service,
-      ingredient_substitution: ingredient_substitution,
-      instagrammable_food: instagrammable_food,
-      tasty_food: tasty_food,
-      cozy: cozy as boolean,
-      service_speed: service_speed,
       comment: comment,
       place_id: urlId,
-      owner_id: place?.owner_id,
+      user_id: user.findUser.id,
+      ...caracteristicasValues,
     };
-    console.log(typeof req.cozy);
+    console.log(typeof req.general_rating);
+
     try {
       const response = await createRating(req);
       console.log(response);
@@ -234,41 +249,25 @@ function RestaurantLocked() {
   };
 
   const onSubmit = (data: any) => {
-    postRating(
-      data.general_rating as number,
-      data.welcoming_service as boolean,
-      data.ingredient_substitution as boolean,
-      data.instagrammable_food as boolean,
-      data.tasty_food as boolean,
-      data.cozy as boolean,
-      data.service_speed as boolean,
-      data.comment as string
-    );
+    postRating(data.general_rating, data.comment);
   };
 
-  const [isWelcoming, setIsWelcoming] = useState(false);
-  const handleWelcoming = () => {
-    setIsWelcoming(!isWelcoming);
-  };
-  const [ingredientSubstitution, setIngredientSubstitution] = useState(false);
-  const handleIngridientSubstitution = () => {
-    setIngredientSubstitution(!ingredientSubstitution);
-  };
-  const [isInstagrammable, setIsInstagrammable] = useState(false);
-  const handleIsInstagrammable = () => {
-    setIsInstagrammable(!isInstagrammable);
-  };
-  const [isTasty, setIsTasty] = useState(false);
-  const handleIsTasty = () => {
-    setIsTasty(!isTasty);
-  };
-  const [isCozy, setIsCozy] = useState(false);
-  const handleIsCozy = () => {
-    setIsCozy(!isCozy);
-  };
-  const [isServiceSpeed, setIsServiceSpeed] = useState(false);
-  const handleIsServiceSpeed = () => {
-    setIsServiceSpeed(!isServiceSpeed);
+  const [caracteristicasValues, setCaracteristicasValues] = useState<
+    Record<string, boolean>
+  >({
+    welcoming_service: false,
+    ingredient_substitution: false,
+    instagrammable_food: false,
+    tasty_food: false,
+    cozy: false,
+    service_speed: false,
+  });
+
+  const toggleCaracteristicas = (caracteristica: any) => {
+    setCaracteristicasValues({
+      ...caracteristicasValues,
+      [caracteristica]: !caracteristicasValues[caracteristica],
+    });
   };
 
   const [userValue, setUserValue] = useState<number>(1);
@@ -361,7 +360,6 @@ function RestaurantLocked() {
                     readOnly
                   />
                   <Rating
-                    name='general_rating'
                     value={userValue}
                     id='userStars'
                     precision={1}
@@ -373,83 +371,32 @@ function RestaurantLocked() {
               </FormControl>
               <p>O que mais gostou no local</p>
               <GoodsTags>
-                <button
-                  style={{
-                    backgroundColor: isWelcoming ? colors.secondary : "",
-                    color: isWelcoming ? "white" : "",
-                  }}
-                  onClick={handleWelcoming}
-                  value={isWelcoming.toString()}
-                  {...register("welcoming_service")}
-                  type='button'
-                >
-                  Ambiente acolhedor
-                </button>
-                <button
-                  style={{
-                    backgroundColor: ingredientSubstitution
-                      ? colors.secondary
-                      : "",
-                    color: ingredientSubstitution ? "white" : "",
-                  }}
-                  onClick={handleIngridientSubstitution}
-                  type='button'
-                  value={ingredientSubstitution.toString()}
-                  {...register("ingredient_substitution")}
-                >
-                  Substituição de ingredientes
-                </button>
-                <button
-                  style={{
-                    backgroundColor: isInstagrammable ? colors.secondary : "",
-                    color: isInstagrammable ? "white" : "",
-                  }}
-                  onClick={handleIsInstagrammable}
-                  type='button'
-                  value={isInstagrammable.toString()}
-                  {...register("instagrammable_food")}
-                >
-                  Instagramável
-                </button>
-                <button
-                  style={{
-                    backgroundColor: isTasty ? colors.secondary : "",
-                    color: isTasty ? "white" : "",
-                  }}
-                  onClick={handleIsTasty}
-                  type='button'
-                  value={isTasty.toString()}
-                  {...register("tasty_food")}
-                >
-                  Saboroso
-                </button>
-                <button
-                  style={{
-                    backgroundColor: isCozy ? colors.secondary : "",
-                    color: isCozy ? "white" : "",
-                  }}
-                  onClick={handleIsCozy}
-                  type='button'
-                  value={isCozy.toString()}
-                  {...register("cozy")}
-                >
-                  Ambiente Aconchegante
-                </button>
-                <button
-                  style={{
-                    backgroundColor: isServiceSpeed ? colors.secondary : "",
-                    color: isServiceSpeed ? "white" : "",
-                  }}
-                  onClick={handleIsServiceSpeed}
-                  type='button'
-                  value={isServiceSpeed.toString()}
-                  {...register("service_speed")}
-                >
-                  Agilidade no Atendimento
-                </button>
+                {caracteristicas.map(({ value, label }) => (
+                  <button
+                    key={value}
+                    style={{
+                      backgroundColor: caracteristicasValues[value]
+                        ? colors.secondary
+                        : "",
+                      color: caracteristicasValues[value] ? "white" : "",
+                    }}
+                    onClick={() => toggleCaracteristicas(value)}
+                    type='button'
+                  >
+                    {label}
+                  </button>
+                ))}
               </GoodsTags>
               <p>Compartilhe com a gente sua experiência</p>
-              <TextField multiline minRows={4} id='outlined-multiline-static' />
+              <FormControl {...register("comment")}>
+                <InputLogin
+                  name='comment'
+                  placeholder='Faça um comentário'
+                  type='text'
+                  theme='description'
+                />
+              </FormControl>
+
               <button id='rating_btn' type='submit'>
                 Enviar avaliação
               </button>

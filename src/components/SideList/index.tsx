@@ -8,6 +8,8 @@ import { filters } from "../../services/MainApi/filter";
 import { removeFilter, useFilter } from "../../store/modules/filter";
 import { useDispatch } from "react-redux";
 import { useOwner } from "../../store/modules/owner";
+import SearchBar from "../SearchBar";
+import YellowBanner from "../YellowBanner";
 
 interface Place {
   id: string;
@@ -35,6 +37,10 @@ export default function SideList() {
       alert("Deu algo errado no catch");
     }
   };
+
+  const filteredPlaces = places.filter((place) =>
+    place.name.toLowerCase().includes(filter.search.toLowerCase())
+  );
 
   const getDataFilter = async (
     place_types_ids: any,
@@ -82,10 +88,10 @@ export default function SideList() {
           </ResetFilter>
         </Container>
       )}
-      <Title>Lista de Restaurantes</Title>
+      <Title>Restaurantes</Title>
       {!user?.isLogged &&
         !owner?.isLogged &&
-        places
+        filteredPlaces
           .slice(0, 4)
           .map((place, index) => (
             <CardPlace
@@ -98,16 +104,21 @@ export default function SideList() {
             />
           ))}
       {(user?.isLogged || owner?.isLogged) &&
-        places.map((place, index) => (
-          <CardPlace
-            id={place.id}
-            key={index}
-            name={place.name}
-            opening_hours={place.opening_hours}
-            image_link={place.image_link}
-            average_ticket_price={place.average_ticket_price}
-          />
-        ))}
+        filteredPlaces.map((place, index) => {
+          if (index === 4) {
+            return <YellowBanner />;
+          }
+          return (
+            <CardPlace
+              id={place.id}
+              key={index}
+              name={place.name}
+              opening_hours={place.opening_hours}
+              image_link={place.image_link}
+              average_ticket_price={place.average_ticket_price}
+            />
+          );
+        })}
     </Wrapper>
   );
 }
