@@ -27,6 +27,7 @@ import {
   Wrapper,
 } from "./styles";
 import ModeEditOutlineIcon from "@mui/icons-material/ModeEditOutline";
+import { useNavigate } from "react-router-dom";
 
 interface PlaceProps {
   name: string;
@@ -81,6 +82,7 @@ interface Comment {
 }
 function PlaceProfile() {
   const owner = useOwner();
+  const navigate = useNavigate();
 
   const [placeData, setPlace] = useState<PlaceProps>();
 
@@ -104,9 +106,10 @@ function PlaceProfile() {
         try {
           const response = await placeByOwnerId(owner.findOwner.id);
           setPlace(response.data);
-        } catch (error) {
-          console.error(error);
-          alert("Deu algo errado no catch");
+        } catch (error: any) {
+          if (error.request.status === 404) {
+            navigate("/verificarcadastro");
+          }
         }
       };
       getData();
