@@ -1,10 +1,5 @@
 //import TuneIcon from '@mui/icons-material/Tune';
-import {
-  Checkbox,
-  DialogActions,
-  DialogContent,
-  FormControlLabel,
-} from "@mui/material";
+import { Checkbox, DialogContent, FormControlLabel } from "@mui/material";
 import { useState } from "react";
 import FilterIcon from "../../assets/image/filter.png";
 import {
@@ -13,6 +8,7 @@ import {
   FilterLinkText,
   FilterTitle,
   FormGroupStyled,
+  ButtonStyled,
 } from "./styles";
 import "./style.css";
 import { TAGS } from "../../mock/tags";
@@ -61,7 +57,7 @@ export default function Filter(props: FilterProps) {
       </FilterButton>
       <DialogStyled open={open} onClose={handleClose}>
         <FilterTitle>Filtros</FilterTitle>
-        <form onSubmit={handleSubmit(onSubmit)}>
+        <form id='myForm' onSubmit={handleSubmit(onSubmit)}>
           <DialogContent>
             <FormGroupStyled>
               <h3>Tipos de loja</h3>
@@ -105,9 +101,7 @@ export default function Filter(props: FilterProps) {
               })}
             </FormGroupStyled>
           </DialogContent>
-          <DialogActions>
-            <SubmitButton text='Ver resultados' />
-          </DialogActions>
+          <ButtonStyled>Ver resultados</ButtonStyled>
         </form>
       </DialogStyled>
     </>

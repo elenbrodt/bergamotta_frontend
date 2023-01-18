@@ -7,5 +7,5 @@ export const Title = styled.h2`
   font-size: 48px;
   font-weight: 700;
   text-align: center;
-  width: 70%;
+  max-width: 560px;
 `;

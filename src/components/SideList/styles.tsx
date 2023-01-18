@@ -6,9 +6,10 @@ export const Title = styled.h2`
   margin-bottom: 1vh;
   font-size: 20px;
   font-family: ${fonts.secondary};
+  padding-bottom: 2vh;
 `;
 export const Wrapper = styled.div`
-  padding: 1vh 0px 0px 4vw;
+  padding: 2vh 0px 0px 4vw;
 `;
 export const ResetFilter = styled.a`
     font-family: ${fonts.secondary}

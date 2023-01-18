@@ -35,17 +35,45 @@ export const FilterTitle = styled.h2`
 export const FormGroupStyled = styled(FormGroup)`
   height: 100%;
   width: 100%;
+
   .MuiFormControlLabel-label {
     font-family: ${fonts.secondary};
     font-size: 14px;
     font-weight: 700;
   }
-  & h3 {
+  h3 {
     padding: 2vh 0 2vh 0;
   }
 `;
 export const DialogStyled = styled(Dialog)`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   .MuiDialogContent-root {
     width: 35vw;
+  }
+  #myForm {
+    width: 100%;
+  }
+`;
+
+export const ButtonStyled = styled.button`
+  background-color: ${colors.secondary};
+  width: 17vw;
+  align-self: center;
+  text-align: center;
+  height: 55px;
+  border: none;
+  color: ${colors.white};
+  font-family: ${fonts.secondary};
+  font-weight: 600;
+  font-size: 18px;
+  cursor: pointer;
+  @media (max-width: 768px) {
+    max-width: 1rem;
+  }
+  @media (max-width: 375px) {
+    width: 0.1rem;
   }
 `;

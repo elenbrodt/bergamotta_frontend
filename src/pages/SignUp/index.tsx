@@ -3,7 +3,7 @@ import TitleLogin from "../../components/TitleLogin";
 import InputLogin from "../../components/InputLogin";
 import UserType from "../../components/UserType";
 import LogoSrc from "../../assets/image/logo_vertical.png";
-import { Box, Inputs, RadioGroupStyled, Container, Button } from "./styles";
+import { Box, Inputs, RadioGroupStyled, Container } from "./styles";
 import SignInLink from "../../components/SignInLink";
 import { useState } from "react";
 import { createUser } from "../../services/MainApi/sign_in";
@@ -11,6 +11,7 @@ import { useForm } from "react-hook-form";
 import { FormControl } from "@mui/material";
 import { createOwner } from "../../services/MainApi/owner";
 import { Footer } from "../../components/Footer";
+import SubmitButton from "../../components/SubmitButton";
 
 function SignUp() {
   const {
@@ -216,7 +217,7 @@ function SignUp() {
               </Container>
             )}
           </Inputs>
-          <Button text='Cadastro' />
+          <SubmitButton text='Cadastro' />
         </form>
         <SignInLink
           text='Já possui cadastro?'

@@ -15,3 +15,11 @@ export const SearchBox = styled.div`
   }
   
 `;
+
+export const InputBaseStyled = styled.input`
+  font-size: 20px;
+  font-family: Nunito;
+  color: black;
+  font-weight: 400;
+  padding: 0;
+`;
