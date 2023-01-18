@@ -7,12 +7,28 @@ export const Column = styled.div`
   flex-direction: column;
   gap: 2vh;
   width: 40vw;
+  @media (max-width: 475px){
+    input {
+      width: 270px;
+      margin-left: 40px;
+    }
+    margin-left: -100px;
+    h4{
+      margin-left: 60px;
+    }
+    
+  }
 `;
 
 export const Container = styled.div`
   display: flex;
   gap: 1vw;
   width: 100%;
+  @media (max-width: 475px){
+    flex-direction: column;
+    
+    
+  }
 `;
 
 export const SignUpPlaceBox = styled.div`
@@ -20,6 +36,10 @@ export const SignUpPlaceBox = styled.div`
   justify-content: space-between;
   gap: 8vw;
   width: 100%;
+  @media (max-width: 475px){
+    flex-direction: column;
+    
+  }
 `;
 export const FormGroupStyled = styled(FormGroup)`
   height: 150vh;
@@ -29,6 +49,10 @@ export const FormGroupStyled = styled(FormGroup)`
     font-size: 14px;
     font-weight: 700;
   }
+ @media (max-width: 475px){
+    justify-content: start;
+ }
+  
 `;
 export const SignUpPlaceContainer = styled.div`
   display: flex;
@@ -37,6 +61,18 @@ export const SignUpPlaceContainer = styled.div`
   align-items: center;
   margin-top: 3vh;
   gap: 5vh;
+  @media (max-width: 475px){
+    button{
+      15px;
+    }
+    img{
+      width: 300px;
+      height: 150px;
+    }
+  }
+  
+  
+  
 `;
 export const TagsTitle = styled.h5`
   font-family: ${fonts.secondary};
@@ -44,4 +80,9 @@ export const TagsTitle = styled.h5`
   font-weight: 700;
   text-align: center;
   padding-bottom: 2vh;
+  @media (max-width: 475px){
+    margin-right: -150px;
+  }
+  
+  
 `;
