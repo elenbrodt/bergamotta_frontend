@@ -13,6 +13,25 @@ export const LoginBox = styled.div`
     #myForm{
         width: 100%
     }
+    @media (max-width: 475px){
+        img{
+            width: 300px;
+            heigth: 262px;
+        }
+        h2{
+            font-size: 24px;
+            width: 229px;
+        }
+        #myForm{
+            width: 300px;
+            
+
+        }
+        i{
+            margin-right: -15px;
+            
+        }
+    }
 `
 export const Inputs =styled.div`
     display: flex;
@@ -20,6 +39,7 @@ export const Inputs =styled.div`
     align-items: center;
     gap: 5vh;
     width: 100%;
+    
 `
 export const Container = styled.div`
     display: flex;
@@ -31,6 +51,7 @@ export const FormControlLabelStyled = styled (FormControlLabel)`
         font-family:${fonts.secondary}
         font-size: 18px;
         font-weight: 700;
+        
     }
 `
 export const RadioGroupStyled = styled (RadioGroup)`
