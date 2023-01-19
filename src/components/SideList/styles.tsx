@@ -10,6 +10,15 @@ export const Title = styled.h2`
 `;
 export const Wrapper = styled.div`
   padding: 2vh 0px 0px 4vw;
+  #text {
+    margin-top: 5vh;
+    color: ${colors.error};
+    text-align: center;
+    font-size: 24px;
+    font-weight: 700;
+    font-style: italic;
+    margin-left: -4vw;
+  }
 `;
 export const ResetFilter = styled.a`
     font-family: ${fonts.secondary}

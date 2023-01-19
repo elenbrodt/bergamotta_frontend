@@ -17,7 +17,7 @@ function Search() {
   const owner = useOwner();
 
   return (
-    <div className='App'>
+    <>
       <Header />
       <SearchContainer>
         <SideBar>
@@ -29,7 +29,6 @@ function Search() {
                 <h4>Quer acessar mais restaurantes?</h4>
                 <p>Entre com sua conta para ter acesso a lista completa</p>
               </TextBanner>
-
               <Link to='/cadastro' id='link'>
                 Crie sua conta
               </Link>
@@ -50,7 +49,7 @@ function Search() {
         <Map city={CITY} />
       </SearchContainer>
       <Footer />
-    </div>
+    </>
   );
 }
 

@@ -19,6 +19,8 @@ interface Place {
   opening_hours: string;
   image_link: string;
   average_ticket_price: number;
+  phone: string;
+  social_media: string;
 }
 
 export default function SideList() {
@@ -56,7 +58,7 @@ export default function SideList() {
     try {
       const response = await filters(req);
       setPlaces(response.data);
-      console.log(response.data);
+      console.log("aqui", response.data);
     } catch (error) {
       alert("Deu algo errado no catch");
     }
@@ -89,6 +91,9 @@ export default function SideList() {
         </Container>
       )}
       <Title>Restaurantes</Title>
+      {filter.isFiltered && places.length == 0 && (
+        <p id='text'>Não encontramos nenhum restaurante :(</p>
+      )}
       {!user?.isLogged &&
         !owner?.isLogged &&
         filteredPlaces
@@ -101,6 +106,8 @@ export default function SideList() {
               opening_hours={place.opening_hours}
               image_link={place.image_link}
               average_ticket_price={place.average_ticket_price}
+              phone={place.phone}
+              social_media={place.social_media}
             />
           ))}
       {(user?.isLogged || owner?.isLogged) &&
@@ -116,6 +123,8 @@ export default function SideList() {
               opening_hours={place.opening_hours}
               image_link={place.image_link}
               average_ticket_price={place.average_ticket_price}
+              phone={place.phone}
+              social_media={place.social_media}
             />
           );
         })}
