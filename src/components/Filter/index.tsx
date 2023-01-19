@@ -1,4 +1,3 @@
-//import TuneIcon from '@mui/icons-material/Tune';
 import { Checkbox, DialogContent, FormControlLabel } from "@mui/material";
 import { useState } from "react";
 import FilterIcon from "../../assets/image/filter.png";

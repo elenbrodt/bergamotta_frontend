@@ -50,9 +50,7 @@ export const DialogStyled = styled(Dialog)`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  .MuiDialogContent-root {
-    width: 35vw;
-  }
+
   #myForm {
     width: 100%;
   }
