@@ -81,12 +81,7 @@ function Header() {
               </Li>
             </Ul>
           </Nav>
-          <ButtonsDiv>
-            <LogoutButton />
-            <a href='/verificarcadastro'>
-              <ImgCadastro src={cadastro} alt='cadastro'></ImgCadastro>
-            </a>
-          </ButtonsDiv>
+          <LogoutButton />
         </DivHeader>
       </header>
     );

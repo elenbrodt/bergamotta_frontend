@@ -55,7 +55,6 @@ function InputLogin(props: InputLoginProps) {
             type={props.type}
             className={props.theme}
             defaultValue={props.defaultValue}
-            value={props.value}
           />
         </InputBox>
       );

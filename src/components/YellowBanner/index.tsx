@@ -12,7 +12,7 @@ function YellowBanner() {
     <MainDiv>
       <LeftDiv>
         <TitleBanner>Venha trocar ideia com outros bergamotters</TitleBanner>
-        <BannerButton target="_blank" href='http://t.me/bergamotters'>
+        <BannerButton target='_blank' href='http://t.me/bergamotters'>
           Participe da comunidade
         </BannerButton>
       </LeftDiv>

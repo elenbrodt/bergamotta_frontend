@@ -5,7 +5,7 @@ import { colors, fonts } from "./../../styles/theme";
 export const InputBox = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 2vh;
+  gap: 1vh;
   width: 100%;
   .container {
     display: flex;
