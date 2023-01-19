@@ -1,0 +1,11 @@
+.leaflet-popup-content p {
+  margin: 1px;
+}
+
+.leaflet-popup-content img {
+  align-self: center;
+}
+
+.pop {
+  width: 22vw;
+}

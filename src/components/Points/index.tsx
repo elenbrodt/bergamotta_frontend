@@ -10,6 +10,8 @@ interface Place {
   image_link: string;
   average_ticket_price: number;
   opening_hours: string;
+  phone: string;
+  social_media: string;
 }
 
 function Points() {
