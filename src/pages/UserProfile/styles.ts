@@ -24,17 +24,26 @@ margin-top: 20px;
   font-size: 32px;
   line-height: 35px;
   color: ${colors.black};
+  @media (max-width: 475px){
+    font-size: 24px;
+}
 `;
 export const FavoritesDiv = styled.div`
 margin-top: 100px;
   display: flex;
   width: 100%;
+  @media (max-width: 475px){
+    
+  }
 `;
 export const FavoritesDivLeft = styled.div`
 width: 50%;
   display: flex;
   flex-wrap: wrap;
   margin-left: 15%;
+  
+  
+  
 `;
 export const FavTitles = styled.h3`
 display: block;
@@ -47,13 +56,41 @@ display: block;
   font-size: 24px;
   line-height: 26px;
   color: ${colors.black};
+  @media (max-width: 475px){
+    margin-left: -20px;
+    width: 180px;
+  }
+  
 `;
 export const PlacesDiv = styled.div`
 max-width: 90%;
+@media (max-width: 475px){
+  display: flex;
+  flex-direction: column;
+  
+  
+}
 `;
 export const FavoritesDivRight = styled.div`
 width: 50%;
   display: flex;
   flex-wrap: wrap;
   margin-left: 15%;
+  @media(max-width: 475px){
+    margin-top: -115px;
+    
+      
+    
+    p{
+      font-size: 14px;
+      width: 100%;
+    }
+    h3{
+    margin-top: 100px;
+    
+      
+    }
+    }
+  
+  
 `;
