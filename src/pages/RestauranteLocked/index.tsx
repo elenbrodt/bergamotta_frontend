@@ -29,7 +29,7 @@ import {
   tastyFoodById,
   welcomingServiceById,
 } from "../../services/MainApi/ratings";
-import { Checkbox, FormControl, Rating, TextField } from "@mui/material";
+import { Checkbox, FormControl, Rating } from "@mui/material";
 import { Favorite, FavoriteBorder } from "@mui/icons-material";
 import {
   createFavorite,
@@ -38,7 +38,7 @@ import {
 } from "../../services/MainApi/favorites";
 import { useUser } from "../../store/modules/user";
 import CardRating from "../../components/CardRating";
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
 import { useForm } from "react-hook-form";
 import { Footer } from "../../components/Footer";
@@ -56,6 +56,14 @@ interface Place {
   social_media: string;
   phone: string;
   owner_id: string;
+  street: string;
+  district: string;
+  city: string;
+  state: string;
+  country: string;
+  zipcode: string;
+  place_number: string;
+  complement: string;
 }
 
 interface User {
@@ -103,8 +111,10 @@ function RestaurantLocked() {
   const [socials, setSocials] = useState<string>();
   const at = socials?.split("/")[3];
   const instagram = "https://www.instagram.com/" + at;
+
   const [value, setValue] = useState<number>(1); //rating stars
   const [price, setPrice] = useState<number>(1);
+  const [userValue, setUserValue] = useState<number>(1); // user rating stars
 
   const [goods, setGoods] = useState<string[]>([]);
   const [comments, setComments] = useState<Comment[]>([]);
@@ -117,8 +127,8 @@ function RestaurantLocked() {
 
   const dataFetchRef = useRef(false);
   useEffect(() => {
-    if (dataFetchRef.current) return;
-    dataFetchRef.current = true;
+    /*     if (dataFetchRef.current) return;
+    dataFetchRef.current = true; */
     const getData = async () => {
       try {
         const response = await byIdPlace(urlId);
@@ -236,9 +246,7 @@ function RestaurantLocked() {
       };
       getFavorites();
     }
-
-    console.log(bool);
-  }, [setPlace, urlId, user, setBool]);
+  }, [setComments]);
 
   const postRating = async (comment: string) => {
     const req = {
@@ -248,26 +256,12 @@ function RestaurantLocked() {
       user_id: user.findUser.id,
       ...caracteristicasValues,
     };
-
     try {
       const response = await createRating(req);
       console.log(response);
     } catch (error) {
       alert("Deu algo errado no catch");
     }
-  };
-
-  const onClick = () => {
-    setBool(!bool);
-    if (isFavorite) {
-      favoriteRemove();
-    } else {
-      favoriteCreate();
-    }
-  };
-
-  const onSubmit = (data: any) => {
-    postRating(data.comment);
   };
 
   const favoriteCreate = async () => {
@@ -308,7 +302,18 @@ function RestaurantLocked() {
     });
   };
 
-  const [userValue, setUserValue] = useState<number>(1);
+  const onClick = () => {
+    setBool(!bool);
+    if (isFavorite) {
+      favoriteRemove();
+    } else {
+      favoriteCreate();
+    }
+  };
+
+  const onSubmit = (data: any) => {
+    postRating(data.comment);
+  };
 
   if (user.isLogged) {
     return (
@@ -321,6 +326,11 @@ function RestaurantLocked() {
               <div>
                 <Title>{place?.name}</Title>
               </div>
+              <p id='address'>
+                {place?.street}, {place?.place_number}
+                {place?.complement}, {place?.district} | {place?.city},{" "}
+                {place?.state}
+              </p>
             </PlaceWrapper>
             <Container>
               <Box>
@@ -345,6 +355,7 @@ function RestaurantLocked() {
                     readOnly
                     max={3}
                     className='favorite_box'
+                    id='money_icon'
                     icon={<AttachMoneyIcon fontSize='inherit' />}
                     emptyIcon={<AttachMoneyIcon fontSize='inherit' />}
                   />
@@ -386,7 +397,7 @@ function RestaurantLocked() {
             </Box>
           </Column>
           <ColumnRating>
-            <h3>Conte como foi sua experiência</h3>
+            <h3>Como foi sua experiência</h3>
             <form id='myForm' onSubmit={handleSubmit(onSubmit)}>
               <FormControl {...register("general_rating")}>
                 <>
@@ -447,6 +458,11 @@ function RestaurantLocked() {
           <PlaceWrapper>
             <img src={place?.image_link} alt='Imagem restaurante' />
             <Title>{place?.name}</Title>
+            <p id='address'>
+              {place?.street}, {place?.place_number}
+              {place?.complement}, {place?.district} | {place?.city},{" "}
+              {place?.state}
+            </p>
           </PlaceWrapper>
           <Container>
             <Box>
@@ -455,7 +471,7 @@ function RestaurantLocked() {
                   <AccessTimeFilledIcon />
                   {place?.opening_hours}
                 </Container>
-                <div className='favorite_box'>
+                <div className='favorite_box' id='heart'>
                   <Checkbox
                     defaultChecked
                     disabled
@@ -470,7 +486,7 @@ function RestaurantLocked() {
                   value={price}
                   readOnly
                   max={3}
-                  className='favorite_box'
+                  id='money_icon'
                   icon={<AttachMoneyIcon fontSize='inherit' />}
                   emptyIcon={<AttachMoneyIcon fontSize='inherit' />}
                 />
@@ -512,9 +528,9 @@ function RestaurantLocked() {
             })}
           </Box>
           <ContainerGreen>
-            <p>Cadastre-se e saiba mais o que estão dizendo</p>
+            <p>Crie sua conta e acesse mais avaliações</p>
             <Link id='signup' to='/cadastro'>
-              CRIE SUA CONTA
+              VER MAIS AVALIAÇÕES
             </Link>
           </ContainerGreen>
         </ColumnLastRatings>

@@ -26,15 +26,14 @@ export const Box = styled.div`
   }
   .favorite_box {
     align-self: flex-end;
-
-    & .MuiSvgIcon-root {
-      font-size: 33px;
-    }
     heigth: 30px;
   }
   #stars {
     font-size: 45px;
     padding-bottom: 1vh;
+  }
+  #heart: {
+    width: 50px;
   }
 `;
 
@@ -43,6 +42,10 @@ export const PlaceWrapper = styled.div`
     width: 100%;
     height: 30vh;
     border-radius: 10px;
+  }
+  #address {
+    text-transform: capitalize;
+    margin-top: 0.5vh;
   }
 `;
 
@@ -58,7 +61,11 @@ export const Container = styled.div`
   display: flex;
   gap: 0.5vw;
   align-items: center;
+
   .link_instagram {
+    display: flex;
+    align-items: center;
+    gap: 0.5vw;
     text-decoration: none;
     text-align: center;
     color: ${colors.black};
@@ -68,6 +75,9 @@ export const Wrapped = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  #money_icon {
+    font-size: 33px;
+  }
 `;
 export const PlaceContainer = styled.div`
   display: flex;
@@ -97,13 +107,13 @@ export const GoodsTags = styled.div`
   gap: 1vh;
   justify-content: space-between;
   p {
-    border: 1px solid ${colors.secondary};
+    border: 1px solid ${colors.success};
     border-radius: 36px;
     font-family: ${fonts.primary};
     font-size: 18px;
     font-weight: 700;
     padding: 2.5vh 1vw;
-    color: ${colors.secondary};
+    color: ${colors.success};
     width: 17.5vw;
     text-align: center;
   }
