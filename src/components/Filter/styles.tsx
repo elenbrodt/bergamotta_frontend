@@ -75,3 +75,22 @@ export const ButtonStyled = styled.button`
     width: 0.1rem;
   }
 `;
+
+export const GoodsTags = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  gap: 1vh;
+  justify-content: space-between;
+  p {
+    border: 1px solid ${colors.secondary};
+    border-radius: 36px;
+    font-family: ${fonts.primary};
+    font-size: 18px;
+    font-weight: 700;
+    padding: 2.5vh 1vw;
+    color: ${colors.secondary};
+    width: 17.5vw;
+    text-align: center;
+  }
+`;

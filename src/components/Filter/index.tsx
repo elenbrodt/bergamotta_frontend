@@ -8,6 +8,7 @@ import {
   FilterTitle,
   FormGroupStyled,
   ButtonStyled,
+  GoodsTags,
 } from "./styles";
 import "./style.css";
 import { TAGS } from "../../mock/tags";
@@ -16,6 +17,7 @@ import SubmitButton from "../SubmitButton";
 import { useDispatch } from "react-redux";
 import { setFilter } from "../../store/modules/filter";
 import { useNavigate } from "react-router-dom";
+import { colors } from "../../styles/theme";
 
 interface FilterProps {
   texto: string;
@@ -27,6 +29,7 @@ export default function Filter(props: FilterProps) {
   const navigate = useNavigate();
 
   const onSubmit = (data: any) => {
+    console.log(data);
     dispatch(
       setFilter({
         place_types_ids: data.place_types_ids,
@@ -36,7 +39,8 @@ export default function Filter(props: FilterProps) {
     );
     reset(data.place_types_ids, data.food_types_ids);
     reset(data.place_profiles_ids);
-    handleClose();
+    //handleClose();
+    console.log(caracteristicasValues);
   };
 
   const [open, setOpen] = useState(false);
@@ -48,6 +52,26 @@ export default function Filter(props: FilterProps) {
     navigate("/");
   };
 
+  const [caracteristicasValues, setCaracteristicasValues] = useState<
+    Record<string, boolean>
+  >({
+    descontraído: false,
+    formal: false,
+    intimista: false,
+    iluminacao_baixa: false,
+    iluminacao_alta: false,
+    pet_friendly: false,
+    musica_vivo: false,
+    musica_ambiente: false,
+    sustentável: false,
+  });
+
+  const toggleCaracteristicas = (caracteristica: any) => {
+    setCaracteristicasValues({
+      ...caracteristicasValues,
+      [caracteristica]: !caracteristicasValues[caracteristica],
+    });
+  };
   return (
     <>
       <FilterButton id='buttonFilter' onClick={handleClickOpen}>
@@ -59,9 +83,9 @@ export default function Filter(props: FilterProps) {
         <form id='myForm' onSubmit={handleSubmit(onSubmit)}>
           <DialogContent>
             <FormGroupStyled>
-              <h3>Tipos de loja</h3>
+              <h3>Tipos de lojas</h3>
               {TAGS.map((tag, index) => {
-                if (tag.tag_type === "place_types_ids") {
+                if (tag.tag_category === "Tipos de lojas") {
                   return (
                     <FormControlLabel
                       {...register("place_types_ids")}
@@ -74,7 +98,7 @@ export default function Filter(props: FilterProps) {
               })}
               <h3>Tipo de cozinha</h3>
               {TAGS.map((tag, index) => {
-                if (tag.tag_type === "food_types_ids") {
+                if (tag.tag_category === "Tipos de cozinha") {
                   return (
                     <FormControlLabel
                       {...register("food_types_ids")}
@@ -85,9 +109,35 @@ export default function Filter(props: FilterProps) {
                   );
                 } else return "";
               })}
-              <h3>Categorias</h3>
+              <h3>Ambiente</h3>
+
+              <GoodsTags>
+                {TAGS.map(({ tag_id, tag, tag_category }) => {
+                  if (tag_category === "Ambiente") {
+                    return (
+                      <button
+                        key={tag_id}
+                        value={tag_id}
+                        style={{
+                          backgroundColor: caracteristicasValues[tag_id]
+                            ? colors.secondary
+                            : "",
+                          color: caracteristicasValues[tag_id] ? "white" : "",
+                        }}
+                        onClick={() => toggleCaracteristicas(tag_id)}
+                        type='button'
+                        {...register("place_profiles_ids")}
+                      >
+                        {tag}
+                      </button>
+                    );
+                  }
+                })}
+              </GoodsTags>
+
+              <h3>Preferência</h3>
               {TAGS.map((tag, index) => {
-                if (tag.tag_type === "place_profiles_ids") {
+                if (tag.tag_category === "Preferência") {
                   return (
                     <FormControlLabel
                       {...register("place_profiles_ids")}
