@@ -12,7 +12,7 @@ import { TAGS } from "../../mock/tags";
 import { Link, useNavigate } from "react-router-dom";
 import LogoSrc from "../../assets/image/logo_vertical.png";
 import { useForm } from "react-hook-form";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import SubmitButton from "../../components/SubmitButton";
 import { createPlace } from "../../services/MainApi/sign_up_place";
 import { useOwner } from "../../store/modules/owner";
@@ -20,16 +20,16 @@ import { Footer } from "../../components/Footer";
 
 function SignUpPlace() {
   const navigate = useNavigate();
-  const { register, handleSubmit, formState: { errors } } = useForm();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
 
   const ownerData = useOwner();
   const [owner_id, setOwnerId] = useState<string>("");
 
-  const dataFetchRef = useRef(false);
-
   useEffect(() => {
-    /* if (dataFetchRef.current) return;
-    dataFetchRef.current = true; */
     if (ownerData.isLogged) {
       setOwnerId(ownerData.findOwner.id);
     }
@@ -218,7 +218,9 @@ function SignUpPlace() {
               </FormControl>
             </Container>
             <Container>
-              <FormControl {...register("average_ticket_price", { required: true })}>
+              <FormControl
+                {...register("average_ticket_price", { required: true })}
+              >
                 <InputLogin
                   label='Ticket Médio'
                   type='text'
@@ -334,13 +336,10 @@ function SignUpPlace() {
                   );
                 } else return "";
               })}
-            </FormGroupStyled>            
+            </FormGroupStyled>
           </Column>
         </SignUpPlaceBox>
-        <SubmitButton
-              theme='signin_owner'
-              text='Cadastrar Estabelecimento'
-            />
+        <SubmitButton theme='signin_owner' text='Cadastrar Estabelecimento' />
       </form>
       <Footer></Footer>
     </SignUpPlaceContainer>
