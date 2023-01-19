@@ -9,7 +9,6 @@ export const CardBergamotta = styled(Card)`
   font-family: ${fonts.secondary};
   h5 {
     font-size: 16px;
-
     font-weight: 700;
     line-height: 25.2px;
   }
@@ -24,9 +23,6 @@ export const CardBergamotta = styled(Card)`
 `;
 export const LinkCard = styled(Link)`
   text-decoration: none;
-  &:hover {
-    border: 2px solid black;
-  }
 `;
 export const Container = styled.div`
   display: flex;

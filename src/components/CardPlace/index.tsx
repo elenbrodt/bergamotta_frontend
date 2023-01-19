@@ -4,7 +4,8 @@ import "./style.css";
 import { averageById } from "../../services/MainApi/ratings";
 import { useEffect, useState } from "react";
 import AccessTimeFilledIcon from "@mui/icons-material/AccessTimeFilled";
-
+import InstagramIcon from "@mui/icons-material/Instagram";
+import PhoneIcon from "@mui/icons-material/Phone";
 interface CardProps {
   id: string;
   name: string;
@@ -12,11 +13,16 @@ interface CardProps {
   image_link: string;
   average_ticket_price: number;
   theme?: string;
+  phone?: string;
+  social_media?: string;
+  width?: string;
+  type?: string;
 }
 
 function CardPlace(props: CardProps) {
   const id = "/restaurantlocked/" + props.id;
   const [value, setValue] = useState<number>(3); //rating stars
+  const [socials, setSocials] = useState<string>();
 
   useEffect(() => {
     const getAverage = async () => {
@@ -30,11 +36,12 @@ function CardPlace(props: CardProps) {
     if (props.id !== "000") {
       getAverage();
     }
+    setSocials(props.social_media);
   }, [props]);
-
+  const at = socials?.split("/")[3];
   return (
     <LinkCard to={id} className={props.theme}>
-      <CardBergamotta id='myCard' className={props.theme}>
+      <CardBergamotta id='myCard' className={props.type}>
         <CardMedia
           component='img'
           alt='place_example'
@@ -48,6 +55,18 @@ function CardPlace(props: CardProps) {
             <AccessTimeFilledIcon />
             <p>{props.opening_hours}</p>
           </Container>
+          {props.phone && (
+            <>
+              <Container>
+                <PhoneIcon />
+                <p>{props.phone}</p>
+              </Container>
+              <Container>
+                <InstagramIcon />
+                <p>{at}</p>
+              </Container>
+            </>
+          )}
         </CardContent>
       </CardBergamotta>
     </LinkCard>
