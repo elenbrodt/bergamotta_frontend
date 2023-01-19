@@ -69,16 +69,16 @@ function About(): JSX.Element {
             <Title2 className='title-one'>Quem Somos</Title2>
             <Text className='text-one'>
               A Bergamotta é uma plataforma que contecta<br></br>
-              restaurantes a clientes que adotaram uma dieta<br></br>
+              restaurantes a clientes que adotam uma dieta<br></br>
               vegetariana ou vegana sem abrir mão de vivenciar, da<br></br>
               sua maneira, grandes momentos gastronômicos.
             </Text>
             <Title2>Nosso Objetivo</Title2>
             <Text>
-              Te auxiliar na busca de restaurantes, bares e afins,<br></br>
-              gerando uma experiência completa em um local livre de<br></br>
-              alimentos de origem animal, proporcionando um<br></br>
-              momento gastronômico do jeitinho que você procura.
+              Te ajudamos a buscar restaurantes, bares e afins,<br></br>
+              gerando uma experiência completa em um local inclusivo e acolhedor
+              para públicos veganos e vegetarianos, proporcionando um momento
+              gastronômico do jeitinho que você procura.
             </Text>
           </BottonBodyRight>
         </BottonBody>
