@@ -110,6 +110,16 @@ export const ContainerName = styled.div`
   }
   
   }
+  @media(max-width: 475px){
+    .MuiSvgIcon-root{
+      
+    }
+    .MuiIconButton-root{
+      margin-right: -100px;
+      width: 40px;
+      height: 40px;
+    }
+  }
 `;
 
 export const Wrapper = styled.div`

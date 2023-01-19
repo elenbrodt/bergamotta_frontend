@@ -20,6 +20,7 @@ export const CardBergamotta = styled(Card)`
     font-weight: 400;
     line-height: 19.6px;
   }
+  
 `;
 export const LinkCard = styled(Link)`
   text-decoration: none;

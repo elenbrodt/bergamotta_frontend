@@ -26,11 +26,16 @@ export const UserName = styled.h2`
   line-height: 35px;
   color: ${colors.black};
   margin-bottom: 10vh;
+  @media (max-width: 475px) {
+    font-size: 24px;
+  }
 `;
 export const FavoritesDiv = styled.div`
   display: flex;
   width: 100%;
   justify-content: center;
+  @media (max-width: 475px) {
+  }
 `;
 export const FavoritesDivLeft = styled.div`
   display: flex;
@@ -38,6 +43,7 @@ export const FavoritesDivLeft = styled.div`
   width: 50vw;
   flex-direction: column;
   justify-content: center;
+  margin-left: 15%;
 `;
 export const FavTitles = styled.h3`
   font-family: ${fonts.secondary};
@@ -52,6 +58,10 @@ export const PlacesDiv = styled.div`
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+  @media (max-width: 475px) {
+    margin-left: -20px;
+    width: 180px;
+  }
 `;
 export const FavoritesDivRight = styled.div`
   display: flex;
@@ -63,4 +73,16 @@ export const FavoritesDivRight = styled.div`
 
 export const CardPlaceStyled = styled(CardPlace)`
   max-width: 15vw;
+  margin-left: 15%;
+  @media (max-width: 475px) {
+    margin-top: -115px;
+
+    p {
+      font-size: 14px;
+      width: 100%;
+    }
+    h3 {
+      margin-top: 100px;
+    }
+  }
 `;
