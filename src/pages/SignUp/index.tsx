@@ -123,6 +123,7 @@ function SignUp() {
               <UserType
                 value='user'
                 text='Sou usuário'
+                checked={!toggle}
                 onChange={handleClick}
               ></UserType>
               <UserType
@@ -133,6 +134,7 @@ function SignUp() {
             </RadioGroupStyled>
             <FormControl fullWidth {...register("name", { required: true })}>
               <InputLogin
+                label='Nome'
                 type='text'
                 placeholder='Digite seu usuário'
                 name='name'
@@ -141,6 +143,7 @@ function SignUp() {
             </FormControl>
             <FormControl fullWidth {...register("email", { required: true })}>
               <InputLogin
+                label='Email'
                 type='email'
                 placeholder='Digite seu email'
                 name='email'
@@ -152,6 +155,7 @@ function SignUp() {
               {...register("password", { required: true })}
             >
               <InputLogin
+                label='Senha'
                 type='password'
                 name='password'
                 placeholder='Digite sua senha'
@@ -163,6 +167,7 @@ function SignUp() {
               {...register("image_link", { required: true })}
             >
               <InputLogin
+                label='Link da imagem'
                 type='text'
                 placeholder='Insira link da sua imagem de avatar'
                 name='image_link'
@@ -172,6 +177,7 @@ function SignUp() {
             <Container>
               <FormControl fullWidth {...register("city", { required: true })}>
                 <InputLogin
+                  label='Cidade'
                   type='text'
                   placeholder='Digite sua cidade'
                   name='city'
@@ -180,6 +186,7 @@ function SignUp() {
               </FormControl>
               <FormControl fullWidth {...register("state", { required: true })}>
                 <InputLogin
+                  label='Estado'
                   type='text'
                   placeholder='Digite seu estado'
                   name='state'
@@ -191,6 +198,7 @@ function SignUp() {
                 {...register("country", { required: true })}
               >
                 <InputLogin
+                  label='País'
                   type='text'
                   placeholder='Digite o país'
                   name='country'
@@ -204,14 +212,24 @@ function SignUp() {
                   fullWidth
                   {...register("cnpj", { required: true })}
                 >
-                  <InputLogin type='text' placeholder='CNPJ' name='cnpj' />
+                  <InputLogin
+                    label='CNPJ'
+                    type='text'
+                    placeholder='CNPJ'
+                    name='cnpj'
+                  />
                   {errors.cnpj && <p>Esse campo é obrigatório</p>}
                 </FormControl>
                 <FormControl
                   fullWidth
                   {...register("role", { required: true })}
                 >
-                  <InputLogin type='text' placeholder='Ocupação' name='role' />
+                  <InputLogin
+                    label='Ocupação'
+                    type='text'
+                    placeholder='Ocupação'
+                    name='role'
+                  />
                   {errors.role && <p>Esse campo é obrigatório</p>}
                 </FormControl>
               </Container>

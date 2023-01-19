@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import CardPlace from "../../components/CardPlace";
 import { colors, fonts } from "../../styles/theme";
 
 export const MainDiv = styled.div`
@@ -18,42 +19,48 @@ export const ImgRound = styled.img`
   border-radius: 100px;
 `;
 export const UserName = styled.h2`
-margin-top: 20px;
+  margin-top: 20px;
   font-family: ${fonts.primary};
   font-weight: 700;
   font-size: 32px;
   line-height: 35px;
   color: ${colors.black};
+  margin-bottom: 10vh;
 `;
 export const FavoritesDiv = styled.div`
-margin-top: 100px;
   display: flex;
   width: 100%;
+  justify-content: center;
 `;
 export const FavoritesDivLeft = styled.div`
-width: 50%;
   display: flex;
   flex-wrap: wrap;
-  margin-left: 15%;
+  width: 50vw;
+  flex-direction: column;
+  justify-content: center;
 `;
 export const FavTitles = styled.h3`
-display: block;
-  flex-basis: 100%;
-  margin-bottom: 25px;
-  width: 174px;
-  height: 27px;
   font-family: ${fonts.secondary};
   font-weight: 700;
   font-size: 24px;
   line-height: 26px;
   color: ${colors.black};
+  margin-bottom: 3vh;
 `;
 export const PlacesDiv = styled.div`
-max-width: 90%;
+  width: 40vw;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
 `;
 export const FavoritesDivRight = styled.div`
-width: 50%;
   display: flex;
   flex-wrap: wrap;
-  margin-left: 15%;
+  width: 40vw;
+  flex-direction: column;
+  justify-content: center;
+`;
+
+export const CardPlaceStyled = styled(CardPlace)`
+  max-width: 15vw;
 `;

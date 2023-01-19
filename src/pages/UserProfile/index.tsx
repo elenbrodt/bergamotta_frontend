@@ -8,96 +8,63 @@ import {
   FavoritesDivLeft,
   FavoritesDivRight,
   FavTitles,
-  PlacesDiv
+  PlacesDiv,
+  CardPlaceStyled,
 } from "./styles";
 import { useUser } from "../../store/modules/user";
 import { useEffect, useState } from "react";
-import { byIdUser } from "../../services/MainApi/user_profile";
 import { Footer } from "../../components/Footer";
 import { userFavoritesById } from "../../services/MainApi/favorites";
-import CardPlace from "../../components/CardPlace";
 import { userratingById } from "../../services/MainApi/ratings";
 import ProfileRatingCard from "../../components/ProfileRatingCard";
+import CardPlace from "../../components/CardPlace";
 
-interface UserProfileProps {
-  name: string;
-  email: string;
-  password: string;
+interface PlaceProps {
+  id: string;
   image_link: string;
-  city: string;
-  state: string;
-  country: string;
+  name: string;
+  opening_hours: string;
+  average_ticket_price: number;
+}
+interface FavoritesProps {
+  id: string;
+  place: PlaceProps;
+}
+interface RatingProps {
+  id: string;
+  comment: string;
+  place: PlaceProps;
 }
 
 function UserProfile() {
   const user = useUser();
-  const [userData, setUserData] = useState<UserProfileProps>();
-  useEffect(() => {
-    if (user.isLogged) {
-      const getData = async () => {
-        try {
-          const response = await byIdUser(user.findUser.id);
-          setUserData(response.data);
-        } catch (error) {
-          alert("Deu algo errado no catch");
-        }
-      };
-      getData();
-    }
-  }, [setUserData, user]);
+  const [favoritesList, setFavoritesList] = useState<FavoritesProps[]>([]);
 
-  interface PlaceProps {
-    id: string
-    image_link: string;
-    name: string;
-    opening_hours: string;
-    average_ticket_price: number;
-  }
-  interface FavoritesProps {
-    id: string;
-    place: PlaceProps
-  }
-
-  const [placeList, setPlaceList] = useState<FavoritesProps[]>([]);
-
-  useEffect(() => {
-    const getData = async () => {
-      try {
-        const response = await userFavoritesById(user.findUser.id);
-        setPlaceList(response.data);
-      } catch (error) {
-        console.error(error)
-        alert("Deu algo errado no catch")
-      }
-    }
-    getData();
-  }, [setPlaceList, user])
-
-  interface PlacesProps {
-    id: string
-    image_link: string;
-    name: string;
-  }
-  interface RatingProps {
-    id: string;
-    comment: string
-    place: PlacesProps
-  }
-  
   const [ratingList, setRatingList] = useState<RatingProps[]>([]);
 
   useEffect(() => {
     const getData = async () => {
       try {
+        const response = await userFavoritesById(user.findUser.id);
+        setFavoritesList(response.data);
+      } catch (error) {
+        console.error(error);
+        alert("Deu algo errado no catch");
+      }
+    };
+    getData();
+    const getUserRatings = async () => {
+      try {
         const response = await userratingById(user.findUser.id);
         setRatingList(response.data);
+        console.log(response.data);
       } catch (error) {
-        console.error(error)
-        alert("Deu algo errado no catch")
+        console.error(error);
+        alert("Deu algo errado no catch");
       }
-    }
-    getData();
-  }, [setRatingList, user])
+    };
+    getUserRatings();
+  }, [setFavoritesList, user, setRatingList]);
 
   return (
     <div className='App'>
@@ -105,34 +72,49 @@ function UserProfile() {
       <main>
         <MainDiv>
           <RoundImage>
-            <ImgRound src={userData?.image_link} alt='test' />
+            <ImgRound src={user.findUser.image_link} alt='test' />
           </RoundImage>
-          <UserName>{userData?.name}</UserName>
+          <UserName>{user.findUser.name}</UserName>
           <FavoritesDiv>
             <FavoritesDivLeft>
               <FavTitles>Seus favoritos</FavTitles>
               <PlacesDiv>
-                {placeList.map((placeList, index) => index < 10 &&
-                  (
-                    <CardPlace id={placeList.place.id} image_link={placeList.place.image_link} name={placeList.place.name} opening_hours={placeList.place.opening_hours} average_ticket_price={placeList.place.average_ticket_price} />
-                  )
+                {favoritesList.map(
+                  (favorite, index) =>
+                    index < 10 && (
+                      <CardPlaceStyled
+                        type='favorites'
+                        id={favorite.place.id}
+                        image_link={favorite.place.image_link}
+                        name={favorite.place.name}
+                        opening_hours={favorite.place.opening_hours}
+                        average_ticket_price={
+                          favorite.place.average_ticket_price
+                        }
+                      />
+                    )
                 )}
               </PlacesDiv>
             </FavoritesDivLeft>
             <FavoritesDivRight>
               <FavTitles>Últimas avaliações</FavTitles>
               <PlacesDiv>
-              {ratingList.map((ratingList, index) => index < 10 &&
-                  (
-                    <ProfileRatingCard id={ratingList.place.id} place={ratingList.place} comment={ratingList.comment} />
-                  )
+                {ratingList.map(
+                  (ratingList, index) =>
+                    index < 10 && (
+                      <ProfileRatingCard
+                        id={ratingList.place.id}
+                        place={ratingList.place}
+                        comment={ratingList.comment}
+                      />
+                    )
                 )}
               </PlacesDiv>
             </FavoritesDivRight>
           </FavoritesDiv>
         </MainDiv>
       </main>
-      <Footer/>
+      <Footer />
     </div>
   );
 }

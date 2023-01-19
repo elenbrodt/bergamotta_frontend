@@ -1,4 +1,3 @@
-import { FormControl } from "@mui/material";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
@@ -8,7 +7,7 @@ import InputLogin from "../../components/InputLogin";
 import SubmitButton from "../../components/SubmitButton";
 import { byIdPlace, updatePlace } from "../../services/MainApi/place";
 import { useOwner } from "../../store/modules/owner";
-import { Column, Container, UpdateInput, Wrapper } from "./styles";
+import { Column, Container, Wrapper } from "./styles";
 
 interface Place {
   name: string;
@@ -33,16 +32,15 @@ interface Place {
 function ConfigPlace() {
   const urlPlaceId = window.location.pathname.split("/")[2];
 
-  const { register, handleSubmit } = useForm();
-
   const ownerData = useOwner();
-  const [owner_id, setOwnerId] = useState<string>("");
-  const [place, setPlace] = useState<Place>();
   const navigate = useNavigate();
 
+  const { register, handleSubmit } = useForm();
+
+  const [owner_id, setOwnerId] = useState<string>("");
+  const [place, setPlace] = useState<Place>();
+
   useEffect(() => {
-    /* if (dataFetchRef.current) return;
-    dataFetchRef.current = true; */
     if (ownerData.isLogged) {
       setOwnerId(ownerData.findOwner.id);
       const getData = async () => {
@@ -192,7 +190,16 @@ function ConfigPlace() {
           <Column>
             <img src={place?.image_link} alt='Imagem do estabelecimento' />
             <h2>{place?.name}</h2>
-            <UpdateInput
+            <InputLogin
+              label='Nome do estabelecimento'
+              theme='signin'
+              type='text'
+              defaultValue={place?.name}
+              placeholder='Digite o estabelecimento'
+              {...register("name")}
+            />
+            <InputLogin
+              label='Link imagem'
               theme='signin'
               type='text'
               defaultValue={place?.image_link}
@@ -200,14 +207,16 @@ function ConfigPlace() {
               {...register("image_link")}
             />
             <Container>
-              <UpdateInput
+              <InputLogin
+                label='Telefone'
                 theme='text'
                 defaultValue={place?.phone}
                 type='text'
                 placeholder='Digite seu telefone para contato'
                 {...register("phone")}
               />
-              <UpdateInput
+              <InputLogin
+                label='Mídia social'
                 theme='text'
                 defaultValue={place?.social_media}
                 type='text'
@@ -215,16 +224,18 @@ function ConfigPlace() {
                 {...register("social_media")}
               />
             </Container>
+            <InputLogin
+              label='Horário de funcionamento'
+              theme='signin'
+              defaultValue={place?.opening_hours}
+              type='text'
+              placeholder='Digite o horário'
+              {...register("opening_hours")}
+            />
           </Column>
           <Column>
-            <UpdateInput
-              theme='signin'
-              type='text'
-              defaultValue={place?.name}
-              placeholder='Digite o nome'
-              {...register("name")}
-            />
-            <UpdateInput
+            <InputLogin
+              label='Rua'
               theme='signin'
               type='text'
               defaultValue={place?.street}
@@ -232,21 +243,24 @@ function ConfigPlace() {
               {...register("street")}
             />
             <Container>
-              <UpdateInput
+              <InputLogin
+                label='Número'
                 theme='signin'
                 type='text'
                 defaultValue={place?.place_number}
                 placeholder='Digite o número do endereço'
                 {...register("place_number")}
               />
-              <UpdateInput
+              <InputLogin
+                label='Complemento'
                 theme='signin'
                 type='text'
                 defaultValue={place?.complement}
                 placeholder='Digite o complemento'
                 {...register("complement")}
               />
-              <UpdateInput
+              <InputLogin
+                label='CEP'
                 theme='signin'
                 defaultValue={place?.zipcode}
                 type='text'
@@ -255,28 +269,32 @@ function ConfigPlace() {
               />
             </Container>
             <Container>
-              <UpdateInput
+              <InputLogin
+                label='Bairro'
                 theme='signin'
                 defaultValue={place?.district}
                 type='text'
                 placeholder='Digite seu bairro'
                 {...register("district")}
               />
-              <UpdateInput
+              <InputLogin
+                label='Cidade'
                 theme='signin'
                 defaultValue={place?.city}
                 type='text'
                 placeholder='Digite sua cidade'
                 {...register("city")}
               />
-              <UpdateInput
+              <InputLogin
+                label='Estado'
                 theme='signin'
                 defaultValue={place?.state}
                 type='text'
                 placeholder='Digite seu estado'
                 {...register("state")}
               />
-              <UpdateInput
+              <InputLogin
+                label='País'
                 theme='signin'
                 defaultValue={place?.country}
                 type='text'
@@ -285,21 +303,24 @@ function ConfigPlace() {
               />
             </Container>
             <Container>
-              <UpdateInput
+              <InputLogin
+                label='Ticket médio'
                 type='text'
                 defaultValue={place?.average_ticket_price}
                 placeholder='Digite o valor'
                 theme='signin'
                 {...register("average_ticket_price")}
               />
-              <UpdateInput
+              <InputLogin
+                label='Formas de pagamento'
                 type='text'
-                defaultValue={place?.average_ticket_price}
+                defaultValue={place?.payment}
                 placeholder='Digite o valor'
                 theme='signin'
                 {...register("payment")}
               />
-              <UpdateInput
+              <InputLogin
+                label='Capacidade'
                 type='number'
                 defaultValue={place?.capacity}
                 placeholder='Digite a lotação'
@@ -307,23 +328,14 @@ function ConfigPlace() {
                 {...register("capacity")}
               />
             </Container>
-            <Container>
-              <UpdateInput
-                theme='signin'
-                defaultValue={place?.opening_hours}
-                type='text'
-                placeholder='Digite o horário'
-                {...register("opening_hours")}
-              />
-            </Container>
-            <UpdateInput
+            <InputLogin
+              label='Descrição'
               theme='description'
               defaultValue={place?.description}
               type='text'
               placeholder='Digite um breve texto de apresentação'
               {...register("description")}
             />
-
             <SubmitButton text='Salvar alterações' />
           </Column>
         </form>

@@ -9,6 +9,7 @@ export interface UserState {
     name: string;
     email: string;
     password: string;
+    image_link: string;
     passwordExpired: null;
     passwordReset: null;
   };

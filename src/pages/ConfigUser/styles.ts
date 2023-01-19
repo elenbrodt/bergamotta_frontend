@@ -1,4 +1,4 @@
-  import styled from "styled-components";
+import styled from "styled-components";
 import { RadioGroup } from "@mui/material";
 import { colors, fonts } from "../../styles/theme";
 
@@ -13,14 +13,17 @@ export const Box = styled.div`
   width: 50vw;
   #form {
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 5vh;
   }
   img {
     width: 210px;
     height: 210px;
     border-radius: 100px;
   }
-  @media (max-width: 475px){
-    img{
+  @media (max-width: 475px) {
+    img {
       width: 150px;
       height: 150px;
     }
@@ -42,14 +45,12 @@ export const Container = styled.div`
   display: flex;
   gap: 1vw;
   width: 100%;
-  @media (max-width: 475px){
+  @media (max-width: 475px) {
     flex-wrap: wrap;
     width: 300px;
   }
-  
 `;
 export const SaveButton = styled.button`
-  margin-top: 33px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -57,6 +58,7 @@ export const SaveButton = styled.button`
   gap: 8px;
   width: 583px;
   height: 96px;
+  align-self: center;
   background: ${colors.secondary};
   border-radius: 4px;
   font-family: ${fonts.secondary};
@@ -66,26 +68,10 @@ export const SaveButton = styled.button`
   color: ${colors.white};
   border: none;
   cursor: pointer;
-  margin-left: 80px;
-  @media (max-width: 475px){
+  @media (max-width: 475px) {
     margin-left: 5px;
     width: 200px;
     height: 58px;
     font-size: 14px;
   }
-  
-`;
-
-export const UpdateInput = styled.input`
-  width: 100%;
-  height: ${(props) => (props.className === "description" ? "200px" : "")};
-  border: solid 1px ${colors.dark_one};
-  font-family: ${fonts.secondary};
-  border-radius: 10px;
-  padding: 2.5vh;
-  @media (max-width: 475px){
-    width: 300px;
-
-  }
-  
 `;

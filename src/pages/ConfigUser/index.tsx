@@ -1,8 +1,7 @@
 import { useNavigate } from "react-router-dom";
-import { Box, Inputs, Container, SaveButton, UpdateInput } from "./styles";
+import { Box, Inputs, Container, SaveButton } from "./styles";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-
 import { updateUser } from "../../services/MainApi/user_profile";
 import { useUser } from "../../store/modules/user";
 import { byIdUser } from "../../services/MainApi/user_profile";
@@ -10,6 +9,7 @@ import Header from "../../components/Header";
 import { Footer } from "../../components/Footer";
 import { useOwner } from "../../store/modules/owner";
 import { byIdOwner, updateOwner } from "../../services/MainApi/owner";
+import InputLogin from "../../components/InputLogin";
 interface User {
   name: string;
   email: string;
@@ -39,6 +39,14 @@ function UpdateUser() {
   const [ownerData, setOwnerData] = useState<Owner>();
   const [ownerId, setOwnerId] = useState<string>("");
 
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
+  const navigate = useNavigate();
+
   useEffect(() => {
     if (user.isLogged) {
       setUserId(user.findUser.id);
@@ -65,14 +73,6 @@ function UpdateUser() {
       getDataOwner();
     }
   }, [user, userId]);
-
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm();
-
-  const navigate = useNavigate();
 
   const onSubmit = (data: any) => {
     if (data.email == "") {
@@ -186,6 +186,7 @@ function UpdateUser() {
       alert("Deu algo errado no catch");
     }
   };
+
   return (
     <div>
       <Header />
@@ -198,112 +199,73 @@ function UpdateUser() {
         )}
         <form id='form' onSubmit={handleSubmit(onSubmit)}>
           <Inputs>
-            {user.isLogged && (
-              <>
-                <UpdateInput
-                  type='text'
-                  placeholder='Digite seu usuário'
-                  defaultValue={userData?.name}
-                  {...register("name")}
-                />
-                <UpdateInput
-                  type='email'
-                  placeholder='Digite seu email'
-                  {...register("email")}
-                  defaultValue={userData?.email}
-                />
-                <UpdateInput
-                  type='password'
-                  placeholder='Digite sua senha'
-                  {...register("password")}
-                />
-                {errors.password && <p>Esse campo é obrigatório</p>}
-                <UpdateInput
-                  type='text'
-                  placeholder='Insira link da sua imagem de avatar'
-                  defaultValue={userData?.image_link}
-                  {...register("image_link")}
-                />
-                <Container>
-                  <UpdateInput
-                    type='text'
-                    placeholder='Digite sua cidade'
-                    defaultValue={userData?.city}
-                    {...register("city")}
-                  />
-                  <UpdateInput
-                    type='text'
-                    placeholder='Digite seu estado'
-                    defaultValue={userData?.state}
-                    {...register("state")}
-                  />
-                  <UpdateInput
-                    type='text'
-                    placeholder='Digite o país'
-                    defaultValue={userData?.country}
-                    {...register("country")}
-                  />
-                </Container>
-              </>
-            )}
+            <InputLogin
+              label='Nome'
+              type='text'
+              placeholder='Digite seu usuário'
+              defaultValue={userData?.name || ownerData?.name}
+              {...register("name")}
+            />
+            <InputLogin
+              label='Email'
+              type='email'
+              placeholder='Digite seu email'
+              {...register("email")}
+              defaultValue={userData?.email || ownerData?.email}
+            />
+            <InputLogin
+              label='Senha'
+              type='password'
+              placeholder='Digite sua senha'
+              {...register("password")}
+            />
+            {errors.password && <p>Esse campo é obrigatório</p>}
+            <InputLogin
+              label='Link da imagem'
+              type='text'
+              placeholder='Insira link da sua imagem de avatar'
+              defaultValue={userData?.image_link || ownerData?.image_link}
+              {...register("image_link")}
+            />
+            <Container>
+              <InputLogin
+                label='Cidade'
+                type='text'
+                placeholder='Digite sua cidade'
+                defaultValue={userData?.city || ownerData?.city}
+                {...register("city")}
+              />
+              <InputLogin
+                label='Estado'
+                type='text'
+                placeholder='Digite seu estado'
+                defaultValue={userData?.state || ownerData?.state}
+                {...register("state")}
+              />
+              <InputLogin
+                type='text'
+                label='País'
+                placeholder='Digite o país'
+                defaultValue={userData?.country || ownerData?.country}
+                {...register("country")}
+              />
+            </Container>
             {owner.isLogged && (
               <>
-                <UpdateInput
+                <InputLogin
                   type='text'
-                  placeholder='Digite seu usuário'
-                  defaultValue={ownerData?.name}
-                  {...register("name")}
+                  label='CNPJ'
+                  placeholder='Digite o CNPJ'
+                  defaultValue={ownerData?.cnpj}
+                  {...register("cnpj")}
                 />
-                <UpdateInput
-                  type='email'
-                  placeholder='Digite seu email'
-                  {...register("email")}
-                  defaultValue={ownerData?.email}
-                />
-                <UpdateInput
-                  type='password'
-                  placeholder='Digite sua senha'
-                  {...register("password", { required: true })}
-                />
-                {errors.password && <p>Esse campo é obrigatório</p>}
-                <UpdateInput
+                <InputLogin
                   type='text'
-                  placeholder='Insira link da sua imagem de avatar'
-                  defaultValue={ownerData?.image_link}
-                  {...register("image_link")}
+                  label='Ocupação'
+                  placeholder='Digite sua ocupação'
+                  defaultValue={ownerData?.role}
+                  {...register("role")}
                 />
-                <Container>
-                  <UpdateInput
-                    type='text'
-                    placeholder='Digite sua cidade'
-                    defaultValue={ownerData?.city}
-                    {...register("city")}
-                  />
-                  <UpdateInput
-                    type='text'
-                    placeholder='Digite seu estado'
-                    defaultValue={ownerData?.state}
-                    {...register("state")}
-                  />
-                  <UpdateInput
-                    type='text'
-                    placeholder='Digite o país'
-                    defaultValue={ownerData?.country}
-                    {...register("country")}
-                  />
-                  <UpdateInput
-                    type='text'
-                    placeholder='Digite o CNPJ'
-                    defaultValue={ownerData?.cnpj}
-                    {...register("cnpj")}
-                  />
-                  <UpdateInput
-                    type='text'
-                    placeholder='Digite sua ocupação'
-                    defaultValue={ownerData?.role}
-                    {...register("role")}
-                  />
-                </Container>
               </>
             )}
           </Inputs>

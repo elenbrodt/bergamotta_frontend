@@ -6,6 +6,7 @@ type UserTypeProps = {
   value?: string;
   onChange: (value?: string) => void;
   name?: string;
+  checked?: boolean;
 };
 
 function UserType(props: UserTypeProps) {
@@ -15,6 +16,7 @@ function UserType(props: UserTypeProps) {
       value={props.value}
       control={
         <Radio
+          checked={props.checked}
           color='success'
           onChange={(e) => {
             props.onChange(e.target.value);
