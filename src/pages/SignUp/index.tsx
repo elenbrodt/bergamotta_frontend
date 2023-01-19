@@ -24,7 +24,7 @@ function SignUp() {
 
   const onSubmit = (data: any) => {
     console.log(data);
-    if (!toggle) {
+    if (toggle) {
       ownerCreate(
         data.email,
         data.password,
@@ -198,7 +198,7 @@ function SignUp() {
                 {errors.country && <p>Esse campo é obrigatório</p>}
               </FormControl>
             </Container>
-            {!toggle && (
+            {toggle && (
               <Container>
                 <FormControl
                   fullWidth
