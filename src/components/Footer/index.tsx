@@ -9,7 +9,7 @@ export function Footer() {
       </a>
       <Nav>
         <NavLink to='/'>Busca</NavLink>
-        <NavLink to='/parceiros'>Seja um parceiro</NavLink>
+        <NavLink to='/parceiros'>Seja parceiro</NavLink>
         <NavLink to='/sobrenos'>Quem somos</NavLink>
       </Nav>
       <Div></Div>

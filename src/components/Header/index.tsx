@@ -10,12 +10,12 @@ import {
   NavLink,
   LinkLogin,
   ImgCadastro,
-  ButtonsDiv
+  ButtonsDiv,
 } from "./style";
 import { useUser } from "../../store/modules/user";
 import { useOwner } from "../../store/modules/owner";
 import LogoutButton from "../LogoutButton";
-import cadastro from "./../../assets/imagesHeader/cadastro.png"
+import cadastro from "./../../assets/imagesHeader/cadastro.png";
 
 function Header() {
   const user = useUser();
@@ -46,7 +46,7 @@ function Header() {
                 <NavLink to='/sobrenos'>Quem somos</NavLink>
               </Li>
               <Li>
-                <NavLink to='/parceiros'>Seja um parceiro</NavLink>
+                <NavLink to='/parceiros'>Seja parceiro</NavLink>
               </Li>
             </Ul>
           </Nav>
@@ -82,11 +82,13 @@ function Header() {
             </Ul>
           </Nav>
           <ButtonsDiv>
-          <LogoutButton />
-          <a href="/verificarcadastro"><ImgCadastro src={cadastro} alt="cadastro"></ImgCadastro></a>
+            <LogoutButton />
+            <a href='/verificarcadastro'>
+              <ImgCadastro src={cadastro} alt='cadastro'></ImgCadastro>
+            </a>
           </ButtonsDiv>
-      </DivHeader>
-      </header >
+        </DivHeader>
+      </header>
     );
   }
 
@@ -105,10 +107,10 @@ function Header() {
               <NavLink to='/blog'>Blog</NavLink>
             </Li>
             <Li>
-              <NavLink to='/parceiros'>Seja Um Parceiro</NavLink>
+              <NavLink to='/parceiros'>Seja parceiro</NavLink>
             </Li>
             <Li>
-              <NavLink to='/sobrenos'>Quem Somos</NavLink>
+              <NavLink to='/sobrenos'>Quem somos</NavLink>
             </Li>
             <Li>
               <NavLink to='/cadastro'>Cadastro</NavLink>

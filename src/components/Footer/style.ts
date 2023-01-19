@@ -6,7 +6,6 @@ export const Footerstyle = styled.footer`
   width: 100%;
   background-color: ${colors.light_one};
   height: 15vh;
-
   bottom: 0;
   margin-top: 5px;
   display: flex;
@@ -24,7 +23,7 @@ export const Nav = styled.nav`
   justify-content: space-around;
   align-items: center;
   width: 60%;
-  font-weight: 700;
+  font-weight: 400;
   font-size: 16px;
   line-height: 28px;
 `;
