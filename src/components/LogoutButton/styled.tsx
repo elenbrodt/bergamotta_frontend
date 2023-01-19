@@ -20,5 +20,6 @@ export const LogoutButtonStyled = styled.button`
     }
     @media (max-width: 375px){
         width: 0.1rem;
+        
     }
 `
