@@ -26,7 +26,7 @@ export const Container = styled.div`
   font-family: ${fonts.secondary};
   font-size: 18px;
   font-weight: 700;
-  .MuiIconButton-root {
+  .MuiIconButton-root.Mui-checked {
     padding: 0;
   }
   a {
