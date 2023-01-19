@@ -1,15 +1,16 @@
 import Map from "../../components/Map";
-import { SearchContainer, SideBar } from "./styles";
+import { Banner, SearchContainer, SideBar, TextBanner } from "./styles";
 import Header from "../../components/Header";
 import SideList from "../../components/SideList";
 import { Footer } from "../../components/Footer";
 
 import { CITY } from "../../mock/city";
 import SearchBar from "../../components/SearchBar";
-import GreenBanner from "../../components/GreenBanner";
+
 import CardPlace from "../../components/CardPlace";
 import { useUser } from "../../store/modules/user";
 import { useOwner } from "../../store/modules/owner";
+import { Link } from "react-router-dom";
 
 function Search() {
   const user = useUser();
@@ -23,13 +24,16 @@ function Search() {
           <SearchBar />
           <SideList />
           {!user?.isLogged && !owner?.isLogged && (
-            <GreenBanner
-              href='/cadastro'
-              id='greenCard'
-              texto='Entre com sua conta para ter acesso a lista completa'
-              title='Quer acessar mais restaurantes?'
-              btn_text='CRIE SUA CONTA'
-            />
+            <Banner>
+              <TextBanner>
+                <h4>Quer acessar mais restaurantes?</h4>
+                <p>Entre com sua conta para ter acesso a lista completa</p>
+              </TextBanner>
+
+              <Link to='/cadastro' id='link'>
+                Crie sua conta
+              </Link>
+            </Banner>
           )}
           {!user?.isLogged && !owner?.isLogged && (
             <CardPlace
