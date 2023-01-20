@@ -6,7 +6,7 @@ type City = {
 };
 export const CITY: City = {
   title: "São Paulo",
-  lat: -23.575059711958566,
-  lng: -46.67954006345125,
+  lat: -23.554349,
+  lng: -46.689963,
   zoom: 13,
 };

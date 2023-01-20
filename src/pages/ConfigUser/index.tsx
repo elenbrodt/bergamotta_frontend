@@ -76,7 +76,6 @@ function UpdateUser() {
   }, [user, userId]);
 
   const onSubmit = (data: any) => {
-    console.log(data);
     if (data.email == "") {
       data.email = userData?.email;
     }
@@ -151,11 +150,8 @@ function UpdateUser() {
     };
     try {
       const response = await updateUser(req, userId);
-      console.log(response);
       navigate("/perfil");
-    } catch (error) {
-      alert("Deu algo errado no catch");
-    }
+    } catch (error) {}
   };
 
   const ownerUpdate = async (
