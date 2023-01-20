@@ -12,11 +12,18 @@ export const Footerstyle = styled.footer`
   justify-content: space-around;
   align-items: center;
   align-self: bottom;
+  @media (max-width: 475px) {
+    justify-content: center;
+    gap: 2vw;
+  }
 `;
 
 export const ImgLogo = styled.img`
   width: 11rem;
   margin-left: 0%;
+  @media (max-width: 430px) {
+    width: 28vw;
+  }
 `;
 export const Nav = styled.nav`
   display: flex;
@@ -26,6 +33,9 @@ export const Nav = styled.nav`
   font-weight: 400;
   font-size: 16px;
   line-height: 28px;
+  @media (max-width: 430px) {
+    font-size: 13px;
+  }
 `;
 
 export const NavLink = styled(Link)`

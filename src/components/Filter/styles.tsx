@@ -16,7 +16,7 @@ export const FilterButton = styled.button`
   img {
     width: 1.67vw;
   }
-  @media (max-width: 475px) {
+  @media (max-width: 870px) {
     width: 100%;
     img {
       width: 2.5vh;
@@ -29,6 +29,9 @@ export const FilterLinkText = styled.p`
   font-size: 20px;
   color: ${colors.black};
   margin: 0;
+  @media (max-width: 870px) {
+    font-size: 13px;
+  }
 `;
 export const FilterTitle = styled.h2`
   font-family: ${fonts.primary};

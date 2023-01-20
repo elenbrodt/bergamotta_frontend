@@ -12,7 +12,6 @@ export function Footer() {
         <NavLink to='/parceiros'>Seja parceiro</NavLink>
         <NavLink to='/sobrenos'>Quem somos</NavLink>
       </Nav>
-      <Div></Div>
     </Footerstyle>
   );
 }

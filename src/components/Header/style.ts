@@ -54,6 +54,7 @@ export const ImgLogo = styled.img`
   width: 11rem;
   @media (max-width: 768px) {
     margin-left: 0%;
+    width: 9rem;
   }
 
   @media (max-width: 375px) {
@@ -91,13 +92,13 @@ export const LinkLogin = styled(Link)`
   }
 `;
 export const ButtonsDiv = styled.div`
-display: flex;
-justify-content: center;
-align-items: center;
-gap: 15px
-`
-export const ImgCadastro =styled.img`
-width: 50px;
-height: 40px;
-margin-right: -25px;
-`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+`;
+export const ImgCadastro = styled.img`
+  width: 50px;
+  height: 40px;
+  margin-right: -25px;
+`;

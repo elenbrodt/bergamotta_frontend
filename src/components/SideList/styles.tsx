@@ -18,11 +18,9 @@ export const Wrapper = styled.div`
     font-weight: 700;
     font-style: italic;
     margin-left: -4vw;
-    
   }
-  @media (max-width: 475px){
+  @media (max-width: 870px) {
     width: 100%;
-    
   }
 `;
 export const ResetFilter = styled.a`
