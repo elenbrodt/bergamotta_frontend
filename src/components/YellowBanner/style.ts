@@ -61,7 +61,7 @@ export const BannerButton = styled.a`
   }
 `;
 export const ImgBanner = styled.img`
-  width: 15vw;
+  width: 10vw;
 
   @media (max-width: 475px) {
     width: 30vw;
