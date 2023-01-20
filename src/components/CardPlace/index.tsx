@@ -40,8 +40,8 @@ function CardPlace(props: CardProps) {
   }, [props]);
   const at = socials?.split("/")[3];
   return (
-    <LinkCard to={id} className={props.theme}>
-      <CardBergamotta id='myCard' className={props.type}>
+    <LinkCard to={id} className={props.type}>
+      <CardBergamotta id='myCard' className={props.theme}>
         <CardMedia
           component='img'
           alt='place_example'

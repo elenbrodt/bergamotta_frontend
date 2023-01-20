@@ -18,18 +18,11 @@
 .favorites {
   width: 20vw;
 }
-    filter: blur(2px);
-    margin-left:4vw;
-    pointer-events: none;
-}
 
-@media (max-width: 475px){
-    #myCard{
-        display: flex;
-        flex-direction: column;
-        margin-left: -40px;
-        
-        
-    }
-    
+@media (max-width: 475px) {
+  #myCard {
+    display: flex;
+    flex-direction: column;
+    margin-left: -40px;
+  }
 }
