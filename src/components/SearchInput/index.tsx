@@ -1,13 +1,11 @@
-import { PropaneSharp } from "@mui/icons-material";
 import SearchIcon from "@mui/icons-material/Search";
 import { FormGroup } from "@mui/material";
 import InputBase from "@mui/material/InputBase";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { setSearch } from "../../store/modules/filter";
-import "./style.css";
+
 import { SearchBox } from "./styles";
-/* { props: string } */
 function SearchInput() {
   const [value, setValue] = useState<string>("");
   const dispatch = useDispatch();
@@ -21,7 +19,7 @@ function SearchInput() {
       <SearchIcon />
       <FormGroup>
         <InputBase
-          placeholder='São Paulo'
+          placeholder='Nome do estabelecimento'
           inputProps={{ "aria-label": "search" }}
           id='input'
           type='text'
