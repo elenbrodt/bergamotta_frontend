@@ -27,6 +27,6 @@ export function createPlace(req: any) {
 }
 
 export function placeByOwnerId(props: string) {
-  console.log(props);
+
   return baseApi.get(`/placebyowner/${props}`);
 }

@@ -4,7 +4,7 @@ import InputLogin from "../../components/InputLogin";
 import UserType from "../../components/UserType";
 import LogoSrc from "../../assets/image/logo_vertical.png";
 import { Box, Inputs, RadioGroupStyled, Container } from "./styles";
-import SignInLink from "../../components/SignInLink";
+import SignUpLink from "../../components/SignUpLink";
 import { useState } from "react";
 import { createUser } from "../../services/MainApi/sign_in";
 import { useForm } from "react-hook-form";
@@ -23,7 +23,7 @@ function SignUp() {
   const navigate = useNavigate();
 
   const onSubmit = (data: any) => {
-    console.log(data);
+   
     if (toggle) {
       ownerCreate(
         data.email,
@@ -68,7 +68,7 @@ function SignUp() {
     };
     try {
       const response = await createUser(req);
-      console.log(response);
+ 
       navigate("/login");
     } catch (error) {
       alert("Deu algo errado no catch");
@@ -98,7 +98,7 @@ function SignUp() {
     };
     try {
       const response = await createOwner(req);
-      console.log(response);
+     
       navigate("/login");
     } catch (error) {
       alert("Deu algo errado no catch");
@@ -237,7 +237,7 @@ function SignUp() {
           </Inputs>
           <SubmitButton text='Cadastro' />
         </form>
-        <SignInLink
+        <SignUpLink
           text='Já possui cadastro?'
           href='/login'
           link='Faça login aqui'

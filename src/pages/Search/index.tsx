@@ -4,7 +4,7 @@ import Header from "../../components/Header";
 import SideList from "../../components/SideList";
 import { Footer } from "../../components/Footer";
 
-import { CITY } from "../../mock/city";
+import { CITY } from "../../data/city";
 import SearchBar from "../../components/SearchBar";
 
 import CardPlace from "../../components/CardPlace";
