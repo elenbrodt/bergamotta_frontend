@@ -8,12 +8,19 @@ export const SideBar = styled.div`
   }
   overflow: scroll;
   overflow-x: hidden;
+  @media (max-width: 475px){
+    width: 100%
+  }
 `;
 export const SearchContainer = styled.div`
   display: flex;
   width: 100%;
   justify-content: space-between;
   height: 85vh;
+  @media (max-width: 475px){
+    flex-direction: column-reverse;
+    
+  }
 `;
 
 export const Banner = styled.div`

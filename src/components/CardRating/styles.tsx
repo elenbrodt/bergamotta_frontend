@@ -25,4 +25,11 @@ export const Box = styled.div`
     padding-top: 1vh;
     font-size: 16px;
   }
+  @media (max-width: 475px){
+    input{
+      font-size: 12px;
+      
+    }
+    
+  }
 `;

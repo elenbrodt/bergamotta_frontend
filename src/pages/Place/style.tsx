@@ -32,6 +32,15 @@ export const Box = styled.div`
     font-size: 45px;
     padding-bottom: 1vh;
   }
+  @media (max-width: 475px){
+    h2{
+      margin-left: 35px;
+    }
+    p{
+      font-size: 18px;
+    }
+    
+  }
 `;
 
 export const PlaceWrapper = styled.div`
@@ -83,6 +92,9 @@ export const PlaceContainer = styled.div`
   gap: 9vw;
   justify-content: space-around;
   margin-top: 5vh;
+  @media (max-width: 475px){
+    flex-direction: column;
+  }
 `;
 export const Column = styled.div`
   display: flex;
@@ -90,6 +102,9 @@ export const Column = styled.div`
   flex-wrap: wrap;
   width: 36vw;
   gap: 2vh;
+  @media (max-width: 475px){
+    width: 100%;
+  }
 `;
 export const ColumnLastRatings = styled.div`
   display: flex;
@@ -97,6 +112,9 @@ export const ColumnLastRatings = styled.div`
   flex-wrap: wrap;
   width: 44vw;
   gap: 2vh;
+  @media (max-width: 475px ){
+    width: 100%;
+  }
 `;
 export const GoodsTags = styled.div`
   display: flex;
@@ -116,6 +134,14 @@ export const GoodsTags = styled.div`
     color: ${colors.success};
     width: 17.5vw;
     text-align: center;
+  }
+  @media (max-width: 475px){
+    p{
+      width: 100%;
+      
+    }
+  padding-left: 20px;
+  padding-right: 20px;
   }
 `;
 

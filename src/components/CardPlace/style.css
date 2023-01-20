@@ -18,11 +18,9 @@
 .favorites {
   width: 20vw;
 }
-
-@media (max-width: 475px) {
-  #myCard {
-    display: flex;
-    flex-direction: column;
-    margin-left: -40px;
+@media (max-width: 475px){
+  #myCard{
+    width: 100%;
   }
 }
+

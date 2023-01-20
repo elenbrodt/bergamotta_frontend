@@ -5,7 +5,7 @@ import { fonts } from "../../styles/theme";
 
 export const CardBergamotta = styled(Card)`
   display: flex;
-  max-width: 37vw;
+  width: 37vw;
   min-width: 20vw;
   font-family: ${fonts.secondary};
   h5 {
@@ -20,6 +20,9 @@ export const CardBergamotta = styled(Card)`
     font-size: 14px;
     font-weight: 400;
     line-height: 19.6px;
+  }
+  @media (max-wdith: 475px){
+    width: 66vw;
   }
 `;
 export const LinkCard = styled(Link)`

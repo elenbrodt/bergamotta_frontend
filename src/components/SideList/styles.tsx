@@ -18,6 +18,11 @@ export const Wrapper = styled.div`
     font-weight: 700;
     font-style: italic;
     margin-left: -4vw;
+    
+  }
+  @media (max-width: 475px){
+    width: 100%;
+    
   }
 `;
 export const ResetFilter = styled.a`
@@ -26,6 +31,7 @@ export const ResetFilter = styled.a`
     font-weight: 700;
     color: ${colors.primary};
     cursor: pointer;
+    
 `;
 export const Container = styled.div`
   display: flex;
