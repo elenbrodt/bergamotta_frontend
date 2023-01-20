@@ -35,7 +35,7 @@ import { useForm } from "react-hook-form";
 import { whatsApp } from "../../utilities/whatsapp";
 import { Footer } from "../../components/Footer";
 
-function About(): JSX.Element {
+function AboutUs(): JSX.Element {
   const {
     register,
     handleSubmit,
@@ -124,4 +124,4 @@ function About(): JSX.Element {
   );
 }
 
-export default About;
+export default AboutUs;
