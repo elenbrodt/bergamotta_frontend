@@ -10,6 +10,7 @@ import { Footer } from "../../components/Footer";
 import { useOwner } from "../../store/modules/owner";
 import { byIdOwner, updateOwner } from "../../services/MainApi/owner";
 import InputLogin from "../../components/InputLogin";
+import { FormControl } from "@mui/material";
 interface User {
   name: string;
   email: string;
@@ -75,6 +76,7 @@ function UpdateUser() {
   }, [user, userId]);
 
   const onSubmit = (data: any) => {
+    console.log(data);
     if (data.email == "") {
       data.email = userData?.email;
     }
@@ -149,7 +151,7 @@ function UpdateUser() {
     };
     try {
       const response = await updateUser(req, userId);
-  
+      console.log(response);
       navigate("/perfil");
     } catch (error) {
       alert("Deu algo errado no catch");
@@ -180,7 +182,7 @@ function UpdateUser() {
     };
     try {
       const response = await updateOwner(req, ownerId);
-   
+
       navigate("/");
     } catch (error) {
       alert("Deu algo errado no catch");
@@ -199,73 +201,92 @@ function UpdateUser() {
         )}
         <form id='form' onSubmit={handleSubmit(onSubmit)}>
           <Inputs>
-            <InputLogin
-              label='Nome'
-              type='text'
-              placeholder='Digite seu usuário'
-              defaultValue={userData?.name || ownerData?.name}
-              {...register("name")}
-            />
-            <InputLogin
-              label='Email'
-              type='email'
-              placeholder='Digite seu email'
-              {...register("email")}
-              defaultValue={userData?.email || ownerData?.email}
-            />
-            <InputLogin
-              label='Senha'
-              type='password'
-              placeholder='Digite sua senha'
-              {...register("password")}
-            />
-            {errors.password && <p>Esse campo é obrigatório</p>}
-            <InputLogin
-              label='Link da imagem'
-              type='text'
-              placeholder='Insira link da sua imagem de avatar'
-              defaultValue={userData?.image_link || ownerData?.image_link}
-              {...register("image_link")}
-            />
+            <FormControl {...register("name")}>
+              <InputLogin
+                label='Nome'
+                name='name'
+                type='text'
+                placeholder='Digite seu usuário'
+                defaultValue={userData?.name || ownerData?.name}
+              />
+            </FormControl>
+            <FormControl {...register("email")}>
+              <InputLogin
+                label='Email'
+                type='email'
+                placeholder='Digite seu email'
+                name='email'
+                defaultValue={userData?.email || ownerData?.email}
+              />
+            </FormControl>
+            <FormControl {...register("password")}>
+              <InputLogin
+                label='Senha'
+                type='password'
+                placeholder='Digite sua senha'
+                name='password'
+              />
+              {errors.password && <p>Esse campo é obrigatório</p>}
+            </FormControl>
+            <FormControl {...register("image_link")}>
+              <InputLogin
+                label='Link da imagem'
+                type='text'
+                placeholder='Insira link da sua imagem de avatar'
+                defaultValue={userData?.image_link || ownerData?.image_link}
+                name='image_link'
+              />
+            </FormControl>
+
             <Container>
-              <InputLogin
-                label='Cidade'
-                type='text'
-                placeholder='Digite sua cidade'
-                defaultValue={userData?.city || ownerData?.city}
-                {...register("city")}
-              />
-              <InputLogin
-                label='Estado'
-                type='text'
-                placeholder='Digite seu estado'
-                defaultValue={userData?.state || ownerData?.state}
-                {...register("state")}
-              />
-              <InputLogin
-                type='text'
-                label='País'
-                placeholder='Digite o país'
-                defaultValue={userData?.country || ownerData?.country}
-                {...register("country")}
-              />
+              <FormControl {...register("city")}>
+                <InputLogin
+                  label='Cidade'
+                  type='text'
+                  placeholder='Digite sua cidade'
+                  defaultValue={userData?.city || ownerData?.city}
+                  name='city'
+                />
+              </FormControl>
+              <FormControl {...register("state")}>
+                <InputLogin
+                  label='Estado'
+                  type='text'
+                  placeholder='Digite seu estado'
+                  defaultValue={userData?.state || ownerData?.state}
+                  name='state'
+                />
+              </FormControl>
+              <FormControl {...register("country")}>
+                <InputLogin
+                  type='text'
+                  label='País'
+                  placeholder='Digite o país'
+                  defaultValue={userData?.country || ownerData?.country}
+                  name='country'
+                />
+              </FormControl>
             </Container>
             {owner.isLogged && (
               <>
-                <InputLogin
-                  type='text'
-                  label='CNPJ'
-                  placeholder='Digite o CNPJ'
-                  defaultValue={ownerData?.cnpj}
-                  {...register("cnpj")}
-                />
-                <InputLogin
-                  type='text'
-                  label='Ocupação'
-                  placeholder='Digite sua ocupação'
-                  defaultValue={ownerData?.role}
-                  {...register("role")}
-                />
+                <FormControl {...register("cnpj")}>
+                  <InputLogin
+                    type='text'
+                    label='CNPJ'
+                    placeholder='Digite o CNPJ'
+                    defaultValue={ownerData?.cnpj}
+                    name='cnpj'
+                  />
+                </FormControl>
+                <FormControl {...register("role")}>
+                  <InputLogin
+                    type='text'
+                    label='Ocupação'
+                    placeholder='Digite sua ocupação'
+                    defaultValue={ownerData?.role}
+                    name='role'
+                  />
+                </FormControl>
               </>
             )}
           </Inputs>

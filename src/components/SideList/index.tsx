@@ -84,7 +84,7 @@ export default function SideList() {
         </Container>
       )}
       <Title>Restaurantes</Title>
-      {filter.isFiltered && places.length == 0 && (
+      {filter.isFiltered && places.length === 0 && (
         <p id='text'>
           Não encontramos nenhum restaurante. Tente outras categorias.
         </p>

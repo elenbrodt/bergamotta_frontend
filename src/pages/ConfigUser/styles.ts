@@ -35,6 +35,9 @@ export const Inputs = styled.div`
   align-items: center;
   gap: 1vh;
   width: 100%;
+  .MuiFormControl-root {
+    width: 100%;
+  }
 `;
 export const RadioGroupStyled = styled(RadioGroup)`
   display: flex;

@@ -17,6 +17,7 @@ import { Footer } from "../../components/Footer";
 import { userFavoritesById } from "../../services/MainApi/favorites";
 import { userratingById } from "../../services/MainApi/ratings";
 import ProfileRatingCard from "../../components/ProfileRatingCard";
+import { byIdUser } from "../../services/MainApi/user_profile";
 
 interface PlaceProps {
   id: string;
@@ -34,12 +35,17 @@ interface RatingProps {
   comment: string;
   place: PlaceProps;
 }
+interface User {
+  name: string;
+  image_link: string;
+}
 
 function UserProfile() {
   const user = useUser();
   const [favoritesList, setFavoritesList] = useState<FavoritesProps[]>([]);
 
   const [ratingList, setRatingList] = useState<RatingProps[]>([]);
+  const [userData, setUserData] = useState<User>();
 
   useEffect(() => {
     const getData = async () => {
@@ -56,6 +62,13 @@ function UserProfile() {
       } catch (error) {}
     };
     getUserRatings();
+    const getUser = async () => {
+      try {
+        const response = await byIdUser(user.findUser.id);
+        setUserData(response.data);
+      } catch (error) {}
+    };
+    getUser();
   }, [setFavoritesList, user, setRatingList]);
 
   return (
@@ -64,9 +77,9 @@ function UserProfile() {
       <main>
         <MainDiv>
           <RoundImage>
-            <ImgRound src={user.findUser.image_link} alt='test' />
+            <ImgRound src={userData?.image_link} alt='Perfil usuário' />
           </RoundImage>
-          <UserName>{user.findUser.name}</UserName>
+          <UserName>{userData?.name}</UserName>
           <FavoritesDiv>
             <FavoritesDivLeft>
               <FavTitles>Seus favoritos</FavTitles>
