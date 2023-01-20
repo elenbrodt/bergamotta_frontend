@@ -61,7 +61,7 @@ function Markers(props: MapProps) {
           }}
           key={index}
         >
-          <Popup>
+          <Popup className='pop'>
             <CardPlace
               id={point.id}
               key={index}
