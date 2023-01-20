@@ -38,10 +38,11 @@ export const FormGroupStyled = styled(FormGroup)`
 
   .MuiFormControlLabel-label {
     font-family: ${fonts.secondary};
-    font-size: 14px;
+    font-size: 18px;
     font-weight: 700;
   }
   h3 {
+    font-size: 20px;
     padding: 2vh 0 2vh 0;
   }
 `;
@@ -50,8 +51,13 @@ export const DialogStyled = styled(Dialog)`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
   #myForm {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  hr {
     width: 100%;
   }
 `;
@@ -59,7 +65,6 @@ export const DialogStyled = styled(Dialog)`
 export const ButtonStyled = styled.button`
   background-color: ${colors.secondary};
   width: 17vw;
-  align-self: center;
   text-align: center;
   height: 55px;
   border: none;
@@ -68,29 +73,29 @@ export const ButtonStyled = styled.button`
   font-weight: 600;
   font-size: 18px;
   cursor: pointer;
+  margin: 2vh 0;
   @media (max-width: 768px) {
-    max-width: 1rem;
-  }
-  @media (max-width: 375px) {
-    width: 0.1rem;
+    width: 30vw;
   }
 `;
 
-export const GoodsTags = styled.div`
+export const FilterTags = styled.div`
   display: flex;
   flex-wrap: wrap;
-  width: 100%;
-  gap: 1vh;
-  justify-content: space-between;
-  p {
-    border: 1px solid ${colors.secondary};
+  gap: 0.5vw;
+  button {
+    border: 1px solid ${colors.dark_two};
     border-radius: 36px;
-    font-family: ${fonts.primary};
-    font-size: 18px;
+    font-family: ${fonts.secondary};
+    font-size: 16px;
     font-weight: 700;
-    padding: 2.5vh 1vw;
-    color: ${colors.secondary};
-    width: 17.5vw;
+    padding: 1.5vh 1vw;
+    color: ${colors.dark_two};
     text-align: center;
+    background: none;
+    cursor: pointer;
+  }
+  @media (max-width: 768px) {
+    gap: 1vw;
   }
 `;
