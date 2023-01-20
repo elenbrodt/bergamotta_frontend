@@ -39,7 +39,7 @@ export const Box = styled.div`
     p{
       font-size: 18px;
     }
-    
+
   }
 `;
 
@@ -94,6 +94,8 @@ export const PlaceContainer = styled.div`
   margin-top: 5vh;
   @media (max-width: 475px){
     flex-direction: column;
+    width: 100%;
+    padding: 2vw;
   }
 `;
 export const Column = styled.div`
@@ -170,6 +172,18 @@ export const ContainerGreen = styled.div`
     width: 40%;
     text-align: center;
     line-height: 28px;
+  }
+  @media (max-width: 475px){
+    width: 100%;
+    flex-direction: column;
+    height: 31vh;
+    p{
+      width: 80%;
+    }
+    #signup{
+      width: 35vw;
+      font-size: 16px;
+    }
   }
 `;
 
