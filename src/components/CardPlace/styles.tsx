@@ -21,7 +21,7 @@ export const CardBergamotta = styled(Card)`
     font-weight: 400;
     line-height: 19.6px;
   }
-  @media (max-wdith: 475px){
+  @media (max-wdith: 475px) {
     width: 66vw;
   }
 `;
@@ -37,5 +37,8 @@ export const Container = styled.div`
   }
   .MuiSvgIcon-root {
     font-size: 1rem;
+  }
+  @media (max-width: 475px) {
+    gap: 0.7vw;
   }
 `;

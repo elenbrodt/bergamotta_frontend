@@ -13,7 +13,7 @@ export const SearchBox = styled.div`
   & .MuiSvgIcon-root {
     font-size: 2rem;
   }
-  @media (max-width: 475px){
+  @media (max-width: 475px) {
     width: 100%;
   }
 `;

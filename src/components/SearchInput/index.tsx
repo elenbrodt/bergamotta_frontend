@@ -19,7 +19,7 @@ function SearchInput() {
       <SearchIcon />
       <FormGroup>
         <InputBase
-          placeholder='Nome do estabelecimento'
+          placeholder='Digite aqui...'
           inputProps={{ "aria-label": "search" }}
           id='input'
           type='text'

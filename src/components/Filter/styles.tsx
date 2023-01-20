@@ -16,8 +16,11 @@ export const FilterButton = styled.button`
   img {
     width: 1.67vw;
   }
-  @media (max-width: 475px){
+  @media (max-width: 475px) {
     width: 100%;
+    img {
+      width: 2.5vh;
+    }
   }
 `;
 export const FilterLinkText = styled.p`
