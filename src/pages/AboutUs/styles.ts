@@ -138,7 +138,6 @@ width: 100%;
 display: flex;
 justify-content: space-between;
 margin-bottom: 125px;
-flex-wrap: wrap-reverse;
 @media (max--width: 475px){
     margin-bottom: 150px;
     

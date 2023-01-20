@@ -54,7 +54,7 @@ function AboutUs(): JSX.Element {
               Te ajudamos a encontrar<br></br>
               experiencias gastronômicas incríveis
             </Title>
-            <TitleButton href='/search'>Buscar experiências</TitleButton>
+            <TitleButton href='/'>Buscar experiências</TitleButton>
           </UpperBodyLeft>
           <UpperBodyRight>
             <Imgbody src={bodyimg1} alt='Experiências Incríveis' />
