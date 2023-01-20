@@ -221,6 +221,7 @@ margin-top: 122px;
     }
     .bannertext{
         font-size: 15px;
+        margin-bottom: 20px;
     }
     .bannerbtn{
         width:166px;
