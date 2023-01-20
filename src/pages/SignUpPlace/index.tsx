@@ -8,7 +8,7 @@ import {
   FormGroupStyled,
   Column,
 } from "./style";
-import { TAGS } from "../../mock/tags";
+import { TAGS } from "../../data/tags";
 import { Link, useNavigate } from "react-router-dom";
 import LogoSrc from "../../assets/image/logo_vertical.png";
 import { useForm } from "react-hook-form";
@@ -59,7 +59,6 @@ function SignUpPlace() {
       data.payment,
       owner_id
     );
-    console.log();
   };
 
   const placeCreate = async (
@@ -110,7 +109,7 @@ function SignUpPlace() {
     };
     try {
       const response = await createPlace(req);
-      console.log(response);
+
       navigate("/");
     } catch (error) {
       alert("Deu algo errado no catch");

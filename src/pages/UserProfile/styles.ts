@@ -32,6 +32,8 @@ export const UserName = styled.h2`
 `;
 export const FavoritesDiv = styled.div`
   display: flex;
+  align-items: start;
+  gap: 2vw;
   width: 100%;
   justify-content: center;
   @media (max-width: 475px) {
@@ -40,10 +42,9 @@ export const FavoritesDiv = styled.div`
 export const FavoritesDivLeft = styled.div`
   display: flex;
   flex-wrap: wrap;
-  width: 50vw;
+  width: 40vw;
   flex-direction: column;
   justify-content: center;
-  margin-left: 15%;
 `;
 export const FavTitles = styled.h3`
   font-family: ${fonts.secondary};
@@ -65,7 +66,7 @@ export const PlacesDiv = styled.div`
 `;
 export const FavoritesDivRight = styled.div`
   display: flex;
-  flex-wrap: wrap;
+
   width: 40vw;
   flex-direction: column;
   justify-content: center;

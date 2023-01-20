@@ -1,10 +1,11 @@
 import styled from "styled-components";
 import { colors, fonts } from "../../styles/theme";
 export const SubmitButtonStyled = styled.button`
-  background-color: ${colors.black};
+  background-color: ${(props) =>
+    props.theme === "signin_owner" ? colors.secondary : colors.black};
   display: flex;
   justify-content: center;
-  width: 17vw;
+  width: ${(props) => (props.theme === "signin_owner" ? "30vw" : "17vw")};
   align-items: center;
   text-align: center;
   border-radius: ${(props) => (props.theme === "signin_owner" ? "" : "36px;")};
@@ -18,7 +19,7 @@ export const SubmitButtonStyled = styled.button`
   @media (max-width: 768px) {
     width: 200px;
   }
-  @media (max-width: 475px){
+  @media (max-width: 475px) {
     width: 150px;
     height: 50px;
   }
