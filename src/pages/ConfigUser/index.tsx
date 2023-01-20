@@ -149,7 +149,7 @@ function UpdateUser() {
     };
     try {
       const response = await updateUser(req, userId);
-      console.log(response);
+  
       navigate("/perfil");
     } catch (error) {
       alert("Deu algo errado no catch");
@@ -180,7 +180,7 @@ function UpdateUser() {
     };
     try {
       const response = await updateOwner(req, ownerId);
-      console.log(response);
+   
       navigate("/");
     } catch (error) {
       alert("Deu algo errado no catch");

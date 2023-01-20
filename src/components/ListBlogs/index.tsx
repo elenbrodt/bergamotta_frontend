@@ -18,9 +18,7 @@ export default function ListBlogs() {
       try {
         const response = await listBlog();
         setPosts(response.data);
-      } catch (error) {
-        alert("Deu algo errado no catch");
-      }
+      } catch (error) {}
     };
     getData();
   }, [setPosts]);

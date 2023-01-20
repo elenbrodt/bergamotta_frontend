@@ -172,13 +172,13 @@ function ConfigPlace() {
       owner_id: owner_id,
       place_id: place_id,
     };
-    console.log(req);
+   
     try {
       const response = await updatePlace(req);
-      console.log(response);
+     
       navigate("/");
     } catch (error) {
-      alert("Deu algo errado no catch");
+      
     }
   };
 

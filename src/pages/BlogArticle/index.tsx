@@ -31,7 +31,6 @@ import {
 } from "../../services/MainApi/blog_comment";
 import { useForm } from "react-hook-form";
 import { byIdBlog } from "../../services/MainApi/blog";
-import CardBlogComment from "../../components/CardBlogComments";
 
 interface UserDataProps {
   id: string;
@@ -73,9 +72,7 @@ function BlogArticle() {
       try {
         const response = await byIdBlog(urlId);
         setBlog(response.data);
-      } catch (error) {
-        alert("Deu algo errado no catch");
-      }
+      } catch (error) {}
     };
     getBlog();
     if (userData.isLogged) {
@@ -83,9 +80,7 @@ function BlogArticle() {
         try {
           const response = await byIdUser(userData.findUser.id);
           setUser(response.data);
-        } catch (error) {
-          alert("Deu algo errado no catch");
-        }
+        } catch (error) {}
       };
       getData();
     }
@@ -114,10 +109,7 @@ function BlogArticle() {
     };
     try {
       const response = await createBlogComment(req, urlId);
-      console.log(response);
-    } catch (error) {
-      alert("Deu algo errado no catch");
-    }
+    } catch (error) {}
   };
 
   const [seed, setSeed] = useState(1);
@@ -145,7 +137,7 @@ function BlogArticle() {
       }
     };
     getData();
-  }, [setBlogComment, urlId]);
+  }, [setBlogComment]);
 
   return (
     <div className='App'>

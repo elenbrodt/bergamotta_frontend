@@ -9,13 +9,10 @@ import {
   HamburguerMenu,
   NavLink,
   LinkLogin,
-  ImgCadastro,
-  ButtonsDiv,
 } from "./style";
 import { useUser } from "../../store/modules/user";
 import { useOwner } from "../../store/modules/owner";
 import LogoutButton from "../LogoutButton";
-import cadastro from "./../../assets/imagesHeader/cadastro.png";
 
 function Header() {
   const user = useUser();

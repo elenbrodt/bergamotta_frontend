@@ -6,10 +6,9 @@ import {
 } from "./styles";
 import LogoSrc from "../../assets/image/logo_vertical.png";
 import InputLogin from "../../components/InputLogin";
-import PasswordReminder from "../../components/PasswordReminder";
 import { Link, useNavigate } from "react-router-dom";
 import TitleLogin from "../../components/TitleLogin";
-import SignInLink from "../../components/SignInLink";
+import SignUpLink from "../../components/SignUpLink";
 import { useForm } from "react-hook-form";
 import { authUser } from "../../services/MainApi/login";
 import { FormControl, Radio } from "@mui/material";
@@ -32,7 +31,6 @@ function Login() {
   const navigate = useNavigate();
 
   const onSubmit = (data: any) => {
-    console.log(toggle);
     if (!toggle) {
       login(data.email, data.password);
     }
@@ -51,8 +49,10 @@ function Login() {
         })
       );
       navigate("/");
-    } catch (error) {
-      alert("Algo deu errado no catch");
+    } catch (error: any) {
+      if (error.request.status === 403 || error.request.status === 403) {
+        alert("Senha e/ou email incorretos");
+      }
     }
   };
 
@@ -66,8 +66,10 @@ function Login() {
         })
       );
       navigate("/");
-    } catch (error) {
-      alert("Algo deu errado no catch");
+    } catch (error: any) {
+      if (error.request.status === 403 || error.request.status === 403) {
+        alert("Senha e/ou email incorretos");
+      }
     }
   };
 
@@ -119,8 +121,7 @@ function Login() {
             <SubmitButton text='Login' />
           </Inputs>
         </form>
-        <PasswordReminder />
-        <SignInLink
+        <SignUpLink
           href='/cadastro'
           text='Não possui uma conta?'
           link='Cadastre-se Aqui'

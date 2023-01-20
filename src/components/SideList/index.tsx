@@ -2,13 +2,11 @@ import { Title, Wrapper, ResetFilter, Container } from "./styles";
 import { listPlace } from "../../services/MainApi/search";
 import { useEffect, useState } from "react";
 import CardPlace from "../CardPlace";
-import "./styles.css";
 import { useUser } from "../../store/modules/user";
 import { filters } from "../../services/MainApi/filter";
 import { removeFilter, useFilter } from "../../store/modules/filter";
 import { useDispatch } from "react-redux";
 import { useOwner } from "../../store/modules/owner";
-import SearchBar from "../SearchBar";
 import YellowBanner from "../YellowBanner";
 
 interface Place {
@@ -35,9 +33,7 @@ export default function SideList() {
     try {
       const response = await listPlace();
       setPlaces(response.data);
-    } catch (error) {
-      alert("Deu algo errado no catch");
-    }
+    } catch (error) {}
   };
 
   const filteredPlaces = places.filter((place) =>
@@ -58,10 +54,7 @@ export default function SideList() {
     try {
       const response = await filters(req);
       setPlaces(response.data);
-      console.log("aqui", response.data);
-    } catch (error) {
-      alert("Deu algo errado no catch");
-    }
+    } catch (error) {}
   };
 
   useEffect(() => {
@@ -92,7 +85,9 @@ export default function SideList() {
       )}
       <Title>Restaurantes</Title>
       {filter.isFiltered && places.length == 0 && (
-        <p id='text'>Não encontramos nenhum restaurante :(</p>
+        <p id='text'>
+          Não encontramos nenhum restaurante. Tente outras categorias.
+        </p>
       )}
       {!user?.isLogged &&
         !owner?.isLogged &&
