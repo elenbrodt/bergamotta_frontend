@@ -252,7 +252,7 @@ function PlaceProfile() {
           </GoodsTags>
         </Box>
         <Box>
-          <h3>O que estão dizendo</h3>
+          <h3 className="segundo-h3">O que estão dizendo</h3>
           <Border>
             {comments.map((comment, index) => {
               return (
@@ -267,7 +267,7 @@ function PlaceProfile() {
             })}
           </Border>
 
-          <h3>Pontos de atenção</h3>
+          <h3 className="segundo-h3">Pontos de atenção</h3>
           <BadTags>
             {bads.map((bad, index) => (
               <p key={index}>{bad}</p>

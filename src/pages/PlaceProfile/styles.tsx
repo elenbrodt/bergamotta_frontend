@@ -31,14 +31,17 @@ export const Box = styled.div`
   }
   #img_place {
     width: 100%;
-    height: 28vh;
+    height: 40vh;
   }
   @media (max-width: 475px){
+    h2{
+      font-size: 22px;
+    }
     
     h3{
-      font-size: 20px;
+      font-size: 18px;
       width: 300px;;
-      margin-left: 30px;
+      margin-left: 10x;
       margin-bottom: 3vh;
     }
    #stars{
@@ -46,7 +49,11 @@ export const Box = styled.div`
     margin-right: 10px;
    }
    #img_place{
-    
+    width: 300px;
+    height: 230px;
+   }
+   .segundo-h3{
+    margin-left: 60px;
    }
   
   }
