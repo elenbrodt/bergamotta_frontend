@@ -27,7 +27,6 @@ export const Banner = styled.div`
   justify-content: center;
   align-items: center;
   gap: 2vw;
-
   height: 147px;
   background-color: ${colors.success};
   #link {
@@ -43,6 +42,11 @@ export const Banner = styled.div`
     text-transform: uppercase;
     text-align: center;
   }
+
+  @media (max-width: 850px) {
+    flex-direction: column;
+    gap: 1vw;
+  } ;
 `;
 export const TextBanner = styled.div`
   display: flex;

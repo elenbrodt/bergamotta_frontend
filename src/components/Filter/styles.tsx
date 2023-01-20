@@ -30,7 +30,7 @@ export const FilterLinkText = styled.p`
   color: ${colors.black};
   margin: 0;
   @media (max-width: 870px) {
-    font-size: 13px;
+    font-size: 15px;
   }
 `;
 export const FilterTitle = styled.h2`
