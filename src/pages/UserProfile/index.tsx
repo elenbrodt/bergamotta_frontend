@@ -17,7 +17,6 @@ import { Footer } from "../../components/Footer";
 import { userFavoritesById } from "../../services/MainApi/favorites";
 import { userratingById } from "../../services/MainApi/ratings";
 import ProfileRatingCard from "../../components/ProfileRatingCard";
-import CardPlace from "../../components/CardPlace";
 
 interface PlaceProps {
   id: string;
@@ -47,21 +46,14 @@ function UserProfile() {
       try {
         const response = await userFavoritesById(user.findUser.id);
         setFavoritesList(response.data);
-      } catch (error) {
-        console.error(error);
-        alert("Deu algo errado no catch");
-      }
+      } catch (error) {}
     };
     getData();
     const getUserRatings = async () => {
       try {
         const response = await userratingById(user.findUser.id);
         setRatingList(response.data);
-        console.log(response.data);
-      } catch (error) {
-        console.error(error);
-        alert("Deu algo errado no catch");
-      }
+      } catch (error) {}
     };
     getUserRatings();
   }, [setFavoritesList, user, setRatingList]);
@@ -84,6 +76,7 @@ function UserProfile() {
                     index < 10 && (
                       <CardPlaceStyled
                         type='favorites'
+                        key={index}
                         id={favorite.place.id}
                         image_link={favorite.place.image_link}
                         name={favorite.place.name}

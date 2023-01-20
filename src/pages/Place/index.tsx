@@ -380,6 +380,7 @@ function Place() {
                     href={instagram}
                     target='_blank'
                     className='link_instagram'
+                    rel='noreferrer'
                   >
                     <InstagramIcon />
                     {at}
