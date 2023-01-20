@@ -7,6 +7,9 @@ export const MainDiv = styled.div`
   background: #f8aa00;
   margin-left: -15%;
   margin-bottom: 1vh;
+  @media (max-width: 475px){
+    height: 200px;
+  }
 `;
 export const LeftDiv = styled.div`
   display: flex;
@@ -26,6 +29,11 @@ export const TitleBanner = styled.h2`
   font-weight: 700;
   font-size: 18px;
   line-height: 25px;
+  @media (max-width: 475px){
+    
+    margin-left: 80px;
+    
+  }
 `;
 export const BannerButton = styled.a`
   width: 100%;
@@ -42,6 +50,11 @@ export const BannerButton = styled.a`
   line-height: 25px;
   color: ${colors.white};
   text-decoration: none;
+  @media (max-width: 475px){
+    width: 160px;
+    margin-left: 80px;
+    font-size: 13px;
+  }
 `;
 export const ImgBanner = styled.img`
   width: 60%;
