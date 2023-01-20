@@ -36,15 +36,21 @@ export const FavoritesDiv = styled.div`
   gap: 2vw;
   width: 100%;
   justify-content: center;
-  @media (max-width: 475px) {
+  @media (max-width: 1550px) {
+    flex-direction: column;
+    align-items: center;
   }
 `;
 export const FavoritesDivLeft = styled.div`
   display: flex;
-  flex-wrap: wrap;
+
   width: 40vw;
   flex-direction: column;
   justify-content: center;
+  @media (max-width: 1550px) {
+    width: 100%;
+    padding: 0 10px;
+  }
 `;
 export const FavTitles = styled.h3`
   font-family: ${fonts.secondary};
@@ -53,28 +59,28 @@ export const FavTitles = styled.h3`
   line-height: 26px;
   color: ${colors.black};
   margin-bottom: 3vh;
+  @media (max-width: 1550px) {
+    text-align: center;
+  }
 `;
 export const PlacesDiv = styled.div`
-  width: 40vw;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  @media (max-width: 475px) {
-    margin-left: -20px;
-    width: 180px;
-  }
 `;
 export const FavoritesDivRight = styled.div`
   display: flex;
-
   width: 40vw;
   flex-direction: column;
+
   justify-content: center;
+  @media (max-width: 1550px) {
+    width: 100%;
+    padding: 0 10px;
+  }
 `;
 
 export const CardPlaceStyled = styled(CardPlace)`
-  max-width: 15vw;
-  margin-left: 15%;
   @media (max-width: 475px) {
     margin-top: -115px;
 

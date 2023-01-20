@@ -12,5 +12,6 @@ export const SearchBarStyle = styled.div`
   z-index: 3;
   @media (max-width: 870px) {
     width: 100%;
+    height: 7vh;
   }
 `;

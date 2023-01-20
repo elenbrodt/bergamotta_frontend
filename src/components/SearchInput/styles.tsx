@@ -15,6 +15,10 @@ export const SearchBox = styled.div`
   }
   @media (max-width: 870px) {
     width: 100%;
+    font-size: 13px;
+    .MuiSvgIcon-root {
+      font-size: 1rem;
+    }
   }
 `;
 
@@ -24,4 +28,7 @@ export const InputBaseStyled = styled.input`
   color: black;
   font-weight: 400;
   padding: 0;
+  @media (max-width: 870px) {
+    font-size: 13px;
+  }
 `;

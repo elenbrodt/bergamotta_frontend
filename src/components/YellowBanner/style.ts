@@ -8,9 +8,10 @@ export const MainDiv = styled.div`
   margin-left: -15%;
   margin-bottom: 1vh;
   justify-content: center;
-  gap: 10vw;
+
   @media (max-width: 870px) {
     height: 200px;
+    gap: 10vw;
   }
 `;
 export const LeftDiv = styled.div`
@@ -19,7 +20,7 @@ export const LeftDiv = styled.div`
   align-items: center;
   flex-direction: column;
   text-align: center;
-  width: 23vw;
+  width: 18vw;
   gap: 11px;
   @media (max-width: 475px) {
     width: 30vw;
@@ -35,6 +36,9 @@ export const TitleBanner = styled.h2`
   font-weight: 700;
   font-size: 18px;
   line-height: 25px;
+  @media (max-width: 475px) {
+    font-size: 16px;
+  }
 `;
 export const BannerButton = styled.a`
   width: 100%;
@@ -57,8 +61,8 @@ export const BannerButton = styled.a`
   }
 `;
 export const ImgBanner = styled.img`
-  width: 20vw;
-  margin-right: -7%;
+  width: 15vw;
+
   @media (max-width: 475px) {
     width: 30vw;
   }
