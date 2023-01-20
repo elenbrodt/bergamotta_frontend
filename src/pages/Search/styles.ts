@@ -8,8 +8,8 @@ export const SideBar = styled.div`
   }
   overflow: scroll;
   overflow-x: hidden;
-  @media (max-width: 475px){
-    width: 100%
+  @media (max-width: 870px) {
+    width: 100%;
   }
 `;
 export const SearchContainer = styled.div`
@@ -17,9 +17,8 @@ export const SearchContainer = styled.div`
   width: 100%;
   justify-content: space-between;
   height: 85vh;
-  @media (max-width: 475px){
+  @media (max-width: 870px) {
     flex-direction: column-reverse;
-    
   }
 `;
 

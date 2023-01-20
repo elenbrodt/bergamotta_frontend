@@ -18,9 +18,8 @@
 .favorites {
   width: 20vw;
 }
-@media (max-width: 475px){
-  #myCard{
+@media (max-width: 870px) {
+  #myCard {
     width: 100%;
   }
 }
-
