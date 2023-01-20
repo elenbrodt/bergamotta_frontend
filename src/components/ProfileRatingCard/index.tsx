@@ -1,21 +1,20 @@
-import { CardContent, CardMedia} from "@mui/material";
+import { CardContent, CardMedia } from "@mui/material";
 import { CardBergamotta, LinkCard, Container } from "./styles";
 import "./style.css";
 
-
 interface PlacesProps {
-  id: string
+  id: string;
   image_link: string;
   name: string;
 }
 interface RatingProps {
   id: string;
-  comment: string
-  place: PlacesProps
+  comment: string;
+  place: PlacesProps;
 }
-function ProfileRatingCard (props: RatingProps){
+function ProfileRatingCard(props: RatingProps) {
   return (
-    <LinkCard to={props.place.id} >
+    <LinkCard to={props.place.id}>
       <CardBergamotta id='myCard'>
         <CardMedia
           component='img'
@@ -30,8 +29,8 @@ function ProfileRatingCard (props: RatingProps){
           </Container>
         </CardContent>
       </CardBergamotta>
-    </LinkCard>  
-  )
+    </LinkCard>
+  );
 }
 
 export default ProfileRatingCard;
