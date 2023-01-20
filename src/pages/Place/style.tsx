@@ -32,14 +32,15 @@ export const Box = styled.div`
     font-size: 45px;
     padding-bottom: 1vh;
   }
-  @media (max-width: 475px){
-    h2{
-      margin-left: 35px;
-    }
-    p{
+  @media (max-width: 475px) {
+    padding: 0 4px;
+    font-size: 14px;
+    .MuiSvgIcon-root {
       font-size: 18px;
     }
-
+    h2 {
+      font-size: 18px;
+    }
   }
 `;
 
@@ -54,6 +55,11 @@ export const PlaceWrapper = styled.div`
     text-transform: capitalize;
     margin-top: 0.5vh;
   }
+  @media (max-width: 475px) {
+    #address {
+      font-size: 14px;
+    }
+  }
 `;
 
 export const Title = styled.h1`
@@ -63,6 +69,9 @@ export const Title = styled.h1`
     line-height: 44px;
     font-weight: 700;
     padding-top: 1vh;
+    @media(max-width: 475px){
+        font-size: 24px;
+    }
 `;
 export const Container = styled.div`
   display: flex;
@@ -92,10 +101,11 @@ export const PlaceContainer = styled.div`
   gap: 9vw;
   justify-content: space-around;
   margin-top: 5vh;
-  @media (max-width: 475px){
+  @media (max-width: 475px) {
     flex-direction: column;
     width: 100%;
     padding: 2vw;
+    gap: 1vh;
   }
 `;
 export const Column = styled.div`
@@ -104,7 +114,7 @@ export const Column = styled.div`
   flex-wrap: wrap;
   width: 36vw;
   gap: 2vh;
-  @media (max-width: 475px){
+  @media (max-width: 475px) {
     width: 100%;
   }
 `;
@@ -114,7 +124,7 @@ export const ColumnLastRatings = styled.div`
   flex-wrap: wrap;
   width: 44vw;
   gap: 2vh;
-  @media (max-width: 475px ){
+  @media (max-width: 475px) {
     width: 100%;
   }
 `;
@@ -137,13 +147,14 @@ export const GoodsTags = styled.div`
     width: 17.5vw;
     text-align: center;
   }
-  @media (max-width: 475px){
-    p{
+  @media (max-width: 475px) {
+    p {
       width: 100%;
-      
+      font-size: 14px;
+      padding: 1vh;
     }
-  padding-left: 20px;
-  padding-right: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
   }
 `;
 
@@ -173,14 +184,14 @@ export const ContainerGreen = styled.div`
     text-align: center;
     line-height: 28px;
   }
-  @media (max-width: 475px){
+  @media (max-width: 475px) {
     width: 100%;
     flex-direction: column;
     height: 31vh;
-    p{
+    p {
       width: 80%;
     }
-    #signup{
+    #signup {
       width: 35vw;
       font-size: 16px;
     }
@@ -206,6 +217,7 @@ export const ColumnRating = styled.div`
     background: none;
     cursor: pointer;
   }
+
   #myForm {
     display: flex;
     flex-direction: column;
@@ -225,6 +237,7 @@ export const ColumnRating = styled.div`
     font-size: 70px;
     align-self: center;
   }
+
   h3 {
     font-size: 32px;
     text-align: center;
@@ -232,6 +245,29 @@ export const ColumnRating = styled.div`
   p {
     font-size: 20px;
     font-weight: 700;
+  }
+
+  @media (max-width: 475px) {
+    width: 100%;
+    justify-content: center;
+    button {
+      width: 100%;
+      font-size: 14px;
+      padding: 1vh;
+    }
+    #myForm {
+      align-items: center;
+      width: 100%;
+    }
+    #userStars {
+      font-size: 40px;
+    }
+    h3 {
+      font-size: 20px;
+    }
+    p {
+      text-align: start;
+    }
   }
 `;
 

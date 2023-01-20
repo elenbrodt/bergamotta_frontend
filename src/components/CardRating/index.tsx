@@ -14,7 +14,9 @@ function CardRating(props: User) {
       <Box>
         <p>{props.name}</p>
         <Rating value={props.stars} readOnly precision={0.5} />
-        <input value={props.value} readOnly />
+        <textarea rows={2} readOnly>
+          {props.value}
+        </textarea>
       </Box>
     </Container>
   );

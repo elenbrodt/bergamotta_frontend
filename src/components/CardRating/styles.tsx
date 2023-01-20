@@ -5,6 +5,10 @@ export const UserImg = styled.img`
   width: 6vw;
   height: 6vw;
   border-radius: 100%;
+  @media (max-width: 475px) {
+    width: 40px;
+    height: 40px;
+  }
 `;
 export const Container = styled.div`
   display: flex;
@@ -19,17 +23,19 @@ export const Box = styled.div`
   flex-direction: column;
   justify-content: center;
   width: 100%;
-  input {
+  textarea {
     border: none;
     font-family: ${fonts.secondary};
     padding-top: 1vh;
     font-size: 16px;
+    width: 100%;
   }
-  @media (max-width: 475px){
-    input{
-      font-size: 12px;
-      
+  @media (max-width: 475px) {
+    textarea {
+      font-size: 10px;
     }
-    
+    p {
+      font-size: 16px;
+    }
   }
 `;
