@@ -38,6 +38,10 @@ export const Inputs = styled.div`
   .MuiFormControl-root {
     width: 100%;
   }
+  @media (max-width: 475px){
+    width: 300px;
+    margin-left: -40px;
+  }
 `;
 export const RadioGroupStyled = styled(RadioGroup)`
   display: flex;
