@@ -55,7 +55,7 @@ function MenuHamburguer() {
                 <Link to='/perfil'>Perfil</Link>
               </li>
               <li>
-                <Link to='/parceiros'>Editar perfil</Link>
+                <Link to='/editarperfil'>Editar perfil</Link>
               </li>
             </ul>
           </nav>
@@ -73,7 +73,7 @@ function MenuHamburguer() {
                 <Link to='/restauranteperfil'>Perfil do restaurante</Link>
               </li>
               <li>
-                <Link to='/parceiros'>Editar usuário</Link>
+                <Link to='/editarperfil'>Editar usuário</Link>
               </li>
             </ul>
           </nav>

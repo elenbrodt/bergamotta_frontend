@@ -9,6 +9,13 @@
   height: 332px;
 }
 
+@media (max-width: 475px) {
+  .banner {
+    height: 20vh;
+    gap: 0;
+  }
+}
+
 .bannertitle {
   text-align: center;
   margin: 0;

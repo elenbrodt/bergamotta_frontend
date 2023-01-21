@@ -64,6 +64,6 @@ export const ImgBanner = styled.img`
   width: 10vw;
 
   @media (max-width: 475px) {
-    width: 30vw;
+    width: 32vw;
   }
 `;

@@ -148,6 +148,7 @@ export const UpperBodyLeft = styled.div`
   justify-content: center;
   align-items: center;
   gap: 15px;
+  overflow: hiden;
 `;
 export const UpperBodyRight = styled.div`
   @media (max-width: 475px) {
@@ -186,12 +187,14 @@ export const BottonBodyRight = styled.div`
   margin-bottom: 100px;
   background-color: ${colors.light_one};
   @media (max-width: 1327px) {
+    width: 80%;
     margin-top: 150px;
     background-color: ${colors.white};
     align-items: center;
-
+    margin-left: 135px;
     margin-top: -520px;
     margin-bottom: 10px;
+
     .title-one {
       margin-left: -90px;
       margin-top: -30px;
@@ -254,7 +257,6 @@ export const Title3 = styled.h3`
   color: ${colors.primary};
   font-family: ${fonts.primary};
   @media (max-width: 475px) {
-    margin-top: 160px;
     font-size: 16px;
     line-height: 25px;
   }
@@ -320,7 +322,7 @@ export const FormBtn = styled.button`
     width: 109px;
     height: 36px;
     font-size: 10px;
-    margin-right: 95px;
+
     margin-bottom: 20px;
   }
 `;
