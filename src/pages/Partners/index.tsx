@@ -64,7 +64,7 @@ function Partners() {
               Conectando pessoas, propósitos e<br></br>
               experiencias gastronômicas
             </Title>
-            <TitleButton href='/'>Criar conexões</TitleButton>
+            <TitleButton href='/cadastro'>Criar conexões</TitleButton>
           </UpperBodyLeft>
           <UpperBodyRight>
             <Imgbody src={bodyimg0} alt='Experiências Incríveis' />
