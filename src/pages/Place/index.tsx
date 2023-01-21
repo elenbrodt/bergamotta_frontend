@@ -15,6 +15,7 @@ import {
   StyledRating,
   Wrapped,
   PlaceWrapper,
+  RatingComment,
 } from "./style";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import PhoneIcon from "@mui/icons-material/Phone";
@@ -478,11 +479,10 @@ function Place() {
               </GoodsTags>
               <p>Compartilhe com a gente sua experiência</p>
               <FormControl {...register("comment")}>
-                <InputLogin
+                <RatingComment
                   name='comment'
                   placeholder='Faça um comentário'
-                  type='text'
-                  theme='description'
+                  rows={3}
                 />
               </FormControl>
               <button id='rating_btn' type='submit'>

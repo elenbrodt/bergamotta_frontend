@@ -280,7 +280,6 @@ export const GreenBannerContainer = styled.div`
   margin-top: -7px;
   width: 100%;
   @media (max-width: 475px) {
-    height: 192px;
     font-size: 25px;
 
     .bannertitle {

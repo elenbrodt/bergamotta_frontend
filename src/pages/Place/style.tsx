@@ -278,3 +278,15 @@ export const StyledRating = styled(Rating)`
   font-size: 40px;
   margin-bottom: 9px;
 `;
+
+export const RatingComment = styled.textarea`
+  width: 100%;
+  border: solid 1px ${colors.dark_one};
+  font-family: ${fonts.secondary};
+  border-radius: 10px;
+  padding: 2.5vh;
+  font-size: 16px;
+  @media (max-width: 475px) {
+    width: 80vw;
+  }
+`;
