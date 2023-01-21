@@ -187,12 +187,12 @@ export const ContainerGreen = styled.div`
   @media (max-width: 475px) {
     width: 100%;
     flex-direction: column;
-    height: 31vh;
+    height: 20vh;
     p {
       width: 80%;
     }
     #signup {
-      width: 35vw;
+      width: 80%;
       font-size: 16px;
     }
   }

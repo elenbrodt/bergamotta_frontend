@@ -5,9 +5,8 @@ import { Link } from "react-router-dom";
 export const Footerstyle = styled.footer`
   width: 100%;
   background-color: ${colors.light_one};
-  height: 15vh;
+  min-height: 15vh;
   bottom: 0;
-  margin-top: 5px;
   display: flex;
   justify-content: space-around;
   align-items: center;

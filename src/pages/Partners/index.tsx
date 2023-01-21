@@ -55,7 +55,7 @@ function Partners() {
     whatsApp(data.name, data.whatsapp, data.mensagem);
 
   return (
-    <div className='App'>
+    <>
       <Header />
       <main>
         <UpperBody>
@@ -147,7 +147,7 @@ function Partners() {
         </FormContainer>
       </main>
       <Footer />
-    </div>
+    </>
   );
 }
 
