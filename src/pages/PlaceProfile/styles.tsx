@@ -33,37 +33,37 @@ export const Box = styled.div`
     width: 100%;
     height: 40vh;
   }
-  @media (max-width: 475px){
-    h2{
+  @media (max-width: 475px) {
+    width: 80vw;
+    h2 {
       font-size: 22px;
     }
-    
-    h3{
+
+    h3 {
       font-size: 18px;
-      width: 300px;;
+      width: 300px;
       margin-left: 10x;
-      margin-bottom: 3vh;
     }
-   #stars{
-    font-size: 30px;
-    margin-right: 10px;
-   }
-   #img_place{
-    width: 300px;
-    height: 230px;
-   }
-   .segundo-h3{
-    margin-left: 60px;
-   }
-  
+    #stars {
+      font-size: 30px;
+      margin-right: 10px;
+    }
+    #img_place {
+      width: 100%;
+      height: 230px;
+      object: fit;
+    }
+    #img_rates {
+      width: 32vw;
+    }
   }
- 
 `;
 export const GoodsTags = styled.div`
   display: flex;
   flex-wrap: wrap;
   width: 100%;
   gap: 1vh;
+
   p {
     border: 3px solid ${colors.success};
     border-radius: 36px;
@@ -76,6 +76,13 @@ export const GoodsTags = styled.div`
     width: 245px;
     align-self: center;
     line-height: 25.2px;
+  }
+  @media (max-width: 475px) {
+    margin-bottom: 1vh;
+    p {
+      width: 100%;
+      padding: 1vh;
+    }
   }
 `;
 export const BadTags = styled.div`
@@ -94,6 +101,12 @@ export const BadTags = styled.div`
     text-align: center;
     width: 245px;
     line-height: 25.2px;
+  }
+  @media (max-width: 475px) {
+    p {
+      width: 100%;
+      padding: 1vh;
+    }
   }
 `;
 
@@ -115,28 +128,15 @@ export const ContainerName = styled.div`
   .MuiIconButton-root {
     background-color: ${colors.gray};
   }
-  
-  }
-  @media(max-width: 475px){
-    .MuiSvgIcon-root{
-      
-    }
-    .MuiIconButton-root{
-      margin-right: -100px;
-      width: 40px;
-      height: 40px;
-    }
-  }
 `;
 
 export const Wrapper = styled.div`
   display: flex;
   justify-content: space-between;
   margin: 3vh 5vw;
-  @media (max-width: 475px){
+  @media (max-width: 475px) {
     align-items: center;
     flex-direction: column;
-    margin-left: -100px;
   }
 `;
 
@@ -167,8 +167,8 @@ export const Border = styled.div`
   padding: 1vh;
   border-radius: 10px;
   margin-bottom: 2.3vh;
-  @media (max-width: 475px){
-    width: 300px;
+  @media (max-width: 475px) {
+    width: 80vw;
     height: 35vh;
   }
 `;
